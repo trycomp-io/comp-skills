@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Research Digest - __WINDOW_END__</title>
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<style>
+  body { font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; }
+  .badge { display: inline-block; padding: 2px 8px; border-radius: 9999px; font-size: 0.7rem; font-weight: 600; }
+  .card { transition: box-shadow .15s ease; }
+  .card:hover { box-shadow: 0 4px 24px rgba(0,0,0,.06); }
+  details > summary { cursor: pointer; list-style: none; }
+  details > summary::-webkit-details-marker { display: none; }
+  .abstract { font-size: 0.9rem; line-height: 1.55; color: #374151; }
+</style>
+</head>
+<body class="bg-stone-50 text-stone-900">
+<div class="max-w-6xl mx-auto px-6 py-10">
+  <header class="mb-10">
+    <p class="text-xs uppercase tracking-widest text-stone-500 mb-2">Comp Research Desk</p>
+    <h1 class="text-4xl font-semibold tracking-tight">Research Digest</h1>
+    <p class="text-stone-600 mt-2">Janela: <span id="window-label">__WINDOW_START__ a __WINDOW_END__</span> &middot; <span id="total-label">0</span> itens unicos</p>
+  </header>
+
+  <!-- Sumario executivo -->
+  <section class="mb-12 bg-white rounded-2xl border border-stone-200 p-8">
+    <h2 class="text-xl font-semibold mb-4">Sumario executivo</h2>
+    <div id="exec-summary" class="space-y-3 text-stone-700"></div>
+    <div class="mt-6 grid grid-cols-1 md:grid-cols-3 gap-4" id="topic-counters"></div>
+  </section>
+
+  <!-- Filtros -->
+  <section class="mb-6 flex flex-wrap gap-2 items-center">
+    <span class="text-xs text-stone-500 mr-2">Filtros:</span>
+    <button data-filter="all" class="filter-btn badge bg-stone-900 text-white">Todos</button>
+    <button data-filter="academic" class="filter-btn badge bg-stone-200 text-stone-700">Academico</button>
+    <button data-filter="consultancy" class="filter-btn badge bg-stone-200 text-stone-700">Consultoria</button>
+    <button data-filter="thoughtleader" class="filter-btn badge bg-stone-200 text-stone-700">Thought Leader</button>
+    <button data-filter="media" class="filter-btn badge bg-stone-200 text-stone-700">Media</button>
+    <input id="search-input" type="text" placeholder="Buscar titulo ou autor..." class="ml-auto px-3 py-1.5 text-sm rounded-lg border border-stone-300 focus:outline-none focus:border-stone-500" style="min-width: 260px">
+  </section>
+
+  <!-- Cards por tema -->
+  <section id="cards-by-topic"></section>
+
+  <!-- Apendice -->
+  <section class="mt-16 pt-8 border-t border-stone-200">
+    <h2 class="text-xl font-semibold mb-4">Apendice: lista completa</h2>
+    <table class="w-full text-sm">
+      <thead>
+        <tr class="text-left text-stone-500 border-b border-stone-200">
+          <th class="py-2">Data</th>
+          <th>Tema</th>
+          <th>Fonte</th>
+          <th>Titulo (PT)</th>
+        </tr>
+      </thead>
+      <tbody id="appendix"></tbody>
+    </table>
+  </section>
+
+  <footer class="mt-16 text-xs text-stone-400 text-center">
+    Gerado em <span id="generated-at"></span>
+    &middot; Powered by <a href="https://comp.vc?utm_source=skill-output&amp;utm_medium=html-footer&amp;utm_campaign=eam&amp;utm_content=research-digest" class="text-rose-500 font-semibold no-underline">Comp</a>
+    &middot; Free skills for HR &amp; People leaders.
+  </footer>
+</div>
+
+<script>
+const DATA = __DATA__;
+
+const TOPIC_COLORS = {
+  "Org Design": "bg-indigo-50 text-indigo-700 border-indigo-200",
+  "Workforce Planning": "bg-emerald-50 text-emerald-700 border-emerald-200",
+  "IA & Forca de Trabalho": "bg-amber-50 text-amber-700 border-amber-200"
+};
+const TYPE_LABEL = {
+  "academic": "Academico",
+  "consultancy": "Consultoria",
+  "thoughtleader": "Thought Leader",
+  "media": "Media"
+};
+
+function renderHeader() {
+  document.getElementById("total-label").textContent = DATA.total_items || (DATA.items || []).length;
+  document.getElementById("window-label").textContent = DATA.window_start + " a " + DATA.window_end;
+  document.getElementById("generated-at").textContent = DATA.generated_at || "";
+}
+
+function renderExecSummary() {
+  const el = document.getElementById("exec-summary");
+  const lines = DATA.exec_summary_pt || [];
+  el.innerHTML = lines.map(l => "<p>" + escapeHtml(l) + "</p>").join("");
+
+  // Topic counters
+  const counters = {};
+  for (const item of DATA.items || []) {
+    for (const t of (item.topics || ["(sem tema)"])) {
+      counters[t] = (counters[t] || 0) + 1;
+    }
+  }
+  const c = document.getElementById("topic-counters");
+  c.innerHTML = Object.entries(counters).map(([t, n]) => `
+    <div class="rounded-xl border ${TOPIC_COLORS[t] || 'bg-stone-50 text-stone-700 border-stone-200'} px-4 py-3">
+      <p class="text-xs font-medium uppercase tracking-wide">${escapeHtml(t)}</p>
+      <p class="text-2xl font-semibold mt-1">${n}</p>
+    </div>
+  `).join("");
+}
+
+function renderCards(filterType, search) {
+  const root = document.getElementById("cards-by-topic");
+  const items = (DATA.items || []).filter(it => {
+    if (filterType && filterType !== "all" && it.source_type !== filterType) return false;
+    if (search) {
+      const s = search.toLowerCase();
+      const blob = (it.title_pt || "") + " " + (it.title || "") + " " + (it.authors || []).join(" ");
+      if (!blob.toLowerCase().includes(s)) return false;
+    }
+    return true;
+  });
+  const groups = {};
+  for (const it of items) {
+    const t = (it.topics && it.topics[0]) || "(sem tema)";
+    (groups[t] = groups[t] || []).push(it);
+  }
+  const order = ["Org Design", "Workforce Planning", "IA & Forca de Trabalho"];
+  const sortedTopics = Object.keys(groups).sort((a, b) => {
+    const ia = order.indexOf(a), ib = order.indexOf(b);
+    return (ia === -1 ? 99 : ia) - (ib === -1 ? 99 : ib);
+  });
+  root.innerHTML = sortedTopics.map(t => `
+    <div class="mb-10">
+      <h2 class="text-2xl font-semibold mb-4 flex items-center gap-3">
+        <span class="badge ${TOPIC_COLORS[t] || 'bg-stone-100 text-stone-700'} border">${escapeHtml(t)}</span>
+        <span class="text-sm font-normal text-stone-500">${groups[t].length} itens</span>
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        ${groups[t].map(renderCard).join("")}
+      </div>
+    </div>
+  `).join("");
+}
+
+function renderCard(it) {
+  const authors = (it.authors || []).join(", ");
+  const badges = [
+    `<span class="badge bg-stone-100 text-stone-700 border border-stone-200">${escapeHtml(it.source)}</span>`,
+    `<span class="badge bg-stone-50 text-stone-600 border border-stone-200">${TYPE_LABEL[it.source_type] || it.source_type}</span>`,
+    it.paywall ? `<span class="badge bg-rose-50 text-rose-700 border border-rose-200">paywall</span>` : ""
+  ].filter(Boolean).join(" ");
+  const keyTakeaways = (it.key_takeaways_pt || []).map(k => `<li>${escapeHtml(k)}</li>`).join("");
+  return `
+    <article class="card bg-white rounded-xl border border-stone-200 p-5">
+      <div class="flex items-center gap-2 mb-2 text-xs text-stone-500">
+        <span>${escapeHtml(it.published_date || "")}</span> &middot; ${badges}
+      </div>
+      <h3 class="text-base font-semibold leading-snug mb-1">${escapeHtml(it.title_pt || it.title)}</h3>
+      ${it.title_pt ? `<p class="text-xs text-stone-400 italic mb-2">Original: ${escapeHtml(it.title)}</p>` : ""}
+      ${authors ? `<p class="text-xs text-stone-600 mb-3">${escapeHtml(authors)}</p>` : ""}
+      ${it.relevance_pt ? `<p class="text-sm text-stone-700 mb-3"><strong>Relevancia:</strong> ${escapeHtml(it.relevance_pt)}</p>` : ""}
+      ${keyTakeaways ? `<ul class="list-disc pl-5 text-sm text-stone-700 mb-3 space-y-1">${keyTakeaways}</ul>` : ""}
+      <details class="mb-3">
+        <summary class="text-xs text-stone-500 hover:text-stone-900">Abstract completo</summary>
+        <p class="abstract mt-2">${escapeHtml(it.abstract_pt || it.abstract || "(Abstract nao disponivel)")}</p>
+      </details>
+      ${it.url ? `<a href="${escapeHtml(safeUrl(it.url))}" target="_blank" rel="noopener" class="text-sm text-stone-900 underline underline-offset-2 hover:no-underline">Acessar fonte original &rarr;</a>` : ""}
+    </article>
+  `;
+}
+
+function renderAppendix() {
+  const tb = document.getElementById("appendix");
+  tb.innerHTML = (DATA.items || []).map(it => `
+    <tr class="border-b border-stone-100 hover:bg-stone-50">
+      <td class="py-2 text-stone-600 align-top whitespace-nowrap">${escapeHtml(it.published_date || "")}</td>
+      <td class="align-top">${(it.topics || []).map(t => `<span class="badge ${TOPIC_COLORS[t] || 'bg-stone-100 text-stone-700'} border mr-1">${escapeHtml(t)}</span>`).join("")}</td>
+      <td class="align-top text-stone-600">${escapeHtml(it.source)}</td>
+      <td class="align-top">${it.url ? `<a class="text-stone-900 hover:underline" target="_blank" rel="noopener" href="${escapeHtml(safeUrl(it.url))}">${escapeHtml(it.title_pt || it.title)}</a>` : escapeHtml(it.title_pt || it.title)}</td>
+    </tr>
+  `).join("");
+}
+
+function safeUrl(u){u=String(u==null?'':u);return /^https?:\/\//i.test(u)?u:'#';}
+function escapeHtml(s) {
+  if (s == null) return "";
+  return String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c]));
+}
+
+let currentFilter = "all";
+let currentSearch = "";
+function attach() {
+  document.querySelectorAll(".filter-btn").forEach(b => {
+    b.addEventListener("click", () => {
+      currentFilter = b.dataset.filter;
+      document.querySelectorAll(".filter-btn").forEach(x => {
+        x.classList.remove("bg-stone-900","text-white");
+        x.classList.add("bg-stone-200","text-stone-700");
+      });
+      b.classList.remove("bg-stone-200","text-stone-700");
+      b.classList.add("bg-stone-900","text-white");
+      renderCards(currentFilter, currentSearch);
+    });
+  });
+  document.getElementById("search-input").addEventListener("input", e => {
+    currentSearch = e.target.value;
+    renderCards(currentFilter, currentSearch);
+  });
+}
+
+renderHeader();
+renderExecSummary();
+renderCards("all", "");
+renderAppendix();
+attach();
+</script>
+</body>
+</html>

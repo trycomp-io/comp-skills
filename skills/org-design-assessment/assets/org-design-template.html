@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="pt-BR"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Org Design Assessment — Comp</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<script src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.9/dist/cdn.min.js" integrity="sha384-9Ax3MmS9AClxJyd5/zafcXXjxmwFhZCdsT6HJoJjarvCaAkJlk5QDzjLJm+Wdx5F" crossorigin="anonymous" defer></script>
+<style>
+  body{font-family:'Inter',sans-serif;background:#f8f9fa;color:#212529}
+  .comp-red{color:#ff4456}.bg-comp-red{background:#ff4456}
+  .main-card{background:white;border-radius:1rem;box-shadow:0 10px 15px -3px rgb(0 0 0 / 0.07);margin-bottom:2rem}
+  .tab{transition:all .3s;border-bottom:3px solid transparent;white-space:nowrap}
+  .tab-active{border-bottom-color:#ff4456;color:#ff4456;font-weight:600}.tab-inactive{color:#6c757d}
+  .question-option{border:1px solid #dee2e6;border-radius:.5rem;transition:all .2s;cursor:pointer;padding:14px 16px}
+  .question-option:hover{border-color:#adb5bd;background:#f8f9fa}
+  input[type="radio"]:checked + label{border-color:#ff4456;background:#fff0f1;box-shadow:0 0 0 2px #ff445640}
+  .score-bar{height:14px;border-radius:7px;background:linear-gradient(90deg,#fee2e2 0%,#fef3c7 40%,#d9f99d 70%,#86efac 100%);position:relative}
+  .score-marker{width:20px;height:20px;border-radius:50%;background:#ff4456;border:3px solid white;box-shadow:0 0 0 2px #ff4456;position:absolute;top:-3px}
+  .pillar-card{border:1px solid #e5e7eb;border-radius:.75rem;padding:1.25rem}
+</style></head>
+<body class="bg-gray-50">
+
+<header class="bg-white sticky top-0 z-50 shadow-sm">
+  <div class="container mx-auto px-4 sm:px-6 py-4 flex justify-between items-center">
+    <div class="flex items-center space-x-3">
+      <img src="https://i.ibb.co/KxDQ7BKQ/SIMBOLO-COMP-RGB-VERMELHO-G.png" alt="Símbolo Comp" class="h-8 w-8">
+      <h1 class="text-lg sm:text-xl font-bold text-gray-800">Org Design Maturity Assessment</h1>
+    </div>
+    <img src="https://i.ibb.co/CyVbh5P/MARCA-COMP-RGB-VERMELHO-G.png" alt="Logo Comp" class="h-6">
+  </div>
+</header>
+
+<main class="container mx-auto px-4 sm:px-6 py-6 md:py-12" x-data="assessment()">
+
+<div class="main-card p-6 sm:p-8" x-show="state === 'intro'">
+<h2 class="text-2xl sm:text-3xl font-bold text-gray-800 mb-3">Seu design organizacional é alavanca estratégica ou administrativo de RH?</h2>
+<p class="text-gray-600 mb-2">Baseado no <a href="https://cajuina.org/principais/coluna-comp/design-organizacional/?utm_source=skill-output&utm_medium=html-link&utm_campaign=eam&utm_content=org-design-assessment" target="_blank" class="comp-red font-semibold hover:underline">framework Comp na Cajuína</a>: 4 pilares × 3 perguntas = 12 perguntas, ~5 minutos.</p>
+<p class="text-gray-600 mb-6">Output: Score 0-100 por pilar e geral, classificação de maturidade, próximos passos por pilar.</p>
+<div class="grid sm:grid-cols-2 gap-4 mb-8 text-sm">
+  <template x-for="p in pillars" :key="p.id">
+    <div class="pillar-card">
+      <div class="font-semibold text-gray-800" x-text="p.name"></div>
+      <div class="text-gray-600 mt-1" x-text="p.description"></div>
+    </div>
+  </template>
+</div>
+<button @click="state = 'questions'; activeTab = 0" class="bg-comp-red text-white font-semibold px-6 py-3 rounded-lg hover:opacity-90 transition">Começar →</button>
+</div>
+
+<div x-show="state === 'questions'">
+<div class="border-b border-gray-200 mb-6 overflow-x-auto">
+<nav class="flex space-x-6 sm:space-x-8 px-1">
+<template x-for="(p, i) in pillars" :key="p.id">
+<button class="tab pb-3 text-sm sm:text-base" :class="activeTab === i ? 'tab-active' : 'tab-inactive'" @click="activeTab = i" x-text="(i+1) + '. ' + p.name"></button>
+</template></nav></div>
+
+<template x-for="(p, i) in pillars" :key="p.id">
+<div class="main-card p-6 sm:p-8" x-show="activeTab === i">
+<h3 class="text-xl font-bold text-gray-800 mb-1" x-text="p.name"></h3>
+<p class="text-gray-600 mb-6" x-text="p.description"></p>
+<template x-for="(q, qi) in p.questions" :key="qi">
+<div class="mb-8">
+<div class="font-medium text-gray-800 mb-3" x-text="(qi+1) + '. ' + q.text"></div>
+<div class="space-y-2">
+<template x-for="(opt, oi) in q.options" :key="oi">
+<div>
+<input type="radio" :name="p.id + '-' + qi" :id="p.id + '-' + qi + '-' + oi" class="hidden peer" :value="5 - oi" @change="answers[p.id][qi] = 5 - oi">
+<label :for="p.id + '-' + qi + '-' + oi" class="question-option block">
+<span class="font-semibold text-gray-700 mr-2" x-text="String.fromCharCode(65 + oi) + '.'"></span>
+<span class="text-gray-700" x-text="opt"></span>
+</label>
+</div>
+</template>
+</div>
+</div>
+</template>
+<div class="flex justify-between mt-6">
+<button @click="activeTab = Math.max(0, activeTab - 1)" :disabled="activeTab === 0" class="px-4 py-2 text-gray-600 disabled:opacity-30">← Anterior</button>
+<template x-if="activeTab < pillars.length - 1">
+<button @click="activeTab++" class="bg-gray-800 text-white px-5 py-2 rounded-lg hover:bg-gray-700">Próximo pilar →</button>
+</template>
+<template x-if="activeTab === pillars.length - 1">
+<button @click="calculate()" :disabled="!allAnswered()" class="bg-comp-red text-white font-semibold px-6 py-2 rounded-lg disabled:opacity-30 hover:opacity-90">Ver resultado →</button>
+</template>
+</div>
+</div>
+</template>
+</div>
+
+<div class="main-card p-6 sm:p-8" x-show="state === 'result'">
+<div class="text-center mb-8">
+<div class="text-sm uppercase tracking-wider text-gray-500 font-semibold">Score de Org Design</div>
+<div class="text-6xl font-extrabold mt-2" :class="scoreColor(result.overall)" x-text="result.overall + '/100'"></div>
+<div class="text-xl text-gray-700 mt-2" x-text="scoreLabel(result.overall)"></div>
+</div>
+
+<div class="mb-8">
+<div class="score-bar relative my-4">
+<div class="score-marker absolute -top-1" :style="'left: calc(' + result.overall + '% - 10px)'"></div>
+</div>
+<div class="flex justify-between text-xs text-gray-500">
+<span>0 Reativo</span><span>40 Inicial</span><span>60 Maduro</span><span>75 Avançado</span><span>90+ Estratégico</span>
+</div>
+</div>
+
+<h3 class="text-lg font-bold text-gray-800 mb-4">Score por pilar</h3>
+<div class="grid sm:grid-cols-2 gap-3 mb-8">
+<template x-for="p in pillars" :key="p.id">
+<div class="pillar-card flex justify-between items-center">
+<div>
+<div class="font-semibold text-gray-800 text-sm" x-text="p.name"></div>
+<div class="text-xs text-gray-500 mt-1" x-text="scoreLabel(result.byPillar[p.id])"></div>
+</div>
+<div class="text-2xl font-bold" :class="scoreColor(result.byPillar[p.id])" x-text="result.byPillar[p.id]"></div>
+</div>
+</template>
+</div>
+
+<h3 class="text-lg font-bold text-gray-800 mb-4">Próximo passo por pilar</h3>
+<div class="space-y-4 mb-8">
+<template x-for="p in pillars" :key="p.id">
+<div class="border-l-4 border-comp-red bg-rose-50 p-4 rounded-r-lg">
+<div class="font-semibold text-gray-800 mb-1" x-text="p.name"></div>
+<div class="text-sm text-gray-700" x-text="p.recommendations[Math.min(4, Math.floor(result.byPillar[p.id] / 20))]"></div>
+</div>
+</template>
+</div>
+
+<div class="text-center"><button @click="reset()" class="comp-red font-semibold underline">Refazer</button></div>
+</div>
+
+</main>
+
+<footer style="margin-top:48px;padding:24px 0;border-top:1px solid #e5e7eb;text-align:center;font-family:'Inter',sans-serif;font-size:13px;color:#6b7280;">
+Powered by <a href="https://comp.vc?utm_source=skill-output&amp;utm_medium=html-footer&amp;utm_campaign=eam&amp;utm_content=org-design-assessment" style="color:#ff4456;text-decoration:none;font-weight:600;">Comp</a>
+— Free skills for HR &amp; People leaders.
+</footer>
+
+<script>
+function assessment() {
+  return {
+    state: 'intro', activeTab: 0,
+    pillars: [
+      {
+        id: 'governance',
+        name: 'Maturidade de Governança',
+        description: 'Modelos contratuais (CLT, PJ, híbrido) como alavanca estratégica.',
+        questions: [
+          { text: 'Como você decide entre CLT, PJ ou modelo híbrido pra uma nova contratação?', options: [
+            'Política clara por função/nível + análise de custo previsível + segurança jurídica documentada',
+            'Política da empresa por função, com exceções aprovadas pelo CFO/CHRO',
+            'Caso a caso, conversa com jurídico quando há dúvida',
+            'Caso a caso, na "vontade" do candidato ou hiring manager',
+            'Não temos política clara — improvisamos',
+          ]},
+          { text: 'Você sabe o custo total empregador de cada modelo (incluindo encargos, passivos e risco de processo)?', options: [
+            'Sim, com modelo financeiro atualizado e provisão de risco por modalidade',
+            'Sim, em planilha que atualizamos quando necessário',
+            'Sabemos o cash mensal, mas não passivos futuros',
+            'Sabemos só o salário base',
+            'Não temos visibilidade',
+          ]},
+          { text: 'Qual o nível de risco jurídico-trabalhista exposto pela sua estrutura atual?', options: [
+            'Mapeado, monitorado e mitigado proativamente',
+            'Mapeado, com mitigação reativa',
+            'Reconhecemos riscos mas não mapeamos formalmente',
+            'Descobrimos riscos quando aparecem ações',
+            'Não fazemos ideia',
+          ]},
+        ],
+        recommendations: [
+          'Documente uma política básica: critérios pra CLT vs PJ por função/nível. Mesmo simples, alinhar o time é primeiro passo.',
+          'Crie modelo financeiro com custo previsível por modalidade incluindo provisões trabalhistas e risco de reclassificação.',
+          'Estabeleça revisão trimestral de governance + dashboard de exposição (% PJ por função, passivos provisionados).',
+          'Profissionalize: política versionada + comitê interno + auditoria anual + benchmarking de mercado.',
+          'Excelência: design contratual como alavanca de M&A, retenção e flexibilidade. Continue iterando.',
+        ],
+      },
+      {
+        id: 'span',
+        name: 'Span of Control',
+        description: 'Densidade e eficácia de liderança — micromanagement vs understaffing.',
+        questions: [
+          { text: 'Você consegue dizer quantos diretos cada gestor da empresa tem agora?', options: [
+            'Tempo real — dashboard com distribuição, identificando outliers',
+            'Sob demanda, em minutos — query no HRIS',
+            'Em algumas horas — alguém compila',
+            'Em dias — só com esforço manual',
+            'Não conseguimos',
+          ]},
+          { text: 'Já mediu o "custo de gestão" da empresa (% folha gasta com managers vs ICs)?', options: [
+            'Sim, com benchmark do setor e meta clara',
+            'Sim, calculado em momentos pontuais',
+            'Conceitualmente entendemos, sem número exato',
+            'Nunca medimos',
+            'Não entendo a métrica',
+          ]},
+          { text: 'Você consegue identificar gestores sobrecarregados (15+ diretos) e subutilizados (1-3 diretos) hoje?', options: [
+            'Sim, com revisão semestral formal e ação plan por outlier',
+            'Sim, em momentos de planejamento (uma vez por ano)',
+            'Identificamos os mais óbvios em conversa',
+            'Não temos visão estruturada',
+            'Não pensamos nisso',
+          ]},
+        ],
+        recommendations: [
+          'Crie 1 dashboard básico: span por gestor + total de gestores vs ICs. Visibilidade gera ação.',
+          'Defina faixas ideais por tipo de função (people manager vs IC manager) e identifique outliers.',
+          'Conecte span com performance: alto span sem produtividade = micromanagement; baixo span = subutilização ou cargo político.',
+          'Integre revisão de span no ciclo de planejamento. Cada reorg começa com diagnóstico estrutural.',
+          'Span vira KPI estratégico: meta documentada, monitorada, com plano de ação contínuo.',
+        ],
+      },
+      {
+        id: 'pyramid',
+        name: 'Pirâmide de Níveis',
+        description: 'Composição da força entre operacional, especialista, liderança.',
+        questions: [
+          { text: 'Como sua pirâmide atual (nº por nível) compara com sua estratégia de 3-5 anos?', options: [
+            'Análise formal de gap, plano de hiring e mobilidade aderente',
+            'Discussão estratégica anual, com alguns ajustes',
+            'Conhecemos a pirâmide mas não atrelamos a estratégia',
+            'Nunca mapeamos formalmente',
+            'Não sei dizer minha pirâmide hoje',
+          ]},
+          { text: 'Você tem benchmark da pirâmide do seu setor / estágio de empresa?', options: [
+            'Sim, com painel definido e revisão regular',
+            'Sim, em alguns momentos',
+            'Já vi referências, sem comparação formal',
+            'Não temos',
+            'Não sabia que isso existia',
+          ]},
+          { text: 'Como você decide promover vs contratar externamente?', options: [
+            'Análise estruturada de bench interno + market premium + sucessão',
+            'Caso a caso com input de RH',
+            'Decisão do hiring manager',
+            'Default no externo',
+            'Sem critério',
+          ]},
+        ],
+        recommendations: [
+          'Mapeie sua pirâmide atual e desenhe a target em 3 anos. Identifique 2-3 gaps prioritários.',
+          'Compare sua pirâmide com benchmarks de setor + estágio (Mercer, BCG, etc.). Identifique anomalias.',
+          'Defina política clara: % de posições preenchidas internamente vs externamente por nível.',
+          'Integre talent review (sucessão) com workforce planning. Bench fortalece a pirâmide.',
+          'Pirâmide vira alavanca: vinculada a planejamento financeiro e crescimento estratégico.',
+        ],
+      },
+      {
+        id: 'spread',
+        name: 'Disparidade Salarial Interna',
+        description: 'Equidade interna. Faixa ideal 80%-120% da mediana por nível.',
+        questions: [
+          { text: 'Você sabe qual a dispersão salarial dentro de cada nível (min-mediana-max)?', options: [
+            'Sim, dashboard atualizado com alertas pra outliers',
+            'Sim, em relatórios trimestrais',
+            'Sob demanda, com esforço',
+            'Não temos visibilidade clara',
+            'Não calculamos por nível',
+          ]},
+          { text: 'Quantos colaboradores estão fora da faixa 80%-120% da mediana do nível deles?', options: [
+            'Sei o número, com plano pra cada outlier',
+            'Sei aproximadamente, sem ação por outlier',
+            'Já vi em algum momento, sem revisão regular',
+            'Não medimos',
+            'Não tem mediana definida',
+          ]},
+          { text: 'Hires externos costumam entrar com salário diferente da banda dos pares internos?', options: [
+            'Não — política rígida, exceções documentadas e excepcionais',
+            'Raramente — exceções aprovadas pelo CHRO',
+            'Acontece, mas tentamos comunicar e mitigar',
+            'Acontece com frequência, sem plano',
+            'É a regra — hire externo sempre paga mais',
+          ]},
+        ],
+        recommendations: [
+          'Calcule mediana por nível agora — sem isso é impossível discutir equidade. Use planilha mesmo.',
+          'Identifique todos os outliers (fora de 80%-120%) e construa plano de equalização ou justificativa.',
+          'Inclua check de equidade no fluxo de offer letter — automatize alerta quando hire externo passar do +15%.',
+          'Audite trimestralmente. Pay equity é processo, não evento.',
+          'Equidade vira diferencial competitivo: comunicada pra colaboradores, defendível pra board.',
+        ],
+      },
+    ],
+    answers: { governance: [null,null,null], span: [null,null,null], pyramid: [null,null,null], spread: [null,null,null] },
+    result: { overall: 0, byPillar: {} },
+    allAnswered() { return this.pillars.every(p => this.answers[p.id].every(v => v !== null)); },
+    calculate() {
+      const byP = {}; let total = 0;
+      this.pillars.forEach(p => {
+        const sum = this.answers[p.id].reduce((a, b) => a + b, 0);
+        const score = Math.round(sum / this.answers[p.id].length * 20);
+        byP[p.id] = score; total += score;
+      });
+      this.result = { overall: Math.round(total / this.pillars.length), byPillar: byP };
+      this.state = 'result';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    },
+    reset() { this.pillars.forEach(p => this.answers[p.id] = [null,null,null]); this.result = { overall: 0, byPillar: {} }; this.state = 'intro'; this.activeTab = 0; window.scrollTo({ top: 0, behavior: 'smooth' }); },
+    scoreColor(s) { if (s>=90) return 'text-emerald-600'; if (s>=75) return 'text-lime-600'; if (s>=60) return 'text-yellow-600'; if (s>=40) return 'text-orange-500'; return 'text-red-600'; },
+    scoreLabel(s) { if (s>=90) return 'Estratégico'; if (s>=75) return 'Avançado'; if (s>=60) return 'Maduro'; if (s>=40) return 'Inicial'; return 'Reativo'; },
+  };
+}
+</script>
+</body></html>

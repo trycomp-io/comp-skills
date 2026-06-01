@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="pt-br" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pay Gap Analysis</title>
+
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            background-color: #f8fafc;
+        }
+        .text-comp-green { color: #00C450; }
+        .bg-comp-green { background-color: #00C450; }
+        .bg-comp-green-pastel { background-color: #E8F9F0; }
+        .border-comp-green { border-color: #00C450; }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th {
+            background-color: #1e293b;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+            border: 1px solid #0f172a;
+            font-size: 12px;
+        }
+
+        td {
+            padding: 12px;
+            border: 1px solid #e2e8f0;
+            font-size: 13px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f8fafc;
+        }
+
+        tr:hover {
+            background-color: #f1f5f9;
+        }
+
+        .ponderada-row {
+            background-color: #E8F9F0;
+            font-weight: 700;
+            border-top: 3px solid #00C450;
+            color: #005a2a;
+        }
+
+        .excluido-row {
+            background-color: #FEF3C7;
+            font-weight: 600;
+            border-top: 2px solid #F59E0B;
+            color: #92400E;
+        }
+
+        .razao-maior {
+            color: #00a040;
+            font-weight: 600;
+        }
+
+        .razao-menor {
+            color: #dc2626;
+            font-weight: 600;
+        }
+
+        .razao-neutro {
+            color: #6b7280;
+            font-weight: 600;
+        }
+
+        .summary-box {
+            background: white;
+            border: 2px solid #00C450;
+            padding: 24px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+
+        .summary-value {
+            font-size: 36px;
+            font-weight: 700;
+            color: #00C450;
+            margin-bottom: 12px;
+        }
+
+        .summary-interpretation {
+            font-size: 15px;
+            color: #1e293b;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .summary-subtext {
+            font-size: 12px;
+            color: #64748b;
+            margin-top: 8px;
+        }
+
+        .total-empresa-box {
+            background: linear-gradient(135deg, #00C450 0%, #00a040 100%);
+            color: white;
+            padding: 32px;
+            border-radius: 12px;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .total-empresa-value {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .header-title {
+            color: #00C450;
+        }
+
+        .insights-box {
+            background-color: #E8F9F0;
+            border: 2px solid #00C450;
+        }
+
+        .insights-title {
+            color: #00C450;
+        }
+
+        .insights-bullet {
+            color: #00C450;
+        }
+
+        .warning-box {
+            background-color: #FEF3C7;
+            border: 2px solid #F59E0B;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .warning-title {
+            color: #B45309;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .warning-text {
+            color: #92400E;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body class="p-8 sm:p-12">
+
+    <div class="space-y-16 max-w-7xl mx-auto">
+
+        <!-- Header -->
+        <section class="bg-white p-8 rounded-2xl shadow-lg">
+            <h1 class="text-4xl font-extrabold text-slate-900 mb-2">
+                Pay Gap Analysis
+                <span class="header-title">Com Razão Ponderada</span>
+            </h1>
+            <p class="text-lg text-gray-600">Comparação de medianas salariais e equidade de gênero por área e nível</p>
+            <p class="text-sm text-gray-500 mt-4" id="headerInfo">Data: -- | -- colaboradores analisados</p>
+        </section>
+
+        <!-- Warning Box -->
+        <div class="warning-box" id="warningBox">
+            <div class="warning-title">⚠️ REGRAS APLICADAS</div>
+            <div class="warning-text" id="warningText">
+                <!-- Será preenchido dinamicamente -->
+            </div>
+        </div>
+
+        <!-- RAZÃO PONDERADA TOTAL DA EMPRESA -->
+        <div class="total-empresa-box">
+            <div class="text-lg opacity-95 mb-3">RAZÃO PONDERADA TOTAL DA EMPRESA</div>
+            <div class="total-empresa-value" id="globalRatio">--%</div>
+            <div class="text-xl" id="globalText">--</div>
+            <div style="font-size: 13px; margin-top: 20px; opacity: 0.85;" id="globalCount">
+                Total de tripulantes: -- | Usados no cálculo: --
+            </div>
+        </div>
+
+        <!-- RESUMO GERAL -->
+        <div class="bg-white p-8 rounded-2xl shadow-lg mb-8">
+            <h2 class="text-2xl font-bold text-slate-900 mb-6">Razões Ponderadas por Área</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6" id="summaryCards">
+                <!-- Cards serão inseridos via JavaScript -->
+            </div>
+        </div>
+
+        <!-- TABELAS POR ÁREA -->
+        <div id="areasTables">
+            <!-- Tabelas serão inseridas via JavaScript -->
+        </div>
+
+        <!-- INSIGHTS -->
+        <div class="insights-box p-8 rounded-2xl">
+            <h2 class="text-2xl font-bold insights-title mb-6">Insights Principais</h2>
+            <ul class="space-y-4" id="insightsList">
+                <!-- Insights serão inseridos via JavaScript -->
+            </ul>
+        </div>
+
+        <!-- METODOLOGIA -->
+        <div class="bg-comp-green-pastel p-8 rounded-2xl">
+            <h2 class="text-2xl font-bold text-slate-900 mb-4">Metodologia</h2>
+            <p class="text-gray-700 mb-4">
+                <strong>Regra de Confidencialidade:</strong> Agrupamentos (área × nível) com menos de 3 pessoas de CADA gênero são excluídos do cálculo de razão ponderada (marcados como "—").
+            </p>
+            <p class="text-gray-700 mb-4">
+                <strong>Razão Ponderada por Área:</strong> Calculada multiplicando o HC total de cada agrupamento (que atende a confidencialidade) pela sua respectiva razão salarial (mediana feminina / mediana masculina).
+            </p>
+            <p class="text-gray-700 mb-4">
+                <strong>Fórmula:</strong> Razão Ponderada = Σ(HC Total × Razão) ÷ HC Total da Área (apenas agrupamentos válidos).
+            </p>
+            <p class="text-gray-700">
+                <strong>Razão Ponderada Total:</strong> Calculada multiplicando a razão ponderada de cada área pelo respectivo HC total usado no cálculo.
+            </p>
+        </div>
+
+        <!-- Footer -->
+        <section class="bg-slate-800 text-white p-8 rounded-2xl text-center">
+            <p class="text-sm">Pay Gap Analysis</p>
+            <p class="text-xs text-gray-400 mt-2" id="footerDate">Gerado em --</p>
+            <p class="text-xs text-gray-400 mt-3">
+                Powered by <a href="https://comp.vc?utm_source=skill-output&amp;utm_medium=html-footer&amp;utm_campaign=eam&amp;utm_content=paygap-analysis-generator" style="color: #00C450; text-decoration: none; font-weight: 600;">Comp</a>
+                — Free skills for HR &amp; People leaders.
+            </p>
+        </section>
+
+    </div>
+
+<script>
+// =================================================================
+// DADOS INJETADOS PELO SCRIPT
+// =================================================================
+const reportData = __REPORT_DATA__;
+
+function escapeHtml(v){return String(v==null?'':v).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});}
+
+// =================================================================
+// FUNÇÕES AUXILIARES
+// =================================================================
+const fmtMoney = (v) => v ? `R$ ${v.toLocaleString('pt-BR', {minimumFractionDigits: 2, maximumFractionDigits: 2})}` : '—';
+const fmtPct = (v) => v ? `${v.toFixed(2)}%` : '—';
+const fmtNumber = (v) => v ? v.toLocaleString('pt-BR') : '0';
+
+function getRatioClass(ratio) {
+    if (!ratio) return 'razao-neutro';
+    if (ratio > 100) return 'razao-maior';
+    if (ratio < 100) return 'razao-menor';
+    return 'razao-neutro';
+}
+
+function getAreaBadgeClass(areaSlug) {
+    // Deterministic color by hashing the slug — supports any number of areas.
+    const palette = [
+        'bg-blue-100 text-blue-700',
+        'bg-purple-100 text-purple-700',
+        'bg-green-100 text-green-700',
+        'bg-orange-100 text-orange-700',
+        'bg-pink-100 text-pink-700',
+        'bg-indigo-100 text-indigo-700',
+        'bg-yellow-100 text-yellow-700',
+        'bg-teal-100 text-teal-700',
+    ];
+    let hash = 0;
+    for (let i = 0; i < (areaSlug || '').length; i++) {
+        hash = ((hash << 5) - hash) + areaSlug.charCodeAt(i);
+        hash |= 0;
+    }
+    return palette[Math.abs(hash) % palette.length];
+}
+
+// =================================================================
+// RENDERIZAR RELATÓRIO
+// =================================================================
+function renderReport() {
+    if (!reportData || typeof reportData === 'string') {
+        console.error('reportData não foi injetado corretamente');
+        return;
+    }
+
+    const meta = reportData.meta;
+    const areas = reportData.areas;
+    const insights = reportData.insights || [];
+
+    // Header Info
+    const today = new Date().toLocaleDateString('pt-BR', { day: '2-digit', month: 'long', year: 'numeric' });
+    document.getElementById('headerInfo').textContent = `Data: ${today} | ${fmtNumber(meta.totalEmployees)} colaboradores analisados`;
+    document.getElementById('footerDate').textContent = `Gerado em ${today}`;
+
+    // Warning Box
+    const warningParts = [];
+    warningParts.push('<strong>1. Regra de Confidencialidade:</strong> Agrupamentos (área × nível) com menos de 3 pessoas de cada gênero foram excluídos do cálculo (marcados como "—").<br><br>');
+    if (meta.excludedEmployees > 0) {
+        warningParts.push(`<strong>2. Colaboradores sem Área ou Nível:</strong> ${meta.excludedEmployees} colaborador(es) excluído(s) por dados incompletos.`);
+    }
+    document.getElementById('warningText').innerHTML = warningParts.join('');
+
+    // Global Ratio
+    const globalRatio = meta.globalWeightedRatio;
+    const globalGap = meta.globalGap;
+    const gapDirection = globalGap < 0 ? 'MENOS' : 'MAIS';
+    document.getElementById('globalRatio').textContent = fmtPct(globalRatio);
+    document.getElementById('globalText').textContent = `Mulheres ganham ${Math.abs(globalGap).toFixed(2)}% ${gapDirection} que homens`;
+    document.getElementById('globalCount').textContent = `Total de tripulantes: ${fmtNumber(meta.totalEmployees)} | Usados no cálculo: ${fmtNumber(meta.totalAnalyzedEmployees)}`;
+
+    // Summary Cards
+    const summaryCardsHTML = areas.map(area => {
+        const gap = area.gap;
+        const gapDir = gap < 0 ? 'menos' : 'mais';
+        const totalF = area.groups.reduce((sum, g) => sum + g.hcF, 0);
+        const totalM = area.groups.reduce((sum, g) => sum + g.hcM, 0);
+
+        return `
+            <div class="summary-box">
+                <div class="text-sm font-semibold text-green-700 mb-2">${escapeHtml(area.name.toUpperCase())}</div>
+                <div class="summary-value">${fmtPct(area.weightedRatio)}</div>
+                <div class="summary-interpretation">Mulheres ganham ${Math.abs(gap).toFixed(2)}% ${gapDir}</div>
+                <div class="summary-subtext">Total: ${fmtNumber(area.totalHc)} | Usados: ${fmtNumber(area.analyzedHc)}</div>
+                <div class="text-sm text-gray-600 mt-2">F: ${fmtNumber(totalF)} | M: ${fmtNumber(totalM)}</div>
+            </div>
+        `;
+    }).join('');
+    document.getElementById('summaryCards').innerHTML = summaryCardsHTML;
+
+    // Areas Tables
+    const areasTablesHTML = areas.map(area => {
+        const badgeClass = getAreaBadgeClass(area.slug);
+        const totalF = area.groups.reduce((sum, g) => sum + g.hcF, 0);
+        const totalM = area.groups.reduce((sum, g) => sum + g.hcM, 0);
+        const excludedCount = area.totalHc - area.analyzedHc;
+        const excludedNote = excludedCount > 0 ? `<p class="text-sm text-gray-600 mt-2">${excludedCount} colaborador(es) excluído(s) por confidencialidade ou dados incompletos</p>` : '';
+
+        const rowsHTML = area.groups.map(group => {
+            if (!group.isValid) {
+                return `
+                    <tr class="excluido-row">
+                        <td><strong>${escapeHtml(group.name)}</strong></td>
+                        <td>${group.hcF}</td>
+                        <td>${group.hcM}</td>
+                        <td>${group.hcF + group.hcM}</td>
+                        <td>—</td>
+                        <td>—</td>
+                        <td>—</td>
+                    </tr>
+                `;
+            }
+
+            const ratioClass = getRatioClass(group.ratio);
+            return `
+                <tr>
+                    <td><strong>${escapeHtml(group.name)}</strong></td>
+                    <td>${group.hcF}</td>
+                    <td>${group.hcM}</td>
+                    <td>${group.hcF + group.hcM}</td>
+                    <td>${fmtMoney(group.medF)}</td>
+                    <td>${fmtMoney(group.medM)}</td>
+                    <td><span class="${ratioClass}">${fmtPct(group.ratio)}</span></td>
+                </tr>
+            `;
+        }).join('');
+
+        const gapDir = area.gap < 0 ? 'MENOS' : 'MAIS';
+
+        return `
+            <div class="bg-white p-8 rounded-2xl shadow-lg mb-8">
+                <div class="mb-6">
+                    <div class="inline-block ${badgeClass} px-4 py-2 rounded-full font-semibold text-sm mb-4">${escapeHtml(area.name)}</div>
+                    <h2 class="text-2xl font-bold text-slate-900">${fmtNumber(area.totalHc)} colaboradores (${fmtNumber(area.analyzedHc)} usados no cálculo)</h2>
+                    ${excludedNote}
+                </div>
+                <div class="overflow-x-auto">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="width: 30%;">Nível</th>
+                                <th style="width: 7%;">HC Fem</th>
+                                <th style="width: 7%;">HC Masc</th>
+                                <th style="width: 7%;">HC Total</th>
+                                <th style="width: 18%;">Mediana Feminina</th>
+                                <th style="width: 18%;">Mediana Masculina</th>
+                                <th style="width: 13%;">Razão (%)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            ${rowsHTML}
+                            <tr class="ponderada-row">
+                                <td colspan="3"><strong>RAZÃO PONDERADA</strong></td>
+                                <td><strong>${fmtNumber(area.analyzedHc)}</strong></td>
+                                <td colspan="3"><strong>${fmtPct(area.weightedRatio)}</strong> — Mulheres ganham ${Math.abs(area.gap).toFixed(2)}% ${gapDir}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        `;
+    }).join('');
+    document.getElementById('areasTables').innerHTML = areasTablesHTML;
+
+    // Insights
+    const insightsHTML = insights.map(insight => `
+        <li class="flex items-start">
+            <span class="font-bold insights-bullet mr-3 mt-1">●</span>
+            <div class="text-slate-700">${insight}</div>
+        </li>
+    `).join('');
+    document.getElementById('insightsList').innerHTML = insightsHTML;
+}
+
+// Inicializar ao carregar a página
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', renderReport);
+} else {
+    renderReport();
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador de Nível de Cargo - Comp</title>
+    
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    
+    <!-- Alpine.js for interactivity -->
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.9/dist/cdn.min.js" integrity="sha384-9Ax3MmS9AClxJyd5/zafcXXjxmwFhZCdsT6HJoJjarvCaAkJlk5QDzjLJm+Wdx5F" crossorigin="anonymous"></script>
+    
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8f9fa; /* Um cinza um pouco mais claro */
+            color: #212529; /* Texto principal mais escuro */
+        }
+        .comp-red { color: #ff4456; }
+        .bg-comp-red { background-color: #ff4456; }
+        .border-comp-red { border-color: #ff4456; }
+        
+        .main-card {
+            background-color: white;
+            border-radius: 1rem; /* 16px */
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.07), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            margin-bottom: 2rem;
+        }
+        
+        .section-title {
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 0.5rem;
+            color: #343a40;
+        }
+        
+        .section-subtitle {
+            color: #6c757d; /* gray-600 */
+            margin-bottom: 2rem;
+        }
+
+        /* Estilos das Abas */
+        .tab {
+            transition: all 0.3s ease-in-out;
+            border-bottom: 3px solid transparent;
+            white-space: nowrap; /* Impede que o texto da aba quebre */
+        }
+        .tab-active { 
+            border-bottom-color: #ff4456; 
+            color: #ff4456; 
+            font-weight: 600; 
+        }
+        .tab-inactive { 
+            color: #6c757d; 
+        }
+        .tab:hover {
+            color: #ff4456;
+        }
+        
+        /* Estilos para as opções do questionário */
+        .question-option {
+            border: 1px solid #dee2e6;
+            border-radius: 0.5rem; /* 8px */
+            transition: all 0.2s ease-in-out;
+            cursor: pointer;
+        }
+        .question-option:hover {
+            border-color: #adb5bd;
+            background-color: #f8f9fa;
+        }
+        input[type="radio"]:checked + label {
+            border-color: #ff4456;
+            background-color: #fff0f1;
+            box-shadow: 0 0 0 2px #ff445640;
+        }
+        input[type="radio"] {
+            display: none; /* Esconde o radio button padrão */
+        }
+        .option-letter {
+            font-weight: 700;
+            color: #ff4456;
+            margin-right: 0.75rem;
+            min-width: 20px;
+            text-align: center;
+        }
+        [x-cloak] { display: none !important; }
+    </style>
+</head>
+<body class="bg-gray-50">
+
+    <!-- Header -->
+    <header class="bg-white sticky top-0 z-50 shadow-sm">
+        <div class="container mx-auto px-4 sm:px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-3">
+                <!-- Logo Símbolo Comp -->
+                <img src="https://i.ibb.co/KxDQ7BKQ/SIMBOLO-COMP-RGB-VERMELHO-G.png" alt="Símbolo Comp" class="h-8 w-8">
+                <h1 class="text-lg sm:text-xl font-bold text-gray-800">Simulador de Nível</h1>
+            </div>
+            <!-- Logo Marca Comp -->
+            <img src="https://i.ibb.co/CyVbh5P/MARCA-COMP-RGB-VERMELHO-G.png" alt="Logo Comp" class="h-6">
+        </div>
+    </header>
+
+    <!-- Conteúdo Principal -->
+    <main class="container mx-auto px-4 sm:px-6 py-6 md:py-12" x-data="{
+        activeTab: 0,
+        tabs: [
+            { name: 'Influência', type: 'pillar', description: 'Avalie o impacto e o alcance da posição na organização.', questions: [] },
+            { name: 'Autonomia', type: 'pillar', description: 'Avalie a capacidade e liberdade para tomar decisões e agir sem supervisão.', questions: [] },
+            { name: 'Complexidade', type: 'pillar', description: 'Avalie a capacidade de analisar e solucionar situações complicadas.', questions: [] },
+            { name: 'Responsabilidade', type: 'pillar', description: 'Avalie as obrigações por pessoas, resultados e recursos.', questions: [] },
+            { name: 'Resultado', type: 'result' }
+        ],
+        answers: [[null, null], [null, null], [null, null], [null, null]],
+        result: {
+            score: 0, level: null, title: null, percentage: 0,
+            color: 'border-gray-300', textColor: 'text-gray-800'
+        },
+        init() {
+            // Preenche os dados das perguntas para não poluir o x-data principal
+            this.tabs[0].questions = this.getQuestionsForPillar('Influência');
+            this.tabs[1].questions = this.getQuestionsForPillar('Autonomia');
+            this.tabs[2].questions = this.getQuestionsForPillar('Complexidade');
+            this.tabs[3].questions = this.getQuestionsForPillar('Responsabilidade');
+        },
+        getQuestionsForPillar(pillar) {
+            const allQuestions = {
+                'Influência': [
+                    { text: 'O trabalho do indivíduo impacta as decisões e estratégias em toda a empresa?', options: [ { letter: 'A', text: 'Em todas as decisões e estratégias', score: 5 }, { letter: 'B', text: 'Na maioria das decisões e estratégias', score: 4 }, { letter: 'C', text: 'Em algumas decisões e estratégias', score: 3 }, { letter: 'D', text: 'Raramente impacta', score: 2 }, { letter: 'E', text: 'Não impacta', score: 1 } ] },
+                    { text: 'O indivíduo pode iniciar e liderar mudanças em todo o departamento sem aprovação prévia?', options: [ { letter: 'A', text: 'Sempre pode iniciar e liderar mudanças', score: 5 }, { letter: 'B', text: 'Frequentemente pode iniciar e liderar mudanças', score: 4 }, { letter: 'C', text: 'Ocasionalmente pode iniciar mudanças', score: 3 }, { letter: 'D', text: 'Raramente pode iniciar mudanças sem aprovação', score: 2 }, { letter: 'E', text: 'Nunca pode iniciar mudanças sem aprovação', score: 1 } ] }
+                ],
+                'Autonomia': [
+                    { text: 'O indivíduo trabalha sem supervisão?', options: [ { letter: 'A', text: 'Trabalha 100% do tempo sem supervisão', score: 5 }, { letter: 'B', text: 'Trabalha cerca de 75% do tempo sem supervisão', score: 4 }, { letter: 'C', text: 'Trabalha cerca de 50% do tempo sem supervisão', score: 3 }, { letter: 'D', text: 'Trabalha cerca de 25% do tempo sem supervisão', score: 2 }, { letter: 'E', text: 'Não trabalha sem supervisão', score: 1 } ] },
+                    { text: 'O indivíduo pode definir suas próprias metas e prazos?', options: [ { letter: 'A', text: 'Sempre pode definir suas próprias metas e prazos', score: 5 }, { letter: 'B', text: 'Frequentemente pode definir suas próprias metas e prazos', score: 4 }, { letter: 'C', text: 'Ocasionalmente pode definir metas e prazos', score: 3 }, { letter: 'D', text: 'Raramente pode definir metas e prazos', score: 2 }, { letter: 'E', text: 'Nunca pode definir metas e prazos', score: 1 } ] }
+                ],
+                'Complexidade': [
+                    { text: 'O trabalho do indivíduo envolve lidar com projetos interdepartamentais?', options: [ { letter: 'A', text: 'Sempre lida com projetos interdepartamentais', score: 5 }, { letter: 'B', text: 'Frequentemente lida com projetos interdepartamentais', score: 4 }, { letter: 'C', text: 'Ocasionalmente lida com projetos interdepartamentais', score: 3 }, { letter: 'D', text: 'Raramente lida com projetos interdepartamentais', score: 2 }, { letter: 'E', text: 'Não lida com projetos interdepartamentais', score: 1 } ] },
+                    { text: 'O indivíduo é responsável por resolver problemas complexos que afetam os resultados do negócio?', options: [ { letter: 'A', text: 'Sempre responsável por resolver problemas complexos', score: 5 }, { letter: 'B', text: 'Frequentemente responsável por resolver problemas complexos', score: 4 }, { letter: 'C', text: 'Ocasionalmente responsável por problemas complexos', score: 3 }, { letter: 'D', text: 'Raramente responsável por problemas complexos', score: 2 }, { letter: 'E', text: 'Não é responsável por resolver problemas complexos', score: 1 } ] }
+                ],
+                'Responsabilidade': [
+                    { text: 'O indivíduo é responsável por gerenciar um orçamento ou recursos?', options: [ { letter: 'A', text: 'Gerencia um orçamento/recursos em grande escala', score: 5 }, { letter: 'B', text: 'Gerencia um orçamento/recursos de escala moderada', score: 4 }, { letter: 'C', text: 'Gerencia um pequeno orçamento/recursos', score: 3 }, { letter: 'D', text: 'Raramente gerencia orçamento/recursos', score: 2 }, { letter: 'E', text: 'Não gerencia orçamento/recursos', score: 1 } ] },
+                    { text: 'O papel do indivíduo envolve liderar equipes ou projetos?', options: [ { letter: 'A', text: 'Lidera múltiplas equipes/grandes projetos', score: 5 }, { letter: 'B', text: 'Lidera uma equipe/projetos de médio porte', score: 4 }, { letter: 'C', text: 'Lidera pequenas equipes/projetos pequenos', score: 3 }, { letter: 'D', text: 'Raramente lidera equipes/projetos', score: 2 }, { letter: 'E', text: 'Não lidera equipes/projetos', score: 1 } ] }
+                ]
+            };
+            return allQuestions[pillar];
+        },
+        calculateLevel() {
+            const allAnswered = this.answers.flat().every(answer => answer !== null);
+            if (!allAnswered) {
+                alert('Por favor, responda a todas as 8 perguntas antes de calcular.');
+                return;
+            }
+            this.result.score = this.answers.flat().reduce((total, current) => total + current, 0);
+            if (this.result.score >= 39) { this.result.level = 'L6'; this.result.title = 'Gerente Sênior / Especialista III'; } 
+            else if (this.result.score >= 36) { this.result.level = 'L5'; this.result.title = 'Gerente / Especialista II'; } 
+            else if (this.result.score >= 32) { this.result.level = 'L4'; this.result.title = 'Coordenador / Especialista I'; } 
+            else if (this.result.score >= 24) { this.result.level = 'L3'; this.result.title = 'Supervisor / Sênior'; } 
+            else if (this.result.score >= 16) { this.result.level = 'L2'; this.result.title = 'Pleno'; } 
+            else if (this.result.score >= 8) { this.result.level = 'L1'; this.result.title = 'Júnior'; } 
+            else { this.result.level = 'N/A'; this.result.title = 'Pontuação fora da faixa de classificação'; }
+            this.result.percentage = ((this.result.score - 8) / (40 - 8)) * 100;
+            if(this.result.percentage < 0) this.result.percentage = 0;
+            if(this.result.percentage > 100) this.result.percentage = 100;
+            this.result.color = 'border-comp-red';
+            this.result.textColor = 'comp-red';
+            this.activeTab = 4;
+        },
+        resetSimulator() {
+            this.answers = [[null, null], [null, null], [null, null], [null, null]];
+            this.result = { score: 0, level: null, title: null, percentage: 0, color: 'border-gray-300', textColor: 'text-gray-800' };
+            this.activeTab = 0;
+        }
+    }">
+
+        <div class="main-card p-4 md:p-10">
+            <!-- Navegação por Abas -->
+            <div class="overflow-x-auto pb-4">
+                <nav class="flex border-b border-gray-200" id="tabs">
+                    <template x-for="(tab, index) in tabs" :key="index">
+                        <a href="#" 
+                           @click.prevent="activeTab = index"
+                           :class="{ 'tab-active': activeTab === index, 'tab-inactive': activeTab !== index }"
+                           class="tab text-sm md:text-base font-medium py-3 px-4 text-center"
+                           x-text="tab.name">
+                        </a>
+                    </template>
+                </nav>
+            </div>
+
+            <!-- Conteúdo das Abas -->
+            <div id="tab-content" class="pt-6 md:pt-8">
+                <template x-for="(tab, index) in tabs" :key="index">
+                    <div x-show="activeTab === index" x-cloak>
+                        <!-- Seção de Perguntas -->
+                        <div x-show="tab.type === 'pillar'">
+                            <h2 class="section-title text-xl md:text-2xl" x-text="tab.name"></h2>
+                            <p class="section-subtitle text-base" x-text="tab.description"></p>
+                            
+                            <div class="space-y-8">
+                                <!-- Pergunta 1 -->
+                                <div>
+                                    <h3 class="font-semibold text-gray-700 mb-4" x-text="'1. ' + tab.questions[0].text"></h3>
+                                    <div class="space-y-3">
+                                        <template x-for="(option, optIndex) in tab.questions[0].options" :key="optIndex">
+                                            <div>
+                                                <input type="radio" :name="'q' + index + '_0'" :id="'q' + index + '_0_opt' + optIndex" :value="option.score" x-model.number="answers[index][0]">
+                                                <label :for="'q' + index + '_0_opt' + optIndex" class="question-option flex items-start p-3 md:p-4">
+                                                    <span class="option-letter" x-text="option.letter"></span>
+                                                    <span class="text-gray-800 text-sm md:text-base" x-text="option.text"></span>
+                                                </label>
+                                            </div>
+                                        </template>
+                                    </div>
+                                </div>
+                                <!-- Pergunta 2 -->
+                                <div>
+                                    <h3 class="font-semibold text-gray-700 mb-4" x-text="'2. ' + tab.questions[1].text"></h3>
+                                    <div class="space-y-3">
+                                        <template x-for="(option, optIndex) in tab.questions[1].options" :key="optIndex">
+                                            <div>
+                                                <input type="radio" :name="'q' + index + '_1'" :id="'q' + index + '_1_opt' + optIndex" :value="option.score" x-model.number="answers[index][1]">
+                                                <label :for="'q' + index + '_1_opt' + optIndex" class="question-option flex items-start p-3 md:p-4">
+                                                    <span class="option-letter" x-text="option.letter"></span>
+                                                    <span class="text-gray-800 text-sm md:text-base" x-text="option.text"></span>
+                                                </label>
+                                            </div>
+                                        </template>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Botão Avançar -->
+                            <div class="mt-8 pt-6 border-t border-gray-200 flex justify-end">
+                                <button
+                                    @click="activeTab++"
+                                    :disabled="!answers[index][0] || !answers[index][1]"
+                                    class="bg-comp-red text-white font-bold py-2 px-6 rounded-lg transition-colors duration-300 flex items-center disabled:opacity-50 disabled:cursor-not-allowed">
+                                    Avançar
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Seção de Resultado -->
+                        <div x-show="tab.type === 'result'" class="text-center">
+                            <template x-if="!result.level">
+                                <div class="text-center py-12">
+                                    <h2 class="section-title text-xl md:text-2xl">Pronto para Calcular?</h2>
+                                    <p class="section-subtitle text-base">Responda a todas as perguntas e clique no botão abaixo.</p>
+                                    <button @click="calculateLevel()" class="bg-comp-red text-white font-bold py-3 px-8 rounded-lg shadow-lg hover:bg-red-700 transition-colors duration-300">
+                                        Calcular Nível
+                                    </button>
+                                </div>
+                            </template>
+                            <template x-if="result.level">
+                                <div class="flex flex-col items-center justify-center py-8">
+                                    <h2 class="section-title text-xl md:text-2xl">Resultado da Simulação</h2>
+                                    <div class="my-8 p-6 md:p-8 bg-gray-50 rounded-full border-4" :class="result.color">
+                                        <p class="text-5xl md:text-6xl font-extrabold" :class="result.textColor" x-text="result.level"></p>
+                                    </div>
+                                    <p class="text-xl md:text-2xl font-bold text-gray-800" x-text="result.title"></p>
+                                    <p class="text-gray-600 mt-2" x-text="'Pontuação Total: ' + result.score"></p>
+                                    
+                                    <div class="w-full max-w-md mt-6">
+                                        <div class="h-4 bg-gray-200 rounded-full">
+                                            <div class="h-4 rounded-full bg-comp-red" :style="`width: ${result.percentage}%`"></div>
+                                        </div>
+                                    </div>
+
+                                    <button @click="resetSimulator()" class="mt-12 border border-comp-red comp-red font-bold py-3 px-8 rounded-lg hover:bg-red-50 transition-colors duration-300">
+                                        Refazer Simulação
+                                    </button>
+                                </div>
+                            </template>
+                        </div>
+                    </div>
+                </template>
+            </div>
+        </div>
+    </main>
+
+    <footer style="margin-top: 48px; padding: 24px 0; border-top: 1px solid #e5e7eb; text-align: center; font-family: 'Inter', system-ui, sans-serif; font-size: 13px; color: #6b7280;">
+      Powered by <a href="https://comp.vc?utm_source=skill-output&amp;utm_medium=html-footer&amp;utm_campaign=eam&amp;utm_content=comp-level-simulator" style="color: #ff4456; text-decoration: none; font-weight: 600;">Comp</a>
+      — Free skills for HR &amp; People leaders.
+    </footer>
+
+</body>
+</html>

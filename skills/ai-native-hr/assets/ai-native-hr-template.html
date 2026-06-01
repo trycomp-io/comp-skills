@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Native HR — Comp</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+  <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.9/dist/cdn.min.js" integrity="sha384-9Ax3MmS9AClxJyd5/zafcXXjxmwFhZCdsT6HJoJjarvCaAkJlk5QDzjLJm+Wdx5F" crossorigin="anonymous" defer></script>
+  <style>
+    body { font-family: 'Inter', sans-serif; background-color: #f8f9fa; color: #212529; }
+    .comp-red { color: #ff4456; }
+    .bg-comp-red { background-color: #ff4456; }
+    .main-card { background-color: white; border-radius: 1rem; box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.07), 0 4px 6px -4px rgb(0 0 0 / 0.1); margin-bottom: 2rem; }
+    .tab { transition: all 0.3s; border-bottom: 3px solid transparent; white-space: nowrap; }
+    .tab-active { border-bottom-color: #ff4456; color: #ff4456; font-weight: 600; }
+    .tab-inactive { color: #6c757d; }
+    .tab:hover { color: #ff4456; }
+    .question-option { border: 1px solid #dee2e6; border-radius: 0.5rem; transition: all 0.2s; cursor: pointer; padding: 14px 16px; }
+    .question-option:hover { border-color: #adb5bd; background-color: #f8f9fa; }
+    input[type="radio"]:checked + label { border-color: #ff4456; background-color: #fff0f1; box-shadow: 0 0 0 2px #ff445640; }
+    .level-bar { height: 10px; border-radius: 5px; background: linear-gradient(90deg, #fee2e2 0%, #fef3c7 25%, #fef9c3 50%, #d9f99d 75%, #86efac 100%); }
+    .level-marker { width: 16px; height: 16px; border-radius: 50%; background: #ff4456; border: 3px solid white; box-shadow: 0 0 0 2px #ff4456; }
+    .area-card { border: 1px solid #e5e7eb; border-radius: 0.75rem; padding: 1.25rem; }
+    .trap-warning { background: #fef3c7; border-left: 4px solid #f59e0b; color: #92400e; padding: 12px 16px; border-radius: 0 8px 8px 0; }
+  </style>
+</head>
+<body class="bg-gray-50">
+
+<header class="bg-white sticky top-0 z-50 shadow-sm">
+  <div class="container mx-auto px-4 sm:px-6 py-4 flex justify-between items-center">
+    <div class="flex items-center space-x-3">
+      <img src="https://i.ibb.co/KxDQ7BKQ/SIMBOLO-COMP-RGB-VERMELHO-G.png" alt="Símbolo Comp" class="h-8 w-8">
+      <h1 class="text-lg sm:text-xl font-bold text-gray-800">AI Native HR</h1>
+    </div>
+    <img src="https://i.ibb.co/CyVbh5P/MARCA-COMP-RGB-VERMELHO-G.png" alt="Logo Comp" class="h-6">
+  </div>
+</header>
+
+<main class="container mx-auto px-4 sm:px-6 py-6 md:py-12" x-data="assessment()">
+
+  <!-- Intro -->
+  <div class="main-card p-6 sm:p-8" x-show="state === 'intro'">
+    <h2 class="text-2xl sm:text-3xl font-bold text-gray-800 mb-3">Em que nível de IA o seu RH está hoje?</h2>
+    <p class="text-gray-600 mb-2">Baseado no <a href="https://comp.vc/ai-maturity-map?utm_source=skill-output&utm_medium=html-link&utm_campaign=eam&utm_content=ai-native-hr" class="comp-red font-semibold hover:underline" target="_blank">AI Maturity Map da Comp</a> — 5 níveis (N1 a N5), avaliado por área de RH.</p>
+    <p class="text-gray-600 mb-6">15 perguntas, ~5 minutos. Resultado: nível por área + armadilhas a evitar + próximas fronteiras.</p>
+
+    <div class="grid sm:grid-cols-5 gap-3 mb-6 text-xs">
+      <template x-for="(l, i) in levels" :key="i">
+        <div class="area-card text-center">
+          <div class="font-bold text-comp-red mb-1" x-text="'N' + (i+1)"></div>
+          <div class="font-semibold text-gray-800" x-text="l.name"></div>
+        </div>
+      </template>
+    </div>
+
+    <div class="grid sm:grid-cols-2 gap-4 mb-8 text-sm">
+      <template x-for="a in areas" :key="a.id">
+        <div class="area-card">
+          <div class="font-semibold text-gray-800" x-text="a.name"></div>
+          <div class="text-gray-600 mt-1" x-text="a.description"></div>
+        </div>
+      </template>
+    </div>
+
+    <button @click="state = 'questions'; activeTab = 0" class="bg-comp-red text-white font-semibold px-6 py-3 rounded-lg hover:opacity-90 transition">
+      Começar avaliação →
+    </button>
+  </div>
+
+  <!-- Questions -->
+  <div x-show="state === 'questions'">
+    <div class="border-b border-gray-200 mb-6 overflow-x-auto">
+      <nav class="flex space-x-6 sm:space-x-8 px-1">
+        <template x-for="(a, i) in areas" :key="a.id">
+          <button class="tab pb-3 text-sm sm:text-base" :class="activeTab === i ? 'tab-active' : 'tab-inactive'" @click="activeTab = i" x-text="(i+1) + '. ' + a.name"></button>
+        </template>
+      </nav>
+    </div>
+
+    <template x-for="(a, i) in areas" :key="a.id">
+      <div class="main-card p-6 sm:p-8" x-show="activeTab === i">
+        <h3 class="text-xl font-bold text-gray-800 mb-1" x-text="a.name"></h3>
+        <p class="text-gray-600 mb-6" x-text="a.description"></p>
+        <template x-for="(q, qi) in a.questions" :key="qi">
+          <div class="mb-8">
+            <div class="font-medium text-gray-800 mb-3" x-text="(qi+1) + '. ' + q.text"></div>
+            <div class="space-y-2">
+              <template x-for="(opt, oi) in q.options" :key="oi">
+                <div>
+                  <input type="radio" :name="a.id + '-' + qi" :id="a.id + '-' + qi + '-' + oi" class="hidden peer" :value="5 - oi" @change="answers[a.id][qi] = 5 - oi">
+                  <label :for="a.id + '-' + qi + '-' + oi" class="question-option block">
+                    <span class="font-semibold text-gray-700 mr-2" x-text="String.fromCharCode(65 + oi) + '.'"></span>
+                    <span class="text-gray-700" x-text="opt"></span>
+                  </label>
+                </div>
+              </template>
+            </div>
+          </div>
+        </template>
+        <div class="flex justify-between mt-6">
+          <button @click="activeTab = Math.max(0, activeTab - 1)" :disabled="activeTab === 0" class="px-4 py-2 text-gray-600 hover:text-gray-800 disabled:opacity-30">← Anterior</button>
+          <template x-if="activeTab < areas.length - 1">
+            <button @click="activeTab++" class="bg-gray-800 text-white px-5 py-2 rounded-lg hover:bg-gray-700">Próxima área →</button>
+          </template>
+          <template x-if="activeTab === areas.length - 1">
+            <button @click="calculate()" :disabled="!allAnswered()" class="bg-comp-red text-white font-semibold px-6 py-2 rounded-lg disabled:opacity-30 hover:opacity-90">Ver resultado →</button>
+          </template>
+        </div>
+      </div>
+    </template>
+  </div>
+
+  <!-- Result -->
+  <div class="main-card p-6 sm:p-8" x-show="state === 'result'">
+    <div class="text-center mb-8">
+      <div class="text-sm uppercase tracking-wider text-gray-500 font-semibold">Nível geral do seu RH em IA</div>
+      <div class="text-5xl sm:text-6xl font-extrabold mt-2" :class="levelColor(result.overall)">
+        N<span x-text="result.overall"></span>
+      </div>
+      <div class="text-xl text-gray-700 mt-2" x-text="levels[result.overall-1].name"></div>
+      <p class="text-gray-600 mt-3 max-w-2xl mx-auto" x-text="levels[result.overall-1].definition"></p>
+    </div>
+
+    <div class="mb-8">
+      <div class="level-bar relative my-4">
+        <div class="level-marker absolute -top-1" :style="'left: calc(' + ((result.overall - 1) / 4 * 100) + '% - 8px)'"></div>
+      </div>
+      <div class="flex justify-between text-xs text-gray-500">
+        <span>N1 Individual</span><span>N2 Time</span><span>N3 SO Contextual</span><span>N4 Decisão</span><span>N5 Adaptativa</span>
+      </div>
+    </div>
+
+    <h3 class="text-lg font-bold text-gray-800 mb-4">Nível por área de RH</h3>
+    <div class="grid sm:grid-cols-2 gap-3 mb-6">
+      <template x-for="a in areas" :key="a.id">
+        <div class="area-card flex justify-between items-center">
+          <div>
+            <div class="font-semibold text-gray-800 text-sm" x-text="a.name"></div>
+            <div class="text-xs text-gray-500 mt-1" x-text="levels[result.byArea[a.id]-1].name"></div>
+          </div>
+          <div class="text-2xl font-bold" :class="levelColor(result.byArea[a.id])" x-text="'N' + result.byArea[a.id]"></div>
+        </div>
+      </template>
+    </div>
+
+    <template x-if="result.dispersionWarning">
+      <div class="trap-warning mb-6">
+        <div class="font-semibold mb-1">⚠️ Dispersão alta entre áreas</div>
+        <div class="text-sm">Diferença de 2+ níveis entre áreas. O framework recomenda escalar onde já há tração antes de avançar nas demais. Áreas mais avançadas viram playbook pras outras.</div>
+      </div>
+    </template>
+
+    <h3 class="text-lg font-bold text-gray-800 mb-4">Próxima fronteira por área</h3>
+    <div class="space-y-4 mb-8">
+      <template x-for="a in areas" :key="a.id">
+        <div class="border-l-4 border-comp-red bg-rose-50 p-4 rounded-r-lg">
+          <div class="font-semibold text-gray-800 mb-1" x-text="a.name + ' — pra chegar em N' + Math.min(5, result.byArea[a.id]+1)"></div>
+          <div class="text-sm text-gray-700 mb-2" x-text="a.frontierByLevel[Math.min(4, result.byArea[a.id]-1)]"></div>
+          <div class="text-xs text-amber-700 mt-2" x-show="a.trapByLevel[Math.min(4, result.byArea[a.id]-1)]">
+            <span class="font-semibold">Armadilha frequente:</span>
+            <span x-text="a.trapByLevel[Math.min(4, result.byArea[a.id]-1)]"></span>
+          </div>
+        </div>
+      </template>
+    </div>
+
+    <div class="text-center">
+      <button @click="reset()" class="comp-red font-semibold underline hover:no-underline">Refazer a avaliação</button>
+    </div>
+  </div>
+
+</main>
+
+<footer style="margin-top: 48px; padding: 24px 0; border-top: 1px solid #e5e7eb; text-align: center; font-family: 'Inter', system-ui, sans-serif; font-size: 13px; color: #6b7280;">
+  Powered by <a href="https://comp.vc?utm_source=skill-output&amp;utm_medium=html-footer&amp;utm_campaign=eam&amp;utm_content=ai-native-hr" style="color: #ff4456; text-decoration: none; font-weight: 600;">Comp</a>
+  — Free skills for HR &amp; People leaders.
+</footer>
+
+<script>
+function assessment() {
+  return {
+    state: 'intro',
+    activeTab: 0,
+    levels: [
+      { name: 'Produtividade Individual', definition: 'Pessoas usam IA pra ganhar produtividade no próprio trabalho. Variância alta entre power users e o resto.' },
+      { name: 'Produtividade do Time', definition: 'Skills e agentes compartilhados cobrem a maior parte das tarefas operacionais.' },
+      { name: 'Sistema Operacional Contextual', definition: 'Uma camada agêntica única executa trabalho complexo dentro de parâmetros humanos.' },
+      { name: 'Inteligência de Decisão', definition: 'Camada agêntica propõe decisões baseada nos padrões dos melhores humanos.' },
+      { name: 'Inteligência Adaptativa', definition: 'Camada agêntica aprende sozinha dos resultados, refinando julgamento continuamente.' },
+    ],
+    areas: [
+      {
+        id: 'recruiting',
+        name: 'Recrutamento & TA',
+        description: 'Sourcing, screening, entrevistas, offer.',
+        questions: [
+          { text: 'Como a IA aparece no recrutamento hoje?', options: [
+            'Camada agêntica autônoma: aprende com sucesso pós-contratação, refina screening sozinha',
+            'IA recomenda candidatos / scores baseado em padrões de top recruiters; humanos validam',
+            'Um agente único cobre todo o pipeline (JD → sourcing → screening → entrevista) integrado ao ATS',
+            'Time de recruiting compartilha skills/agentes (geração de JD, follow-ups, summary de entrevista)',
+            'Recruiters individuais usam ChatGPT/Claude pra tarefas pontuais',
+          ]},
+          { text: 'Como vocês conseguem candidatos qualificados?', options: [
+            'Sistema autoaprende: cada hire (sucesso/falha) refina critérios de matching',
+            'Modelo de matching candidato↔vaga gera shortlist; humano valida',
+            'Um agente faz outreach + qualificação integrado ao CRM de talento',
+            'Skills compartilhadas pra outreach, mas qualificação ainda manual',
+            'Recruiter procura manualmente no LinkedIn, com ajuda pontual de IA',
+          ]},
+          { text: 'Tempo médio pra entrevistar um candidato qualificado depois de aberta a vaga?', options: [
+            'Horas — sistema completo executa contínuo',
+            'Dias — agentes fazem 80% do trabalho, humano só valida',
+            '1 semana — bem orquestrado mas com gargalos manuais',
+            '2-3 semanas — processo manual com ajuda esporádica de IA',
+            '4+ semanas — recruiting essencialmente manual',
+          ]},
+        ],
+        frontierByLevel: [
+          'Pra N2: padronize 2-3 skills críticas do recrutamento (geração de JD, summary de entrevista, follow-up) e compartilhe com todo o time. Pare de cada recruiter reinventar o uso de IA.',
+          'Pra N3: integre essas skills num agente único conectado ao ATS. Um recruiter conduz, agente executa todo o pipeline.',
+          'Pra N4: comece a treinar o agente nos padrões dos top recruiters. Quando ele propõe um shortlist, mensure: bate com o que o melhor recruiter teria escolhido?',
+          'Pra N5: feche o loop com performance pós-contratação. O sistema precisa observar sucesso/falha dos hires e refinar critérios sozinho.',
+          'N5 — Mantenha a evolução. Audite o loop: você confia que ele está aprendendo, ou só executando?',
+        ],
+        trapByLevel: [
+          'Não confunda volume de skills com maturidade. 10 skills isoladas que ninguém usa = N1 disfarçado.',
+          'O ATS tradicional não foi feito pra agente. Avalie se o sistema integra ou se você está só sobreposicionando IA.',
+          'Recomendação só vale se humano top valida. Recomendação que vai pra qualquer recruiter aprovar = ainda N3.',
+          'Loop fechado precisa de feedback de outcome real (90/180/365 dias pós-contratação), não satisfação do recruiter.',
+          '',
+        ],
+      },
+      {
+        id: 'compensation',
+        name: 'Compensação & Rewards',
+        description: 'Bandas, mérito, equidade, propostas salariais.',
+        questions: [
+          { text: 'Como vocês calibram salários e propostas hoje?', options: [
+            'Sistema autoaprende: cada hire/promoção bem-sucedida refina o modelo de calibração',
+            'IA recomenda salário com base nos padrões dos melhores comp partners; humano valida',
+            'Um agente único responde "qual o salário ideal pra X" usando bandas + mercado + equidade interna',
+            'Skills compartilhadas pra cálculos pontuais (paymix, simulação, benchmark); decisão ainda manual',
+            'Compensation manager usa ChatGPT/Claude pra modelar cenários individualmente',
+          ]},
+          { text: 'Como o time toma decisões de mérito anual?', options: [
+            'Recomendação automática contínua, refinada por outcomes (retenção, performance pós-mérito)',
+            'IA propõe distribuição inicial; comitês de calibração validam e ajustam',
+            'Agente único entrega análise pré-calibração consolidando performance + equidade + mercado',
+            'Planilhas + scripts ad-hoc; cada gestor recebe contexto separado',
+            'Processo 100% manual, decisão baseada em conversa de gestor',
+          ]},
+          { text: 'Quanto tempo leva uma análise de equidade salarial?', options: [
+            'Contínua — sistema monitora e alerta',
+            'Horas, sob demanda, com recomendação de ação',
+            'Dias, com agente fazendo a análise sob comando',
+            'Semanas, com scripts/skills ajudando',
+            'Meses, manualmente em planilha',
+          ]},
+        ],
+        frontierByLevel: [
+          'Pra N2: identifique as 3 análises de comp mais repetidas (proposta, simulação merit, equidade) e crie skills compartilhadas pra todo o time usar.',
+          'Pra N3: una essas skills num agente único conectado aos sistemas de comp (bandas, salário atual, performance, mercado).',
+          'Pra N4: o agente deve PROPOR salário, não só calcular. Calibre as recomendações com os comp partners senior.',
+          'Pra N5: o agente precisa observar outcome — proposta aceita? colaborador ficou? performou? — e refinar sozinho.',
+          'N5 — Monitore: o sistema ainda concorda com a opinião do top comp partner? Se divergir muito, sinal pra recalibrar.',
+        ],
+        trapByLevel: [
+          'Calculadora de paymix sozinha em planilha ≠ skill compartilhada. Precisa estar disponível e ser usada pelo time.',
+          'Conectar tudo via APIs nem sempre é viável (HRIS antigo). Avalie se o ROI compensa um warehouse intermediário.',
+          'Recomendação que ignora restrição de budget é fantasia. Calibre com a realidade financeira da empresa.',
+          'Outcome de comp é trickier que recruiting — leva 12+ meses pra ver impacto real. Considere proxies (eNPS, retenção).',
+          '',
+        ],
+      },
+      {
+        id: 'lnd',
+        name: 'L&D / Performance',
+        description: 'Avaliações, feedback, planos de desenvolvimento, treinamento.',
+        questions: [
+          { text: 'Como a empresa gerencia ciclos de performance e feedback?', options: [
+            'Sistema observa interações no trabalho e ajusta contínuo o plano de desenvolvimento por pessoa',
+            'IA propõe rating + plano de desenvolvimento com base em padrões dos melhores managers; humano valida',
+            'Agente único orquestra o ciclo todo (autoavaliação → feedback 360 → calibração → plano)',
+            'Skills compartilhadas pra partes do ciclo (gerar feedback estruturado, summary de 1:1)',
+            'Manager usa ChatGPT/Claude pontualmente pra escrever feedback ou plano',
+          ]},
+          { text: 'Como vocês decidem o que treinar (oferta de L&D)?', options: [
+            'IA detecta gaps em tempo real (do trabalho real) e oferece micro-learning na hora',
+            'Modelo recomenda curadoria por pessoa baseado em performance + carreira + interesses',
+            'Plataforma única (LMS+conteúdo+agente) responde "o que esse colaborador precisa aprender"',
+            'Pesquisa anual de needs + catálogo curado; oferta por área',
+            'Catálogo genérico (Udemy/LinkedIn Learning); colaborador escolhe',
+          ]},
+          { text: 'Como managers preparam conversas de carreira / 1:1?', options: [
+            'Sistema autônomo prepara dossier por 1:1 com sugestões de tópicos baseado em sinais do trimestre',
+            'IA propõe agenda de conversa com tópicos críticos identificados; manager edita',
+            'Agente único responde "o que devo discutir com X na próxima 1:1" puxando contexto de várias fontes',
+            'Manager usa template + skill pra estruturar; preparação ainda manual',
+            'Manager prepara sozinho, sem ajuda da IA',
+          ]},
+        ],
+        frontierByLevel: [
+          'Pra N2: padronize 2 skills do L&D (geração de feedback estruturado + plano de desenvolvimento). Compartilhe com todos os managers.',
+          'Pra N3: integre LMS + sistema de performance + dados de carreira num agente único — "tudo que sei sobre o desenvolvimento desse colaborador" num lugar só.',
+          'Pra N4: o agente deve propor rating + ação. Calibre com os managers que dão feedback de melhor qualidade.',
+          'Pra N5: o sistema precisa observar resultado das recomendações (a pessoa cresceu? saiu da zona de desconforto? ficou na empresa?) e refinar sozinho.',
+          'N5 — Audite: o sistema continua sintonizado com o que faz alguém crescer de verdade na sua cultura?',
+        ],
+        trapByLevel: [
+          'Feedback gerado por IA sem contexto = ofensivo. Skill precisa puxar contexto real, não inventar.',
+          'Cuidado com privacy: dados de performance entre sistemas exige governance explícita.',
+          'Calibrar com "top managers" assume que você sabe quem são. Use outcome dos times deles (retenção, mobilidade interna) pra identificar.',
+          'Ciclo de performance é anual — outcome de uma intervenção leva 12+ meses. Ajuste expectativas de aprendizado do sistema.',
+          '',
+        ],
+      },
+      {
+        id: 'ops',
+        name: 'People Ops / Admin',
+        description: 'Onboarding, offboarding, folha, dúvidas, processos administrativos.',
+        questions: [
+          { text: 'Como funciona onboarding hoje?', options: [
+            'Agente autônomo personaliza experiência por persona em tempo real; aprende do feedback do colaborador',
+            'IA propõe plano 30/60/90 + checklist completos; People Ops valida em minutos',
+            'Agente único orquestra tudo (envio de docs, IT, agenda de 1:1s, materiais)',
+            'Skills compartilhadas pra partes (welcome email, plano 30/60/90, checklist IT)',
+            'Processo manual com templates em docs/planilhas',
+          ]},
+          { text: 'Quem responde dúvidas operacionais do colaborador (folha, férias, benefícios)?', options: [
+            'Agente conversacional autônomo que aprende com cada nova dúvida',
+            'IA responde maioria; escala pra People Ops casos complexos',
+            'Agente único conectado a tudo (folha, benefícios, políticas) responde via Slack/chat',
+            'FAQ + macros + uso pontual de IA pelo time de People Ops',
+            'People Ops responde uma a uma',
+          ]},
+          { text: 'Como processos repetitivos (mudança de dados, rescisão, comunicações em massa) são executados?', options: [
+            'Agente autônomo executa e ajusta workflow baseado em outcome (compliance, velocidade)',
+            'IA propõe a execução; People Ops valida e dispara',
+            'Agente único coordena (HRIS + folha + email + Slack) sob comando',
+            'Skills automatizam tarefas específicas; orquestração ainda manual',
+            'Tudo manual, pessoa do People Ops executando',
+          ]},
+        ],
+        frontierByLevel: [
+          'Pra N2: identifique os 3 processos mais repetitivos do People Ops e crie skills (ex: onboarding-kit, offboarding-checklist, comunicação em massa).',
+          'Pra N3: una essas skills num agente conectado aos sistemas (HRIS, folha, Slack, email). Um agente, vários sistemas.',
+          'Pra N4: o agente deve PROPOR ação (não só executar). Treine com os top People Ops, calibre julgamento.',
+          'Pra N5: o sistema precisa observar outcome (colaborador ficou bem onboarded? processo respeitou prazos?) e refinar.',
+          'N5 — Cuide de compliance: sistemas autônomos em RH têm risco regulatório. Mantenha humano no loop pra ações críticas.',
+        ],
+        trapByLevel: [
+          'Skill que ninguém usa = N1 disfarçado. Garanta que People Ops adotou de verdade.',
+          'Integrar com HRIS legado custa caro. Pondere ROI antes de uma camada agêntica completa.',
+          'Recomendação em ações administrativas é frágil — uma execução errada gera retrabalho ou problema legal. Calibre cuidadosamente.',
+          'Outcome em ops é mais rápido (semana/mês), então loop de aprendizado roda mais ágil que comp/L&D.',
+          '',
+        ],
+      },
+      {
+        id: 'analytics',
+        name: 'People Analytics / Decisão',
+        description: 'Reporting, análise causa-raiz, predição, suporte à decisão.',
+        questions: [
+          { text: 'Como dashboards e análises chegam aos decisores?', options: [
+            'Sistema gera análises proativamente baseado em sinais e padrões aprendidos',
+            'IA prepara análise + recomendação quando solicitada; humano valida',
+            'Agente único responde qualquer pergunta de people analytics conectado a todas as fontes',
+            'Skills/agentes compartilhados rodam análises padrão; ad-hoc ainda manual',
+            'Analista de People roda relatório manual, geralmente em Excel/BI',
+          ]},
+          { text: 'Como respondem perguntas tipo "qual o risco de turnover no time de eng"?', options: [
+            'Sistema autoaprendendo monitora e alerta proativo, com sugestão de ação',
+            'IA gera score de risco por pessoa + ação recomendada; gestor valida',
+            'Agente único responde com modelo treinado, contexto e segmentação na hora',
+            'Skills calculam métricas pontuais; análise causal ainda manual',
+            'Demanda People Analytics rodar análise manualmente',
+          ]},
+          { text: 'Que decisões executivas hoje são tomadas com base em recomendação direta de IA?', options: [
+            'Várias decisões — reorg, promoção, investimento em retenção — todas com sistema sugerindo',
+            'Algumas decisões críticas já incorporam recomendação de IA validada',
+            'IA fornece análise robusta, decisão ainda 100% humana',
+            'IA ajuda em partes da análise, mas raramente vai pra decisão',
+            'Nenhuma — IA não chega no nível decisional',
+          ]},
+        ],
+        frontierByLevel: [
+          'Pra N2: padronize as 3-5 análises mais demandadas (turnover por área, headcount projetado, custo de folha) como skills do time.',
+          'Pra N3: una num agente conectado a HRIS + folha + ATS + engagement. Líder pergunta, agente responde — sem analista de People intermediando perguntas frequentes.',
+          'Pra N4: o agente passa a RECOMENDAR ação ("dado o risco de turnover X, sugiro Y"). Calibre com os melhores People Analytics partners.',
+          'Pra N5: o sistema observa outcome das recomendações tomadas vs ignoradas. Refina sozinho.',
+          'N5 — Audite vieses: decisões de pessoas têm risco discriminatório. Sistema autônomo precisa de auditoria contínua de fairness.',
+        ],
+        trapByLevel: [
+          'Cuidado: dashboard novo ≠ skill. Quem usa de fato, e pra decidir o quê?',
+          'Conectar todas as fontes exige consentimento e governance — não atalhe.',
+          'Recomendação em decisões de pessoas precisa de explainability. "O modelo disse" não cola.',
+          'Outcome de decisões de pessoa é difícil de medir limpo (muitas variáveis). Defina KPI de qualidade da decisão com clareza.',
+          '',
+        ],
+      },
+    ],
+    answers: {
+      recruiting:   [null, null, null],
+      compensation: [null, null, null],
+      lnd:          [null, null, null],
+      ops:          [null, null, null],
+      analytics:    [null, null, null],
+    },
+    result: { overall: 0, byArea: {}, dispersionWarning: false },
+    allAnswered() {
+      return this.areas.every(a => this.answers[a.id].every(v => v !== null));
+    },
+    calculate() {
+      const byArea = {};
+      const lvls = [];
+      this.areas.forEach(a => {
+        const sum = this.answers[a.id].reduce((x, y) => x + y, 0);
+        const avg = Math.round(sum / this.answers[a.id].length);
+        byArea[a.id] = avg;
+        lvls.push(avg);
+      });
+      // Overall = median of areas (alinhado com "area-based progression")
+      const sorted = [...lvls].sort((a, b) => a - b);
+      const overall = sorted[Math.floor(sorted.length / 2)];
+      const dispersion = Math.max(...lvls) - Math.min(...lvls);
+      this.result = { overall, byArea, dispersionWarning: dispersion >= 2 };
+      this.state = 'result';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    },
+    reset() {
+      this.areas.forEach(a => this.answers[a.id] = [null, null, null]);
+      this.result = { overall: 0, byArea: {}, dispersionWarning: false };
+      this.state = 'intro';
+      this.activeTab = 0;
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    },
+    levelColor(n) {
+      return ['', 'text-red-600', 'text-orange-500', 'text-yellow-600', 'text-lime-600', 'text-emerald-600'][n] || 'text-gray-500';
+    },
+  };
+}
+</script>
+
+</body>
+</html>

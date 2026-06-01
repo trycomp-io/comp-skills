@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HR Data Maturity Assessment — Comp</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+  <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.9/dist/cdn.min.js" integrity="sha384-9Ax3MmS9AClxJyd5/zafcXXjxmwFhZCdsT6HJoJjarvCaAkJlk5QDzjLJm+Wdx5F" crossorigin="anonymous" defer></script>
+  <style>
+    body { font-family: 'Inter', sans-serif; background-color: #f8f9fa; color: #212529; }
+    .comp-red { color: #ff4456; }
+    .bg-comp-red { background-color: #ff4456; }
+    .border-comp-red { border-color: #ff4456; }
+    .main-card { background-color: white; border-radius: 1rem; box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.07), 0 4px 6px -4px rgb(0 0 0 / 0.1); margin-bottom: 2rem; }
+    .tab { transition: all 0.3s ease-in-out; border-bottom: 3px solid transparent; white-space: nowrap; }
+    .tab-active { border-bottom-color: #ff4456; color: #ff4456; font-weight: 600; }
+    .tab-inactive { color: #6c757d; }
+    .tab:hover { color: #ff4456; }
+    .question-option { border: 1px solid #dee2e6; border-radius: 0.5rem; transition: all 0.2s; cursor: pointer; padding: 14px 16px; }
+    .question-option:hover { border-color: #adb5bd; background-color: #f8f9fa; }
+    input[type="radio"]:checked + label { border-color: #ff4456; background-color: #fff0f1; box-shadow: 0 0 0 2px #ff445640; }
+    .level-bar { height: 10px; border-radius: 5px; background: linear-gradient(90deg, #fee2e2 0%, #fef3c7 25%, #fef9c3 50%, #d9f99d 75%, #86efac 100%); }
+    .level-marker { width: 16px; height: 16px; border-radius: 50%; background: #ff4456; border: 3px solid white; box-shadow: 0 0 0 2px #ff4456; }
+    .dim-card { border: 1px solid #e5e7eb; border-radius: 0.75rem; padding: 1.25rem; }
+  </style>
+</head>
+<body class="bg-gray-50">
+
+<header class="bg-white sticky top-0 z-50 shadow-sm">
+  <div class="container mx-auto px-4 sm:px-6 py-4 flex justify-between items-center">
+    <div class="flex items-center space-x-3">
+      <img src="https://i.ibb.co/KxDQ7BKQ/SIMBOLO-COMP-RGB-VERMELHO-G.png" alt="Símbolo Comp" class="h-8 w-8">
+      <h1 class="text-lg sm:text-xl font-bold text-gray-800">HR Data Maturity Assessment</h1>
+    </div>
+    <img src="https://i.ibb.co/CyVbh5P/MARCA-COMP-RGB-VERMELHO-G.png" alt="Logo Comp" class="h-6">
+  </div>
+</header>
+
+<main class="container mx-auto px-4 sm:px-6 py-6 md:py-12" x-data="assessment()">
+
+  <!-- Intro -->
+  <div class="main-card p-6 sm:p-8" x-show="state === 'intro'">
+    <h2 class="text-2xl sm:text-3xl font-bold text-gray-800 mb-3">Avalie a maturidade dos dados do seu RH em 5 minutos</h2>
+    <p class="text-gray-600 mb-6">15 perguntas, 5 dimensões, 5 níveis. Resultado por dimensão + roadmap pro próximo nível.</p>
+    <div class="grid sm:grid-cols-2 gap-4 mb-8 text-sm">
+      <template x-for="d in dimensions" :key="d.id">
+        <div class="dim-card">
+          <div class="font-semibold text-gray-800" x-text="d.name"></div>
+          <div class="text-gray-600 mt-1" x-text="d.description"></div>
+        </div>
+      </template>
+    </div>
+    <button @click="state = 'questions'; activeTab = 0" class="bg-comp-red text-white font-semibold px-6 py-3 rounded-lg hover:opacity-90 transition">
+      Começar avaliação →
+    </button>
+  </div>
+
+  <!-- Questions -->
+  <div x-show="state === 'questions'">
+    <!-- Tabs -->
+    <div class="border-b border-gray-200 mb-6 overflow-x-auto">
+      <nav class="flex space-x-6 sm:space-x-8 px-1">
+        <template x-for="(d, i) in dimensions" :key="d.id">
+          <button class="tab pb-3 text-sm sm:text-base" :class="activeTab === i ? 'tab-active' : 'tab-inactive'" @click="activeTab = i" x-text="(i+1) + '. ' + d.name"></button>
+        </template>
+      </nav>
+    </div>
+
+    <!-- Active dimension -->
+    <template x-for="(d, i) in dimensions" :key="d.id">
+      <div class="main-card p-6 sm:p-8" x-show="activeTab === i">
+        <h3 class="text-xl font-bold text-gray-800 mb-1" x-text="d.name"></h3>
+        <p class="text-gray-600 mb-6" x-text="d.description"></p>
+        <template x-for="(q, qi) in d.questions" :key="qi">
+          <div class="mb-8">
+            <div class="font-medium text-gray-800 mb-3" x-text="(qi+1) + '. ' + q.text"></div>
+            <div class="space-y-2">
+              <template x-for="(opt, oi) in q.options" :key="oi">
+                <div>
+                  <input type="radio" :name="d.id + '-' + qi" :id="d.id + '-' + qi + '-' + oi" class="hidden peer" :value="5 - oi" @change="answers[d.id][qi] = 5 - oi">
+                  <label :for="d.id + '-' + qi + '-' + oi" class="question-option block">
+                    <span class="font-semibold text-gray-700 mr-2" x-text="String.fromCharCode(65 + oi) + '.'"></span>
+                    <span class="text-gray-700" x-text="opt"></span>
+                  </label>
+                </div>
+              </template>
+            </div>
+          </div>
+        </template>
+        <div class="flex justify-between mt-6">
+          <button @click="activeTab = Math.max(0, activeTab - 1)" :disabled="activeTab === 0" class="px-4 py-2 text-gray-600 hover:text-gray-800 disabled:opacity-30">← Anterior</button>
+          <template x-if="activeTab < dimensions.length - 1">
+            <button @click="activeTab++" class="bg-gray-800 text-white px-5 py-2 rounded-lg hover:bg-gray-700">Próxima dimensão →</button>
+          </template>
+          <template x-if="activeTab === dimensions.length - 1">
+            <button @click="calculate()" :disabled="!allAnswered()" class="bg-comp-red text-white font-semibold px-6 py-2 rounded-lg disabled:opacity-30 hover:opacity-90">Ver resultado →</button>
+          </template>
+        </div>
+      </div>
+    </template>
+  </div>
+
+  <!-- Result -->
+  <div class="main-card p-6 sm:p-8" x-show="state === 'result'">
+    <div class="text-center mb-8">
+      <div class="text-sm uppercase tracking-wider text-gray-500 font-semibold">Nível atual</div>
+      <div class="text-5xl sm:text-6xl font-extrabold mt-2" :class="levelColor(result.overall)">
+        Nível <span x-text="result.overall"></span>
+      </div>
+      <div class="text-xl text-gray-700 mt-2" x-text="levelName(result.overall)"></div>
+      <p class="text-gray-600 mt-3 max-w-xl mx-auto" x-text="levelDescription(result.overall)"></p>
+    </div>
+
+    <div class="mb-8">
+      <div class="level-bar relative my-4">
+        <div class="level-marker absolute -top-1" :style="'left: calc(' + ((result.overall - 1) / 4 * 100) + '% - 8px)'"></div>
+      </div>
+      <div class="flex justify-between text-xs text-gray-500">
+        <span>1 Ad-hoc</span><span>2 Operacional</span><span>3 Reporting</span><span>4 Analytics</span><span>5 AI-native</span>
+      </div>
+    </div>
+
+    <h3 class="text-lg font-bold text-gray-800 mb-4">Resultado por dimensão</h3>
+    <div class="grid sm:grid-cols-2 gap-3 mb-8">
+      <template x-for="d in dimensions" :key="d.id">
+        <div class="dim-card flex justify-between items-center">
+          <div>
+            <div class="font-semibold text-gray-800 text-sm" x-text="d.name"></div>
+            <div class="text-xs text-gray-500 mt-1" x-text="levelName(result.byDimension[d.id])"></div>
+          </div>
+          <div class="text-2xl font-bold" :class="levelColor(result.byDimension[d.id])" x-text="result.byDimension[d.id]"></div>
+        </div>
+      </template>
+    </div>
+
+    <h3 class="text-lg font-bold text-gray-800 mb-4">Próximos passos por dimensão</h3>
+    <div class="space-y-4 mb-8">
+      <template x-for="d in dimensions" :key="d.id">
+        <div class="border-l-4 border-comp-red bg-rose-50 p-4 rounded-r-lg">
+          <div class="font-semibold text-gray-800 mb-1" x-text="d.name + ' — pra chegar no Nível ' + Math.min(5, result.byDimension[d.id] + 1)"></div>
+          <div class="text-sm text-gray-700" x-text="d.nextSteps[Math.min(4, result.byDimension[d.id] - 1)]"></div>
+        </div>
+      </template>
+    </div>
+
+    <div class="text-center">
+      <button @click="reset()" class="text-comp-red font-semibold underline hover:no-underline">Refazer a avaliação</button>
+    </div>
+  </div>
+
+</main>
+
+<footer style="margin-top: 48px; padding: 24px 0; border-top: 1px solid #e5e7eb; text-align: center; font-family: 'Inter', system-ui, sans-serif; font-size: 13px; color: #6b7280;">
+  Powered by <a href="https://comp.vc?utm_source=skill-output&amp;utm_medium=html-footer&amp;utm_campaign=eam&amp;utm_content=hr-data-maturity-assessment" style="color: #ff4456; text-decoration: none; font-weight: 600;">Comp</a>
+  — Free skills for HR &amp; People leaders.
+</footer>
+
+<script>
+function assessment() {
+  return {
+    state: 'intro',
+    activeTab: 0,
+    dimensions: [
+      {
+        id: 'collection',
+        name: 'Coleta & Integração',
+        description: 'Onde os dados nascem e como fluem entre sistemas.',
+        questions: [
+          { text: 'Como os dados de colaboradores estão organizados hoje?', options: [
+            'Tudo num data warehouse único, integrado em tempo real com HRIS/folha/ATS',
+            'HRIS centralizado, com integrações batch (diárias) pros outros sistemas',
+            'HRIS + planilhas auxiliares; integrações manuais ou pontuais',
+            'Vários sistemas isolados, dados duplicados, sincronia manual',
+            'Tudo em planilhas; cada análise exige consolidação manual',
+          ]},
+          { text: 'Quanto tempo leva pra responder "quantas pessoas trabalham na empresa hoje, por área"?', options: [
+            'Tempo real — dashboard ou query direta',
+            'Minutos — query SQL pronta ou relatório padrão',
+            'Algumas horas — alguém compila',
+            'Dias — depende de RH puxar de vários lugares',
+            'Não conseguimos responder com confiança',
+          ]},
+          { text: 'Quão completos e atualizados são os dados de cargo e remuneração?', options: [
+            '100% das pessoas com cargo, nível e salário atualizados na mudança',
+            'Atualizados em ciclos (mensal/trimestral), >90% completo',
+            'Em geral atualizados, mas gaps conhecidos em algumas áreas',
+            'Várias inconsistências entre fontes; reconciliação periódica',
+            'Não confiável — dependemos do gestor lembrar de atualizar',
+          ]},
+        ],
+        nextSteps: [
+          'Defina UMA fonte única (HRIS) e migre dados das planilhas pra lá. Cargo + salário + data de admissão são prioridade.',
+          'Integre o HRIS com folha, ATS e ferramentas-satélite via batch diário. Comece pelas duplicações que mais doem.',
+          'Reduza dependência de planilhas auxiliares. Migre validações pro HRIS ou pra processos de governance.',
+          'Mova de batch diário pra tempo real nos eventos críticos (contratação, demissão, promoção). Investigue ETL near-real-time.',
+          'Mantenha tempo real, expanda integrações pra ferramentas adjacentes (engagement, learning, performance).',
+        ],
+      },
+      {
+        id: 'governance',
+        name: 'Qualidade & Governança',
+        description: 'Dicionário, validações, ownership por domínio.',
+        questions: [
+          { text: 'Vocês têm um dicionário de dados / glossário de métricas?', options: [
+            'Sim, mantido, consultado, com definições versionadas',
+            'Sim, mas não totalmente atualizado',
+            'Existe um doc parcial, poucos usam',
+            'Cada análise reinventa as definições',
+            'Não temos',
+          ]},
+          { text: 'Quem é dono dos dados de pessoa?', options: [
+            'Função dedicada (People Ops Data / HR Analytics) responsável formal',
+            'RH é dono, com pessoa designada por domínio (comp, talento, etc.)',
+            'RH é dono na teoria, mas sem ownership claro',
+            'TI é dono; RH consome',
+            'Sem ownership definido',
+          ]},
+          { text: 'Qualidade dos dados é monitorada?', options: [
+            'Dashboards de qualidade + alertas automáticos pra anomalias',
+            'Revisões periódicas (mensal/trimestral) com checklist',
+            'Reativo — só descobrimos quando alguém percebe um erro',
+            'Sem monitoramento; aceitamos o que está no sistema',
+            'Nunca pensamos nisso',
+          ]},
+        ],
+        nextSteps: [
+          'Liste as 10 métricas mais usadas e escreva uma definição única pra cada. Compartilhe num doc/Notion acessível ao time.',
+          'Designe um dono formal pra cada domínio (compensation, talento, performance). Ownership começa em RH, não TI.',
+          'Crie um checklist trimestral de qualidade: campos obrigatórios preenchidos, datas consistentes, valores em range.',
+          'Implemente alertas automáticos pras anomalias mais comuns (salário negativo, data admissão > demissão, área inexistente).',
+          'Mantenha excelência: alertas + dashboards de qualidade + revisão de novos campos antes de entrarem em produção.',
+        ],
+      },
+      {
+        id: 'reporting',
+        name: 'Reporting & Métricas',
+        description: 'Quais KPIs, em que frequência, pra qual audiência.',
+        questions: [
+          { text: 'Quais KPIs de pessoas o board / C-level acompanha regularmente?', options: [
+            'Set definido: headcount, custo, turnover (regretted), eNPS, diversity, productivity proxies — atualizados mensal',
+            '4-5 KPIs core acompanhados trimestralmente',
+            '1-2 KPIs (geralmente headcount e custo) acompanhados ad-hoc',
+            'Só sob pedido — não tem nada recorrente',
+            'Nunca discutimos métricas de pessoas no board',
+          ]},
+          { text: 'Os gestores de área acessam métricas do time deles?', options: [
+            'Sim, dashboards self-service personalizados por área, atualizados continuamente',
+            'Sim, relatórios mensais padronizados enviados aos gestores',
+            'Sob demanda — gestor pede e RH manda',
+            'Raramente — gestor não sabe o que pedir',
+            'Não acessam',
+          ]},
+          { text: 'Como a empresa acompanha turnover?', options: [
+            'Por tipo (regretted vs unregretted), área, nível, tenure, motivo declarado — segmentado',
+            'Taxa geral + por área, mensal',
+            'Taxa geral, trimestral ou anual',
+            'Calculamos no final do ano',
+            'Não acompanhamos',
+          ]},
+        ],
+        nextSteps: [
+          'Defina os 5 KPIs core que vão pro board mensal: headcount, custo total, turnover regretted, eNPS, diversity ratio. Comece simples.',
+          'Padronize um pacote mensal pra gestores: headcount do time, vagas abertas, turnover do trimestre, próximos ciclos.',
+          'Crie segmentação básica em turnover (área, nível, tenure). Identifica padrões que % geral esconde.',
+          'Mova reports estáticos pra dashboards self-service. Liberte RH de gerar PowerPoint mensal.',
+          'Estenda pra métricas preditivas (flight risk score por pessoa) e ative gestores via alertas automatizados.',
+        ],
+      },
+      {
+        id: 'analysis',
+        name: 'Análise & Decisão',
+        description: 'Como dados viram decisão.',
+        questions: [
+          { text: 'Quando uma decisão importante de pessoas é tomada (ex: reorg, novo programa), o quanto ela é informada por dados?', options: [
+            'Sempre — modelo formal, simulações de cenários, ROI estimado',
+            'Quase sempre — dados informam, decisão tem componente qualitativo',
+            'Às vezes — dados consultados pontualmente',
+            'Raramente — decisões baseadas em opinião/experiência',
+            'Nunca pensamos em dados nessas decisões',
+          ]},
+          { text: 'Vocês fazem análises causa-raiz pra entender turnover/engajamento/produtividade?', options: [
+            'Sim, com modelos estatísticos (regression, survival analysis) + qualitativo',
+            'Sim, análises descritivas estruturadas',
+            'Apenas conversas ad-hoc com saídas pra entender padrões',
+            'Não fazemos',
+            'Não saberíamos como começar',
+          ]},
+          { text: 'Quando RH apresenta uma análise pra área de negócio, qual a reação típica?', options: [
+            'Adotam recomendação e mudam decisão',
+            'Levam em consideração, discutem ativamente',
+            'Educados mas não acionam',
+            'Pedem mais análises antes de decidir nada',
+            'Não chegamos a apresentar análises',
+          ]},
+        ],
+        nextSteps: [
+          'Comece com 1 análise estruturada por trimestre: pegue um problema (ex: turnover de eng), faça causa-raiz, apresente.',
+          'Padronize: toda análise tem hipótese, dados, conclusão, recomendação. Pare com slide-deck só descritivo.',
+          'Treine RH em análise: descritiva primeiro, comparativa depois, preditiva por último.',
+          'Crie ritual: análise → recomendação → decisão tomada → acompanhamento de resultado. Feche o loop.',
+          'Mantenha excelência: análise contínua + experimentação (A/B em programas) + modelo causal validado.',
+        ],
+      },
+      {
+        id: 'tech',
+        name: 'Tech & AI',
+        description: 'Stack, modelos, agentes, automação.',
+        questions: [
+          { text: 'Qual a sofisticação do stack de tech do RH?', options: [
+            'HRIS + data warehouse + BI + ferramentas especializadas (ATS, eNPS, learning) integradas',
+            'HRIS + BI conectado, sem warehouse central',
+            'HRIS + Excel/Sheets pra análises',
+            'Planilhas + sistema legado (Folha) sem integração',
+            'Quase tudo manual',
+          ]},
+          { text: 'Vocês usam modelos preditivos pra decisões de pessoas?', options: [
+            'Sim — flight risk, success score em candidatos, otimização salarial — em produção',
+            'Modelos descritivos avançados (clustering, segmentação), mas não preditivos em produção',
+            'Pilotamos uns experimentos com IA generativa',
+            'Não usamos modelos',
+            'Não sabemos por onde começar',
+          ]},
+          { text: 'Há agentes / IA generativa em workflows de RH?', options: [
+            'Agentes em produção: triagem de candidatos, geração de JDs, screening, onboarding kit, comp recommendations',
+            'Pilotos rodando — ChatGPT/Claude pra geração de conteúdo, ainda sem agente autônomo',
+            'Uso pessoal por algumas pessoas do time, sem processo formal',
+            'Avaliando ferramentas',
+            'Não usamos',
+          ]},
+        ],
+        nextSteps: [
+          'Comece com 1 caso de uso de IA generativa concreto (geração de JDs, resposta a candidatos). Mensure tempo economizado.',
+          'Implemente um warehouse central simples (BigQuery, Snowflake). Conecte HRIS + folha + ATS.',
+          'Adicione um modelo descritivo: clustering de colaboradores por flight risk. Use pra priorizar conversas de retenção.',
+          'Mova de descritivo pra preditivo. Modelo de flight risk em produção, alertando gestores.',
+          'Mantenha vanguarda: agentes autônomos em workflows, retreinamento contínuo, governance de IA estabelecida.',
+        ],
+      },
+    ],
+    answers: {
+      collection: [null, null, null],
+      governance: [null, null, null],
+      reporting:  [null, null, null],
+      analysis:   [null, null, null],
+      tech:       [null, null, null],
+    },
+    result: { overall: 0, byDimension: {} },
+    allAnswered() {
+      return this.dimensions.every(d => this.answers[d.id].every(a => a !== null));
+    },
+    calculate() {
+      const byDim = {};
+      let total = 0;
+      this.dimensions.forEach(d => {
+        const sum = this.answers[d.id].reduce((a, b) => a + b, 0);
+        const avg = Math.round(sum / this.answers[d.id].length);
+        byDim[d.id] = avg;
+        total += avg;
+      });
+      this.result = {
+        overall: Math.round(total / this.dimensions.length),
+        byDimension: byDim,
+      };
+      this.state = 'result';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    },
+    reset() {
+      this.dimensions.forEach(d => this.answers[d.id] = [null, null, null]);
+      this.result = { overall: 0, byDimension: {} };
+      this.state = 'intro';
+      this.activeTab = 0;
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    },
+    levelName(n) {
+      return ['', 'Ad-hoc', 'Operacional', 'Reporting', 'Analytics', 'AI-native'][n] || '—';
+    },
+    levelDescription(n) {
+      return {
+        1: 'RH em planilhas, dados fragmentados, cada análise é manual.',
+        2: 'Dados consolidados num HRIS. Reporting básico sob demanda.',
+        3: 'Dashboards publicados com cadência. Métricas core acompanhadas.',
+        4: 'Análises causa-raiz, segmentação, modelos preditivos básicos guiando decisões.',
+        5: 'Agentes assistentes, predição contínua, ação automatizada.',
+      }[n] || '';
+    },
+    levelColor(n) {
+      return ['', 'text-red-600', 'text-orange-500', 'text-yellow-600', 'text-lime-600', 'text-emerald-600'][n] || 'text-gray-500';
+    },
+  };
+}
+</script>
+
+</body>
+</html>

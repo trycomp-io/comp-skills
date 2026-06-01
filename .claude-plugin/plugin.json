@@ -1,0 +1,24 @@
+{
+  "name": "comp-skills",
+  "description": "Free Claude skills for HR & People leaders — built and maintained by Comp. 37 skills: calculators (CLT/PJ, total comp, custo demissão/turnover/folha, reajuste, stock options), strategic planning (workforce/headcount plan, HR initiative ROI, skills gap, people strategy/OKRs), HTML assessments (maturity, AI readiness, org design, leveling), data analyzers (paygap, comp ratio, promotion equity, regretted attrition, flight-risk forecast, people scorecard, manager effectiveness, DEI representation funnel, recruiting funnel, engagement, span of control), qualitative theme analysis, conversational generators (onboarding kit, JD, candidate screening, decision memo, CEO update, board slide, comp budget defense), a CHRO Chief of Staff orchestrator, and a comp-html-guidelines visual style-guide skill that every HTML output uses by default. All are dual-platform — they work in Claude Code (Python scripts + rich HTML) and in Claude Cowork (inline analysis + markdown, with HTML artifacts when available).",
+  "version": "0.6.3",
+  "author": {
+    "name": "Comp",
+    "url": "https://comp.vc?utm_source=claude-marketplace&utm_medium=plugin-manifest&utm_campaign=eam&utm_content=plugin-author-url"
+  },
+  "homepage": "https://comp.vc?utm_source=claude-marketplace&utm_medium=plugin-manifest&utm_campaign=eam&utm_content=plugin-homepage",
+  "repository": "https://github.com/trycomp-io/comp-skills",
+  "license": "MIT",
+  "keywords": [
+    "hr",
+    "people-analytics",
+    "compensation",
+    "pay-equity",
+    "brazil",
+    "clt",
+    "pj",
+    "salary",
+    "leveling",
+    "workforce"
+  ]
+}
