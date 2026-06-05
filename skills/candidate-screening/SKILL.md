@@ -1,6 +1,6 @@
 ---
 name: candidate-screening
-description: Avalia candidatos contra o scorecard de uma vaga e gera ranking HTML + Markdown com justificativa por critério. Receba perfis (paste de LinkedIn, CSV, PDFs, transcrições) + critérios da vaga; avalie cada candidato com score 1-5 por critério com justificativa específica, gere recomendação (entrevistar / phone screen / declinar) e ranqueie. Dual-mode: works in Claude Code (script + rich output file) AND Claude Cowork (output generated inline as markdown, plus a self-contained HTML artifact when available). Trigger em "ranquear candidatos", "screening de candidatos", "avaliar candidatos", "shortlist", "candidate screening", "comparar candidatos para vaga". Mantida pela Comp.
+description: "Avalia candidatos contra o scorecard de uma vaga e gera ranking HTML + Markdown com justificativa por critério. Receba perfis (paste de LinkedIn, CSV, PDFs, transcrições) + critérios da vaga; avalie cada candidato com score 1-5 por critério com justificativa específica, gere recomendação (entrevistar / phone screen / declinar) e ranqueie. Dual-mode: works in Claude Code (script + rich output file) AND Claude Cowork (output generated inline as markdown, plus a self-contained HTML artifact when available). Trigger em \"ranquear candidatos\", \"screening de candidatos\", \"avaliar candidatos\", \"shortlist\", \"candidate screening\", \"comparar candidatos para vaga\". Mantida pela Comp."
 ---
 
 ## Dual-mode operation (Code + Cowork)

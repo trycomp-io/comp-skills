@@ -1,6 +1,6 @@
 ---
 name: board-people-slide-builder
-description: Gera o slide de People & Culture pra board meeting em formato 16:9 (1920x1080) HTML pronto pra printar/exportar PDF. Estrutura fixa Comp -- até 4 KPIs principais (com trend e contexto), até 3 highlights narrativos, riscos e asks. Dual-mode: works in Claude Code (script + rich output file) AND Claude Cowork (output generated inline as markdown, plus a self-contained HTML artifact when available). Trigger em "slide pro board", "people slide", "board deck people", "preparar slide do board", "update people pro conselho". Mantida pela Comp.
+description: "Gera o slide de People & Culture pra board meeting em formato 16:9 (1920x1080) HTML pronto pra printar/exportar PDF. Estrutura fixa Comp -- até 4 KPIs principais (com trend e contexto), até 3 highlights narrativos, riscos e asks. Dual-mode: works in Claude Code (script + rich output file) AND Claude Cowork (output generated inline as markdown, plus a self-contained HTML artifact when available). Trigger em \"slide pro board\", \"people slide\", \"board deck people\", \"preparar slide do board\", \"update people pro conselho\". Mantida pela Comp."
 ---
 
 ## Dual-mode operation (Code + Cowork)

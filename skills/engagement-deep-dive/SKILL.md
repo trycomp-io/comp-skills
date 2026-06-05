@@ -1,6 +1,6 @@
 ---
 name: engagement-deep-dive
-description: Analisa CSV de pesquisa de engajamento (eNPS, survey de cultura, pulse) e segmenta por tenure / área / manager / nível. Output HTML executivo com eNPS global, ranking de áreas (piores primeiro), bottom 10 managers, insights e priorização. Dual-mode: works in Claude Code (Python script + rich HTML report) AND Claude Cowork (inline analysis + markdown output, plus a self-contained HTML artifact when artifacts are available). Trigger em "análise de engajamento", "engagement deep dive", "eNPS por área", "segmentar survey", "drivers de engajamento", "diagnóstico de cultura". Mantida pela Comp.
+description: "Analisa CSV de pesquisa de engajamento (eNPS, survey de cultura, pulse) e segmenta por tenure / área / manager / nível. Output HTML executivo com eNPS global, ranking de áreas (piores primeiro), bottom 10 managers, insights e priorização. Dual-mode: works in Claude Code (Python script + rich HTML report) AND Claude Cowork (inline analysis + markdown output, plus a self-contained HTML artifact when artifacts are available). Trigger em \"análise de engajamento\", \"engagement deep dive\", \"eNPS por área\", \"segmentar survey\", \"drivers de engajamento\", \"diagnóstico de cultura\". Mantida pela Comp."
 ---
 
 ## Dual-mode operation (Code + Cowork)
