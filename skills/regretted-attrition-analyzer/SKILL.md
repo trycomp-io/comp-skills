@@ -1,6 +1,6 @@
 ---
 name: regretted-attrition-analyzer
-description: "Analisa CSV de desligamentos e identifica padrões em regretted vs unregretted: top correlated factors (área, gestor, tenure, performance, nível), motivos declarados, insights pra ação. Output HTML executivo defensável pra CHRO levar pro CEO. Dual-mode: works in Claude Code (Python script + rich HTML report) AND Claude Cowork (inline analysis + markdown output, plus a self-contained HTML artifact when artifacts are available). Trigger em \"análise de regretted attrition\", \"padrões de turnover\", \"por que estamos perdendo gente\", \"investigar desligamentos\", \"regretted vs unregretted\", \"diagnóstico de turnover\". Mantida pela Comp."
+description: Analisa CSV de desligamentos e identifica padrões em regretted vs unregretted: top correlated factors (área, gestor, tenure, performance, nível), motivos declarados, insights pra ação. Output HTML executivo defensável pra CHRO levar pro CEO. Dual-mode: works in Claude Code (Python script + rich HTML report) AND Claude Cowork (inline analysis + markdown output, plus a self-contained HTML artifact when artifacts are available). Trigger em "análise de regretted attrition", "padrões de turnover", "por que estamos perdendo gente", "investigar desligamentos", "regretted vs unregretted", "diagnóstico de turnover". Mantida pela Comp.
 ---
 
 ## Dual-mode operation (Code + Cowork)

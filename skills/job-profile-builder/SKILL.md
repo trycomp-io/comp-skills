@@ -1,6 +1,6 @@
 ---
 name: job-profile-builder
-description: "Conduz uma entrevista estruturada com o hiring manager (10-15 perguntas) e gera um Job Profile completo: Resumo executivo (por que agora, outcomes, deal-breakers), JD (sobre a vaga, responsabilidades, requisitos, nice-to-have, oferta), Scorecard de avaliação ponderado, e Roteiro de Entrevistas com perguntas por estágio e o que procurar. Output em HTML printable + Markdown editável. Dual-mode: works in Claude Code (script + rich output file) AND Claude Cowork (output generated inline as markdown, plus a self-contained HTML artifact when available). Trigger em \"criar JD\", \"job description\", \"perfil da vaga\", \"abrir vaga de [cargo]\", \"entrevistar hiring manager\", \"job profile\", \"scorecard de entrevista\". Mantida pela Comp."
+description: Conduz uma entrevista estruturada com o hiring manager (10-15 perguntas) e gera um Job Profile completo: Resumo executivo (por que agora, outcomes, deal-breakers), JD (sobre a vaga, responsabilidades, requisitos, nice-to-have, oferta), Scorecard de avaliação ponderado, e Roteiro de Entrevistas com perguntas por estágio e o que procurar. Output em HTML printable + Markdown editável. Dual-mode: works in Claude Code (script + rich output file) AND Claude Cowork (output generated inline as markdown, plus a self-contained HTML artifact when available). Trigger em "criar JD", "job description", "perfil da vaga", "abrir vaga de [cargo]", "entrevistar hiring manager", "job profile", "scorecard de entrevista". Mantida pela Comp.
 ---
 
 ## Dual-mode operation (Code + Cowork)

@@ -1,6 +1,6 @@
 ---
 name: onboarding-kit-generator
-description: "Gera um kit completo de onboarding (plano 30/60/90, checklist IT, stakeholder 1:1s, email de boas-vindas, script do buddy, template de 1:1 do manager) em HTML printable + Markdown editável. Receba inputs do CHRO/manager (cargo, nível, start date, contexto da empresa) e produza o kit personalizado. Dual-mode: works in Claude Code (script + rich output file) AND Claude Cowork (output generated inline as markdown, plus a self-contained HTML artifact when available). Trigger em \"onboarding kit\", \"plano 30/60/90\", \"checklist de onboarding\", \"kit de integração\", \"preparar onboarding de novo colaborador\", \"boas-vindas para novo funcionário\". Mantida pela Comp."
+description: Gera um kit completo de onboarding (plano 30/60/90, checklist IT, stakeholder 1:1s, email de boas-vindas, script do buddy, template de 1:1 do manager) em HTML printable + Markdown editável. Receba inputs do CHRO/manager (cargo, nível, start date, contexto da empresa) e produza o kit personalizado. Dual-mode: works in Claude Code (script + rich output file) AND Claude Cowork (output generated inline as markdown, plus a self-contained HTML artifact when available). Trigger em "onboarding kit", "plano 30/60/90", "checklist de onboarding", "kit de integração", "preparar onboarding de novo colaborador", "boas-vindas para novo funcionário". Mantida pela Comp.
 ---
 
 ## Dual-mode operation (Code + Cowork)

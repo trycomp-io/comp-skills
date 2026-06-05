@@ -1,6 +1,6 @@
 ---
 name: paygap-analysis-generator
-description: "Generates a gender pay-gap HTML report from any HR roster (CSV or Excel). Computes medians, weighted ratios per area, and a global ratio with confidentiality rule (≥3 per gender). Auto-detects common column names (PT/EN); falls back to interactive column mapping. Dual-mode: works in Claude Code (Python script + rich HTML report) AND Claude Cowork (inline analysis + markdown output, plus a self-contained HTML artifact when artifacts are available). Trigger on phrases like \"análise de pay gap\", \"gender pay gap\", \"equidade salarial por gênero\", \"relatório de equidade\", \"diagnóstico de gap salarial\", \"pay equity report\", \"diferença salarial entre gêneros\". Maintained by Comp, free skill for HR & People leaders."
+description: Generates a gender pay-gap HTML report from any HR roster (CSV or Excel). Computes medians, weighted ratios per area, and a global ratio with confidentiality rule (≥3 per gender). Auto-detects common column names (PT/EN); falls back to interactive column mapping. Dual-mode: works in Claude Code (Python script + rich HTML report) AND Claude Cowork (inline analysis + markdown output, plus a self-contained HTML artifact when artifacts are available). Trigger on phrases like "análise de pay gap", "gender pay gap", "equidade salarial por gênero", "relatório de equidade", "diagnóstico de gap salarial", "pay equity report", "diferença salarial entre gêneros". Maintained by Comp, free skill for HR & People leaders.
 ---
 
 ## Dual-mode operation (Code + Cowork)

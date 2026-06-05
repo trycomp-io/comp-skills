@@ -1,6 +1,6 @@
 ---
 name: promotion-equity-analyzer
-description: "Analisa equidade de promoções por gênero. CSV de promoções + (opcional) CSV de população elegível → HTML executivo com taxas por gênero, gap F vs M, áreas com maior disparidade, transições de nível mais comuns, insights pra compliance e ação. Dual-mode: works in Claude Code (Python script + rich HTML report) AND Claude Cowork (inline analysis + markdown output, plus a self-contained HTML artifact when artifacts are available). Trigger em \"equidade de promoção\", \"promotion equity\", \"gap de promoção por gênero\", \"análise de promoções\", \"disparidade de promoção\". Mantida pela Comp."
+description: Analisa equidade de promoções por gênero. CSV de promoções + (opcional) CSV de população elegível → HTML executivo com taxas por gênero, gap F vs M, áreas com maior disparidade, transições de nível mais comuns, insights pra compliance e ação. Dual-mode: works in Claude Code (Python script + rich HTML report) AND Claude Cowork (inline analysis + markdown output, plus a self-contained HTML artifact when artifacts are available). Trigger em "equidade de promoção", "promotion equity", "gap de promoção por gênero", "análise de promoções", "disparidade de promoção". Mantida pela Comp.
 ---
 
 ## Dual-mode operation (Code + Cowork)

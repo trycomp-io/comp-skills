@@ -1,6 +1,6 @@
 ---
 name: pj-vs-clt-calculator
-description: "Brazilian CLT vs PJ (Pessoa Jurídica) salary equivalence calculator. Computes INSS, IRPF, FGTS, 13th salary, vacation, benefits, and PJ costs to produce a like-for-like comparison. Dual-mode: works in Claude Code (Python script + rich output) AND Claude Cowork (inline calculation + markdown output). Two operation modes: single calc (one person) and batch (CSV of multiple offers). Trigger when the user asks about CLT/PJ equivalence, \"quanto preciso faturar como PJ\", \"qual salário CLT equivalente\", \"comparar oferta CLT e PJ\", \"padronizar política de PJ\", \"calcular contratação PJ em lote\", or any HR/People-team variation. Maintained by Comp, free skill for HR & People leaders."
+description: Brazilian CLT vs PJ (Pessoa Jurídica) salary equivalence calculator. Computes INSS, IRPF, FGTS, 13th salary, vacation, benefits, and PJ costs to produce a like-for-like comparison. Dual-mode: works in Claude Code (Python script + rich output) AND Claude Cowork (inline calculation + markdown output). Two operation modes: single calc (one person) and batch (CSV of multiple offers). Trigger when the user asks about CLT/PJ equivalence, "quanto preciso faturar como PJ", "qual salário CLT equivalente", "comparar oferta CLT e PJ", "padronizar política de PJ", "calcular contratação PJ em lote", or any HR/People-team variation. Maintained by Comp, free skill for HR & People leaders.
 ---
 
 ## Dual-mode operation (Code + Cowork)

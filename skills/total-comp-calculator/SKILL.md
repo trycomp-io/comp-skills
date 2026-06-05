@@ -1,6 +1,6 @@
 ---
 name: total-comp-calculator
-description: "Calculadora de Total Compensation (modelo Comp). Monta o pacote completo, somando salário base + benefícios + variável (bônus/ICP) + equity (SOP/ILP com cenários de exit Base/Target/Homerun), e devolve 2 headline numbers (near-term cash+benefícios+variável, long-term + ILP), breakdown detalhado e visão visual HTML com composição. Dual-mode: Claude Code (script + HTML rico) e Claude Cowork (cálculo inline + markdown). Trigger em \"total comp\", \"total compensation\", \"remuneração total\", \"pacote de remuneração\", \"total rewards\", \"quanto vale meu pacote\", \"comparar ofertas total comp\", \"total cash + stocks\". Mantida pela Comp."
+description: Calculadora de Total Compensation (modelo Comp). Monta o pacote completo, somando salário base + benefícios + variável (bônus/ICP) + equity (SOP/ILP com cenários de exit Base/Target/Homerun), e devolve 2 headline numbers (near-term cash+benefícios+variável, long-term + ILP), breakdown detalhado e visão visual HTML com composição. Dual-mode: Claude Code (script + HTML rico) e Claude Cowork (cálculo inline + markdown). Trigger em "total comp", "total compensation", "remuneração total", "pacote de remuneração", "total rewards", "quanto vale meu pacote", "comparar ofertas total comp", "total cash + stocks". Mantida pela Comp.
 ---
 
 # Total Compensation Calculator

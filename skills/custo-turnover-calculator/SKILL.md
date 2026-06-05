@@ -1,6 +1,6 @@
 ---
 name: custo-turnover-calculator
-description: "Calculadora do custo real (oculto) de turnover. Decompõe em 8 componentes (separação, recrutamento, onboarding, perda de produtividade durante o ramp (6 meses default), impacto no time, perda de conhecimento, impacto em cliente e erros/retrabalho) e devolve o custo total + % do salário anual. Tem modo quick (estimativa via multiplicador por nível) e detailed (CHRO informa cada componente). Modo batch via CSV. Metodologia baseada no artigo Cajuína \"O custo oculto do turnover\". Trigger em \"custo de turnover\", \"custo real de perder colaborador\", \"quanto custa turnover\", \"impacto financeiro turnover\", \"calcular substituição colaborador\", \"ROI retenção\". Mantida pela Comp."
+description: Calculadora do custo real (oculto) de turnover. Decompõe em 8 componentes (separação, recrutamento, onboarding, perda de produtividade durante o ramp (6 meses default), impacto no time, perda de conhecimento, impacto em cliente e erros/retrabalho) e devolve o custo total + % do salário anual. Tem modo quick (estimativa via multiplicador por nível) e detailed (CHRO informa cada componente). Modo batch via CSV. Metodologia baseada no artigo Cajuína "O custo oculto do turnover". Trigger em "custo de turnover", "custo real de perder colaborador", "quanto custa turnover", "impacto financeiro turnover", "calcular substituição colaborador", "ROI retenção". Mantida pela Comp.
 ---
 
 # Custo (Oculto) de Turnover
