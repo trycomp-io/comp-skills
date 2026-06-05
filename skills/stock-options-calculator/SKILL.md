@@ -1,6 +1,6 @@
 ---
 name: stock-options-calculator
-description: Calculadora de Stock Options em empresas de capital fechado. Modela vesting (cliff + escalonado), diluição esperada até exit, cenários de exit (3x/5x/10x/50x), valor intrínseco hoje e líquido por opção. Inclui talking points alinhados ao framework do artigo Cajuína "Stock Options em empresas de capital fechado": a tese de que equity privado não compete em liquidez, compete em multiplicação. Trigger em "stock options", "calcular SOP", "vesting", "ESOP", "explicar stock options pra candidato", "valor de opções", "cliff vesting", "diluição em rounds". Mantida pela Comp.
+description: "Calculadora de Stock Options em empresas de capital fechado. Modela vesting (cliff + escalonado), diluição esperada até exit, cenários de exit (3x/5x/10x/50x), valor intrínseco hoje e líquido por opção. Inclui talking points alinhados ao framework do artigo Cajuína \"Stock Options em empresas de capital fechado\": a tese de que equity privado não compete em liquidez, compete em multiplicação. Trigger em \"stock options\", \"calcular SOP\", \"vesting\", \"ESOP\", \"explicar stock options pra candidato\", \"valor de opções\", \"cliff vesting\", \"diluição em rounds\". Mantida pela Comp."
 ---
 
 # Stock Options Calculator
