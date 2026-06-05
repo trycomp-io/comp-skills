@@ -1,6 +1,6 @@
 ---
 name: comp-ratio-analyzer
-description: Analisa compa-ratio (salário ÷ mediana da banda) de roster contra tabela salarial. Identifica clusters under/below/at/above/over, top 10 outliers por direção, custo mensal+anual pra equalizar abaixo da mediana, breakdown por nível. Output HTML executivo. Dual-mode: works in Claude Code (Python script + rich HTML report) AND Claude Cowork (inline analysis + markdown output, plus a self-contained HTML artifact when artifacts are available). Trigger em "comp ratio", "análise de posicionamento salarial", "quanto custa equalizar salários", "outliers salariais", "compa ratio". Mantida pela Comp.
+description: "Analisa compa-ratio (salário ÷ mediana da banda) de roster contra tabela salarial. Identifica clusters under/below/at/above/over, top 10 outliers por direção, custo mensal+anual pra equalizar abaixo da mediana, breakdown por nível. Output HTML executivo. Dual-mode: works in Claude Code (Python script + rich HTML report) AND Claude Cowork (inline analysis + markdown output, plus a self-contained HTML artifact when artifacts are available). Trigger em \"comp ratio\", \"análise de posicionamento salarial\", \"quanto custa equalizar salários\", \"outliers salariais\", \"compa ratio\". Mantida pela Comp."
 ---
 
 ## Dual-mode operation (Code + Cowork)

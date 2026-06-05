@@ -1,6 +1,6 @@
 ---
 name: comp-budget-defense-pack
-description: Gera pacote defensável pra CHRO levar ao CFO/CEO defendendo budget de comp/headcount. Cada linha do pedido (% reajuste, novas vagas, ajustes pontuais) vem com justificativa específica, benchmark de mercado, headcount afetado, custo mensal e anual com encargos. Inclui cenários alternativos (50%, 100%), riscos se negado e ask cristalino. Output HTML. Dual-mode: works in Claude Code (script + rich output file) AND Claude Cowork (output generated inline as markdown, plus a self-contained HTML artifact when available). Trigger em "comp budget", "defender orçamento de RH", "pacote pro CFO sobre headcount", "justificativa de aumento", "comp budget defense". Mantida pela Comp.
+description: "Gera pacote defensável pra CHRO levar ao CFO/CEO defendendo budget de comp/headcount. Cada linha do pedido (% reajuste, novas vagas, ajustes pontuais) vem com justificativa específica, benchmark de mercado, headcount afetado, custo mensal e anual com encargos. Inclui cenários alternativos (50%, 100%), riscos se negado e ask cristalino. Output HTML. Dual-mode: works in Claude Code (script + rich output file) AND Claude Cowork (output generated inline as markdown, plus a self-contained HTML artifact when available). Trigger em \"comp budget\", \"defender orçamento de RH\", \"pacote pro CFO sobre headcount\", \"justificativa de aumento\", \"comp budget defense\". Mantida pela Comp."
 ---
 
 ## Dual-mode operation (Code + Cowork)

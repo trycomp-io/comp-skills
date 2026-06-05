@@ -1,6 +1,6 @@
 ---
 name: hr-data-maturity-assessment
-description: Gera um assessment HTML interativo de maturidade de dados de RH em 5 níveis (Ad-hoc, Operacional, Reporting, Analytics, AI-native) × 5 dimensões (Coleta, Governança, Reporting, Análise, Tech & AI). 15 perguntas, ~5 minutos, output com nível por dimensão + roadmap personalizado pra avançar. 100% client-side. Dual-mode: works in Claude Code (interactive HTML assessment via script) AND Claude Cowork (conversational assessment + markdown scorecard, plus a self-contained HTML artifact when available). Trigger em "maturidade de dados de RH", "HR data maturity", "diagnóstico de people analytics", "qual o nível do meu RH em dados", "avaliação de people ops", "como estamos em analytics". Mantida pela Comp.
+description: "Gera um assessment HTML interativo de maturidade de dados de RH em 5 níveis (Ad-hoc, Operacional, Reporting, Analytics, AI-native) × 5 dimensões (Coleta, Governança, Reporting, Análise, Tech & AI). 15 perguntas, ~5 minutos, output com nível por dimensão + roadmap personalizado pra avançar. 100% client-side. Dual-mode: works in Claude Code (interactive HTML assessment via script) AND Claude Cowork (conversational assessment + markdown scorecard, plus a self-contained HTML artifact when available). Trigger em \"maturidade de dados de RH\", \"HR data maturity\", \"diagnóstico de people analytics\", \"qual o nível do meu RH em dados\", \"avaliação de people ops\", \"como estamos em analytics\". Mantida pela Comp."
 ---
 
 ## Dual-mode operation (Code + Cowork)

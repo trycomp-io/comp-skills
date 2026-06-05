@@ -1,6 +1,6 @@
 ---
 name: decision-memo-generator
-description: Gera memo estruturado de decisão pra qualquer people topic crítico que precisa ser comunicado/defendido. Estrutura: problema, contexto, opções (com prós/cons), recomendação com rationale, riscos, ask. Output HTML + MD editável. Trigger em "decision memo", "memo de decisão", "estruturar decisão de people", "documento de decisão", "memo pro CEO/board". Mantida pela Comp.
+description: "Gera memo estruturado de decisão pra qualquer people topic crítico que precisa ser comunicado/defendido. Estrutura: problema, contexto, opções (com prós/cons), recomendação com rationale, riscos, ask. Output HTML + MD editável. Trigger em \"decision memo\", \"memo de decisão\", \"estruturar decisão de people\", \"documento de decisão\", \"memo pro CEO/board\". Mantida pela Comp."
 ---
 
 # Decision Memo Generator

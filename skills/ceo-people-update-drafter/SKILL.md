@@ -1,6 +1,6 @@
 ---
 name: ceo-people-update-drafter
-description: Gera o update CHRO → CEO (mensal/trimestral) em formato 1-pager. Estruturado em resumo executivo, métricas-chave (com trend e contexto), principais movimentações (hires/promoções/exits), wins, riscos (com mitigação+owner) e asks pro CEO. Output: HTML + Markdown editável. Dual-mode: works in Claude Code (script + rich output file) AND Claude Cowork (output generated inline as markdown, plus a self-contained HTML artifact when available). Trigger em "update pro CEO", "people update", "report mensal de RH", "update trimestral de people", "report do CHRO". Mantida pela Comp.
+description: "Gera o update CHRO → CEO (mensal/trimestral) em formato 1-pager. Estruturado em resumo executivo, métricas-chave (com trend e contexto), principais movimentações (hires/promoções/exits), wins, riscos (com mitigação+owner) e asks pro CEO. Output: HTML + Markdown editável. Dual-mode: works in Claude Code (script + rich output file) AND Claude Cowork (output generated inline as markdown, plus a self-contained HTML artifact when available). Trigger em \"update pro CEO\", \"people update\", \"report mensal de RH\", \"update trimestral de people\", \"report do CHRO\". Mantida pela Comp."
 ---
 
 ## Dual-mode operation (Code + Cowork)
