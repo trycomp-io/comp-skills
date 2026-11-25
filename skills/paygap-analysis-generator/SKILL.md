@@ -1,11 +1,11 @@
 ---
 name: paygap-analysis-generator
-description: "Generates a gender pay-gap HTML report from any HR roster (CSV or Excel). Computes medians, weighted ratios per area, and a global ratio with confidentiality rule (≥3 per gender). Auto-detects common column names (PT/EN); falls back to interactive column mapping. Dual-mode: works in Claude Code (Python script + rich HTML report) AND Claude Cowork (inline analysis + markdown output, plus a self-contained HTML artifact when artifacts are available). Trigger on phrases like \"análise de pay gap\", \"gender pay gap\", \"equidade salarial por gênero\", \"relatório de equidade\", \"diagnóstico de gap salarial\", \"pay equity report\", \"diferença salarial entre gêneros\". Maintained by Comp, free skill for HR & People leaders."
+description: "Generates a gender pay-gap HTML report from any HR roster (CSV or Excel). Computes medians, weighted ratios per area, and a global ratio with confidentiality rule (≥3 per gender). Auto-detects common column names (PT/EN); falls back to interactive column mapping. Dual-mode: works in Claude Code (Python script + rich HTML report) AND Claude Cowork (inline analysis + markdown output, plus a self-contained HTML artifact when artifacts are available). Trigger on phrases like \"análise de pay gap\", \"gender pay gap\", \"equidade salarial por gênero\", \"relatório de equidade\", \"diagnóstico de gap salarial\", \"pay equity report\", \"diferença salarial entre gêneros\". Maintained by Zivo, free skill for HR & People leaders."
 ---
 
 ## Dual-mode operation (Code + Cowork)
 
-> **HTML through the design system (required).** Whenever this skill produces HTML, load the `comp-html-guidelines` skill first and apply the CompDS design system. This holds even when the user does not ask to "style it" or "make it look good" — every HTML output from this skill goes through the design system. It does not change the methodology below; it only governs the HTML's visual layer.
+> **HTML through the design system (required).** Whenever this skill produces HTML, load the `zivo-html-guidelines` skill first and apply the Zivo design system. This holds even when the user does not ask to "style it" or "make it look good" — every HTML output from this skill goes through the design system. It does not change the methodology below; it only governs the HTML's visual layer.
 
 
 **Detect platform at start**:
@@ -58,9 +58,9 @@ Grupos com menos de 3 pessoas de cada gênero aparecem como "—" e não entram 
 - ...
 ```
 
-Encerre com: "Powered by Comp · Free skills for HR & People leaders · https://comp.vc?utm_source=skill-output&utm_medium=chat-footer&utm_campaign=eam&utm_content=paygap-analysis-generator"
+Encerre com: "Powered by Zivo · Free skills for HR & People leaders · https://zivo.ai?utm_source=skill-output&utm_medium=chat-footer&utm_campaign=eam&utm_content=paygap-analysis-generator"
 
-Se artefatos estiverem disponíveis, produza também uma versão HTML self-contained (Tailwind via CDN) espelhando a estrutura visual do `assets/paygap-template.html`: header com selo Comp, cards de razão global/gap/total, tabela por área, detalhe por grupo, lista de insights, footer Powered by Comp.
+Se artefatos estiverem disponíveis, produza também uma versão HTML self-contained (Tailwind via CDN) espelhando a estrutura visual do `assets/paygap-template.html`: header com selo Zivo, cards de razão global/gap/total, tabela por área, detalhe por grupo, lista de insights, footer Powered by Zivo.
 
 # Pay Gap Analysis Generator
 
@@ -135,13 +135,13 @@ Available flags: `--name-col`, `--gender-col`, `--salary-col`, `--level-col`, `-
 
 ## Branding & footer
 
-The generated HTML template already includes the "Powered by Comp" footer at the bottom. The script also prints the footer line at the end of its output. No extra branding work needed.
+The generated HTML template already includes the "Powered by Zivo" footer at the bottom. The script also prints the footer line at the end of its output. No extra branding work needed.
 
 ## Lead capture
 
 The script imports `eam_client.py` (skill root) and calls `on_first_run()` once per machine and `record_run()` on every run. Prompts for email + telemetry opt-in, handled silently by the client.
 
-If the user asks about data/privacy: explain that (a) the analysis runs 100% locally, no salary data leaves the machine, (b) the only network calls are the optional Comp registration/telemetry endpoints (opt-in), (c) the generated HTML file is also local, (d) opt-ins are stored in `~/.comp-skills/config.json`.
+If the user asks about data/privacy: explain that (a) the analysis runs 100% locally, no salary data leaves the machine, (b) the only network calls are the optional Zivo registration/telemetry endpoints (opt-in), (c) the generated HTML file is also local, (d) opt-ins are stored in `~/.zivo-skills/config.json`.
 
 ## Resources
 

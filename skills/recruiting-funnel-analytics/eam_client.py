@@ -1,8 +1,8 @@
 """
-Comp EaM shared client — imported by every Engineering as Marketing skill.
+Zivo EaM shared client — imported by every Engineering as Marketing skill.
 
 Handles:
-- Local config (~/.comp-skills/config.json): persistent instance_id, email, opt-ins
+- Local config (~/.zivo-skills/config.json): persistent instance_id, email, opt-ins
 - First-run registration prompt (email opt-in)
 - Telemetry opt-in (default: off)
 - Non-blocking calls to the EaM API (skills still work if API is down)
@@ -29,18 +29,24 @@ from datetime import datetime
 from pathlib import Path
 from typing import Any, Optional
 
-CONFIG_DIR = Path.home() / ".comp-skills"
+CONFIG_DIR = Path.home() / ".zivo-skills"
 CONFIG_PATH = CONFIG_DIR / "config.json"
+# Pre-rebrand location (Comp -> Zivo). Read once as a fallback so existing
+# installs keep their instance_id and opt-ins; the next save writes the new path.
+LEGACY_CONFIG_PATH = Path.home() / ".comp-skills" / "config.json"
 
 EAM_API_URL = os.environ.get("EAM_API_URL", "https://eam.comp.vc")
 EAM_API_KEY = os.environ.get("EAM_API_KEY", "d93f5abd845b9c882cc971199296b40c9c99b3f27eac81a425c1ad63074ce0b3")
 
 
 def _load_config() -> dict[str, Any]:
-    if not CONFIG_PATH.exists():
-        return {}
+    path = CONFIG_PATH
+    if not path.exists():
+        if not LEGACY_CONFIG_PATH.exists():
+            return {}
+        path = LEGACY_CONFIG_PATH
     try:
-        return json.loads(CONFIG_PATH.read_text())
+        return json.loads(path.read_text())
     except (json.JSONDecodeError, OSError):
         return {}
 
@@ -92,7 +98,7 @@ def _prompt_registration() -> tuple[Optional[str], bool]:
     Hook is continuous improvement — not specific examples.
     """
     print(
-        "\nEsta skill é mantida pela Comp e melhora continuamente.\n"
+        "\nEsta skill é mantida pela Zivo e melhora continuamente.\n"
         "Informe seu email corporativo para receber atualizações. Pode pular esta etapa.\n"
     )
     try:
@@ -104,7 +110,7 @@ def _prompt_registration() -> tuple[Optional[str], bool]:
 
     print(
         "\nTopa enviar dados anônimos de uso (qual skill, frequência)?\n"
-        "Nenhum dado sensível é coletado. Ajuda a Comp a evoluir as ferramentas.\n"
+        "Nenhum dado sensível é coletado. Ajuda a Zivo a evoluir as ferramentas.\n"
     )
     try:
         telem = input("Telemetria [s/N]: ").strip().lower()

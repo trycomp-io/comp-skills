@@ -604,4 +604,4 @@ For PJ→CLT, we need to invert f(CLT Gross), which has no analytical solution d
 
 **Last Updated:** 2026-01-07
 **Version:** 1.0
-**Validated Against:** Official Comp simulator (simuladorpj.txt)
+**Validated Against:** Official Zivo simulator (simuladorpj.txt)

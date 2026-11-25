@@ -77,13 +77,13 @@ HTML = """<!DOCTYPE html>
 <h1 class="text-3xl font-extrabold text-slate-900">{period}</h1>
 <p class="text-sm text-slate-500 mt-1">{company} · CHRO → CEO</p>
 </div>
-<img src="https://i.ibb.co/KxDQ7BKQ/SIMBOLO-COMP-RGB-VERMELHO-G.png" alt="Comp" class="h-10 w-10">
+<img src="https://i.ibb.co/KxDQ7BKQ/SIMBOLO-COMP-RGB-VERMELHO-G.png" alt="Zivo" class="h-10 w-10">
 </header>
 
 {body}
 
 <footer style="margin-top:48px;padding:24px 0;border-top:1px solid #e5e7eb;text-align:center;font-family:'Inter',sans-serif;font-size:13px;color:#6b7280;">
-Powered by <a href="https://comp.vc?utm_source=skill-output&amp;utm_medium=html-footer&amp;utm_campaign=eam&amp;utm_content=ceo-people-update-drafter" style="color:#ff4456;text-decoration:none;font-weight:600;">Comp</a>
+Powered by <a href="https://zivo.ai?utm_source=skill-output&amp;utm_medium=html-footer&amp;utm_campaign=eam&amp;utm_content=ceo-people-update-drafter" style="color:#ff4456;text-decoration:none;font-weight:600;">Zivo</a>
 — Free skills for HR &amp; People leaders.
 </footer>
 </div></body></html>
@@ -196,7 +196,7 @@ def render_md(data):
         for a in asks:
             lines.append(f"- {a}")
 
-    lines.append("\n---\n— Powered by Comp · https://comp.vc?utm_source=skill-output&utm_medium=md-footer&utm_campaign=eam&utm_content=ceo-people-update-drafter")
+    lines.append("\n---\n— Powered by Zivo · https://zivo.ai?utm_source=skill-output&utm_medium=md-footer&utm_campaign=eam&utm_content=ceo-people-update-drafter")
     return "\n".join(lines)
 
 
@@ -232,7 +232,7 @@ def main():
             eam_client.record_run(skill_name=SKILL_NAME, skill_version=SKILL_VERSION)
         except Exception:
             pass
-    print("\n— Powered by Comp · Free skills for HR & People leaders · https://comp.vc?utm_source=skill-output&utm_medium=cli-footer&utm_campaign=eam&utm_content=ceo-people-update-drafter")
+    print("\n— Powered by Zivo · Free skills for HR & People leaders · https://zivo.ai?utm_source=skill-output&utm_medium=cli-footer&utm_campaign=eam&utm_content=ceo-people-update-drafter")
     return 0
 
 

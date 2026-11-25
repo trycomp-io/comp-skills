@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
 """
-total_comp.py — Calculadora de Total Compensation (modelo Comp).
+total_comp.py — Calculadora de Total Compensation (modelo Zivo).
 
 Monta o pacote completo de remuneração: salário base + benefícios + variável
 (bonus/ICP) + equity (SOP/ILP com cenários de exit). Produz 2 headline numbers
 (near-term e long-term) + breakdown detalhado + visão visual HTML.
 
-Estrutura baseada no modelo de Total Comp da Comp:
+Estrutura baseada no modelo de Total Comp da Zivo:
 - Near-term (cash + benefícios + variável)
 - Long-term (cash + benefícios + ICP + ILP no cenário target)
 
@@ -291,7 +291,7 @@ def render_html(r: dict, output: Path) -> None:
     html = f"""<!DOCTYPE html>
 <html lang="pt-BR"><head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Total Compensation — Comp</title>
+<title>Total Compensation — Zivo</title>
 <script src="https://cdn.tailwindcss.com/3.4.16"></script>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
@@ -322,7 +322,7 @@ def render_html(r: dict, output: Path) -> None:
 <h1 class="text-3xl font-extrabold text-slate-900">Pacote de remuneração</h1>
 <p class="text-sm text-slate-500 mt-2">Gerado em {datetime.now().strftime('%d/%m/%Y')}</p>
 </div>
-<img src="https://i.ibb.co/KxDQ7BKQ/SIMBOLO-COMP-RGB-VERMELHO-G.png" alt="Comp" class="h-10 w-10">
+<img src="https://i.ibb.co/KxDQ7BKQ/SIMBOLO-COMP-RGB-VERMELHO-G.png" alt="Zivo" class="h-10 w-10">
 </header>
 
 <div class="headline">
@@ -377,7 +377,7 @@ def render_html(r: dict, output: Path) -> None:
 {sop_block}
 
 <footer style="margin-top:48px;padding:24px 0;border-top:1px solid #e5e7eb;text-align:center;font-family:'Inter',sans-serif;font-size:13px;color:#6b7280;">
-Powered by <a href="https://comp.vc?utm_source=skill-output&amp;utm_medium=html-footer&amp;utm_campaign=eam&amp;utm_content=total-comp-calculator" style="color:#ff4456;text-decoration:none;font-weight:600;">Comp</a>
+Powered by <a href="https://zivo.ai?utm_source=skill-output&amp;utm_medium=html-footer&amp;utm_campaign=eam&amp;utm_content=total-comp-calculator" style="color:#ff4456;text-decoration:none;font-weight:600;">Zivo</a>
 — Free skills for HR &amp; People leaders.
 </footer>
 </div></body></html>
@@ -396,7 +396,7 @@ def _esc(s):
 
 
 def main() -> int:
-    p = argparse.ArgumentParser(description="Calculadora de Total Compensation (modelo Comp).")
+    p = argparse.ArgumentParser(description="Calculadora de Total Compensation (modelo Zivo).")
     p.add_argument("--base-mensal", type=float, required=True, help="Salário base mensal (R$)")
     p.add_argument("--meses", type=float, default=DEFAULT_MESES, help="Multiplicador anual (default 13,33 = 12+13º+1/3 férias)")
     # Bonus — uma das 3 formas
@@ -438,7 +438,7 @@ def main() -> int:
         except Exception:
             pass
 
-    print("\n— Powered by Comp · Free skills for HR & People leaders · https://comp.vc?utm_source=skill-output&utm_medium=cli-footer&utm_campaign=eam&utm_content=total-comp-calculator")
+    print("\n— Powered by Zivo · Free skills for HR & People leaders · https://zivo.ai?utm_source=skill-output&utm_medium=cli-footer&utm_campaign=eam&utm_content=total-comp-calculator")
     return 0
 
 

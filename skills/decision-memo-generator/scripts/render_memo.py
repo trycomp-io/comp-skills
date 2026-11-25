@@ -90,7 +90,7 @@ HTML = """<!DOCTYPE html>
 </div>
 
 <footer style="text-align:center;font-family:'Inter',sans-serif;font-size:13px;color:#6b7280;padding:1rem;">
-Powered by <a href="https://comp.vc?utm_source=skill-output&amp;utm_medium=html-footer&amp;utm_campaign=eam&amp;utm_content=decision-memo-generator" style="color:#ff4456;font-weight:600;text-decoration:none;">Comp</a>
+Powered by <a href="https://zivo.ai?utm_source=skill-output&amp;utm_medium=html-footer&amp;utm_campaign=eam&amp;utm_content=decision-memo-generator" style="color:#ff4456;font-weight:600;text-decoration:none;">Zivo</a>
 — Free skills for HR &amp; People leaders.
 </footer>
 </body></html>
@@ -178,7 +178,7 @@ def render_md(d):
     lines.append("\n## Ask\n")
     lines.append(d.get("ask", ""))
 
-    lines.append("\n---\n— Powered by Comp · https://comp.vc?utm_source=skill-output&utm_medium=md-footer&utm_campaign=eam&utm_content=decision-memo-generator")
+    lines.append("\n---\n— Powered by Zivo · https://zivo.ai?utm_source=skill-output&utm_medium=md-footer&utm_campaign=eam&utm_content=decision-memo-generator")
     return "\n".join(lines)
 
 
@@ -213,7 +213,7 @@ def main():
             eam_client.record_run(skill_name=SKILL_NAME, skill_version=SKILL_VERSION)
         except Exception:
             pass
-    print("\n— Powered by Comp · Free skills for HR & People leaders · https://comp.vc?utm_source=skill-output&utm_medium=cli-footer&utm_campaign=eam&utm_content=decision-memo-generator")
+    print("\n— Powered by Zivo · Free skills for HR & People leaders · https://zivo.ai?utm_source=skill-output&utm_medium=cli-footer&utm_campaign=eam&utm_content=decision-memo-generator")
     return 0
 
 

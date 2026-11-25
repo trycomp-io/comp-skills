@@ -90,7 +90,7 @@ HTML = """<!DOCTYPE html>
 
 <div class="footer">
 <div>{company} · People & Culture · {period}</div>
-<div>Powered by <a href="https://comp.vc?utm_source=skill-output&amp;utm_medium=html-footer&amp;utm_campaign=eam&amp;utm_content=board-people-slide-builder" style="color:#ff4456;font-weight:600;text-decoration:none;">Comp</a></div>
+<div>Powered by <a href="https://zivo.ai?utm_source=skill-output&amp;utm_medium=html-footer&amp;utm_campaign=eam&amp;utm_content=board-people-slide-builder" style="color:#ff4456;font-weight:600;text-decoration:none;">Zivo</a></div>
 </div>
 
 </div></body></html>
@@ -166,7 +166,7 @@ def main():
             eam_client.record_run(skill_name=SKILL_NAME, skill_version=SKILL_VERSION)
         except Exception:
             pass
-    print("\n— Powered by Comp · Free skills for HR & People leaders · https://comp.vc?utm_source=skill-output&utm_medium=cli-footer&utm_campaign=eam&utm_content=board-people-slide-builder")
+    print("\n— Powered by Zivo · Free skills for HR & People leaders · https://zivo.ai?utm_source=skill-output&utm_medium=cli-footer&utm_campaign=eam&utm_content=board-people-slide-builder")
     return 0
 
 

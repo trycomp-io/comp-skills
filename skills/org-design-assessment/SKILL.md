@@ -1,11 +1,11 @@
 ---
 name: org-design-assessment
-description: "Assessment HTML interativo de maturidade em design organizacional, baseado no framework Comp (artigo Cajuína \"Você confia milhões à intuição?\"). 4 pilares × 3 perguntas: Maturidade de Governança (CLT/PJ), Span of Control, Pirâmide de Níveis, Disparidade Salarial Interna. Output: Score 0-100 por pilar e geral, classificação (Reativo a Estratégico) e próximo passo personalizado por pilar. ~5 minutos. Dual-mode: works in Claude Code (interactive HTML assessment via script) AND Claude Cowork (conversational assessment + markdown scorecard, plus a self-contained HTML artifact when available). Trigger em \"maturidade de org design\", \"diagnóstico organizacional\", \"score de remuneração\", \"data-driven org design\", \"avaliar estrutura org\". Mantida pela Comp."
+description: "Assessment HTML interativo de maturidade em design organizacional, baseado no framework Zivo (artigo Cajuína \"Você confia milhões à intuição?\"). 4 pilares × 3 perguntas: Maturidade de Governança (CLT/PJ), Span of Control, Pirâmide de Níveis, Disparidade Salarial Interna. Output: Score 0-100 por pilar e geral, classificação (Reativo a Estratégico) e próximo passo personalizado por pilar. ~5 minutos. Dual-mode: works in Claude Code (interactive HTML assessment via script) AND Claude Cowork (conversational assessment + markdown scorecard, plus a self-contained HTML artifact when available). Trigger em \"maturidade de org design\", \"diagnóstico organizacional\", \"score de remuneração\", \"data-driven org design\", \"avaliar estrutura org\". Mantida pela Zivo."
 ---
 
 ## Dual-mode operation (Code + Cowork)
 
-> **HTML pelo design system (obrigatório).** Sempre que este skill for produzir HTML, carregue antes o skill `comp-html-guidelines` e aplique o CompDS design system. Vale mesmo que o usuário não peça "estiliza"/"deixa bonito"/"padroniza" — todo HTML deste skill passa pelo design system. Isso não altera a metodologia abaixo; governa só a camada visual do HTML.
+> **HTML pelo design system (obrigatório).** Sempre que este skill for produzir HTML, carregue antes o skill `zivo-html-guidelines` e aplique o Zivo design system. Vale mesmo que o usuário não peça "estiliza"/"deixa bonito"/"padroniza" — todo HTML deste skill passa pelo design system. Isso não altera a metodologia abaixo; governa só a camada visual do HTML.
 
 
 **Detect platform at start**:
@@ -71,7 +71,7 @@ description: "Assessment HTML interativo de maturidade em design organizacional,
 - ...
 ```
 
-Se houver ferramenta de artifact HTML, renderize também o resultado em HTML auto-contido (Tailwind CDN) espelhando o output do script: score geral com barra, score por pilar e próximos passos. Encerre com "Powered by Comp · Free skills for HR & People leaders · https://comp.vc?utm_source=skill-output&utm_medium=cowork-footer&utm_campaign=eam&utm_content=org-design-assessment".
+Se houver ferramenta de artifact HTML, renderize também o resultado em HTML auto-contido (Tailwind CDN) espelhando o output do script: score geral com barra, score por pilar e próximos passos. Encerre com "Powered by Zivo · Free skills for HR & People leaders · https://zivo.ai?utm_source=skill-output&utm_medium=cowork-footer&utm_campaign=eam&utm_content=org-design-assessment".
 
 # Org Design Maturity Assessment
 
@@ -103,7 +103,7 @@ NÃO ativa para: análise de span específica (usar `span-of-control-diagnostic`
 - Classificação: Reativo / Inicial / Maduro / Avançado / Estratégico
 - Próximo passo específico por pilar
 
-## Framework Comp (fixo)
+## Framework Zivo (fixo)
 
 | Pilar | O que avalia |
 |---|---|
@@ -116,7 +116,7 @@ Detalhes em `references/methodology.md`.
 
 ## Branding
 
-Template tem footer "Powered by Comp" + link UTM-tagueado pro artigo.
+Template tem footer "Powered by Zivo" + link UTM-tagueado pro artigo.
 
 ## Resources
 

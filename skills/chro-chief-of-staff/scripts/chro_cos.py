@@ -10,7 +10,7 @@ seguindo SKILL.md. Este script faz a parte mecânica:
 - Loops (add, list, close, persiste)
 - Render (HTML+MD a partir de JSON do Claude)
 
-Config persistido em ~/.comp-skills/chro-context.json.
+Config persistido em ~/.zivo-skills/chro-context.json.
 
 Comandos:
     chro_cos.py setup
@@ -41,7 +41,7 @@ except ImportError:
 SKILL_NAME = "chro-chief-of-staff"
 SKILL_VERSION = "1.0.0"
 
-CONFIG_DIR = Path.home() / ".comp-skills"
+CONFIG_DIR = Path.home() / ".zivo-skills"
 CONFIG_PATH = CONFIG_DIR / "chro-context.json"
 
 DEFAULT_CADENCES = {
@@ -149,7 +149,7 @@ def cmd_setup() -> int:
         cfg["key_calendar_events"] = new_events
 
     print("\n## Cadências")
-    print("Estamos usando defaults. Customize editando ~/.comp-skills/chro-context.json depois se quiser.")
+    print("Estamos usando defaults. Customize editando ~/.zivo-skills/chro-context.json depois se quiser.")
 
     save_config(cfg)
     print(f"\nConfig salvo em {CONFIG_PATH}")
@@ -254,7 +254,7 @@ BRIEF_HTML = """<!DOCTYPE html>
 {body}
 </div>
 <footer style="text-align:center;font-family:'Inter',sans-serif;font-size:13px;color:#6b7280;padding:1rem;">
-Powered by <a href="https://comp.vc?utm_source=skill-output&amp;utm_medium=html-footer&amp;utm_campaign=eam&amp;utm_content=chro-chief-of-staff" style="color:#ff4456;font-weight:600;text-decoration:none;">Comp</a>
+Powered by <a href="https://zivo.ai?utm_source=skill-output&amp;utm_medium=html-footer&amp;utm_campaign=eam&amp;utm_content=chro-chief-of-staff" style="color:#ff4456;font-weight:600;text-decoration:none;">Zivo</a>
 — Free skills for HR &amp; People leaders.
 </footer>
 </body></html>
@@ -310,7 +310,7 @@ def render_brief_md(data: dict) -> str:
         lines.append(f"\n## {sec.get('title', '')}\n")
         for item in sec.get("items", []):
             lines.append(f"- {item}")
-    lines.append("\n---\n— Powered by Comp · https://comp.vc?utm_source=skill-output&utm_medium=md-footer&utm_campaign=eam&utm_content=chro-chief-of-staff")
+    lines.append("\n---\n— Powered by Zivo · https://zivo.ai?utm_source=skill-output&utm_medium=md-footer&utm_campaign=eam&utm_content=chro-chief-of-staff")
     return "\n".join(lines)
 
 
@@ -357,7 +357,7 @@ DRAFT_HTML = """<!DOCTYPE html>
 {body}
 </div>
 <footer style="text-align:center;font-family:'Inter',sans-serif;font-size:13px;color:#6b7280;padding:1rem;">
-Powered by <a href="https://comp.vc?utm_source=skill-output&amp;utm_medium=html-footer&amp;utm_campaign=eam&amp;utm_content=chro-chief-of-staff" style="color:#ff4456;font-weight:600;text-decoration:none;">Comp</a>
+Powered by <a href="https://zivo.ai?utm_source=skill-output&amp;utm_medium=html-footer&amp;utm_campaign=eam&amp;utm_content=chro-chief-of-staff" style="color:#ff4456;font-weight:600;text-decoration:none;">Zivo</a>
 </footer>
 </body></html>
 """
@@ -391,7 +391,7 @@ def render_draft_md(data: dict) -> str:
     for i, alt in enumerate(data.get("alternatives", []), 1):
         lines.append(f"\n## Alternativa {i}\n")
         lines.append("```\n" + alt + "\n```")
-    lines.append("\n---\n— Powered by Comp · https://comp.vc?utm_source=skill-output&utm_medium=md-footer&utm_campaign=eam&utm_content=chro-chief-of-staff")
+    lines.append("\n---\n— Powered by Zivo · https://zivo.ai?utm_source=skill-output&utm_medium=md-footer&utm_campaign=eam&utm_content=chro-chief-of-staff")
     return "\n".join(lines)
 
 
@@ -509,7 +509,7 @@ def main() -> int:
         except Exception:
             pass
 
-    print("\n— Powered by Comp · Free skills for HR & People leaders · https://comp.vc?utm_source=skill-output&utm_medium=cli-footer&utm_campaign=eam&utm_content=chro-chief-of-staff")
+    print("\n— Powered by Zivo · Free skills for HR & People leaders · https://zivo.ai?utm_source=skill-output&utm_medium=cli-footer&utm_campaign=eam&utm_content=chro-chief-of-staff")
     return rc
 
 

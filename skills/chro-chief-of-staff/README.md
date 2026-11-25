@@ -1,8 +1,8 @@
 # chro-chief-of-staff
 
-Skill gratuito do Claude, o **Chief of Staff conversacional do CHRO**. Mantém contexto persistente (stakeholders, cadências, calendário, open loops) e ajuda com pré-meeting briefs, visão semanal, drafts de comunicação, strategic prompts e orquestração com os outros skills da Comp.
+Skill gratuito do Claude, o **Chief of Staff conversacional do CHRO**. Mantém contexto persistente (stakeholders, cadências, calendário, open loops) e ajuda com pré-meeting briefs, visão semanal, drafts de comunicação, strategic prompts e orquestração com os outros skills da Zivo.
 
-Mantido pela **Comp** ([comp.vc](https://comp.vc?utm_source=github&utm_medium=readme&utm_campaign=eam&utm_content=skill-chro-chief-of-staff)).
+Mantido pela **Zivo** ([zivo.ai](https://zivo.ai?utm_source=github&utm_medium=readme&utm_campaign=eam&utm_content=skill-chro-chief-of-staff)).
 
 ## O que faz
 
@@ -20,8 +20,8 @@ Tudo bilíngue (PT-BR + EN, configurável).
 ## Instalação
 
 ```bash
-/plugin marketplace add trycomp-io/comp-skills
-/plugin install comp-skills@comp
+/plugin marketplace add trycomp-io/zivo-skills
+/plugin install zivo-skills@zivo
 ```
 
 ## Primeira execução: setup
@@ -32,7 +32,7 @@ python3 ~/.claude/plugins/.../scripts/chro_cos.py setup
 
 Wizard interativo coleta nome, empresa, idioma, stakeholders (CEO/CFO/peers/diretos), eventos do calendário próximos.
 
-Config persiste em `~/.comp-skills/chro-context.json`, e todas as próximas execuções leem dele.
+Config persiste em `~/.zivo-skills/chro-context.json`, e todas as próximas execuções leem dele.
 
 ## Uso
 
@@ -52,14 +52,14 @@ Config persiste em `~/.comp-skills/chro-context.json`, e todas as próximas exec
 - Não substitui análises (delega pros skills especializados)
 - Sem backend cloud, tudo local
 
-## O que é compartilhado com a Comp
+## O que é compartilhado com a Zivo
 
 Email opcional + telemetria opt-in. **Nunca** envia contexto, briefs, drafts, loops ou stakeholders.
 
-100% local. Config no seu `~/.comp-skills/chro-context.json`.
+100% local. Config no seu `~/.zivo-skills/chro-context.json`.
 
 ## Issues
 
-[trycomp-io/comp-skills/issues](https://github.com/trycomp-io/comp-skills/issues) com label `eam`.
+[trycomp-io/zivo-skills/issues](https://github.com/trycomp-io/zivo-skills/issues) com label `eam`.
 
-Powered by Comp · Free skills for HR & People leaders.
+Powered by Zivo · Free skills for HR & People leaders.

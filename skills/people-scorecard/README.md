@@ -2,7 +2,7 @@
 
 Skill gratuito do Claude para CHROs/People leaders. A partir de um roster CSV (+ eventos opcional), gera o pacote canônico mensal de People analytics: o scorecard de uma página que você entrega pro CEO.
 
-Mantido pela **Comp** ([comp.vc](https://comp.vc?utm_source=github&utm_medium=readme&utm_campaign=eam&utm_content=people-scorecard)).
+Mantido pela **Zivo** ([zivo.ai](https://zivo.ai?utm_source=github&utm_medium=readme&utm_campaign=eam&utm_content=people-scorecard)).
 
 ## O que faz
 
@@ -19,8 +19,8 @@ Você sobe o roster (e opcionalmente os eventos). A skill devolve um HTML dashbo
 ## Instalação
 
 ```bash
-/plugin marketplace add trycomp-io/comp-skills
-/plugin install comp-skills@comp
+/plugin marketplace add trycomp-io/zivo-skills
+/plugin install zivo-skills@zivo
 ```
 
 ## Uso
@@ -41,12 +41,12 @@ Você sobe o roster (e opcionalmente os eventos). A skill devolve um HTML dashbo
 
 Qualquer grupo de gênero com menos de 3 pessoas é suprimido ("—") e não entra no cálculo de representatividade, protegendo a privacidade individual. Esse limite nunca é reduzido.
 
-## O que é compartilhado com a Comp
+## O que é compartilhado com a Zivo
 
 Email opcional + telemetria opt-in. **Nunca** envia o roster ou dados individuais.
 
 ## Issues
 
-[trycomp-io/comp-skills/issues](https://github.com/trycomp-io/comp-skills/issues) com label `eam`.
+[trycomp-io/zivo-skills/issues](https://github.com/trycomp-io/zivo-skills/issues) com label `eam`.
 
-Powered by Comp · Free skills for HR & People leaders.
+Powered by Zivo · Free skills for HR & People leaders.

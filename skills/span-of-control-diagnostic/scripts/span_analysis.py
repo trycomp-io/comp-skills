@@ -253,7 +253,7 @@ def analyze(rows: list[dict[str, Any]], cols: dict[str, str | None]) -> dict[str
 TEMPLATE = """<!DOCTYPE html>
 <html lang="pt-BR"><head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Span of Intelligence Diagnostic — Comp</title>
+<title>Span of Intelligence Diagnostic — Zivo</title>
 <script src="https://cdn.tailwindcss.com/3.4.16"></script>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
@@ -278,10 +278,10 @@ TEMPLATE = """<!DOCTYPE html>
 <div>
 <div class="text-xs uppercase tracking-wider text-rose-600 font-bold mb-1">Span of Intelligence</div>
 <h1 class="text-3xl font-extrabold text-slate-900">Diagnóstico organizacional</h1>
-<p class="text-slate-600 mt-1">Da quantidade de diretos pra inteligência que o time gera. Baseado no artigo da <a href="https://cajuina.org/principais/coluna-comp/de-span-of-control-a-span-of-intelligence/?utm_source=skill-output&utm_medium=html-link&utm_campaign=eam&utm_content=span-of-control-diagnostic" target="_blank" class="text-rose-600 font-semibold hover:underline">coluna Comp na Cajuína</a>.</p>
+<p class="text-slate-600 mt-1">Da quantidade de diretos pra inteligência que o time gera. Baseado no artigo da <a href="https://cajuina.org/principais/coluna-comp/de-span-of-control-a-span-of-intelligence/?utm_source=skill-output&utm_medium=html-link&utm_campaign=eam&utm_content=span-of-control-diagnostic" target="_blank" class="text-rose-600 font-semibold hover:underline">coluna Zivo na Cajuína</a>.</p>
 <p class="text-sm text-slate-500 mt-2" id="generated"></p>
 </div>
-<img src="https://i.ibb.co/KxDQ7BKQ/SIMBOLO-COMP-RGB-VERMELHO-G.png" alt="Comp" class="h-10 w-10">
+<img src="https://i.ibb.co/KxDQ7BKQ/SIMBOLO-COMP-RGB-VERMELHO-G.png" alt="Zivo" class="h-10 w-10">
 </header>
 
 <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-8">
@@ -317,7 +317,7 @@ TEMPLATE = """<!DOCTYPE html>
 </div>
 
 <footer style="margin-top:48px;padding:24px 0;border-top:1px solid #e5e7eb;text-align:center;font-family:'Inter',sans-serif;font-size:13px;color:#6b7280;">
-Powered by <a href="https://comp.vc?utm_source=skill-output&amp;utm_medium=html-footer&amp;utm_campaign=eam&amp;utm_content=span-of-control-diagnostic" style="color:#ff4456;text-decoration:none;font-weight:600;">Comp</a>
+Powered by <a href="https://zivo.ai?utm_source=skill-output&amp;utm_medium=html-footer&amp;utm_campaign=eam&amp;utm_content=span-of-control-diagnostic" style="color:#ff4456;text-decoration:none;font-weight:600;">Zivo</a>
 — Free skills for HR &amp; People leaders.
 </footer>
 </div>
@@ -430,7 +430,7 @@ def main() -> int:
         except Exception:
             pass
 
-    print("\n— Powered by Comp · Free skills for HR & People leaders · https://comp.vc?utm_source=skill-output&utm_medium=cli-footer&utm_campaign=eam&utm_content=span-of-control-diagnostic")
+    print("\n— Powered by Zivo · Free skills for HR & People leaders · https://zivo.ai?utm_source=skill-output&utm_medium=cli-footer&utm_campaign=eam&utm_content=span-of-control-diagnostic")
     return 0
 
 

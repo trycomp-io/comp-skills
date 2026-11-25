@@ -2,7 +2,7 @@
 
 Skill gratuito do Claude para CHROs/People leaders. Lê um roster CSV e devolve um score **explicável** de risco de saída (flight risk) por colaborador, sem caixa-preta: cada ponto de risco é atribuído a um fator transparente.
 
-Mantido pela **Comp** ([comp.vc](https://comp.vc?utm_source=github&utm_medium=readme&utm_campaign=eam&utm_content=flight-risk-forecast)).
+Mantido pela **Zivo** ([zivo.ai](https://zivo.ai?utm_source=github&utm_medium=readme&utm_campaign=eam&utm_content=flight-risk-forecast)).
 
 ## O que faz
 
@@ -28,8 +28,8 @@ Bandas: Baixo 0-25 · Médio 26-50 · Alto 51-75 · Crítico 76-100.
 ## Instalação
 
 ```bash
-/plugin marketplace add trycomp-io/comp-skills
-/plugin install comp-skills@comp
+/plugin marketplace add trycomp-io/zivo-skills
+/plugin install zivo-skills@zivo
 ```
 
 ## Uso
@@ -48,12 +48,12 @@ Mínimo: `name` + ao menos um fator. Colunas reconhecidas (PT/EN): `name`, `area
 
 Risco de saída é dado individual e sensível. O output é **apoio ao planejamento de retenção, não um veredito** sobre pessoas. Sempre acompanhe de conversa 1:1 com o gestor.
 
-## O que é compartilhado com a Comp
+## O que é compartilhado com a Zivo
 
 Email opcional + telemetria opt-in. **Nunca** envia o roster ou dados individuais.
 
 ## Issues
 
-[trycomp-io/comp-skills/issues](https://github.com/trycomp-io/comp-skills/issues) com label `eam`.
+[trycomp-io/zivo-skills/issues](https://github.com/trycomp-io/zivo-skills/issues) com label `eam`.
 
-Powered by Comp · Free skills for HR & People leaders.
+Powered by Zivo · Free skills for HR & People leaders.

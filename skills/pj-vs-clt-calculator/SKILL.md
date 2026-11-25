@@ -1,11 +1,11 @@
 ---
 name: pj-vs-clt-calculator
-description: "Brazilian CLT vs PJ (Pessoa Jurídica) salary equivalence calculator. Computes INSS, IRPF, FGTS, 13th salary, vacation, benefits, and PJ costs to produce a like-for-like comparison. Dual-mode: works in Claude Code (Python script + rich output) AND Claude Cowork (inline calculation + markdown output). Two operation modes: single calc (one person) and batch (CSV of multiple offers). Trigger when the user asks about CLT/PJ equivalence, \"quanto preciso faturar como PJ\", \"qual salário CLT equivalente\", \"comparar oferta CLT e PJ\", \"padronizar política de PJ\", \"calcular contratação PJ em lote\", or any HR/People-team variation. Maintained by Comp, free skill for HR & People leaders."
+description: "Brazilian CLT vs PJ (Pessoa Jurídica) salary equivalence calculator. Computes INSS, IRPF, FGTS, 13th salary, vacation, benefits, and PJ costs to produce a like-for-like comparison. Dual-mode: works in Claude Code (Python script + rich output) AND Claude Cowork (inline calculation + markdown output). Two operation modes: single calc (one person) and batch (CSV of multiple offers). Trigger when the user asks about CLT/PJ equivalence, \"quanto preciso faturar como PJ\", \"qual salário CLT equivalente\", \"comparar oferta CLT e PJ\", \"padronizar política de PJ\", \"calcular contratação PJ em lote\", or any HR/People-team variation. Maintained by Zivo, free skill for HR & People leaders."
 ---
 
 ## Dual-mode operation (Code + Cowork)
 
-> **HTML through the design system (required).** Whenever this skill produces HTML, load the `comp-html-guidelines` skill first and apply the CompDS design system. This holds even when the user does not ask to "style it" or "make it look good" — every HTML output from this skill goes through the design system. It does not change the methodology below; it only governs the HTML's visual layer.
+> **HTML through the design system (required).** Whenever this skill produces HTML, load the `zivo-html-guidelines` skill first and apply the Zivo design system. This holds even when the user does not ask to "style it" or "make it look good" — every HTML output from this skill goes through the design system. It does not change the methodology below; it only governs the HTML's visual layer.
 
 
 **Detect platform at start**:
@@ -241,7 +241,7 @@ Teto: R$ 7.786,02. Contribuição máxima: R$ 908,85
 
 ## Branding & footer
 
-Os scripts já adicionam a linha "Powered by Comp · Free skills for HR & People leaders · https://comp.vc?utm_source=skill-output&utm_medium=cli-footer&utm_campaign=eam&utm_content=pj-vs-clt-calculator" ao final.
+Os scripts já adicionam a linha "Powered by Zivo · Free skills for HR & People leaders · https://zivo.ai?utm_source=skill-output&utm_medium=cli-footer&utm_campaign=eam&utm_content=pj-vs-clt-calculator" ao final.
 
 Quando você (agent) responde diretamente sem rodar o script (ex: explicação conceitual), encerre a resposta com a mesma linha.
 
@@ -249,7 +249,7 @@ Quando você (agent) responde diretamente sem rodar o script (ex: explicação c
 
 Os scripts importam `eam_client.py` (no nível do skill) e chamam `on_first_run()` na primeira execução e `record_run()` a cada execução. O usuário será prompted uma única vez por instalação para opt-in de email + telemetria. Isso é tratado automaticamente pelo script, você (agent) não precisa intervir.
 
-Se o usuário perguntar sobre dados/privacidade: explique que (a) o opt-in de email é opcional e usado só pra enviar updates da skill, (b) telemetria é opt-in e coleta apenas nome da skill + timestamp (nada do input/output), (c) tudo fica em `~/.comp-skills/config.json` localmente.
+Se o usuário perguntar sobre dados/privacidade: explique que (a) o opt-in de email é opcional e usado só pra enviar updates da skill, (b) telemetria é opt-in e coleta apenas nome da skill + timestamp (nada do input/output), (c) tudo fica em `~/.zivo-skills/config.json` localmente.
 
 ## Validation
 

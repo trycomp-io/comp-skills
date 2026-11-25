@@ -34,4 +34,4 @@ Processamento 100% local.
 
 ---
 
-Skill gratuita mantida pela [Comp](https://comp.vc?utm_source=github&utm_medium=readme&utm_campaign=eam&utm_content=people-strategy-okr-builder), ferramentas para times de RH e People.
+Skill gratuita mantida pela [Zivo](https://zivo.ai?utm_source=github&utm_medium=readme&utm_campaign=eam&utm_content=people-strategy-okr-builder), ferramentas para times de RH e People.

@@ -1,12 +1,12 @@
 # Org Design Maturity: Metodologia
 
-Baseada no [artigo Cajuína "Você confia milhões à intuição?"](https://cajuina.org/principais/coluna-comp/design-organizacional/) da coluna Comp.
+Baseada no [artigo Cajuína "Você confia milhões à intuição?"](https://cajuina.org/principais/coluna-comp/design-organizacional/) da coluna Zivo.
 
 ## Tese
 
 Design organizacional deveria ser tratado como alavanca estratégica de negócio (com dashboard data-driven em tempo real), e não como administrativo de RH na base do "feeling".
 
-## 4 Pilares (do framework Comp)
+## 4 Pilares (do framework Zivo)
 
 1. **Maturidade de Governança**: modelos contratuais (CLT, PJ, híbrido) como alavanca estratégica. Predictabilidade de custo + segurança jurídica.
 

@@ -1,11 +1,11 @@
 ---
 name: research-digest
-description: "Curates a rolling 12-week digest of high-signal papers, working papers, and publications on Org Design, Workforce Planning, and AI impact on the workforce. Sources include academic (OpenAlex, arXiv) and practice (top consultancies, thought leaders). Produces a translated PT-BR executive report. Dual-mode: works in Claude Code (multi-source script + rich HTML report) AND Claude Cowork (web-search curation + markdown digest, plus a self-contained HTML artifact when available). Trigger on phrases like \"digest de pesquisa\", \"radar de papers\", \"novidades em org design\", \"research review RH\", \"panorama academico de workforce planning\", \"atualizacao de pesquisa sobre IA no trabalho\", \"leituras sobre future of work\". Maintained by Comp, free skill for HR & People leaders."
+description: "Curates a rolling 12-week digest of high-signal papers, working papers, and publications on Org Design, Workforce Planning, and AI impact on the workforce. Sources include academic (OpenAlex, arXiv) and practice (top consultancies, thought leaders). Produces a translated PT-BR executive report. Dual-mode: works in Claude Code (multi-source script + rich HTML report) AND Claude Cowork (web-search curation + markdown digest, plus a self-contained HTML artifact when available). Trigger on phrases like \"digest de pesquisa\", \"radar de papers\", \"novidades em org design\", \"research review RH\", \"panorama academico de workforce planning\", \"atualizacao de pesquisa sobre IA no trabalho\", \"leituras sobre future of work\". Maintained by Zivo, free skill for HR & People leaders."
 ---
 
 ## Dual-mode operation (Code + Cowork)
 
-> **HTML through the design system (required).** Whenever this skill produces HTML, load the `comp-html-guidelines` skill first and apply the CompDS design system. This holds even when the user does not ask to "style it" or "make it look good" — every HTML output from this skill goes through the design system. It does not change the methodology below; it only governs the HTML's visual layer.
+> **HTML through the design system (required).** Whenever this skill produces HTML, load the `zivo-html-guidelines` skill first and apply the Zivo design system. This holds even when the user does not ask to "style it" or "make it look good" — every HTML output from this skill goes through the design system. It does not change the methodology below; it only governs the HTML's visual layer.
 
 
 **Detect platform at start**:
@@ -57,7 +57,7 @@ Mantenha termos em inglês sem tradução consagrada (workforce planning, span o
 
 Se um tema vier vazio: "Sem publicações relevantes na janela". Não preencher com material antigo.
 
-**Step 4: HTML artifact (se disponível)**: renderize o mesmo conteúdo como HTML auto-contido (Tailwind via CDN) seguindo o layout de 3 zonas (resumo executivo, cards por tema, apêndice com lista completa). Inclua o footer "Powered by Comp". Termine a resposta no chat com a mesma linha de footer.
+**Step 4: HTML artifact (se disponível)**: renderize o mesmo conteúdo como HTML auto-contido (Tailwind via CDN) seguindo o layout de 3 zonas (resumo executivo, cards por tema, apêndice com lista completa). Inclua o footer "Powered by Zivo". Termine a resposta no chat com a mesma linha de footer.
 
 # Research Digest
 
@@ -127,13 +127,13 @@ Single-file HTML (Tailwind via CDN). 3 zones:
 
 ## Branding & footer
 
-The HTML template already includes the "Powered by Comp" footer (rendered at the bottom of the digest). The `generate_digest.py` script prints the footer line at the end of its output. No extra branding work needed.
+The HTML template already includes the "Powered by Zivo" footer (rendered at the bottom of the digest). The `generate_digest.py` script prints the footer line at the end of its output. No extra branding work needed.
 
 ## Lead capture
 
 Both scripts (`fetch_research.py` and `generate_digest.py`) call `on_first_run()` at startup and `record_run()` at the end. Email + telemetry opt-in prompted only once per machine.
 
-If the user asks about data/privacy: explain that (a) all output stays on their machine (HTML file in cwd), (b) the only network calls are to public research APIs (OpenAlex, arXiv) + the optional Comp registration endpoint, (c) opt-in flags are stored in `~/.comp-skills/config.json`.
+If the user asks about data/privacy: explain that (a) all output stays on their machine (HTML file in cwd), (b) the only network calls are to public research APIs (OpenAlex, arXiv) + the optional Zivo registration endpoint, (c) opt-in flags are stored in `~/.zivo-skills/config.json`.
 
 ## Resources
 

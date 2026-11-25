@@ -1,11 +1,11 @@
 ---
 name: hr-data-maturity-assessment
-description: "Gera um assessment HTML interativo de maturidade de dados de RH em 5 níveis (Ad-hoc, Operacional, Reporting, Analytics, AI-native) × 5 dimensões (Coleta, Governança, Reporting, Análise, Tech & AI). 15 perguntas, ~5 minutos, output com nível por dimensão + roadmap personalizado pra avançar. 100% client-side. Dual-mode: works in Claude Code (interactive HTML assessment via script) AND Claude Cowork (conversational assessment + markdown scorecard, plus a self-contained HTML artifact when available). Trigger em \"maturidade de dados de RH\", \"HR data maturity\", \"diagnóstico de people analytics\", \"qual o nível do meu RH em dados\", \"avaliação de people ops\", \"como estamos em analytics\". Mantida pela Comp."
+description: "Gera um assessment HTML interativo de maturidade de dados de RH em 5 níveis (Ad-hoc, Operacional, Reporting, Analytics, AI-native) × 5 dimensões (Coleta, Governança, Reporting, Análise, Tech & AI). 15 perguntas, ~5 minutos, output com nível por dimensão + roadmap personalizado pra avançar. 100% client-side. Dual-mode: works in Claude Code (interactive HTML assessment via script) AND Claude Cowork (conversational assessment + markdown scorecard, plus a self-contained HTML artifact when available). Trigger em \"maturidade de dados de RH\", \"HR data maturity\", \"diagnóstico de people analytics\", \"qual o nível do meu RH em dados\", \"avaliação de people ops\", \"como estamos em analytics\". Mantida pela Zivo."
 ---
 
 ## Dual-mode operation (Code + Cowork)
 
-> **HTML pelo design system (obrigatório).** Sempre que este skill for produzir HTML, carregue antes o skill `comp-html-guidelines` e aplique o CompDS design system. Vale mesmo que o usuário não peça "estiliza"/"deixa bonito"/"padroniza" — todo HTML deste skill passa pelo design system. Isso não altera a metodologia abaixo; governa só a camada visual do HTML.
+> **HTML pelo design system (obrigatório).** Sempre que este skill for produzir HTML, carregue antes o skill `zivo-html-guidelines` e aplique o Zivo design system. Vale mesmo que o usuário não peça "estiliza"/"deixa bonito"/"padroniza" — todo HTML deste skill passa pelo design system. Isso não altera a metodologia abaixo; governa só a camada visual do HTML.
 
 
 **Detect platform at start**:
@@ -105,7 +105,7 @@ description: "Gera um assessment HTML interativo de maturidade de dados de RH em
 - ... (uma recomendação por dimensão prioritária)
 ```
 
-Se houver ferramenta de artifact HTML, renderize também o resultado em HTML auto-contido (Tailwind CDN) espelhando o output do script: nível geral com gradiente, grade por dimensão e recomendações. Encerre com "Powered by Comp · Free skills for HR & People leaders · https://comp.vc?utm_source=skill-output&utm_medium=cowork-footer&utm_campaign=eam&utm_content=hr-data-maturity-assessment".
+Se houver ferramenta de artifact HTML, renderize também o resultado em HTML auto-contido (Tailwind CDN) espelhando o output do script: nível geral com gradiente, grade por dimensão e recomendações. Encerre com "Powered by Zivo · Free skills for HR & People leaders · https://zivo.ai?utm_source=skill-output&utm_medium=cowork-footer&utm_campaign=eam&utm_content=hr-data-maturity-assessment".
 
 # HR Data Maturity Assessment
 
@@ -170,7 +170,7 @@ O HTML mostra:
 
 ## Branding & footer
 
-O template já inclui o footer "Powered by Comp" + logos no header. Script imprime footer no CLI com UTM.
+O template já inclui o footer "Powered by Zivo" + logos no header. Script imprime footer no CLI com UTM.
 
 ## Lead capture
 

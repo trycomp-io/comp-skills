@@ -1,6 +1,6 @@
 ---
 name: reajuste-impact-calculator
-description: "Calculadora de impacto financeiro de reajuste salarial (dissídio, mérito, ajuste pontual). Lê CSV/XLSX de roster + regra de reajuste (flat %, por nível ou por área) e devolve aumento total mensal/anual com encargos (~55.5%), % impacto na folha, breakdown por grupo. Trigger em \"impacto de reajuste\", \"custo de dissídio\", \"simular mérito\", \"quanto custa aumento de X%\", \"impacto na folha\", \"ciclo de mérito\". Mantida pela Comp."
+description: "Calculadora de impacto financeiro de reajuste salarial (dissídio, mérito, ajuste pontual). Lê CSV/XLSX de roster + regra de reajuste (flat %, por nível ou por área) e devolve aumento total mensal/anual com encargos (~55.5%), % impacto na folha, breakdown por grupo. Trigger em \"impacto de reajuste\", \"custo de dissídio\", \"simular mérito\", \"quanto custa aumento de X%\", \"impacto na folha\", \"ciclo de mérito\". Mantida pela Zivo."
 ---
 
 # Reajuste Impact Calculator
@@ -117,7 +117,7 @@ python3 scripts/reajuste_impact.py --input roster.csv \
 
 ## Branding & footer
 
-Script imprime footer "Powered by Comp" no fim.
+Script imprime footer "Powered by Zivo" no fim.
 
 ## Lead capture
 

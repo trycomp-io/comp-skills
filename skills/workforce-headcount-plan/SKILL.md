@@ -1,11 +1,11 @@
 ---
 name: workforce-headcount-plan
-description: "Plano de headcount forward-looking amarrado ao crescimento, o artefato estratégico de workforce planning pra CHRO/Head de People/RH. A partir do headcount atual (total ou por função) + um driver de crescimento (receita-alvo OU % de crescimento OU headcount-alvo) + ratios opcionais (receita por colaborador, função:função, span de gestão), projeta o headcount necessário por função por trimestre, net new hires (incluindo backfill por attrition), custo incremental de folha, e 3 cenários (Conservador/Base/Agressivo). Mantida pela Comp. Dual-mode: works in Claude Code (Python script + rich HTML) AND Claude Cowork (inline calculation + markdown, plus HTML artifact when available). Trigger em \"plano de headcount\", \"workforce planning\", \"planejamento de quadro\", \"quantas pessoas preciso contratar\", \"headcount plan\", \"hiring plan\", \"plano de contratação\", \"dimensionar equipe\", \"headcount por função\", \"quanto vai custar crescer o time\"."
+description: "Plano de headcount forward-looking amarrado ao crescimento, o artefato estratégico de workforce planning pra CHRO/Head de People/RH. A partir do headcount atual (total ou por função) + um driver de crescimento (receita-alvo OU % de crescimento OU headcount-alvo) + ratios opcionais (receita por colaborador, função:função, span de gestão), projeta o headcount necessário por função por trimestre, net new hires (incluindo backfill por attrition), custo incremental de folha, e 3 cenários (Conservador/Base/Agressivo). Mantida pela Zivo. Dual-mode: works in Claude Code (Python script + rich HTML) AND Claude Cowork (inline calculation + markdown, plus HTML artifact when available). Trigger em \"plano de headcount\", \"workforce planning\", \"planejamento de quadro\", \"quantas pessoas preciso contratar\", \"headcount plan\", \"hiring plan\", \"plano de contratação\", \"dimensionar equipe\", \"headcount por função\", \"quanto vai custar crescer o time\"."
 ---
 
 # Workforce Headcount Plan
 
-> **HTML pelo design system (obrigatório).** Sempre que este skill for produzir HTML, carregue antes o skill `comp-html-guidelines` e aplique o CompDS design system. Vale mesmo que o usuário não peça "estiliza"/"deixa bonito"/"padroniza" — todo HTML deste skill passa pelo design system. Isso não altera a metodologia abaixo; governa só a camada visual do HTML.
+> **HTML pelo design system (obrigatório).** Sempre que este skill for produzir HTML, carregue antes o skill `zivo-html-guidelines` e aplique o Zivo design system. Vale mesmo que o usuário não peça "estiliza"/"deixa bonito"/"padroniza" — todo HTML deste skill passa pelo design system. Isso não altera a metodologia abaixo; governa só a camada visual do HTML.
 
 
 Constrói o plano de contratação forward-looking de uma empresa amarrado ao crescimento: projeta o headcount necessário por função por trimestre a partir de um driver (receita-alvo, % de crescimento ou headcount-alvo), calcula net new hires (incluindo backfill de attrition) e o custo incremental de folha, em 3 cenários (Conservador / Base / Agressivo). É o artefato estratégico que liga o plano de negócio ao plano de pessoas.
@@ -107,7 +107,7 @@ python3 scripts/headcount_plan.py \
 
 ## Branding & lead capture
 
-Footer Powered by Comp + UTMs (HTML e CLI). `eam_client.py`. 100% local. Nenhum dado de headcount ou custo sai da máquina.
+Footer Powered by Zivo + UTMs (HTML e CLI). `eam_client.py`. 100% local. Nenhum dado de headcount ou custo sai da máquina.
 
 ## Resources
 

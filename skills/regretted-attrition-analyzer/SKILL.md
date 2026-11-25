@@ -1,11 +1,11 @@
 ---
 name: regretted-attrition-analyzer
-description: "Analisa CSV de desligamentos e identifica padrões em regretted vs unregretted: top correlated factors (área, gestor, tenure, performance, nível), motivos declarados, insights pra ação. Output HTML executivo defensável pra CHRO levar pro CEO. Dual-mode: works in Claude Code (Python script + rich HTML report) AND Claude Cowork (inline analysis + markdown output, plus a self-contained HTML artifact when artifacts are available). Trigger em \"análise de regretted attrition\", \"padrões de turnover\", \"por que estamos perdendo gente\", \"investigar desligamentos\", \"regretted vs unregretted\", \"diagnóstico de turnover\". Mantida pela Comp."
+description: "Analisa CSV de desligamentos e identifica padrões em regretted vs unregretted: top correlated factors (área, gestor, tenure, performance, nível), motivos declarados, insights pra ação. Output HTML executivo defensável pra CHRO levar pro CEO. Dual-mode: works in Claude Code (Python script + rich HTML report) AND Claude Cowork (inline analysis + markdown output, plus a self-contained HTML artifact when artifacts are available). Trigger em \"análise de regretted attrition\", \"padrões de turnover\", \"por que estamos perdendo gente\", \"investigar desligamentos\", \"regretted vs unregretted\", \"diagnóstico de turnover\". Mantida pela Zivo."
 ---
 
 ## Dual-mode operation (Code + Cowork)
 
-> **HTML pelo design system (obrigatório).** Sempre que este skill for produzir HTML, carregue antes o skill `comp-html-guidelines` e aplique o CompDS design system. Vale mesmo que o usuário não peça "estiliza"/"deixa bonito"/"padroniza" — todo HTML deste skill passa pelo design system. Isso não altera a metodologia abaixo; governa só a camada visual do HTML.
+> **HTML pelo design system (obrigatório).** Sempre que este skill for produzir HTML, carregue antes o skill `zivo-html-guidelines` e aplique o Zivo design system. Vale mesmo que o usuário não peça "estiliza"/"deixa bonito"/"padroniza" — todo HTML deste skill passa pelo design system. Isso não altera a metodologia abaixo; governa só a camada visual do HTML.
 
 
 **Detect platform at start**:
@@ -61,9 +61,9 @@ Both modes apply the same methodology and the same confidentiality/privacy rules
 |---|---|
 ```
 
-Encerre com: "Powered by Comp · Free skills for HR & People leaders · https://comp.vc?utm_source=skill-output&utm_medium=chat-footer&utm_campaign=eam&utm_content=regretted-attrition-analyzer"
+Encerre com: "Powered by Zivo · Free skills for HR & People leaders · https://zivo.ai?utm_source=skill-output&utm_medium=chat-footer&utm_campaign=eam&utm_content=regretted-attrition-analyzer"
 
-Se artefatos estiverem disponíveis, produza também uma versão HTML self-contained (Tailwind via CDN) espelhando o template do script: cards de total/regretted/unregretted/%, card de insights, tabelas por área/tenure/performance/top gestores, tabela de motivos, footer Powered by Comp.
+Se artefatos estiverem disponíveis, produza também uma versão HTML self-contained (Tailwind via CDN) espelhando o template do script: cards de total/regretted/unregretted/%, card de insights, tabelas por área/tenure/performance/top gestores, tabela de motivos, footer Powered by Zivo.
 
 # Regretted Attrition Analyzer
 
@@ -115,7 +115,7 @@ Auto-detect funciona em PT/EN.
 
 ## Branding & footer
 
-Template HTML com footer Powered by Comp + UTMs.
+Template HTML com footer Powered by Zivo + UTMs.
 
 ## Lead capture
 

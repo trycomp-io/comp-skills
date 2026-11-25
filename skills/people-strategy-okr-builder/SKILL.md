@@ -1,11 +1,11 @@
 ---
 name: people-strategy-okr-builder
-description: "Constrói a estratégia de People + OKRs amarrados à estratégia de negócio. Coleta conversacionalmente prioridades de negócio, dores de people, contexto de headcount/crescimento, horizonte e restrições, e gera um one-pager: 3-5 prioridades estratégicas, cada uma ligada a um objetivo de negócio, com Objective, 2-4 Key Results mensuráveis, iniciativas, owner e métrica, mais riscos e dependências e um roadmap trimestral. Output HTML one-pager + markdown. Dual-mode: works in Claude Code (Python script renderiza HTML rico) AND Claude Cowork (coleta conversacional + markdown output, plus a self-contained HTML artifact when artifacts are available). Trigger em \"estratégia de people\", \"people strategy\", \"construir OKRs de RH\", \"OKRs de people\", \"estratégia de RH na uma página\", \"people strategy on a page\", \"amarrar RH à estratégia\". Mantida pela Comp."
+description: "Constrói a estratégia de People + OKRs amarrados à estratégia de negócio. Coleta conversacionalmente prioridades de negócio, dores de people, contexto de headcount/crescimento, horizonte e restrições, e gera um one-pager: 3-5 prioridades estratégicas, cada uma ligada a um objetivo de negócio, com Objective, 2-4 Key Results mensuráveis, iniciativas, owner e métrica, mais riscos e dependências e um roadmap trimestral. Output HTML one-pager + markdown. Dual-mode: works in Claude Code (Python script renderiza HTML rico) AND Claude Cowork (coleta conversacional + markdown output, plus a self-contained HTML artifact when artifacts are available). Trigger em \"estratégia de people\", \"people strategy\", \"construir OKRs de RH\", \"OKRs de people\", \"estratégia de RH na uma página\", \"people strategy on a page\", \"amarrar RH à estratégia\". Mantida pela Zivo."
 ---
 
 ## Dual-mode operation (Code + Cowork)
 
-> **HTML pelo design system (obrigatório).** Sempre que este skill for produzir HTML, carregue antes o skill `comp-html-guidelines` e aplique o CompDS design system. Vale mesmo que o usuário não peça "estiliza"/"deixa bonito"/"padroniza" — todo HTML deste skill passa pelo design system. Isso não altera a metodologia abaixo; governa só a camada visual do HTML.
+> **HTML pelo design system (obrigatório).** Sempre que este skill for produzir HTML, carregue antes o skill `zivo-html-guidelines` e aplique o Zivo design system. Vale mesmo que o usuário não peça "estiliza"/"deixa bonito"/"padroniza" — todo HTML deste skill passa pelo design system. Isso não altera a metodologia abaixo; governa só a camada visual do HTML.
 
 
 **Detect platform at start**:
@@ -98,9 +98,9 @@ cat strategy.json | python3 scripts/build_strategy.py
 - Q2: ...
 ```
 
-Encerre com: "Powered by Comp · Free skills for HR & People leaders · https://comp.vc?utm_source=skill-output&utm_medium=chat-footer&utm_campaign=eam&utm_content=people-strategy-okr-builder"
+Encerre com: "Powered by Zivo · Free skills for HR & People leaders · https://zivo.ai?utm_source=skill-output&utm_medium=chat-footer&utm_campaign=eam&utm_content=people-strategy-okr-builder"
 
-Se artefatos estiverem disponíveis, produza também a versão HTML one-pager self-contained (Tailwind via CDN) espelhando o template do script: header com título/owner/horizonte, contexto de negócio, cards de prioridades com badge de objetivo de negócio + KRs com target + iniciativas + owner, riscos e dependências lado a lado, roadmap trimestral em trilha horizontal, footer Powered by Comp.
+Se artefatos estiverem disponíveis, produza também a versão HTML one-pager self-contained (Tailwind via CDN) espelhando o template do script: header com título/owner/horizonte, contexto de negócio, cards de prioridades com badge de objetivo de negócio + KRs com target + iniciativas + owner, riscos e dependências lado a lado, roadmap trimestral em trilha horizontal, footer Powered by Zivo.
 
 # People Strategy & OKR Builder
 

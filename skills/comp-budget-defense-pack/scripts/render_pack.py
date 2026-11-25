@@ -99,7 +99,7 @@ HTML = """<!DOCTYPE html>
 <h1>{period}</h1>
 <p class="text-slate-600 mt-2">{ask_summary}</p>
 </div>
-<img src="https://i.ibb.co/KxDQ7BKQ/SIMBOLO-COMP-RGB-VERMELHO-G.png" alt="Comp" class="h-10 w-10">
+<img src="https://i.ibb.co/KxDQ7BKQ/SIMBOLO-COMP-RGB-VERMELHO-G.png" alt="Zivo" class="h-10 w-10">
 </header>
 
 <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 mb-6">
@@ -128,7 +128,7 @@ HTML = """<!DOCTYPE html>
 </div>
 
 <footer style="margin-top:48px;padding:24px 0;border-top:1px solid #e5e7eb;text-align:center;font-family:'Inter',sans-serif;font-size:13px;color:#6b7280;">
-Powered by <a href="https://comp.vc?utm_source=skill-output&amp;utm_medium=html-footer&amp;utm_campaign=eam&amp;utm_content=comp-budget-defense-pack" style="color:#ff4456;text-decoration:none;font-weight:600;">Comp</a>
+Powered by <a href="https://zivo.ai?utm_source=skill-output&amp;utm_medium=html-footer&amp;utm_campaign=eam&amp;utm_content=comp-budget-defense-pack" style="color:#ff4456;text-decoration:none;font-weight:600;">Zivo</a>
 — Free skills for HR &amp; People leaders.
 </footer>
 </div></body></html>
@@ -219,7 +219,7 @@ def main():
             eam_client.record_run(skill_name=SKILL_NAME, skill_version=SKILL_VERSION)
         except Exception:
             pass
-    print("\n— Powered by Comp · Free skills for HR & People leaders · https://comp.vc?utm_source=skill-output&utm_medium=cli-footer&utm_campaign=eam&utm_content=comp-budget-defense-pack")
+    print("\n— Powered by Zivo · Free skills for HR & People leaders · https://zivo.ai?utm_source=skill-output&utm_medium=cli-footer&utm_campaign=eam&utm_content=comp-budget-defense-pack")
     return 0
 
 

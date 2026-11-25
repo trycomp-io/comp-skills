@@ -1,4 +1,4 @@
-# Comp Level Methodology Reference
+# Zivo Level Methodology Reference
 
 ## 4 Pilares (2 perguntas cada = 8 total)
 

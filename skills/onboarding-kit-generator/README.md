@@ -2,7 +2,7 @@
 
 Skill gratuito do Claude para líderes de RH & People. Gera um kit completo de onboarding personalizado (plano 30/60/90, checklist IT, 1:1s estratégicos, email de boas-vindas, script do buddy, template de 1:1 do manager) em HTML printable + Markdown editável.
 
-Mantido pela **Comp** ([comp.vc](https://comp.vc?utm_source=github&utm_medium=readme&utm_campaign=eam&utm_content=skill-onboarding-kit-generator)).
+Mantido pela **Zivo** ([zivo.ai](https://zivo.ai?utm_source=github&utm_medium=readme&utm_campaign=eam&utm_content=skill-onboarding-kit-generator)).
 
 ## O que faz
 
@@ -13,8 +13,8 @@ Você descreve o cargo + contexto. Claude gera o conteúdo personalizado (não g
 ## Instalação
 
 ```bash
-/plugin marketplace add trycomp-io/comp-skills
-/plugin install comp-skills@comp
+/plugin marketplace add trycomp-io/zivo-skills
+/plugin install zivo-skills@zivo
 ```
 
 ## Uso
@@ -38,12 +38,12 @@ Quanto mais contexto você der (manager, buddy, particularidades do time), mais 
 | Script do Buddy | Role + cadência sugerida |
 | Template de 1:1 do Manager | Estrutura + perguntas-gatilho pras primeiras 4 semanas |
 
-## O que é compartilhado com a Comp
+## O que é compartilhado com a Zivo
 
 Email opcional + telemetria opt-in. **Nunca** envia conteúdo do kit ou dados do colaborador.
 
 ## Issues
 
-[trycomp-io/comp-skills/issues](https://github.com/trycomp-io/comp-skills/issues) com label `eam`.
+[trycomp-io/zivo-skills/issues](https://github.com/trycomp-io/zivo-skills/issues) com label `eam`.
 
-Powered by Comp · Free skills for HR & People leaders.
+Powered by Zivo · Free skills for HR & People leaders.

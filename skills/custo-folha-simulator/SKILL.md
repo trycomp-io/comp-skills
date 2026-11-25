@@ -1,6 +1,6 @@
 ---
 name: custo-folha-simulator
-description: "Simulador de custo total de folha de pagamento (Brasil). Inclui encargos patronais (INSS 20%, FGTS 8%, SAT 2%, Sistema S 5.8%), provisões (13º, férias+1/3, multa FGTS rescisória) e benefícios. Dois modos: detalhado (CSV de roster) ou estimativa (headcount + salário médio). NÃO substitui sistema de folha real; é simulação rápida pra orçamento, projeção, cenários. Trigger em \"custo de folha\", \"simulador de folha\", \"custo total empregador\", \"quanto custa folha de X colaboradores\", \"encargos sobre folha\", \"onerated factor\". Mantida pela Comp."
+description: "Simulador de custo total de folha de pagamento (Brasil). Inclui encargos patronais (INSS 20%, FGTS 8%, SAT 2%, Sistema S 5.8%), provisões (13º, férias+1/3, multa FGTS rescisória) e benefícios. Dois modos: detalhado (CSV de roster) ou estimativa (headcount + salário médio). NÃO substitui sistema de folha real; é simulação rápida pra orçamento, projeção, cenários. Trigger em \"custo de folha\", \"simulador de folha\", \"custo total empregador\", \"quanto custa folha de X colaboradores\", \"encargos sobre folha\", \"onerated factor\". Mantida pela Zivo."
 ---
 
 # Custo de Folha Simulator
@@ -127,7 +127,7 @@ Pra precisão fiscal use sua folha real. Aqui é simulação.
 
 ## Branding & footer
 
-Script imprime footer "Powered by Comp" com link UTM-tagueado no fim do CLI.
+Script imprime footer "Powered by Zivo" com link UTM-tagueado no fim do CLI.
 
 ## Lead capture
 

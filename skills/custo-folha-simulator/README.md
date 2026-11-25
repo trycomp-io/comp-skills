@@ -2,7 +2,7 @@
 
 Skill gratuito do Claude para líderes de RH & People brasileiros. Simulador de custo TOTAL empregador de folha de pagamento (salários + encargos + provisões + benefícios).
 
-Mantido pela **Comp** ([comp.vc](https://comp.vc?utm_source=github&utm_medium=readme&utm_campaign=eam&utm_content=skill-custo-folha-simulator)).
+Mantido pela **Zivo** ([zivo.ai](https://zivo.ai?utm_source=github&utm_medium=readme&utm_campaign=eam&utm_content=skill-custo-folha-simulator)).
 
 ## O que faz
 
@@ -18,8 +18,8 @@ Em segundos, calcula:
 ## Instalação
 
 ```bash
-/plugin marketplace add trycomp-io/comp-skills
-/plugin install comp-skills@comp
+/plugin marketplace add trycomp-io/zivo-skills
+/plugin install zivo-skills@zivo
 ```
 
 ## Uso
@@ -50,12 +50,12 @@ Em segundos, calcula:
 - Variações de Sistema S por setor
 - Benefícios com incidência tributária complexa (plano saúde como in natura, etc.)
 
-## O que é compartilhado com a Comp
+## O que é compartilhado com a Zivo
 
 Email opcional + telemetria opt-in. **Nunca** envia salários ou roster.
 
 ## Issues
 
-[trycomp-io/comp-skills/issues](https://github.com/trycomp-io/comp-skills/issues) com label `eam`.
+[trycomp-io/zivo-skills/issues](https://github.com/trycomp-io/zivo-skills/issues) com label `eam`.
 
-Powered by Comp · Free skills for HR & People leaders.
+Powered by Zivo · Free skills for HR & People leaders.

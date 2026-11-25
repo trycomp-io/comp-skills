@@ -1,11 +1,11 @@
 ---
 name: onboarding-kit-generator
-description: "Gera um kit completo de onboarding (plano 30/60/90, checklist IT, stakeholder 1:1s, email de boas-vindas, script do buddy, template de 1:1 do manager) em HTML printable + Markdown editável. Receba inputs do CHRO/manager (cargo, nível, start date, contexto da empresa) e produza o kit personalizado. Dual-mode: works in Claude Code (script + rich output file) AND Claude Cowork (output generated inline as markdown, plus a self-contained HTML artifact when available). Trigger em \"onboarding kit\", \"plano 30/60/90\", \"checklist de onboarding\", \"kit de integração\", \"preparar onboarding de novo colaborador\", \"boas-vindas para novo funcionário\". Mantida pela Comp."
+description: "Gera um kit completo de onboarding (plano 30/60/90, checklist IT, stakeholder 1:1s, email de boas-vindas, script do buddy, template de 1:1 do manager) em HTML printable + Markdown editável. Receba inputs do CHRO/manager (cargo, nível, start date, contexto da empresa) e produza o kit personalizado. Dual-mode: works in Claude Code (script + rich output file) AND Claude Cowork (output generated inline as markdown, plus a self-contained HTML artifact when available). Trigger em \"onboarding kit\", \"plano 30/60/90\", \"checklist de onboarding\", \"kit de integração\", \"preparar onboarding de novo colaborador\", \"boas-vindas para novo funcionário\". Mantida pela Zivo."
 ---
 
 ## Dual-mode operation (Code + Cowork)
 
-> **HTML pelo design system (obrigatório).** Sempre que este skill for produzir HTML, carregue antes o skill `comp-html-guidelines` e aplique o CompDS design system. Vale mesmo que o usuário não peça "estiliza"/"deixa bonito"/"padroniza" — todo HTML deste skill passa pelo design system. Isso não altera a metodologia abaixo; governa só a camada visual do HTML.
+> **HTML pelo design system (obrigatório).** Sempre que este skill for produzir HTML, carregue antes o skill `zivo-html-guidelines` e aplique o Zivo design system. Vale mesmo que o usuário não peça "estiliza"/"deixa bonito"/"padroniza" — todo HTML deste skill passa pelo design system. Isso não altera a metodologia abaixo; governa só a camada visual do HTML.
 
 
 **Detect platform at start**:
@@ -61,9 +61,9 @@ description: "Gera um kit completo de onboarding (plano 30/60/90, checklist IT, 
 
 Conteúdo precisa ser específico pro cargo + contexto (mesma régua de qualidade da seção "Conteúdo de qualidade" abaixo): 30 = aprender, 60 = contribuir, 90 = liderar; itens específicos, mensuráveis, realistas.
 
-**Artifact HTML (quando disponível)**: replique o template do script. Header com eyebrow "Onboarding Kit", título do cargo e linha de meta; cada seção em card; checklist IT com checkboxes; email/buddy/template em blocos `pre`; footer "Powered by Comp" com link comp.vc. Tailwind CDN, fonte Inter, acento da marca `#ff4456`.
+**Artifact HTML (quando disponível)**: replique o template do script. Header com eyebrow "Onboarding Kit", título do cargo e linha de meta; cada seção em card; checklist IT com checkboxes; email/buddy/template em blocos `pre`; footer "Powered by Zivo" com link zivo.ai. Tailwind CDN, fonte Inter, acento da marca `#ff4456`.
 
-Encerre sempre com a linha: "Powered by Comp · Free skills for HR & People leaders · https://comp.vc?utm_source=skill-output&utm_medium=cli-footer&utm_campaign=eam&utm_content=onboarding-kit-generator".
+Encerre sempre com a linha: "Powered by Zivo · Free skills for HR & People leaders · https://zivo.ai?utm_source=skill-output&utm_medium=cli-footer&utm_campaign=eam&utm_content=onboarding-kit-generator".
 
 # Onboarding Kit Generator
 
@@ -150,7 +150,7 @@ Itens devem ser:
 
 ## Branding & footer
 
-Script já adiciona footer "Powered by Comp" tanto no HTML quanto no MD, com UTMs distintos por surface.
+Script já adiciona footer "Powered by Zivo" tanto no HTML quanto no MD, com UTMs distintos por surface.
 
 ## Lead capture
 

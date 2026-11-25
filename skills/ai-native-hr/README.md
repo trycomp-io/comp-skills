@@ -1,8 +1,8 @@
 # ai-native-hr
 
-Skill gratuito do Claude para líderes de RH & People. Gera um assessment HTML interativo de prontidão para IA em RH, baseado no [AI Maturity Map da Comp](https://comp.vc/ai-maturity-map?utm_source=github&utm_medium=readme&utm_campaign=eam&utm_content=ai-maturity-map).
+Skill gratuito do Claude para líderes de RH & People. Gera um assessment HTML interativo de prontidão para IA em RH, baseado no [AI Maturity Map da Zivo](https://zivo.ai/pt/ai-maturity-map?utm_source=github&utm_medium=readme&utm_campaign=eam&utm_content=ai-maturity-map).
 
-Mantido pela **Comp** ([comp.vc](https://comp.vc?utm_source=github&utm_medium=readme&utm_campaign=eam&utm_content=skill-ai-native-hr)).
+Mantido pela **Zivo** ([zivo.ai](https://zivo.ai?utm_source=github&utm_medium=readme&utm_campaign=eam&utm_content=skill-ai-native-hr)).
 
 ## O que faz
 
@@ -17,11 +17,11 @@ Gera um HTML em ~3 segundos. CHRO/Head of People responde 15 perguntas em ~5 min
 ## Instalação
 
 ```bash
-/plugin marketplace add trycomp-io/comp-skills
-/plugin install comp-skills@comp
+/plugin marketplace add trycomp-io/zivo-skills
+/plugin install zivo-skills@zivo
 ```
 
-Instala o plugin `comp-skills` inteiro.
+Instala o plugin `zivo-skills` inteiro.
 
 ## Uso
 
@@ -34,7 +34,7 @@ Basta falar com o Claude. Exemplos:
 
 ## Framework
 
-### 5 Níveis (do AI Maturity Map da Comp)
+### 5 Níveis (do AI Maturity Map da Zivo)
 - **N1** Produtividade Individual
 - **N2** Produtividade do Time
 - **N3** Sistema Operacional Contextual
@@ -58,7 +58,7 @@ Basta falar com o Claude. Exemplos:
 - **Próxima fronteira** por área (o que faz mover N → N+1)
 - **Armadilha frequente** por área (erros típicos de cada transição)
 
-## O que é compartilhado com a Comp
+## O que é compartilhado com a Zivo
 
 Na primeira execução você será perguntado sobre:
 1. Seu email (opcional), usado apenas para notificar atualizações do skill.
@@ -68,6 +68,6 @@ O HTML em si **nunca** chama o servidor. É JS puro client-side.
 
 ## Issues
 
-Abra uma issue em [trycomp-io/comp-skills](https://github.com/trycomp-io/comp-skills/issues) com a label `eam`.
+Abra uma issue em [trycomp-io/zivo-skills](https://github.com/trycomp-io/zivo-skills/issues) com a label `eam`.
 
-Powered by Comp · Free skills for HR & People leaders.
+Powered by Zivo · Free skills for HR & People leaders.

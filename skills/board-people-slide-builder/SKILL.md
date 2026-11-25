@@ -1,11 +1,11 @@
 ---
 name: board-people-slide-builder
-description: "Gera o slide de People & Culture pra board meeting em formato 16:9 (1920x1080) HTML pronto pra printar/exportar PDF. Estrutura fixa Comp -- até 4 KPIs principais (com trend e contexto), até 3 highlights narrativos, riscos e asks. Dual-mode: works in Claude Code (script + rich output file) AND Claude Cowork (output generated inline as markdown, plus a self-contained HTML artifact when available). Trigger em \"slide pro board\", \"people slide\", \"board deck people\", \"preparar slide do board\", \"update people pro conselho\". Mantida pela Comp."
+description: "Gera o slide de People & Culture pra board meeting em formato 16:9 (1920x1080) HTML pronto pra printar/exportar PDF. Estrutura fixa Zivo -- até 4 KPIs principais (com trend e contexto), até 3 highlights narrativos, riscos e asks. Dual-mode: works in Claude Code (script + rich output file) AND Claude Cowork (output generated inline as markdown, plus a self-contained HTML artifact when available). Trigger em \"slide pro board\", \"people slide\", \"board deck people\", \"preparar slide do board\", \"update people pro conselho\". Mantida pela Zivo."
 ---
 
 ## Dual-mode operation (Code + Cowork)
 
-> **HTML pelo design system (obrigatório).** Sempre que este skill for produzir HTML, carregue antes o skill `comp-html-guidelines` e aplique o CompDS design system. Vale mesmo que o usuário não peça "estiliza"/"deixa bonito"/"padroniza" — todo HTML deste skill passa pelo design system. Isso não altera a metodologia abaixo; governa só a camada visual do HTML.
+> **HTML pelo design system (obrigatório).** Sempre que este skill for produzir HTML, carregue antes o skill `zivo-html-guidelines` e aplique o Zivo design system. Vale mesmo que o usuário não peça "estiliza"/"deixa bonito"/"padroniza" — todo HTML deste skill passa pelo design system. Isso não altera a metodologia abaixo; governa só a camada visual do HTML.
 
 
 **Detect platform at start**:
@@ -39,12 +39,12 @@ description: "Gera o slide de People & Culture pra board meeting em formato 16:9
 - Header: eyebrow em maiúsculas na cor `#ff4456` + título grande (peso 900).
 - Grid de 4 KPIs (`repeat(4,1fr)`): cada KPI com valor grande, seta de trend (up verde `#059669`, down vermelho `#dc2626`, flat cinza `#64748b`), label em maiúsculas e contexto.
 - Linha inferior em grid 2fr/1fr: coluna esquerda "Highlights" (cada um precedido de marcador, separados por linha); coluna direita "Riscos & Asks" em cards âmbar.
-- Footer: "{empresa} · People & Culture · {período}" à esquerda e "Powered by Comp" (link comp.vc) à direita.
+- Footer: "{empresa} · People & Culture · {período}" à esquerda e "Powered by Zivo" (link zivo.ai) à direita.
 - Tailwind CDN, fonte Inter, máx 4 KPIs, máx 3 highlights.
 
 Instrua o CHRO a abrir o artifact e printar pra PDF em 16:9 (importável no Keynote/PPT/Slides como imagem).
 
-Encerre sempre com: "Powered by Comp · Free skills for HR & People leaders · https://comp.vc?utm_source=skill-output&utm_medium=cli-footer&utm_campaign=eam&utm_content=board-people-slide-builder".
+Encerre sempre com: "Powered by Zivo · Free skills for HR & People leaders · https://zivo.ai?utm_source=skill-output&utm_medium=cli-footer&utm_campaign=eam&utm_content=board-people-slide-builder".
 
 # Board People Slide Builder
 
@@ -99,7 +99,7 @@ cat slide.json | python3 scripts/render_slide.py
 
 ## Branding
 
-Slide tem footer "Powered by Comp" + UTMs. Logo da empresa pode ser adicionado editando o HTML.
+Slide tem footer "Powered by Zivo" + UTMs. Logo da empresa pode ser adicionado editando o HTML.
 
 ## Lead capture
 

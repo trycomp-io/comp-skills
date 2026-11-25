@@ -5,7 +5,7 @@ decompondo em 8 componentes (separação, recrutamento, onboarding, perda de
 produtividade durante o ramp, impacto no time, perda de conhecimento, perda
 de satisfação do cliente e erros/retrabalho).
 
-Metodologia baseada no artigo "O custo oculto do turnover" da coluna Comp na
+Metodologia baseada no artigo "O custo oculto do turnover" da coluna Zivo na
 Cajuína (https://cajuina.org/principais/coluna-comp/o-custo-oculto-do-turnover/),
 com multiplicadores de referência por nível de cargo:
 
@@ -361,7 +361,7 @@ def main() -> int:
         except Exception:
             pass
 
-    print("\n— Powered by Comp · Free skills for HR & People leaders · https://comp.vc?utm_source=skill-output&utm_medium=cli-footer&utm_campaign=eam&utm_content=custo-turnover-calculator")
+    print("\n— Powered by Zivo · Free skills for HR & People leaders · https://zivo.ai?utm_source=skill-output&utm_medium=cli-footer&utm_campaign=eam&utm_content=custo-turnover-calculator")
     return 0
 
 
