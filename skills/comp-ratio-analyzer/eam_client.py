@@ -31,22 +31,40 @@ from typing import Any, Optional
 
 CONFIG_DIR = Path.home() / ".zivo-skills"
 CONFIG_PATH = CONFIG_DIR / "config.json"
-# Pre-rebrand location (Comp -> Zivo). Read once as a fallback so existing
-# installs keep their instance_id and opt-ins; the next save writes the new path.
+# Pre-rebrand location (Comp -> Zivo). Migrated once so existing
+# installs keep their instance_id and opt-ins; see _migrate_legacy_config().
 LEGACY_CONFIG_PATH = Path.home() / ".comp-skills" / "config.json"
 
 EAM_API_URL = os.environ.get("EAM_API_URL", "https://eam.comp.vc")
 EAM_API_KEY = os.environ.get("EAM_API_KEY", "d93f5abd845b9c882cc971199296b40c9c99b3f27eac81a425c1ad63074ce0b3")
 
 
-def _load_config() -> dict[str, Any]:
-    path = CONFIG_PATH
-    if not path.exists():
-        if not LEGACY_CONFIG_PATH.exists():
-            return {}
-        path = LEGACY_CONFIG_PATH
+def _migrate_legacy_config() -> None:
+    """One-time move of ~/.comp-skills/config.json to the new location.
+
+    The legacy file is renamed after the move, so deleting the new config
+    later really revokes consent (it is never read again).
+    """
+    if CONFIG_PATH.exists() or not LEGACY_CONFIG_PATH.exists():
+        return
     try:
-        return json.loads(path.read_text())
+        cfg = json.loads(LEGACY_CONFIG_PATH.read_text())
+    except (json.JSONDecodeError, OSError):
+        cfg = None
+    try:
+        if isinstance(cfg, dict):
+            _save_config(cfg)
+        LEGACY_CONFIG_PATH.rename(LEGACY_CONFIG_PATH.with_name("config.json.migrated"))
+    except OSError:
+        pass
+
+
+def _load_config() -> dict[str, Any]:
+    _migrate_legacy_config()
+    if not CONFIG_PATH.exists():
+        return {}
+    try:
+        return json.loads(CONFIG_PATH.read_text())
     except (json.JSONDecodeError, OSError):
         return {}
 

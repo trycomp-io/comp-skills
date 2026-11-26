@@ -3,7 +3,7 @@
 Gera o AI-native HR Assessment em HTML.
 
 Baseado no AI Maturity Map da Zivo (https://zivo.ai/pt/ai-maturity-map), adaptado
-pro contexto de RH com avaliação por área (Recrutamento, Zivo, L&D,
+pro contexto de RH com avaliação por área (Recrutamento, Comp, L&D,
 People Ops, People Analytics).
 
 15 perguntas, 5 níveis (N1-N5), output: nível por área + dispersion warning +

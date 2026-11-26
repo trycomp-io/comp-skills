@@ -111,7 +111,7 @@ O script imprime as colunas detectadas.
 
 ## Pesos do score (transparentes)
 
-Engajamento 35 · Zivo 25 · Estagnação 20 · Janela de churn 12 · Gestor com saídas 8. Bandas: Baixo 0-25, Médio 26-50, Alto 51-75, Crítico 76-100.
+Engajamento 35 · Compensação 25 · Estagnação 20 · Janela de churn 12 · Gestor com saídas 8. Bandas: Baixo 0-25, Médio 26-50, Alto 51-75, Crítico 76-100.
 
 ## Privacidade & ética
 

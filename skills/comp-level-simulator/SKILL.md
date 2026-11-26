@@ -79,7 +79,7 @@ Leitura: [1-2 frases sobre o que o nível significa e os pilares mais fortes/fra
 
 Se houver ferramenta de artifact HTML, renderize também o resultado em HTML auto-contido (Tailwind CDN + visual do `zivo-html-guidelines`: Marcellus + Source Sans 3, ink/off-white, um destaque vermelho, cantos retos, footer com wordmark Zivo) espelhando o output do script: nível em destaque, título, barra de progresso e breakdown por pilar. Encerre com a linha "Powered by Zivo · Free skills for HR & People leaders · https://zivo.ai?utm_source=skill-output&utm_medium=cowork-footer&utm_campaign=eam&utm_content=comp-level-simulator".
 
-# Zivo Level Simulator
+# Comp Level Simulator
 
 Generates a single-file HTML simulator that walks anyone (HR, managers, candidates) through 8 objective questions across 4 pillars and outputs a calibrated level (L1–L6) on the Zivo methodology. The HTML works offline once generated; share it via Drive, email, or host on any static site.
 

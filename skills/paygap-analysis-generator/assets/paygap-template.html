@@ -330,7 +330,7 @@ function renderReport() {
     });
     if (worstSlug) {
         const worst = areas.find(a => a.slug === worstSlug);
-        document.getElementById('summaryTitle').textContent = `${worst.name} tem o maior gap: ${fmtPct(worst.weightedRatio)}`;
+        document.getElementById('summaryTitle').textContent = `${worst.name} tem o maior gap: mulheres ganham ${(100 - worst.weightedRatio).toFixed(2)}% menos`;
     }
 
     // Summary Cards

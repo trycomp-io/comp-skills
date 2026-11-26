@@ -26,7 +26,7 @@ A Comp agora é Zivo, e o plugin mudou de nome junto. Se você instalou antes da
 /plugin install zivo-skills@zivo
 ```
 
-Suas preferências continuam valendo: na primeira execução, os skills leem `~/.comp-skills/config.json` e passam a gravar em `~/.zivo-skills/config.json`.
+Suas preferências continuam valendo: na primeira execução, os skills movem `~/.comp-skills/` (config e contexto do CHRO Chief of Staff) pra `~/.zivo-skills/`. Depois disso, apagar `~/.zivo-skills/config.json` revoga os opt-ins de vez.
 
 ## O que tem aqui (37 skills)
 

@@ -221,6 +221,18 @@ def _zivo_hero(captions, title: str, sub: str = "", aside: str = "") -> str:
 
 CONFIG_DIR = Path.home() / ".zivo-skills"
 CONFIG_PATH = CONFIG_DIR / "chro-context.json"
+# Pre-rebrand location (Comp -> Zivo): moved once to CONFIG_PATH on first load.
+LEGACY_CONFIG_PATH = Path.home() / ".comp-skills" / "chro-context.json"
+
+
+def _migrate_legacy_context() -> None:
+    if CONFIG_PATH.exists() or not LEGACY_CONFIG_PATH.exists():
+        return
+    try:
+        CONFIG_DIR.mkdir(parents=True, exist_ok=True)
+        LEGACY_CONFIG_PATH.replace(CONFIG_PATH)
+    except OSError:
+        pass
 
 DEFAULT_CADENCES = {
     "ceo_1on1": "weekly",
@@ -244,6 +256,7 @@ DEFAULT_LANGUAGE = "pt-BR"
 
 
 def load_config() -> dict:
+    _migrate_legacy_context()
     if not CONFIG_PATH.exists():
         return {}
     try:

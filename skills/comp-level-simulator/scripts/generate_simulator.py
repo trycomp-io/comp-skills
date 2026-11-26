@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Generate an interactive Zivo Level Simulator HTML file in the user's current
+Generate an interactive Comp Level Simulator HTML file in the user's current
 working directory. The simulator is a self-contained page (single file) that
 the user can open in a browser, share, or host anywhere.
 
@@ -40,7 +40,7 @@ def _slugify(label: str) -> str:
 
 def main() -> None:
     parser = argparse.ArgumentParser(
-        description="Generate a Zivo Level Simulator HTML file in the current directory."
+        description="Generate a Comp Level Simulator HTML file in the current directory."
     )
     parser.add_argument(
         "--output",
