@@ -22,8 +22,9 @@ from __future__ import annotations
 import json
 import os
 import sys
-import urllib.request
 import urllib.error
+import urllib.parse
+import urllib.request
 import uuid
 from datetime import datetime
 from pathlib import Path
@@ -37,6 +38,7 @@ LEGACY_CONFIG_PATH = Path.home() / ".comp-skills" / "config.json"
 MIGRATION_MARKER = CONFIG_DIR / ".legacy-migrated"
 
 EAM_API_URL = os.environ.get("EAM_API_URL", "https://eam.comp.vc")
+TRUSTED_API_DOMAINS = ("zivo.ai", "comp.vc")
 EAM_API_KEY = os.environ.get("EAM_API_KEY", "d93f5abd845b9c882cc971199296b40c9c99b3f27eac81a425c1ad63074ce0b3")
 
 
@@ -113,20 +115,39 @@ def _post(path: str, body: dict[str, Any]) -> Optional[dict[str, Any]]:
     """Best-effort POST. Returns None on any failure (never raises)."""
     if not EAM_API_KEY:
         return None
-    req = urllib.request.Request(
-        f"{EAM_API_URL}{path}",
-        data=json.dumps(body).encode("utf-8"),
-        headers={
-            "Content-Type": "application/json",
-            "x-api-key": EAM_API_KEY,
-        },
-        method="POST",
+    url = f"{EAM_API_URL}{path}"
+    data = json.dumps(body).encode("utf-8")
+    # urllib does not follow 307/308 on POST; follow one hop, only to our own hosts,
+    # so a host move on the API side does not silently drop registrations.
+    for _ in range(2):
+        req = urllib.request.Request(
+            url,
+            data=data,
+            headers={
+                "Content-Type": "application/json",
+                "x-api-key": EAM_API_KEY,
+            },
+            method="POST",
+        )
+        try:
+            with urllib.request.urlopen(req, timeout=5) as resp:
+                return json.loads(resp.read().decode("utf-8"))
+        except urllib.error.HTTPError as err:
+            location = err.headers.get("Location", "") if err.code in (307, 308) else ""
+            if not _is_trusted_api_url(location):
+                return None
+            url = location
+        except (urllib.error.URLError, TimeoutError, OSError, ValueError):
+            return None
+    return None
+
+
+def _is_trusted_api_url(url: str) -> bool:
+    parsed = urllib.parse.urlparse(url)
+    host = (parsed.hostname or "").lower()
+    return parsed.scheme == "https" and any(
+        host == domain or host.endswith("." + domain) for domain in TRUSTED_API_DOMAINS
     )
-    try:
-        with urllib.request.urlopen(req, timeout=5) as resp:
-            return json.loads(resp.read().decode("utf-8"))
-    except (urllib.error.URLError, urllib.error.HTTPError, TimeoutError, OSError):
-        return None
 
 
 def _prompt_registration() -> tuple[Optional[str], bool]:

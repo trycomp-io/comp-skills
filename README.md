@@ -2,7 +2,7 @@
 
 Skills gratuitos do Claude para líderes de RH & People, criados e mantidos pela [Zivo](https://zivo.ai?utm_source=github&utm_medium=readme&utm_campaign=eam&utm_content=mirror-readme-intro).
 
-**Versão atual: v0.7.0.** 37 skills, **todos** funcionam em Claude Code e Claude Cowork. [Ver release →](https://github.com/trycomp-io/zivo-skills/releases/latest)
+**Versão atual: v0.7.1.** 37 skills, **todos** funcionam em Claude Code e Claude Cowork. [Ver release →](https://github.com/trycomp-io/zivo-skills/releases/latest)
 
 ## Instalação
 
