@@ -57,7 +57,7 @@ Mantenha termos em inglês sem tradução consagrada (workforce planning, span o
 
 Se um tema vier vazio: "Sem publicações relevantes na janela". Não preencher com material antigo.
 
-**Step 4: HTML artifact (se disponível)**: renderize o mesmo conteúdo como HTML auto-contido (Tailwind via CDN) seguindo o layout de 3 zonas (resumo executivo, cards por tema, apêndice com lista completa). Inclua o footer "Powered by Zivo". Termine a resposta no chat com a mesma linha de footer.
+**Step 4: HTML artifact (se disponível)**: renderize o mesmo conteúdo como HTML auto-contido (visual do `zivo-html-guidelines`: Marcellus + Source Sans 3, ink/off-white, um destaque vermelho, cantos retos, footer com o wordmark Zivo) seguindo o layout de 3 zonas (resumo executivo, cards por tema, apêndice com lista completa). Inclua o footer "Powered by Zivo". Termine a resposta no chat com a mesma linha de footer.
 
 # Research Digest
 
@@ -112,7 +112,7 @@ python3 scripts/generate_digest.py \
   --output ./research-digest-$(date +%Y-%m-%d).html
 ```
 
-Single-file HTML (Tailwind via CDN). 3 zones:
+Single-file HTML (inline Zivo CSS, the `zivo-html-guidelines` visual: Marcellus + Source Sans 3, ink/off-white, one red highlight, square corners, Zivo wordmark footer). 3 zones:
 1. Executive summary (top 5 reads + emerging themes)
 2. Cards grouped by theme (Org Design / Workforce Planning / AI & Workforce)
 3. Appendix with full list, filterable by source/type
@@ -141,7 +141,7 @@ If the user asks about data/privacy: explain that (a) all output stays on their 
 |---|---|
 | `scripts/fetch_research.py` | Multi-source fetcher with dedup |
 | `scripts/generate_digest.py` | Renders HTML from translated JSON |
-| `assets/template.html` | Self-contained HTML template (Tailwind) |
+| `assets/template.html` | Self-contained HTML template (the `zivo-html-guidelines` visual: Marcellus + Source Sans 3, ink/off-white, one red highlight, square corners, Zivo wordmark footer) |
 | `eam_client.py` | Lead capture + telemetry (synced from `eam/shared/`) |
 | `references/sources.md` | Catalog of sources covered, rationale, limits |
 | `references/queries.md` | Search strings + topic categories |

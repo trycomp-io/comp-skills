@@ -12,7 +12,7 @@ Constrói o business case financeiro de uma iniciativa de People (custos vs bene
 
 ## Dual-mode operation (Code + Cowork)
 
-- **Claude Code**: `python3 scripts/initiative_roi.py ... --output roi.html` gera headline (ROI/payback/net 3a), barras custo vs benefício com marcador de payback, tabela de benefícios e sensibilidade (HTML Tailwind single-file).
+- **Claude Code**: `python3 scripts/initiative_roi.py ... --output roi.html` gera headline (ROI/payback/net 3a), barras custo vs benefício com nota de payback, tabela de benefícios e sensibilidade (HTML single-file no visual do `zivo-html-guidelines`: Marcellus + Source Sans 3, ink/off-white, um único destaque vermelho, cantos retos, footer com wordmark Zivo).
 - **Claude Cowork**: cálculo inline com as fórmulas da seção "Cálculo inline", output em markdown. Gere o HTML quando o ambiente permitir rodar o script; caso contrário, entregue a tabela markdown.
 
 ## Quando usar

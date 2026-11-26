@@ -10,7 +10,7 @@ description: "Gera um kit completo de onboarding (plano 30/60/90, checklist IT, 
 
 **Detect platform at start**:
 - If you have the `Bash` tool AND can run Python → use **script mode** (writes the rich HTML/markdown file). Existing workflow below.
-- Otherwise (e.g., Claude Cowork) → use **inline mode**: gather the same inputs conversationally, then produce the output directly in chat as markdown following the structure below. If an HTML artifact tool is available, ALSO render a self-contained HTML version (Tailwind CDN) matching the script's template (recomendado aqui porque o kit é distribuído/printado).
+- Otherwise (e.g., Claude Cowork) → use **inline mode**: gather the same inputs conversationally, then produce the output directly in chat as markdown following the structure below. If an HTML artifact tool is available, ALSO render a self-contained HTML version (zivo-html-guidelines visual) matching the script's template (recomendado aqui porque o kit é distribuído/printado).
 
 ## Inline generation logic (Cowork mode)
 
@@ -61,7 +61,7 @@ description: "Gera um kit completo de onboarding (plano 30/60/90, checklist IT, 
 
 Conteúdo precisa ser específico pro cargo + contexto (mesma régua de qualidade da seção "Conteúdo de qualidade" abaixo): 30 = aprender, 60 = contribuir, 90 = liderar; itens específicos, mensuráveis, realistas.
 
-**Artifact HTML (quando disponível)**: replique o template do script. Header com eyebrow "Onboarding Kit", título do cargo e linha de meta; cada seção em card; checklist IT com checkboxes; email/buddy/template em blocos `pre`; footer "Powered by Zivo" com link zivo.ai. Tailwind CDN, fonte Inter, acento da marca `#ff4456`.
+**Artifact HTML (quando disponível)**: replique o template do script. Hero ink com header row ("Zivo · Onboarding kit · empresa · início"), título "Onboarding de {cargo}" e linha de meta; cada seção em card branco; plano 30/60/90 em três colunas; checklist IT com checkboxes quadrados; email/buddy/template em blocos `pre`; footer com wordmark Zivo e link zivo.ai. Segue o visual do `zivo-html-guidelines` (Marcellus + Source Sans 3, ink/off-white, um único destaque vermelho, cantos retos, footer com wordmark Zivo).
 
 Encerre sempre com a linha: "Powered by Zivo · Free skills for HR & People leaders · https://zivo.ai?utm_source=skill-output&utm_medium=cli-footer&utm_campaign=eam&utm_content=onboarding-kit-generator".
 
@@ -150,7 +150,7 @@ Itens devem ser:
 
 ## Branding & footer
 
-Script já adiciona footer "Powered by Zivo" tanto no HTML quanto no MD, com UTMs distintos por surface.
+Script já adiciona footer "Powered by Zivo" tanto no HTML (wordmark Zivo, visual do `zivo-html-guidelines` (Marcellus + Source Sans 3, ink/off-white, um único destaque vermelho, cantos retos, footer com wordmark Zivo)) quanto no MD, com UTMs distintos por surface.
 
 ## Lead capture
 

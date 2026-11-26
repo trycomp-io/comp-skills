@@ -37,6 +37,184 @@ SKILL_NAME = "ceo-people-update-drafter"
 SKILL_VERSION = "1.0.0"
 
 
+# ---------- Zivo visual (zivo-html-guidelines) ----------
+ZIVO_FONTS = (
+    '<link rel="preconnect" href="https://fonts.googleapis.com">'
+    '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>'
+    '<link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Source+Sans+3:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">'
+)
+
+ZIVO_CSS = """
+:root {
+  --zivo-ink: #1A1A1A;
+  --zivo-off-white: #F1F1EA;
+  --zivo-white: #FFFFFF;
+  --zivo-red: #F4364C;
+  --zivo-red-hover: #E02A40;
+  --zivo-red-pressed: #9E1528;
+  --zivo-ink-80: rgba(26,26,26,.8);
+  --zivo-ink-60: rgba(26,26,26,.6);
+  --zivo-ink-40: rgba(26,26,26,.4);
+  --zivo-ink-30: rgba(26,26,26,.3);
+  --zivo-ink-20: rgba(26,26,26,.2);
+  --zivo-ink-10: rgba(26,26,26,.1);
+  --zivo-ink-05: rgba(26,26,26,.05);
+  --zivo-success: #0B7A43; --zivo-success-bg: #DDF7EA; --zivo-success-fill: #12B76A;
+  --zivo-warning: #985704; --zivo-warning-bg: #FFF2DA; --zivo-warning-fill: #F69B10;
+  --zivo-error: #B3172A;   --zivo-error-bg: #FEE7EA;   --zivo-error-fill: #D61F35;
+  --zivo-info: #0B58BB;    --zivo-info-bg: #E7F1FF;    --zivo-info-fill: #1C7CE5;
+  --zivo-font-flare: "ABC Arizona Flare", Marcellus, Georgia, serif;
+  --zivo-font-sans: "ABC Arizona Sans", "Source Sans 3", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --zivo-radius: 0;
+  --gap: 24px;
+}
+* { box-sizing: border-box; border-radius: 0; box-shadow: none; }
+body {
+  margin: 0;
+  font-family: var(--zivo-font-sans);
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--zivo-ink);
+  background: var(--zivo-off-white);
+  -webkit-font-smoothing: antialiased;
+}
+h1, h2, h3, h4 {
+  font-family: var(--zivo-font-flare);
+  font-weight: 400;
+  font-style: normal;
+  text-transform: none;
+  margin: 0 0 .4em;
+}
+h1 { font-size: 56px; line-height: 54px; letter-spacing: -0.02em; }
+h2 { font-size: 32px; line-height: 36px; letter-spacing: -0.01em; }
+h3 { font-size: 22px; line-height: 28px; }
+h4 { font-size: 18px; line-height: 24px; }
+p { margin: 0 0 1em; }
+small, .small { font-size: 14px; line-height: 20px; }
+.caption, .label {
+  font-size: 12px; line-height: 16px; text-transform: uppercase;
+  letter-spacing: .04em; color: var(--zivo-ink-60);
+}
+.muted { color: var(--zivo-ink-60); }
+a { color: var(--zivo-ink); text-decoration: underline; text-underline-offset: 2px; }
+a:hover { color: var(--zivo-ink-80); }
+.zv-dot { display: inline-block; width: 8px; height: 8px; background: currentColor; margin-right: 8px; vertical-align: 1px; }
+.zv-dot--red { background: var(--zivo-red); }
+.zv-header-row {
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--gap);
+  padding-bottom: 10px; margin-bottom: 40px;
+  border-bottom: 1px solid var(--zivo-ink-30);
+  font-size: 12px; line-height: 16px; text-transform: uppercase; letter-spacing: .04em;
+}
+.hero { background: var(--zivo-ink); color: var(--zivo-white); padding: 32px 0 48px; }
+.hero-inner { max-width: 1120px; margin: 0 auto; padding: 0 32px; }
+.hero .zv-header-row { border-bottom-color: rgba(255,255,255,.3); color: rgba(255,255,255,.8); }
+.hero h1 { color: var(--zivo-white); max-width: 22ch; }
+.hero-sub { margin: 16px 0 0; color: rgba(255,255,255,.7); font-family: var(--zivo-font-flare); font-size: 22px; line-height: 28px; max-width: 60ch; }
+.hero-main { display: flex; justify-content: space-between; align-items: flex-start; gap: 24px; }
+.logo-tile { width: 56px; height: 56px; display: grid; place-items: center; background: var(--zivo-white); color: var(--zivo-ink); font-family: var(--zivo-font-flare); font-size: 28px; }
+.logo-tile img { max-width: 44px; max-height: 44px; }
+.page { max-width: 1120px; margin: 0 auto; padding: 48px 32px; }
+.section { margin-bottom: 48px; }
+.section > h2 { margin-bottom: 16px; }
+.card { background: var(--zivo-white); border: 1px solid var(--zivo-ink-10); padding: 24px; }
+.card + .card { margin-top: var(--gap); }
+.card h3 { margin-bottom: 12px; }
+.stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; }
+.stat-card { background: var(--zivo-white); border: 1px solid var(--zivo-ink-10); padding: 20px; }
+.stat-card .value { font-family: var(--zivo-font-flare); font-size: 40px; line-height: 44px; margin-top: 8px; font-variant-numeric: tabular-nums; }
+.stat-card .value.accent { color: var(--zivo-red); }
+.stat-card .context { font-size: 14px; line-height: 20px; color: var(--zivo-ink-80); margin-top: 8px; }
+.trend-up { color: var(--zivo-success); }
+.trend-down { color: var(--zivo-error); }
+.trend-flat { color: var(--zivo-ink-60); }
+.big-number .value { font-family: var(--zivo-font-flare); font-size: 96px; line-height: 92px; letter-spacing: -0.02em; }
+.big-number .rule { height: 1px; background: var(--zivo-ink); margin: 16px 0; }
+.big-number .label { font-size: 22px; line-height: 28px; text-transform: none; letter-spacing: 0; color: var(--zivo-ink); }
+.table-wrap { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; font-size: 14px; line-height: 20px; background: var(--zivo-white); }
+thead th {
+  text-align: left; font-weight: 700; font-size: 12px; line-height: 16px;
+  text-transform: uppercase; letter-spacing: .04em; color: var(--zivo-ink-80);
+  border-bottom: 1px solid var(--zivo-ink-30); padding: 10px 12px;
+}
+tbody td { padding: 10px 12px; border-bottom: 1px solid var(--zivo-ink-10); vertical-align: top; }
+tbody tr:last-child td { border-bottom: none; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+.btn {
+  display: inline-block; padding: 12px 16px; font-family: var(--zivo-font-sans); font-size: 16px; line-height: 20px;
+  background: var(--zivo-ink); color: var(--zivo-white); border: 1px solid var(--zivo-ink);
+  text-decoration: none; cursor: pointer;
+}
+.btn:hover { background: #333; color: var(--zivo-white); }
+.btn-secondary { background: transparent; color: var(--zivo-ink); }
+.btn-secondary:hover { background: var(--zivo-ink-05); color: var(--zivo-ink); }
+.btn-primary { background: var(--zivo-red); border-color: var(--zivo-red); color: var(--zivo-white); }
+.btn-primary:hover { background: var(--zivo-red-hover); border-color: var(--zivo-red-hover); }
+.btn-primary:active { background: var(--zivo-red-pressed); }
+.badge { display: inline-block; white-space: nowrap; padding: 2px 10px; border-radius: 999px; font-size: 12px; line-height: 18px; font-weight: 700; background: var(--zivo-ink-05); color: var(--zivo-ink); }
+.badge-good { background: var(--zivo-success-bg); color: var(--zivo-success); }
+.badge-warn { background: var(--zivo-warning-bg); color: var(--zivo-warning); }
+.badge-bad  { background: var(--zivo-error-bg);   color: var(--zivo-error); }
+.badge-info { background: var(--zivo-info-bg);    color: var(--zivo-info); }
+.meter { height: 8px; background: var(--zivo-ink-10); }
+.meter > span { display: block; height: 100%; background: var(--zivo-ink); }
+.callout { background: var(--zivo-white); border-top: 1px solid var(--zivo-ink); padding: 16px 0 0; }
+.site-footer {
+  max-width: 1120px; margin: 0 auto; padding: 24px 32px 40px;
+  display: flex; align-items: center; gap: 24px; flex-wrap: wrap;
+  border-top: 1px solid var(--zivo-ink-10);
+  font-size: 14px; line-height: 20px; color: var(--zivo-ink-60);
+}
+.site-footer a { color: inherit; }
+.zv-wordmark { display: inline-flex; line-height: 0; }
+.zv-wordmark svg { height: 20px; width: auto; }
+@media (max-width: 560px) {
+  .hero-inner, .page, .site-footer { padding-left: 20px; padding-right: 20px; }
+  h1, .hero h1 { font-size: 36px; line-height: 36px; }
+  h2 { font-size: 26px; line-height: 30px; }
+  .zv-header-row { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 8px; }
+  .big-number .value { font-size: 64px; line-height: 64px; }
+}
+@media print {
+  body { background: var(--zivo-white); }
+  .hero { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+}
+"""
+
+ZIVO_WORDMARK = (
+    '<svg role="img" aria-label="Zivo" xmlns="http://www.w3.org/2000/svg" viewBox="1.0000 0.4375 273.6250 64.9800" width="273.625" height="64.980"><path d="M172.992 52.6741L150.676 1.50781H139.883L166.523 64.3458H179.47L206.2 1.50781H195.406L172.992 52.6741Z" fill="#1A1A1A"/><path d="M241.983 0.4375C223.549 0.4375 209.332 14.4387 209.332 32.9272C209.332 51.4158 223.541 65.417 241.983 65.417C260.425 65.417 274.535 51.4158 274.625 32.9272C274.535 14.4387 260.417 0.4375 241.983 0.4375ZM241.983 55.7314C229.208 55.7314 219.585 46.0376 219.585 32.9354C219.585 19.8333 229.208 10.1395 241.983 10.1395C254.758 10.1395 264.282 19.8333 264.282 32.9354C264.282 46.0376 254.66 55.7314 241.983 55.7314Z" fill="#1A1A1A"/><path d="M73.4883 1.50781V11.2016H96.5167V54.6521H73.4883V64.3458H129.7V54.6521H106.68V11.2016H129.7V1.50781H73.4883Z" fill="#1A1A1A"/><path d="M1 1.50781V11.2016H7.85446H44.4362L1 54.6521V64.3458H52.56H57.2115V54.6521H52.56H13.6853L57.2115 11.2016V1.50781H7.85446H1Z" fill="#1A1A1A"/></svg>'
+)
+
+
+def _zivo_footer(slug: str) -> str:
+    return (
+        '<footer class="site-footer">'
+        '<a class="zv-wordmark" href="https://zivo.ai?utm_source=skill-output&amp;utm_medium=html-footer'
+        f'&amp;utm_campaign=eam&amp;utm_content={slug}" aria-label="Zivo">{ZIVO_WORDMARK}</a>'
+        '<span>Powered by Zivo · free skills for HR &amp; People leaders</span>'
+        '</footer>'
+    )
+
+
+def _zivo_hero(captions, title: str, sub: str = "", aside: str = "") -> str:
+    """Ink hero band. All arguments must already be HTML-escaped."""
+    caps = "".join(
+        (f'<span><i class="zv-dot zv-dot--red"></i>{c}</span>' if i == 0 else f"<span>{c}</span>")
+        for i, c in enumerate(["Zivo"] + [c for c in captions if c][:3])
+    )
+    sub_html = f'<p class="hero-sub">{sub}</p>' if sub else ""
+    body = f"<div><h1>{title}</h1>{sub_html}</div>"
+    if aside:
+        body = f'<div class="hero-main">{body}{aside}</div>'
+    return (
+        '<header class="hero"><div class="hero-inner">'
+        f'<div class="zv-header-row">{caps}</div>{body}'
+        "</div></header>"
+    )
+# ---------------------------------------------------------
+
+
 def _slug(s):
     s = unicodedata.normalize("NFKD", s or "").encode("ascii", "ignore").decode("ascii")
     return re.sub(r"[^A-Za-z0-9_-]+", "-", s.strip()).strip("-").lower()[:50] or "update"
@@ -49,103 +227,100 @@ def _esc(s):
 
 HTML = """<!DOCTYPE html>
 <html lang="pt-BR"><head>
-<meta charset="UTF-8"><title>People Update — {period}</title>
-<script src="https://cdn.tailwindcss.com/3.4.16"></script>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>People update · {period} · Zivo</title>
+{zivo_fonts}
+<style>{zivo_css}</style>
 <style>
-  body{{font-family:'Inter',sans-serif;background:#f8fafc;color:#1e293b}}
-  .card{{background:white;border-radius:12px;padding:1.5rem;box-shadow:0 1px 3px rgba(0,0,0,0.08);margin-bottom:1.5rem}}
-  h2{{font-size:1.25rem;font-weight:700;color:#0f172a;margin-bottom:1rem;border-bottom:2px solid #f1f5f9;padding-bottom:.5rem}}
-  .metric{{display:flex;justify-content:space-between;align-items:baseline;padding:.5rem 0;border-bottom:1px solid #f1f5f9}}
-  .metric-name{{font-weight:600;color:#475569}}
-  .metric-val{{font-size:1.5rem;font-weight:800;color:#0f172a}}
-  .metric-prev{{font-size:.85rem;color:#64748b;margin-left:.5rem}}
-  .trend-up{{color:#10b981}}.trend-down{{color:#dc2626}}.trend-flat{{color:#64748b}}
-  .pill{{display:inline-block;padding:.2rem .6rem;border-radius:999px;font-size:.7rem;font-weight:600}}
-  .pill-hire{{background:#d1fae5;color:#065f46}}
-  .pill-promotion{{background:#dbeafe;color:#1e40af}}
-  .pill-exit{{background:#fee2e2;color:#991b1b}}
-  ul{{list-style:disc;padding-left:1.5rem}}
-  .risk-card{{background:#fef3c7;border-left:4px solid #f59e0b;padding:.75rem 1rem;border-radius:0 8px 8px 0;margin-bottom:.75rem}}
-  .ask-card{{background:#dbeafe;border-left:4px solid #3b82f6;padding:.75rem 1rem;border-radius:0 8px 8px 0;margin-bottom:.5rem}}
+  .page{{max-width:880px}}
+  .hero-inner{{max-width:880px}}
+  .site-footer{{max-width:880px}}
+  .lead{{font-size:18px;line-height:28px;margin:0}}
+  .metric{{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:12px 0;border-top:1px solid var(--zivo-ink-10)}}
+  .metric:first-child{{border-top:none;padding-top:0}}
+  .metric-name{{font-weight:700}}
+  .metric-ctx{{font-size:14px;line-height:20px;color:var(--zivo-ink-80)}}
+  .metric-val{{font-family:var(--zivo-font-flare);font-size:28px;line-height:32px;white-space:nowrap;font-variant-numeric:tabular-nums}}
+  .metric-prev{{font-family:var(--zivo-font-sans);font-size:14px;color:var(--zivo-ink-60);margin-left:6px}}
+  .rows{{list-style:none;padding:0;margin:0}}
+  .rows li{{padding:10px 0;border-top:1px solid var(--zivo-ink-10)}}
+  .rows li:first-child{{border-top:none;padding-top:0}}
+  .rows li .zv-dot{{vertical-align:2px}}
+  .risk-detail{{font-size:14px;line-height:20px;color:var(--zivo-ink-80);margin-top:4px}}
+  @media (max-width:560px){{.metric{{flex-direction:column;gap:4px}}}}
 </style></head>
-<body class="p-6 sm:p-10"><div class="max-w-3xl mx-auto">
-
-<header class="mb-6 flex justify-between items-start">
-<div>
-<div class="text-xs uppercase tracking-wider text-rose-600 font-bold mb-1">People Update</div>
-<h1 class="text-3xl font-extrabold text-slate-900">{period}</h1>
-<p class="text-sm text-slate-500 mt-1">{company} · CHRO → CEO</p>
-</div>
-<img src="https://i.ibb.co/KxDQ7BKQ/SIMBOLO-COMP-RGB-VERMELHO-G.png" alt="Zivo" class="h-10 w-10">
-</header>
-
+<body>
+{hero}
+<main class="page">
 {body}
-
-<footer style="margin-top:48px;padding:24px 0;border-top:1px solid #e5e7eb;text-align:center;font-family:'Inter',sans-serif;font-size:13px;color:#6b7280;">
-Powered by <a href="https://zivo.ai?utm_source=skill-output&amp;utm_medium=html-footer&amp;utm_campaign=eam&amp;utm_content=ceo-people-update-drafter" style="color:#ff4456;text-decoration:none;font-weight:600;">Zivo</a>
-— Free skills for HR &amp; People leaders.
-</footer>
-</div></body></html>
+</main>
+{footer}
+</body></html>
 """
 
 
 def render_html(data):
     parts = []
     if data.get("executive_summary"):
-        parts.append(f'<div class="card"><h2>Resumo executivo</h2><p>{_esc(data["executive_summary"])}</p></div>')
+        parts.append(f'<section class="section"><h2>Resumo executivo</h2><div class="card"><p class="lead">{_esc(data["executive_summary"])}</p></div></section>')
 
     metrics = data.get("metrics") or []
     if metrics:
-        parts.append('<div class="card"><h2>Métricas-chave</h2>')
+        parts.append('<section class="section"><h2>Métricas-chave</h2><div class="card">')
         for m in metrics:
             trend = m.get("trend", "flat")
+            trend = trend if trend in ("up", "down", "flat") else "flat"
             arrow = {"up": "↗", "down": "↘", "flat": "→"}.get(trend, "→")
             cls = f"trend-{trend}"
             prev = f' <span class="metric-prev">(vs {_esc(m.get("previous"))})</span>' if m.get("previous") is not None else ""
             context = m.get("context")
-            context_html = f'<div class="text-sm text-slate-600">{_esc(context)}</div>' if context else ""
-            parts.append(f'<div class="metric"><div><div class="metric-name">{_esc(m.get("name"))}</div>{context_html}</div><div class="metric-val {cls}">{arrow} {_esc(m.get("current"))}{prev}</div></div>')
-        parts.append("</div>")
+            context_html = f'<div class="metric-ctx">{_esc(context)}</div>' if context else ""
+            parts.append(f'<div class="metric"><div><div class="metric-name">{_esc(m.get("name"))}</div>{context_html}</div><div class="metric-val">{_esc(m.get("current"))} <span class="{cls}">{arrow}</span>{prev}</div></div>')
+        parts.append("</div></section>")
 
     moves = data.get("key_movements") or []
     if moves:
-        parts.append('<div class="card"><h2>Principais movimentações</h2><ul class="space-y-2">')
+        parts.append('<section class="section"><h2>Principais movimentações</h2><div class="card"><ul class="rows">')
         for mv in moves:
             t = mv.get("type", "")
-            pill_cls = {"hire": "pill-hire", "promotion": "pill-promotion", "exit": "pill-exit"}.get(t, "pill-hire")
-            parts.append(f'<li><span class="pill {pill_cls}">{_esc(t)}</span> <strong>{_esc(mv.get("name"))}</strong> — {_esc(mv.get("detail"))}</li>')
-        parts.append("</ul></div>")
+            pill_cls = {"hire": "badge-good", "promotion": "badge-info", "exit": "badge-bad"}.get(t, "")
+            parts.append(f'<li><span class="badge {pill_cls}">{_esc(t)}</span> <strong>{_esc(mv.get("name"))}</strong> — {_esc(mv.get("detail"))}</li>')
+        parts.append("</ul></div></section>")
 
     wins = data.get("wins") or []
     if wins:
-        parts.append('<div class="card"><h2>Wins</h2><ul>')
+        parts.append('<section class="section"><h2>Wins</h2><div class="card"><ul class="rows">')
         for w in wins:
-            parts.append(f"<li>{_esc(w)}</li>")
-        parts.append("</ul></div>")
+            parts.append(f'<li><i class="zv-dot"></i>{_esc(w)}</li>')
+        parts.append("</ul></div></section>")
 
     risks = data.get("risks") or []
     if risks:
-        parts.append('<div class="card"><h2>Riscos</h2>')
+        parts.append('<section class="section"><h2>Riscos</h2><div class="card table-wrap"><table>'
+                     '<thead><tr><th>Risco</th><th>Mitigação</th><th>Owner</th></tr></thead><tbody>')
         for r in risks:
-            parts.append(f'<div class="risk-card"><strong>{_esc(r.get("risk"))}</strong>')
-            if r.get("mitigation"):
-                parts.append(f'<div class="text-sm mt-1"><strong>Mitigação:</strong> {_esc(r["mitigation"])}</div>')
-            if r.get("owner"):
-                parts.append(f'<div class="text-sm"><strong>Owner:</strong> {_esc(r["owner"])}</div>')
-            parts.append("</div>")
-        parts.append("</div>")
+            parts.append(f'<tr><td><strong>{_esc(r.get("risk"))}</strong></td>'
+                         f'<td>{_esc(r.get("mitigation")) or "—"}</td>'
+                         f'<td>{_esc(r.get("owner")) or "—"}</td></tr>')
+        parts.append("</tbody></table></div></section>")
 
     asks = data.get("asks_from_ceo") or []
     if asks:
-        parts.append('<div class="card"><h2>Asks pra você (CEO)</h2>')
+        parts.append('<section class="section"><h2>Asks pra você (CEO)</h2><div class="card"><ul class="rows">')
         for a in asks:
-            parts.append(f'<div class="ask-card">{_esc(a)}</div>')
-        parts.append("</div>")
+            parts.append(f'<li><i class="zv-dot"></i>{_esc(a)}</li>')
+        parts.append("</ul></div></section>")
 
+    period = _esc(data.get("period", ""))
+    company = _esc(data.get("company", ""))
+    hero = _zivo_hero(
+        ["People update", company, "CHRO → CEO"],
+        f"People update do {period}" if period else "People update",
+        " · ".join(x for x in (company, "Métricas, movimentações, riscos e asks do período") if x) + ".",
+    )
     return HTML.format(
-        period=_esc(data.get("period", "")),
-        company=_esc(data.get("company", "")),
+        period=period,
+        zivo_fonts=ZIVO_FONTS, zivo_css=ZIVO_CSS, hero=hero, footer=_zivo_footer(SKILL_NAME),
         body="\n".join(parts),
     )
 

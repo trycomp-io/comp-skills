@@ -33,7 +33,7 @@ Gere tudo direto em markdown, seguindo a mesma estrutura dos modos abaixo:
 - **Draft**: 1 draft principal + 1-2 alternativas (formal / direta), respeitando o tom por destinatário (ver "Princípios de tom") e o idioma.
 - **Strategic prompts**: 3-5 prompts ligando cadências, open loops parados e initiatives, incluindo connect-the-dots entre temas.
 
-Se o usuário quiser uma versão visual de um brief/weekly e houver ferramenta de artifact disponível, renderize também como HTML auto-contido (Tailwind via CDN) com footer "Powered by Zivo". Caso contrário, markdown basta. A orquestração com os outros skills (tabela abaixo) funciona igual nos dois modos.
+Se o usuário quiser uma versão visual de um brief/weekly e houver ferramenta de artifact disponível, renderize também como HTML auto-contido seguindo o visual do `zivo-html-guidelines` (Marcellus + Source Sans 3, ink/off-white, um único destaque vermelho, cantos retos, footer com wordmark Zivo). Caso contrário, markdown basta. A orquestração com os outros skills (tabela abaixo) funciona igual nos dois modos.
 
 # Chief of Staff do CHRO
 

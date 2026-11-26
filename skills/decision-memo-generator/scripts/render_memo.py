@@ -24,6 +24,184 @@ SKILL_NAME = "decision-memo-generator"
 SKILL_VERSION = "1.0.0"
 
 
+# ---------- Zivo visual (zivo-html-guidelines) ----------
+ZIVO_FONTS = (
+    '<link rel="preconnect" href="https://fonts.googleapis.com">'
+    '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>'
+    '<link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Source+Sans+3:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">'
+)
+
+ZIVO_CSS = """
+:root {
+  --zivo-ink: #1A1A1A;
+  --zivo-off-white: #F1F1EA;
+  --zivo-white: #FFFFFF;
+  --zivo-red: #F4364C;
+  --zivo-red-hover: #E02A40;
+  --zivo-red-pressed: #9E1528;
+  --zivo-ink-80: rgba(26,26,26,.8);
+  --zivo-ink-60: rgba(26,26,26,.6);
+  --zivo-ink-40: rgba(26,26,26,.4);
+  --zivo-ink-30: rgba(26,26,26,.3);
+  --zivo-ink-20: rgba(26,26,26,.2);
+  --zivo-ink-10: rgba(26,26,26,.1);
+  --zivo-ink-05: rgba(26,26,26,.05);
+  --zivo-success: #0B7A43; --zivo-success-bg: #DDF7EA; --zivo-success-fill: #12B76A;
+  --zivo-warning: #985704; --zivo-warning-bg: #FFF2DA; --zivo-warning-fill: #F69B10;
+  --zivo-error: #B3172A;   --zivo-error-bg: #FEE7EA;   --zivo-error-fill: #D61F35;
+  --zivo-info: #0B58BB;    --zivo-info-bg: #E7F1FF;    --zivo-info-fill: #1C7CE5;
+  --zivo-font-flare: "ABC Arizona Flare", Marcellus, Georgia, serif;
+  --zivo-font-sans: "ABC Arizona Sans", "Source Sans 3", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --zivo-radius: 0;
+  --gap: 24px;
+}
+* { box-sizing: border-box; border-radius: 0; box-shadow: none; }
+body {
+  margin: 0;
+  font-family: var(--zivo-font-sans);
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--zivo-ink);
+  background: var(--zivo-off-white);
+  -webkit-font-smoothing: antialiased;
+}
+h1, h2, h3, h4 {
+  font-family: var(--zivo-font-flare);
+  font-weight: 400;
+  font-style: normal;
+  text-transform: none;
+  margin: 0 0 .4em;
+}
+h1 { font-size: 56px; line-height: 54px; letter-spacing: -0.02em; }
+h2 { font-size: 32px; line-height: 36px; letter-spacing: -0.01em; }
+h3 { font-size: 22px; line-height: 28px; }
+h4 { font-size: 18px; line-height: 24px; }
+p { margin: 0 0 1em; }
+small, .small { font-size: 14px; line-height: 20px; }
+.caption, .label {
+  font-size: 12px; line-height: 16px; text-transform: uppercase;
+  letter-spacing: .04em; color: var(--zivo-ink-60);
+}
+.muted { color: var(--zivo-ink-60); }
+a { color: var(--zivo-ink); text-decoration: underline; text-underline-offset: 2px; }
+a:hover { color: var(--zivo-ink-80); }
+.zv-dot { display: inline-block; width: 8px; height: 8px; background: currentColor; margin-right: 8px; vertical-align: 1px; }
+.zv-dot--red { background: var(--zivo-red); }
+.zv-header-row {
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--gap);
+  padding-bottom: 10px; margin-bottom: 40px;
+  border-bottom: 1px solid var(--zivo-ink-30);
+  font-size: 12px; line-height: 16px; text-transform: uppercase; letter-spacing: .04em;
+}
+.hero { background: var(--zivo-ink); color: var(--zivo-white); padding: 32px 0 48px; }
+.hero-inner { max-width: 1120px; margin: 0 auto; padding: 0 32px; }
+.hero .zv-header-row { border-bottom-color: rgba(255,255,255,.3); color: rgba(255,255,255,.8); }
+.hero h1 { color: var(--zivo-white); max-width: 22ch; }
+.hero-sub { margin: 16px 0 0; color: rgba(255,255,255,.7); font-family: var(--zivo-font-flare); font-size: 22px; line-height: 28px; max-width: 60ch; }
+.hero-main { display: flex; justify-content: space-between; align-items: flex-start; gap: 24px; }
+.logo-tile { width: 56px; height: 56px; display: grid; place-items: center; background: var(--zivo-white); color: var(--zivo-ink); font-family: var(--zivo-font-flare); font-size: 28px; }
+.logo-tile img { max-width: 44px; max-height: 44px; }
+.page { max-width: 1120px; margin: 0 auto; padding: 48px 32px; }
+.section { margin-bottom: 48px; }
+.section > h2 { margin-bottom: 16px; }
+.card { background: var(--zivo-white); border: 1px solid var(--zivo-ink-10); padding: 24px; }
+.card + .card { margin-top: var(--gap); }
+.card h3 { margin-bottom: 12px; }
+.stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; }
+.stat-card { background: var(--zivo-white); border: 1px solid var(--zivo-ink-10); padding: 20px; }
+.stat-card .value { font-family: var(--zivo-font-flare); font-size: 40px; line-height: 44px; margin-top: 8px; font-variant-numeric: tabular-nums; }
+.stat-card .value.accent { color: var(--zivo-red); }
+.stat-card .context { font-size: 14px; line-height: 20px; color: var(--zivo-ink-80); margin-top: 8px; }
+.trend-up { color: var(--zivo-success); }
+.trend-down { color: var(--zivo-error); }
+.trend-flat { color: var(--zivo-ink-60); }
+.big-number .value { font-family: var(--zivo-font-flare); font-size: 96px; line-height: 92px; letter-spacing: -0.02em; }
+.big-number .rule { height: 1px; background: var(--zivo-ink); margin: 16px 0; }
+.big-number .label { font-size: 22px; line-height: 28px; text-transform: none; letter-spacing: 0; color: var(--zivo-ink); }
+.table-wrap { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; font-size: 14px; line-height: 20px; background: var(--zivo-white); }
+thead th {
+  text-align: left; font-weight: 700; font-size: 12px; line-height: 16px;
+  text-transform: uppercase; letter-spacing: .04em; color: var(--zivo-ink-80);
+  border-bottom: 1px solid var(--zivo-ink-30); padding: 10px 12px;
+}
+tbody td { padding: 10px 12px; border-bottom: 1px solid var(--zivo-ink-10); vertical-align: top; }
+tbody tr:last-child td { border-bottom: none; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+.btn {
+  display: inline-block; padding: 12px 16px; font-family: var(--zivo-font-sans); font-size: 16px; line-height: 20px;
+  background: var(--zivo-ink); color: var(--zivo-white); border: 1px solid var(--zivo-ink);
+  text-decoration: none; cursor: pointer;
+}
+.btn:hover { background: #333; color: var(--zivo-white); }
+.btn-secondary { background: transparent; color: var(--zivo-ink); }
+.btn-secondary:hover { background: var(--zivo-ink-05); color: var(--zivo-ink); }
+.btn-primary { background: var(--zivo-red); border-color: var(--zivo-red); color: var(--zivo-white); }
+.btn-primary:hover { background: var(--zivo-red-hover); border-color: var(--zivo-red-hover); }
+.btn-primary:active { background: var(--zivo-red-pressed); }
+.badge { display: inline-block; white-space: nowrap; padding: 2px 10px; border-radius: 999px; font-size: 12px; line-height: 18px; font-weight: 700; background: var(--zivo-ink-05); color: var(--zivo-ink); }
+.badge-good { background: var(--zivo-success-bg); color: var(--zivo-success); }
+.badge-warn { background: var(--zivo-warning-bg); color: var(--zivo-warning); }
+.badge-bad  { background: var(--zivo-error-bg);   color: var(--zivo-error); }
+.badge-info { background: var(--zivo-info-bg);    color: var(--zivo-info); }
+.meter { height: 8px; background: var(--zivo-ink-10); }
+.meter > span { display: block; height: 100%; background: var(--zivo-ink); }
+.callout { background: var(--zivo-white); border-top: 1px solid var(--zivo-ink); padding: 16px 0 0; }
+.site-footer {
+  max-width: 1120px; margin: 0 auto; padding: 24px 32px 40px;
+  display: flex; align-items: center; gap: 24px; flex-wrap: wrap;
+  border-top: 1px solid var(--zivo-ink-10);
+  font-size: 14px; line-height: 20px; color: var(--zivo-ink-60);
+}
+.site-footer a { color: inherit; }
+.zv-wordmark { display: inline-flex; line-height: 0; }
+.zv-wordmark svg { height: 20px; width: auto; }
+@media (max-width: 560px) {
+  .hero-inner, .page, .site-footer { padding-left: 20px; padding-right: 20px; }
+  h1, .hero h1 { font-size: 36px; line-height: 36px; }
+  h2 { font-size: 26px; line-height: 30px; }
+  .zv-header-row { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 8px; }
+  .big-number .value { font-size: 64px; line-height: 64px; }
+}
+@media print {
+  body { background: var(--zivo-white); }
+  .hero { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+}
+"""
+
+ZIVO_WORDMARK = (
+    '<svg role="img" aria-label="Zivo" xmlns="http://www.w3.org/2000/svg" viewBox="1.0000 0.4375 273.6250 64.9800" width="273.625" height="64.980"><path d="M172.992 52.6741L150.676 1.50781H139.883L166.523 64.3458H179.47L206.2 1.50781H195.406L172.992 52.6741Z" fill="#1A1A1A"/><path d="M241.983 0.4375C223.549 0.4375 209.332 14.4387 209.332 32.9272C209.332 51.4158 223.541 65.417 241.983 65.417C260.425 65.417 274.535 51.4158 274.625 32.9272C274.535 14.4387 260.417 0.4375 241.983 0.4375ZM241.983 55.7314C229.208 55.7314 219.585 46.0376 219.585 32.9354C219.585 19.8333 229.208 10.1395 241.983 10.1395C254.758 10.1395 264.282 19.8333 264.282 32.9354C264.282 46.0376 254.66 55.7314 241.983 55.7314Z" fill="#1A1A1A"/><path d="M73.4883 1.50781V11.2016H96.5167V54.6521H73.4883V64.3458H129.7V54.6521H106.68V11.2016H129.7V1.50781H73.4883Z" fill="#1A1A1A"/><path d="M1 1.50781V11.2016H7.85446H44.4362L1 54.6521V64.3458H52.56H57.2115V54.6521H52.56H13.6853L57.2115 11.2016V1.50781H7.85446H1Z" fill="#1A1A1A"/></svg>'
+)
+
+
+def _zivo_footer(slug: str) -> str:
+    return (
+        '<footer class="site-footer">'
+        '<a class="zv-wordmark" href="https://zivo.ai?utm_source=skill-output&amp;utm_medium=html-footer'
+        f'&amp;utm_campaign=eam&amp;utm_content={slug}" aria-label="Zivo">{ZIVO_WORDMARK}</a>'
+        '<span>Powered by Zivo · free skills for HR &amp; People leaders</span>'
+        '</footer>'
+    )
+
+
+def _zivo_hero(captions, title: str, sub: str = "", aside: str = "") -> str:
+    """Ink hero band. All arguments must already be HTML-escaped."""
+    caps = "".join(
+        (f'<span><i class="zv-dot zv-dot--red"></i>{c}</span>' if i == 0 else f"<span>{c}</span>")
+        for i, c in enumerate(["Zivo"] + [c for c in captions if c][:3])
+    )
+    sub_html = f'<p class="hero-sub">{sub}</p>' if sub else ""
+    body = f"<div><h1>{title}</h1>{sub_html}</div>"
+    if aside:
+        body = f'<div class="hero-main">{body}{aside}</div>'
+    return (
+        '<header class="hero"><div class="hero-inner">'
+        f'<div class="zv-header-row">{caps}</div>{body}'
+        "</div></header>"
+    )
+# ---------------------------------------------------------
+
+
 def _slug(s):
     s = unicodedata.normalize("NFKD", s or "").encode("ascii", "ignore").decode("ascii")
     return re.sub(r"[^A-Za-z0-9_-]+", "-", s.strip()).strip("-").lower()[:50] or "memo"
@@ -36,63 +214,71 @@ def _esc(s):
 
 HTML = """<!DOCTYPE html>
 <html lang="pt-BR"><head>
-<meta charset="UTF-8"><title>Decision Memo — {title}</title>
-<script src="https://cdn.tailwindcss.com/3.4.16"></script>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Decision memo · {title} · Zivo</title>
+{zivo_fonts}
+<style>{zivo_css}</style>
 <style>
-  body{{font-family:'Inter',sans-serif;background:#f8fafc;color:#1e293b;line-height:1.6}}
-  .memo{{max-width:780px;background:white;border-radius:12px;padding:3rem;box-shadow:0 1px 3px rgba(0,0,0,0.08);margin:2rem auto}}
-  h1{{font-size:2rem;font-weight:800;margin-bottom:.5rem;color:#0f172a}}
-  h2{{font-size:1.25rem;font-weight:700;margin-top:2rem;margin-bottom:1rem;color:#0f172a;padding-bottom:.5rem;border-bottom:2px solid #f1f5f9}}
-  .meta{{font-size:.875rem;color:#64748b;margin-bottom:2rem;border-left:3px solid #ff4456;padding-left:1rem}}
-  .meta strong{{color:#0f172a}}
-  .option{{border:1px solid #e2e8f0;border-radius:8px;padding:1.25rem;margin-bottom:1rem;background:#fafbfc}}
-  .option-name{{font-size:1.05rem;font-weight:700;color:#0f172a;margin-bottom:.5rem}}
-  .pros-cons{{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:.75rem}}
-  .pros{{background:#d1fae5;padding:.75rem;border-radius:6px}}
-  .cons{{background:#fee2e2;padding:.75rem;border-radius:6px}}
-  .pros strong{{color:#065f46}}.cons strong{{color:#991b1b}}
-  .recommendation{{background:linear-gradient(to right,#fef3c7,white);border-left:4px solid #f59e0b;padding:1.5rem;border-radius:0 8px 8px 0;margin:1rem 0}}
-  .ask{{background:#dbeafe;border-left:4px solid #3b82f6;padding:1.25rem;border-radius:0 8px 8px 0;margin-top:1rem;font-weight:600}}
-  ul{{list-style:disc;padding-left:1.5rem}}
+  .page,.hero-inner,.site-footer{{max-width:880px}}
+  .meta{{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:16px;margin-bottom:48px}}
+  .meta div{{border-top:1px solid var(--zivo-ink);padding-top:8px}}
+  .meta .label{{display:block;margin-bottom:4px}}
+  .prose p{{margin:0}}
+  .prose ul,.option ul{{margin:0;padding-left:20px}}
+  .prose li,.option li{{padding:2px 0}}
+  .option h3{{margin-bottom:8px}}
+  .pros-cons{{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:24px;margin-top:16px}}
+  .pros-cons > div{{border-top:1px solid var(--zivo-ink-10);padding-top:12px;font-size:14px;line-height:20px}}
+  .pros-cons .badge{{margin-bottom:8px}}
+  .recommendation{{border-top:1px solid var(--zivo-ink);padding:16px 0 0}}
+  .recommendation .pick{{font-family:var(--zivo-font-flare);font-size:28px;line-height:32px;margin:4px 0 12px}}
+  .ask{{background:var(--zivo-ink);color:var(--zivo-white);padding:24px;font-size:18px;line-height:28px}}
+  .ask .label{{color:rgba(255,255,255,.7);display:block;margin-bottom:8px}}
 </style></head>
 <body>
-<div class="memo">
+{hero}
+<main class="page">
 
-<h1>{title}</h1>
 <div class="meta">
-<strong>Autor:</strong> {author}<br>
-<strong>Para:</strong> {decision_maker}<br>
-<strong>Data:</strong> {date}<br>
-<strong>Decisão até:</strong> {decision_by}
+<div><span class="label">Autor</span>{author}</div>
+<div><span class="label">Para</span>{decision_maker}</div>
+<div><span class="label">Data</span>{date}</div>
+<div><span class="label">Decisão até</span>{decision_by}</div>
 </div>
 
-<h2>Problema / Decisão a tomar</h2>
+<section class="section prose">
+<h2>Problema / decisão a tomar</h2>
 <p>{problem}</p>
+</section>
 
+<section class="section prose">
 <h2>Contexto</h2>
 {context_html}
+</section>
 
+<section class="section">
 <h2>Opções consideradas</h2>
 {options_html}
+</section>
 
+<section class="section">
 <h2>Recomendação</h2>
 <div class="recommendation">
-<strong>Recomendo:</strong> {recommended_option}<br>
-<div style="margin-top:.5rem;">{recommendation_rationale}</div>
+<span class="label">Recomendo</span>
+<div class="pick">{recommended_option}</div>
+<p>{recommendation_rationale}</p>
 </div>
+</section>
 
 {risks_html}
 
+<section class="section">
 <h2>Ask</h2>
-<div class="ask">{ask}</div>
+<div class="ask"><span class="label">Decisão pedida</span>{ask}</div>
+</section>
 
-</div>
-
-<footer style="text-align:center;font-family:'Inter',sans-serif;font-size:13px;color:#6b7280;padding:1rem;">
-Powered by <a href="https://zivo.ai?utm_source=skill-output&amp;utm_medium=html-footer&amp;utm_campaign=eam&amp;utm_content=decision-memo-generator" style="color:#ff4456;font-weight:600;text-decoration:none;">Zivo</a>
-— Free skills for HR &amp; People leaders.
-</footer>
+</main>
+{footer}
 </body></html>
 """
 
@@ -110,22 +296,30 @@ def render_html(d):
         pros = "".join(f"<li>{_esc(p)}</li>" for p in (o.get("pros") or []))
         cons = "".join(f"<li>{_esc(c)}</li>" for c in (o.get("cons") or []))
         opts_html.append(
-            f'<div class="option">'
-            f'<div class="option-name">{_esc(o.get("name"))}</div>'
+            f'<div class="card option">'
+            f'<h3>{_esc(o.get("name"))}</h3>'
             f'<div>{_esc(o.get("description", ""))}</div>'
             f'<div class="pros-cons">'
-            f'<div class="pros"><strong>Prós</strong><ul>{pros}</ul></div>'
-            f'<div class="cons"><strong>Contras</strong><ul>{cons}</ul></div>'
+            f'<div><span class="badge badge-good">Prós</span><ul>{pros}</ul></div>'
+            f'<div><span class="badge badge-bad">Contras</span><ul>{cons}</ul></div>'
             f'</div></div>'
         )
 
     risks = d.get("risks") or []
     risks_html = ""
     if risks:
-        risks_html = "<h2>Riscos</h2><ul>" + "".join(f"<li>{_esc(r)}</li>" for r in risks) + "</ul>"
+        risks_html = ('<section class="section prose"><h2>Riscos</h2><div class="card"><ul>'
+                      + "".join(f"<li>{_esc(r)}</li>" for r in risks) + "</ul></div></section>")
 
+    title = _esc(d.get("title", "Decision Memo"))
+    hero = _zivo_hero(
+        ["Decision memo", _esc(d.get("decision_maker", "")), _esc(d.get("decision_by", ""))],
+        title,
+        f"Recomendação: {_esc(d.get('recommended_option', ''))}" if d.get("recommended_option") else "",
+    )
     return HTML.format(
-        title=_esc(d.get("title", "Decision Memo")),
+        zivo_fonts=ZIVO_FONTS, zivo_css=ZIVO_CSS, hero=hero, footer=_zivo_footer(SKILL_NAME),
+        title=title,
         author=_esc(d.get("author", "")),
         decision_maker=_esc(d.get("decision_maker", "")),
         date=_esc(d.get("date", datetime.now().strftime("%Y-%m-%d"))),

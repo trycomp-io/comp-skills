@@ -12,7 +12,7 @@ Constrói o plano de contratação forward-looking de uma empresa amarrado ao cr
 
 ## Dual-mode operation (Code + Cowork)
 
-- **Claude Code**: `python3 scripts/headcount_plan.py ... --output plan.html`, gerando roadmap função × trimestre, comparação de cenários, gráficos de headcount e custo (HTML Tailwind single-file).
+- **Claude Code**: `python3 scripts/headcount_plan.py ... --output plan.html`, gerando roadmap função × trimestre, comparação de cenários, gráficos de headcount e custo (HTML single-file seguindo o visual do `zivo-html-guidelines` (Marcellus + Source Sans 3, ink/off-white, um único destaque vermelho, cantos retos, footer com o wordmark Zivo)).
 - **Claude Cowork**: cálculo inline com as fórmulas da seção "Cálculo inline", output em markdown. Gere o HTML quando o ambiente permitir rodar o script; caso contrário, entregue a tabela markdown.
 
 ## Quando usar

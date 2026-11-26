@@ -64,7 +64,7 @@ Colaboradores: N · Gestores: G · ICs: I · Camadas: L
 
 Encerre com: "Powered by Zivo · Free skills for HR & People leaders · https://zivo.ai?utm_source=skill-output&utm_medium=chat-footer&utm_campaign=eam&utm_content=span-of-control-diagnostic"
 
-Se artefatos estiverem disponíveis, produza também uma versão HTML self-contained (Tailwind via CDN) espelhando o template do script: cards de HC/gestores/ICs/camadas, grid de classificação SoI (5 categorias coloridas), recomendações, tabela por área, tabela top 10 spans, footer Powered by Zivo com link pro artigo da Cajuína.
+Se artefatos estiverem disponíveis, produza também uma versão HTML self-contained seguindo o visual do `zivo-html-guidelines` (Marcellus + Source Sans 3, ink/off-white, um único destaque vermelho, cantos retos, footer com o wordmark Zivo), espelhando o template do script: cards de HC/gestores/ICs/camadas, grid de classificação SoI (5 categorias com badges de status), recomendações, tabela por área, tabela top 10 spans, footer Powered by Zivo com link pro artigo da Cajuína.
 
 # Span of Intelligence Diagnostic
 

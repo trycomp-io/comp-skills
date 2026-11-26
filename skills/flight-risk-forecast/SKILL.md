@@ -84,7 +84,7 @@ Pontuados: N · **Em risco (alto+crítico): X** · Risco lamentável: Y · Score
 
 Encerre com: "Powered by Zivo · Free skills for HR & People leaders · https://zivo.ai?utm_source=skill-output&utm_medium=chat-footer&utm_campaign=eam&utm_content=flight-risk-forecast"
 
-Se artefatos estiverem disponíveis, produza também uma versão HTML self-contained (Tailwind via CDN) espelhando o template do script: aviso "apoio ao planejamento", cards de pontuados/em risco/lamentável/score médio, grid de distribuição (4 bandas coloridas), insights, tabela de colaboradores em risco com pills de fatores, áreas/gestores mais quentes, tabela de alavancas, footer Powered by Zivo.
+Se artefatos estiverem disponíveis, produza também uma versão HTML self-contained no visual do `zivo-html-guidelines` (Marcellus + Source Sans 3, ink/off-white, um único destaque vermelho, cantos retos, footer com o wordmark Zivo) espelhando o template do script: aviso "apoio ao planejamento", cards de pontuados/em risco/lamentável/score médio, grid de distribuição (4 bandas com badge de status), insights, tabela de colaboradores em risco com badges de fatores, áreas/gestores mais quentes, tabela de alavancas, footer com wordmark e "Powered by Zivo".
 
 # Flight Risk Forecast
 

@@ -16,7 +16,7 @@ Transforma uma iniciativa de RH em um caso de negócio defensável:
   - Linha custom: rótulo + valor anual
 - **Headline**: ROI% (ano 1) + payback em meses + net benefit acumulado em 3 anos
 - **Sensibilidade**: Conservador (×0,6) · Esperado (×1,0) · Otimista (×1,3)
-- **Visão visual**: barras custo vs benefício com marcador de payback, tabela de sensibilidade (HTML no Code)
+- **Visão visual**: barras custo vs benefício com nota de payback, tabela de sensibilidade (HTML no Code)
 
 Casos de uso:
 - Defender um programa de retenção / L&D / wellbeing com o CFO

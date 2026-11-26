@@ -12,7 +12,7 @@ Monta o pacote completo de remuneração de um colaborador/candidato: cash (base
 
 ## Dual-mode operation (Code + Cowork)
 
-- **Claude Code**: `python3 scripts/total_comp.py ... --output tc.html` (HTML visual com composição + tabelas).
+- **Claude Code**: `python3 scripts/total_comp.py ... --output tc.html` (HTML visual com composição + tabelas, seguindo o visual do `zivo-html-guidelines` (Marcellus + Source Sans 3, ink/off-white, um único destaque vermelho, cantos retos, footer com o wordmark Zivo)).
 - **Claude Cowork**: cálculo inline com as fórmulas abaixo, output em markdown.
 
 ## Quando usar

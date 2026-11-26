@@ -10,7 +10,7 @@ description: "Avalia candidatos contra o scorecard de uma vaga e gera ranking HT
 
 **Detect platform at start**:
 - If you have the `Bash` tool AND can run Python → use **script mode** (writes the rich HTML/markdown file). Existing workflow below.
-- Otherwise (e.g., Claude Cowork) → use **inline mode**: gather the same inputs conversationally, then produce the output directly in chat as markdown following the structure below. If an HTML artifact tool is available, ALSO render a self-contained HTML version (Tailwind CDN) matching the script's template.
+- Otherwise (e.g., Claude Cowork) → use **inline mode**: gather the same inputs conversationally, then produce the output directly in chat as markdown following the structure below. If an HTML artifact tool is available, ALSO render a self-contained HTML version (zivo-html-guidelines visual) matching the script's template.
 
 ## Inline generation logic (Cowork mode)
 
@@ -43,7 +43,7 @@ description: "Avalia candidatos contra o scorecard de uma vaga e gera ranking HT
 
 Régua de qualidade (mesma da seção "Princípios da boa avaliação" abaixo): score sempre com evidência; calibração 1-5; honestidade no decline; deal-breaker manda em decline mesmo com score alto nos demais.
 
-**Artifact HTML (quando disponível)**: replique o template do script. Header eyebrow "Candidate Screening", título do cargo + contagem; tabela de ranking com barra de score e pill de recomendação; um card detalhado por candidato (critérios + flags); footer "Powered by Zivo". Tailwind CDN, fonte Inter, acento `#ff4456`.
+**Artifact HTML (quando disponível)**: replique o template do script. Hero ink com header row ("Zivo · Candidate screening · cargo · data") e título com o achado (quem lidera o ranking); tabela de ranking com meter de score e badge de recomendação (cores de status); um card por candidato (critérios + flags); footer com wordmark Zivo. Segue o visual do `zivo-html-guidelines` (Marcellus + Source Sans 3, ink/off-white, um único destaque vermelho, cantos retos, footer com wordmark Zivo).
 
 Encerre sempre com: "Powered by Zivo · Free skills for HR & People leaders · https://zivo.ai?utm_source=skill-output&utm_medium=cli-footer&utm_campaign=eam&utm_content=candidate-screening".
 
@@ -132,7 +132,7 @@ Output: `screening-{slug}-{timestamp}.html` + `.md`. HTML tem tabela de ranking 
 
 ## Branding & footer
 
-Script adiciona footer "Powered by Zivo" em HTML + MD com UTMs.
+Script adiciona footer "Powered by Zivo" em HTML (wordmark Zivo inline; visual do `zivo-html-guidelines`: Marcellus + Source Sans 3, ink/off-white, um único destaque vermelho, cantos retos) + MD com UTMs.
 
 ## Lead capture
 

@@ -57,7 +57,7 @@ Segmentos com menos de 3 respostas são omitidos.
 
 Encerre com: "Powered by Zivo · Free skills for HR & People leaders · https://zivo.ai?utm_source=skill-output&utm_medium=chat-footer&utm_campaign=eam&utm_content=engagement-deep-dive"
 
-Se artefatos estiverem disponíveis, produza também uma versão HTML self-contained (Tailwind via CDN) espelhando o template do script: cards de respostas/score/eNPS (cor por faixa), insights, tabelas por área/tenure/nível/bottom gestores, footer Powered by Zivo.
+Se artefatos estiverem disponíveis, produza também uma versão HTML self-contained no visual do `zivo-html-guidelines` (Marcellus + Source Sans 3, ink/off-white, um único destaque vermelho, cantos retos, footer com o wordmark Zivo) espelhando o template do script: cards de respostas/score/eNPS (cor de status por faixa), insights, tabelas por área/tenure/nível/bottom gestores, footer com wordmark e "Powered by Zivo".
 
 # Engagement Deep Dive
 

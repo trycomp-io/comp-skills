@@ -1,54 +1,119 @@
 <!DOCTYPE html>
 <html lang="pt-BR"><head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Org Design Assessment — Zivo</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<title>Org design assessment · Zivo</title>
 <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<!-- Zivo theme for pages built with the Tailwind CDN.
+     Paste right after <script src="https://cdn.tailwindcss.com/3.4.16"></script>.
+     Square radii, no shadows, Zivo tokens and fonts. See references/style-guide.md §8. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Source+Sans+3:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<script>
+tailwind.config = {
+  theme: {
+    borderRadius: { none: '0', sm: '0', DEFAULT: '0', md: '0', lg: '0', xl: '0', '2xl': '0', '3xl': '0', full: '9999px' },
+    boxShadow: { sm: 'none', DEFAULT: 'none', md: 'none', lg: 'none', xl: 'none', '2xl': 'none', inner: 'none', none: 'none' },
+    fontFamily: {
+      display: ['"ABC Arizona Flare"', 'Marcellus', 'Georgia', 'serif'],
+      sans: ['"ABC Arizona Sans"', '"Source Sans 3"', 'system-ui', 'sans-serif'],
+    },
+    extend: {
+      colors: {
+        zv: {
+          ink: '#1A1A1A', off: '#F1F1EA', white: '#FFFFFF',
+          red: '#F4364C', 'red-hover': '#E02A40', 'red-pressed': '#9E1528',
+          ink80: 'rgba(26,26,26,.8)', ink60: 'rgba(26,26,26,.6)', ink40: 'rgba(26,26,26,.4)',
+          ink30: 'rgba(26,26,26,.3)', ink20: 'rgba(26,26,26,.2)', line: 'rgba(26,26,26,.1)', ink05: 'rgba(26,26,26,.05)',
+          success: '#0B7A43', 'success-bg': '#DDF7EA', 'success-fill': '#12B76A',
+          warning: '#985704', 'warning-bg': '#FFF2DA', 'warning-fill': '#F69B10',
+          error: '#B3172A', 'error-bg': '#FEE7EA', 'error-fill': '#D61F35',
+          info: '#0B58BB', 'info-bg': '#E7F1FF', 'info-fill': '#1C7CE5',
+          indigo: '#4636F2', aqua: '#12C3C9', orchid: '#C24BE6', citron: '#D4E030', midnight: '#1F188C',
+        },
+      },
+    },
+  },
+};
+</script>
+<style>
+  body { font-family: "ABC Arizona Sans", "Source Sans 3", system-ui, sans-serif; background: #F1F1EA; color: #1A1A1A; }
+  h1, h2, h3, h4, .font-display { font-family: "ABC Arizona Flare", Marcellus, Georgia, serif; font-weight: 400 !important; font-style: normal; text-transform: none; }
+  h1 { letter-spacing: -0.02em; }
+  h2 { letter-spacing: -0.01em; }
+  a { text-underline-offset: 2px; }
+  .zv-dot { display: inline-block; width: 8px; height: 8px; background: currentColor; margin-right: 8px; vertical-align: 1px; }
+  .zv-dot--red { background: #F4364C; }
+  .zv-caption { font-size: 12px; line-height: 16px; text-transform: uppercase; letter-spacing: .04em; }
+  .zv-wordmark { display: inline-flex; line-height: 0; }
+  .zv-wordmark svg { height: 20px; width: auto; }
+  .tabular { font-variant-numeric: tabular-nums; }
+</style>
 <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.9/dist/cdn.min.js" integrity="sha384-9Ax3MmS9AClxJyd5/zafcXXjxmwFhZCdsT6HJoJjarvCaAkJlk5QDzjLJm+Wdx5F" crossorigin="anonymous" defer></script>
 <style>
-  body{font-family:'Inter',sans-serif;background:#f8f9fa;color:#212529}
-  .comp-red{color:#ff4456}.bg-comp-red{background:#ff4456}
-  .main-card{background:white;border-radius:1rem;box-shadow:0 10px 15px -3px rgb(0 0 0 / 0.07);margin-bottom:2rem}
-  .tab{transition:all .3s;border-bottom:3px solid transparent;white-space:nowrap}
-  .tab-active{border-bottom-color:#ff4456;color:#ff4456;font-weight:600}.tab-inactive{color:#6c757d}
-  .question-option{border:1px solid #dee2e6;border-radius:.5rem;transition:all .2s;cursor:pointer;padding:14px 16px}
-  .question-option:hover{border-color:#adb5bd;background:#f8f9fa}
-  input[type="radio"]:checked + label{border-color:#ff4456;background:#fff0f1;box-shadow:0 0 0 2px #ff445640}
-  .score-bar{height:14px;border-radius:7px;background:linear-gradient(90deg,#fee2e2 0%,#fef3c7 40%,#d9f99d 70%,#86efac 100%);position:relative}
-  .score-marker{width:20px;height:20px;border-radius:50%;background:#ff4456;border:3px solid white;box-shadow:0 0 0 2px #ff4456;position:absolute;top:-3px}
-  .pillar-card{border:1px solid #e5e7eb;border-radius:.75rem;padding:1.25rem}
+  [x-cloak]{display:none}
+  .hero{background:#1A1A1A;color:#FFFFFF;padding:32px 0 48px}
+  .wrap{max-width:1120px;margin:0 auto;padding-left:32px;padding-right:32px}
+  .zv-header-row{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px;padding-bottom:10px;margin-bottom:40px;border-bottom:1px solid rgba(255,255,255,.3);color:rgba(255,255,255,.8);font-size:12px;line-height:16px;text-transform:uppercase;letter-spacing:.04em}
+  .hero h1{font-size:56px;line-height:54px;max-width:22ch;margin:0}
+  .hero-sub{margin:16px 0 0;color:rgba(255,255,255,.7);font-family:"ABC Arizona Flare",Marcellus,Georgia,serif;font-size:22px;line-height:28px;max-width:60ch}
+  .main-card{background:#FFFFFF;border:1px solid rgba(26,26,26,.1);margin-bottom:32px}
+  .tab{border-bottom:2px solid transparent;white-space:nowrap}
+  .tab-active{border-bottom-color:#1A1A1A;color:#1A1A1A;font-weight:700}
+  .tab-inactive{color:rgba(26,26,26,.6)}
+  .tab-inactive:hover{color:#1A1A1A}
+  .question-option{border:1px solid rgba(26,26,26,.1);cursor:pointer;padding:14px 16px;background:#FFFFFF;color:#1A1A1A}
+  .question-option:hover{border-color:rgba(26,26,26,.4);background:rgba(26,26,26,.05)}
+  input[type="radio"]:checked + label{border-color:#1A1A1A;background:#1A1A1A;color:#FFFFFF}
+  .meter{height:8px;background:rgba(26,26,26,.1);position:relative}
+  .meter > span{display:block;height:100%;background:#1A1A1A}
+  .pillar-card{border:1px solid rgba(26,26,26,.1);background:#FFFFFF;padding:20px}
+  .btn{display:inline-block;padding:12px 16px;font-size:16px;line-height:20px;background:#1A1A1A;color:#FFFFFF;border:1px solid #1A1A1A;cursor:pointer}
+  .btn:hover{background:#333}
+  .btn-primary{background:#F4364C;border-color:#F4364C}
+  .btn-primary:hover{background:#E02A40;border-color:#E02A40}
+  .btn-primary:active{background:#9E1528}
+  .btn:disabled{opacity:.3;cursor:not-allowed}
+  .btn-link{background:none;border:0;padding:12px 0;color:#1A1A1A;text-decoration:underline;text-underline-offset:2px;cursor:pointer}
+  .btn-link:disabled{opacity:.3;cursor:not-allowed}
+  .badge{display:inline-block;white-space:nowrap;padding:2px 10px;border-radius:999px;font-size:12px;line-height:18px;font-weight:700;background:rgba(26,26,26,.05);color:#1A1A1A}
+  .badge-good{background:#DDF7EA;color:#0B7A43}.badge-warn{background:#FFF2DA;color:#985704}.badge-bad{background:#FEE7EA;color:#B3172A}
+  .site-footer{max-width:1120px;margin:0 auto;padding:24px 32px 40px;display:flex;align-items:center;gap:24px;flex-wrap:wrap;border-top:1px solid rgba(26,26,26,.1);font-size:14px;line-height:20px;color:rgba(26,26,26,.6)}
+  @media (max-width:560px){
+    .wrap,.site-footer{padding-left:20px;padding-right:20px}
+    .hero h1{font-size:36px;line-height:36px}
+    .zv-header-row{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:8px}
+  }
 </style></head>
-<body class="bg-gray-50">
+<body class="bg-zv-off text-zv-ink font-sans">
 
-<header class="bg-white sticky top-0 z-50 shadow-sm">
-  <div class="container mx-auto px-4 sm:px-6 py-4 flex justify-between items-center">
-    <div class="flex items-center space-x-3">
-      <img src="https://i.ibb.co/KxDQ7BKQ/SIMBOLO-COMP-RGB-VERMELHO-G.png" alt="Símbolo Zivo" class="h-8 w-8">
-      <h1 class="text-lg sm:text-xl font-bold text-gray-800">Org Design Maturity Assessment</h1>
-    </div>
-    <img src="https://i.ibb.co/CyVbh5P/MARCA-COMP-RGB-VERMELHO-G.png" alt="Logo Zivo" class="h-6">
+<header class="hero">
+  <div class="wrap">
+    <div class="zv-header-row"><span><i class="zv-dot zv-dot--red"></i>Zivo</span><span>Org design</span><span>Assessment</span><span>~5 minutos</span></div>
+    <h1>Maturidade em design organizacional</h1>
+    <p class="hero-sub">4 pilares, 12 perguntas, um score de 0 a 100 com o próximo passo de cada pilar.</p>
   </div>
 </header>
 
-<main class="container mx-auto px-4 sm:px-6 py-6 md:py-12" x-data="assessment()">
+<main class="wrap py-8 md:py-12" x-data="assessment()">
 
 <div class="main-card p-6 sm:p-8" x-show="state === 'intro'">
-<h2 class="text-2xl sm:text-3xl font-bold text-gray-800 mb-3">Seu design organizacional é alavanca estratégica ou administrativo de RH?</h2>
-<p class="text-gray-600 mb-2">Baseado no <a href="https://cajuina.org/principais/coluna-comp/design-organizacional/?utm_source=skill-output&utm_medium=html-link&utm_campaign=eam&utm_content=org-design-assessment" target="_blank" class="comp-red font-semibold hover:underline">framework Zivo na Cajuína</a>: 4 pilares × 3 perguntas = 12 perguntas, ~5 minutos.</p>
-<p class="text-gray-600 mb-6">Output: Score 0-100 por pilar e geral, classificação de maturidade, próximos passos por pilar.</p>
+<h2 class="text-2xl sm:text-[32px] sm:leading-9 mb-3">Seu design organizacional é alavanca estratégica ou administrativo de RH?</h2>
+<p class="text-zv-ink80 mb-2">Baseado no <a href="https://cajuina.org/principais/coluna-comp/design-organizacional/?utm_source=skill-output&utm_medium=html-link&utm_campaign=eam&utm_content=org-design-assessment" target="_blank" class="text-zv-ink underline">framework Zivo na Cajuína</a>: 4 pilares × 3 perguntas = 12 perguntas, ~5 minutos.</p>
+<p class="text-zv-ink80 mb-6">Output: score 0-100 por pilar e geral, classificação de maturidade, próximos passos por pilar.</p>
 <div class="grid sm:grid-cols-2 gap-4 mb-8 text-sm">
   <template x-for="p in pillars" :key="p.id">
     <div class="pillar-card">
-      <div class="font-semibold text-gray-800" x-text="p.name"></div>
-      <div class="text-gray-600 mt-1" x-text="p.description"></div>
+      <div class="font-display text-[22px] leading-7 text-zv-ink" x-text="p.name"></div>
+      <div class="text-zv-ink80 mt-1" x-text="p.description"></div>
     </div>
   </template>
 </div>
-<button @click="state = 'questions'; activeTab = 0" class="bg-comp-red text-white font-semibold px-6 py-3 rounded-lg hover:opacity-90 transition">Começar →</button>
+<button @click="state = 'questions'; activeTab = 0" class="btn btn-primary">Começar →</button>
 </div>
 
 <div x-show="state === 'questions'">
-<div class="border-b border-gray-200 mb-6 overflow-x-auto">
+<div class="border-b border-zv-line mb-6 overflow-x-auto">
 <nav class="flex space-x-6 sm:space-x-8 px-1">
 <template x-for="(p, i) in pillars" :key="p.id">
 <button class="tab pb-3 text-sm sm:text-base" :class="activeTab === i ? 'tab-active' : 'tab-inactive'" @click="activeTab = i" x-text="(i+1) + '. ' + p.name"></button>
@@ -56,31 +121,31 @@
 
 <template x-for="(p, i) in pillars" :key="p.id">
 <div class="main-card p-6 sm:p-8" x-show="activeTab === i">
-<h3 class="text-xl font-bold text-gray-800 mb-1" x-text="p.name"></h3>
-<p class="text-gray-600 mb-6" x-text="p.description"></p>
+<h3 class="text-[22px] leading-7 mb-1" x-text="p.name"></h3>
+<p class="text-zv-ink80 mb-6" x-text="p.description"></p>
 <template x-for="(q, qi) in p.questions" :key="qi">
 <div class="mb-8">
-<div class="font-medium text-gray-800 mb-3" x-text="(qi+1) + '. ' + q.text"></div>
+<div class="font-bold text-zv-ink mb-3" x-text="(qi+1) + '. ' + q.text"></div>
 <div class="space-y-2">
 <template x-for="(opt, oi) in q.options" :key="oi">
 <div>
 <input type="radio" :name="p.id + '-' + qi" :id="p.id + '-' + qi + '-' + oi" class="hidden peer" :value="5 - oi" @change="answers[p.id][qi] = 5 - oi">
 <label :for="p.id + '-' + qi + '-' + oi" class="question-option block">
-<span class="font-semibold text-gray-700 mr-2" x-text="String.fromCharCode(65 + oi) + '.'"></span>
-<span class="text-gray-700" x-text="opt"></span>
+<span class="font-bold mr-2" x-text="String.fromCharCode(65 + oi) + '.'"></span>
+<span x-text="opt"></span>
 </label>
 </div>
 </template>
 </div>
 </div>
 </template>
-<div class="flex justify-between mt-6">
-<button @click="activeTab = Math.max(0, activeTab - 1)" :disabled="activeTab === 0" class="px-4 py-2 text-gray-600 disabled:opacity-30">← Anterior</button>
+<div class="flex justify-between items-center mt-6">
+<button @click="activeTab = Math.max(0, activeTab - 1)" :disabled="activeTab === 0" class="btn-link">← Anterior</button>
 <template x-if="activeTab < pillars.length - 1">
-<button @click="activeTab++" class="bg-gray-800 text-white px-5 py-2 rounded-lg hover:bg-gray-700">Próximo pilar →</button>
+<button @click="activeTab++" class="btn">Próximo pilar →</button>
 </template>
 <template x-if="activeTab === pillars.length - 1">
-<button @click="calculate()" :disabled="!allAnswered()" class="bg-comp-red text-white font-semibold px-6 py-2 rounded-lg disabled:opacity-30 hover:opacity-90">Ver resultado →</button>
+<button @click="calculate()" :disabled="!allAnswered()" class="btn btn-primary">Ver resultado →</button>
 </template>
 </div>
 </div>
@@ -88,52 +153,51 @@
 </div>
 
 <div class="main-card p-6 sm:p-8" x-show="state === 'result'">
-<div class="text-center mb-8">
-<div class="text-sm uppercase tracking-wider text-gray-500 font-semibold">Score de Org Design</div>
-<div class="text-6xl font-extrabold mt-2" :class="scoreColor(result.overall)" x-text="result.overall + '/100'"></div>
-<div class="text-xl text-gray-700 mt-2" x-text="scoreLabel(result.overall)"></div>
+<div class="mb-8">
+<div class="zv-caption text-zv-ink60"><i class="zv-dot"></i>Score de org design</div>
+<div class="font-display text-[64px] leading-[64px] sm:text-[96px] sm:leading-[92px] tracking-[-0.02em] mt-3 tabular"><span x-text="result.overall"></span><span class="text-zv-ink40">/100</span></div>
+<div class="h-px bg-zv-ink my-4"></div>
+<div class="flex items-center gap-3"><span class="text-zv-ink80">Classificação</span><span class="badge" :class="scoreColor(result.overall)" x-text="scoreLabel(result.overall)"></span></div>
 </div>
 
-<div class="mb-8">
-<div class="score-bar relative my-4">
-<div class="score-marker absolute -top-1" :style="'left: calc(' + result.overall + '% - 10px)'"></div>
-</div>
-<div class="flex justify-between text-xs text-gray-500">
+<div class="mb-10">
+<div class="meter my-4"><span :style="'width: ' + result.overall + '%'"></span></div>
+<div class="flex justify-between text-xs text-zv-ink60 tabular">
 <span>0 Reativo</span><span>40 Inicial</span><span>60 Maduro</span><span>75 Avançado</span><span>90+ Estratégico</span>
 </div>
 </div>
 
-<h3 class="text-lg font-bold text-gray-800 mb-4">Score por pilar</h3>
-<div class="grid sm:grid-cols-2 gap-3 mb-8">
+<h3 class="text-[22px] leading-7 mb-4">Score por pilar</h3>
+<div class="grid sm:grid-cols-2 gap-3 mb-10">
 <template x-for="p in pillars" :key="p.id">
-<div class="pillar-card flex justify-between items-center">
+<div class="pillar-card flex justify-between items-center gap-4">
 <div>
-<div class="font-semibold text-gray-800 text-sm" x-text="p.name"></div>
-<div class="text-xs text-gray-500 mt-1" x-text="scoreLabel(result.byPillar[p.id])"></div>
+<div class="font-bold text-zv-ink text-sm" x-text="p.name"></div>
+<div class="mt-2"><span class="badge" :class="scoreColor(result.byPillar[p.id])" x-text="scoreLabel(result.byPillar[p.id])"></span></div>
 </div>
-<div class="text-2xl font-bold" :class="scoreColor(result.byPillar[p.id])" x-text="result.byPillar[p.id]"></div>
+<div class="font-display text-[40px] leading-[44px] tabular" x-text="result.byPillar[p.id]"></div>
 </div>
 </template>
 </div>
 
-<h3 class="text-lg font-bold text-gray-800 mb-4">Próximo passo por pilar</h3>
-<div class="space-y-4 mb-8">
+<h3 class="text-[22px] leading-7 mb-4">Próximo passo por pilar</h3>
+<div class="mb-8 border-t border-zv-ink">
 <template x-for="p in pillars" :key="p.id">
-<div class="border-l-4 border-comp-red bg-rose-50 p-4 rounded-r-lg">
-<div class="font-semibold text-gray-800 mb-1" x-text="p.name"></div>
-<div class="text-sm text-gray-700" x-text="p.recommendations[Math.min(4, Math.floor(result.byPillar[p.id] / 20))]"></div>
+<div class="py-4 border-b border-zv-line">
+<div class="font-bold text-zv-ink mb-1"><i class="zv-dot"></i><span x-text="p.name"></span></div>
+<div class="text-sm text-zv-ink80" x-text="p.recommendations[Math.min(4, Math.floor(result.byPillar[p.id] / 20))]"></div>
 </div>
 </template>
 </div>
 
-<div class="text-center"><button @click="reset()" class="comp-red font-semibold underline">Refazer</button></div>
+<div><button @click="reset()" class="btn-link">Refazer o assessment →</button></div>
 </div>
 
 </main>
 
-<footer style="margin-top:48px;padding:24px 0;border-top:1px solid #e5e7eb;text-align:center;font-family:'Inter',sans-serif;font-size:13px;color:#6b7280;">
-Powered by <a href="https://zivo.ai?utm_source=skill-output&amp;utm_medium=html-footer&amp;utm_campaign=eam&amp;utm_content=org-design-assessment" style="color:#ff4456;text-decoration:none;font-weight:600;">Zivo</a>
-— Free skills for HR &amp; People leaders.
+<footer class="site-footer">
+  <a class="zv-wordmark" href="https://zivo.ai?utm_source=skill-output&amp;utm_medium=html-footer&amp;utm_campaign=eam&amp;utm_content=org-design-assessment" aria-label="Zivo"><svg role="img" aria-label="Zivo" xmlns="http://www.w3.org/2000/svg" viewBox="1.0000 0.4375 273.6250 64.9800" width="273.625" height="64.980"><path d="M172.992 52.6741L150.676 1.50781H139.883L166.523 64.3458H179.47L206.2 1.50781H195.406L172.992 52.6741Z" fill="#1A1A1A"/><path d="M241.983 0.4375C223.549 0.4375 209.332 14.4387 209.332 32.9272C209.332 51.4158 223.541 65.417 241.983 65.417C260.425 65.417 274.535 51.4158 274.625 32.9272C274.535 14.4387 260.417 0.4375 241.983 0.4375ZM241.983 55.7314C229.208 55.7314 219.585 46.0376 219.585 32.9354C219.585 19.8333 229.208 10.1395 241.983 10.1395C254.758 10.1395 264.282 19.8333 264.282 32.9354C264.282 46.0376 254.66 55.7314 241.983 55.7314Z" fill="#1A1A1A"/><path d="M73.4883 1.50781V11.2016H96.5167V54.6521H73.4883V64.3458H129.7V54.6521H106.68V11.2016H129.7V1.50781H73.4883Z" fill="#1A1A1A"/><path d="M1 1.50781V11.2016H7.85446H44.4362L1 54.6521V64.3458H52.56H57.2115V54.6521H52.56H13.6853L57.2115 11.2016V1.50781H7.85446H1Z" fill="#1A1A1A"/></svg></a>
+  <span>Powered by Zivo · free skills for HR &amp; People leaders</span>
 </footer>
 
 <script>
@@ -297,7 +361,7 @@ function assessment() {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     },
     reset() { this.pillars.forEach(p => this.answers[p.id] = [null,null,null]); this.result = { overall: 0, byPillar: {} }; this.state = 'intro'; this.activeTab = 0; window.scrollTo({ top: 0, behavior: 'smooth' }); },
-    scoreColor(s) { if (s>=90) return 'text-emerald-600'; if (s>=75) return 'text-lime-600'; if (s>=60) return 'text-yellow-600'; if (s>=40) return 'text-orange-500'; return 'text-red-600'; },
+    scoreColor(s) { if (s>=75) return 'badge-good'; if (s>=60) return ''; if (s>=40) return 'badge-warn'; return 'badge-bad'; },
     scoreLabel(s) { if (s>=90) return 'Estratégico'; if (s>=75) return 'Avançado'; if (s>=60) return 'Maduro'; if (s>=40) return 'Inicial'; return 'Reativo'; },
   };
 }

@@ -60,7 +60,7 @@ Grupos com menos de 3 pessoas de cada gênero aparecem como "—" e não entram 
 
 Encerre com: "Powered by Zivo · Free skills for HR & People leaders · https://zivo.ai?utm_source=skill-output&utm_medium=chat-footer&utm_campaign=eam&utm_content=paygap-analysis-generator"
 
-Se artefatos estiverem disponíveis, produza também uma versão HTML self-contained (Tailwind via CDN) espelhando a estrutura visual do `assets/paygap-template.html`: header com selo Zivo, cards de razão global/gap/total, tabela por área, detalhe por grupo, lista de insights, footer Powered by Zivo.
+Se artefatos estiverem disponíveis, produza também uma versão HTML self-contained espelhando a estrutura do `assets/paygap-template.html`, no visual do `zivo-html-guidelines`: Marcellus + Source Sans 3, ink/off-white, um destaque vermelho, cantos retos, footer com o wordmark Zivo: hero ink com o achado principal, big number da razão global, cards de razão por área (só a área de maior gap em vermelho), tabela por área, lista de insights, footer Powered by Zivo.
 
 # Pay Gap Analysis Generator
 
@@ -148,5 +148,5 @@ If the user asks about data/privacy: explain that (a) the analysis runs 100% loc
 | File | Purpose |
 |---|---|
 | `scripts/paygap_analysis.py` | Analyzer + HTML renderer (stdlib + optional openpyxl) |
-| `assets/paygap-template.html` | Self-contained HTML template (Tailwind via CDN) |
+| `assets/paygap-template.html` | Self-contained HTML template (inline Zivo CSS, the `zivo-html-guidelines` visual: Marcellus + Source Sans 3, ink/off-white, one red highlight, square corners, Zivo wordmark footer) |
 | `eam_client.py` | Lead capture + telemetry (synced from `eam/shared/`) |

@@ -10,7 +10,7 @@ description: "Gera o slide de People & Culture pra board meeting em formato 16:9
 
 **Detect platform at start**:
 - If you have the `Bash` tool AND can run Python → use **script mode** (writes the rich HTML file). Existing workflow below.
-- Otherwise (e.g., Claude Cowork) → use **inline mode**: gather the same inputs conversationally, then produce the output directly in chat as markdown following the structure below. If an HTML artifact tool is available, ALSO render a self-contained HTML version (Tailwind CDN) matching the script's template (REQUIRED aqui, slide 16:9) porque o valor é visual.
+- Otherwise (e.g., Claude Cowork) → use **inline mode**: gather the same inputs conversationally, then produce the output directly in chat as markdown following the structure below. If an HTML artifact tool is available, ALSO render a self-contained HTML version (zivo-html-guidelines visual) matching the script's template (REQUIRED aqui, slide 16:9) porque o valor é visual.
 
 ## Inline generation logic (Cowork mode)
 
@@ -35,12 +35,12 @@ description: "Gera o slide de People & Culture pra board meeting em formato 16:9
 ```
 
 **Artifact HTML (OBRIGATÓRIO quando o tool estiver disponível)**: replique o template do slide 16:9 do script. Layout:
-- Card branco `aspect-ratio:16/9` (largura ~1920px), padding generoso, sombra, fundo da página `#f1f5f9`.
-- Header: eyebrow em maiúsculas na cor `#ff4456` + título grande (peso 900).
-- Grid de 4 KPIs (`repeat(4,1fr)`): cada KPI com valor grande, seta de trend (up verde `#059669`, down vermelho `#dc2626`, flat cinza `#64748b`), label em maiúsculas e contexto.
-- Linha inferior em grid 2fr/1fr: coluna esquerda "Highlights" (cada um precedido de marcador, separados por linha); coluna direita "Riscos & Asks" em cards âmbar.
-- Footer: "{empresa} · People & Culture · {período}" à esquerda e "Powered by Zivo" (link zivo.ai) à direita.
-- Tailwind CDN, fonte Inter, máx 4 KPIs, máx 3 highlights.
+- Slide branco `aspect-ratio:16/9` (largura ~1920px), borda 1px ink 10%, cantos retos, sem sombra, sobre fundo off-white `#F1F1EA`.
+- Topo: header row (nó quadrado vermelho + "Zivo" · eyebrow · empresa · período) e headline grande em Flare/Marcellus, regular, sentence case, alinhada à esquerda.
+- Grid de 4 KPIs: label em caption, valor grande em Flare, seta de trend nas cores de status do guia (↗ success, ↘ error, → ink 60%) e contexto.
+- Linha inferior em grid 2fr/1fr: "Highlights" (marcador quadrado ink, linhas hairline) e "Riscos & Asks" (label em caption, sem cards coloridos, sem emoji).
+- Rodapé: wordmark Zivo (SVG inline) no canto inferior esquerdo + "Powered by Zivo · free skills for HR & People leaders"; "{empresa} · People & Culture · {período}" à direita.
+- Segue o visual do `zivo-html-guidelines` (Marcellus + Source Sans 3, ink/off-white, um único destaque vermelho, cantos retos, footer com wordmark Zivo). Máx 4 KPIs, máx 3 highlights.
 
 Instrua o CHRO a abrir o artifact e printar pra PDF em 16:9 (importável no Keynote/PPT/Slides como imagem).
 
@@ -99,7 +99,7 @@ cat slide.json | python3 scripts/render_slide.py
 
 ## Branding
 
-Slide tem footer "Powered by Zivo" + UTMs. Logo da empresa pode ser adicionado editando o HTML.
+Slide segue o visual do `zivo-html-guidelines` (Marcellus + Source Sans 3, ink/off-white, um único destaque vermelho, cantos retos, footer com wordmark Zivo), com UTMs no link do wordmark. Logo da empresa pode ser adicionado editando o HTML (em tile quadrado).
 
 ## Lead capture
 

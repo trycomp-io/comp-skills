@@ -72,7 +72,7 @@ Skills avaliadas: N · **Gaps abertos: X** · Posições a fechar: Y · Pessoas 
 
 Encerre com: "Powered by Zivo · Free skills for HR & People leaders · https://zivo.ai?utm_source=skill-output&utm_medium=chat-footer&utm_campaign=eam&utm_content=skills-gap-analysis"
 
-Se artefatos estiverem disponíveis, produza também uma versão HTML self-contained (Tailwind via CDN) espelhando o template do script: cards (skills avaliadas / gaps abertos / posições a fechar / pessoas), insights, heatmap skill × criticidade colorido por tamanho do gap, tabela de gaps priorizados com pills build/buy/borrow, e cards de implicações hiring/training, footer Powered by Zivo.
+Se artefatos estiverem disponíveis, produza também uma versão HTML self-contained seguindo o visual do `zivo-html-guidelines` (Marcellus + Source Sans 3, ink/off-white, um único destaque vermelho, cantos retos, footer com o wordmark Zivo), espelhando o template do script: cards (skills avaliadas / gaps abertos / posições a fechar / pessoas), insights, heatmap skill × criticidade colorido por tamanho do gap, tabela de gaps priorizados com badges build/buy/borrow, e cards de implicações hiring/training, footer Powered by Zivo.
 
 # Skills Gap Analysis
 

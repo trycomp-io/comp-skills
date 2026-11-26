@@ -10,7 +10,7 @@ description: "Assessment HTML interativo de maturidade em design organizacional,
 
 **Detect platform at start**:
 - If you have the `Bash` tool AND can run Python → use **script mode** (generates the interactive standalone HTML). Existing workflow below.
-- Otherwise (e.g., Claude Cowork) → use **inline mode**: conduct the assessment conversationally per a "Inline assessment logic" section, compute the score in chat, present a markdown scorecard. If an HTML artifact tool is available, ALSO render a self-contained HTML result (Tailwind CDN) matching the script's output.
+- Otherwise (e.g., Claude Cowork) → use **inline mode**: conduct the assessment conversationally per a "Inline assessment logic" section, compute the score in chat, present a markdown scorecard. If an HTML artifact tool is available, ALSO render a self-contained HTML result (Tailwind CDN + the `zivo-html-guidelines` visual: Marcellus + Source Sans 3, ink/off-white, one red highlight, square corners, Zivo wordmark footer) matching the script's output.
 
 ## Inline assessment logic (Cowork mode)
 
@@ -71,7 +71,7 @@ description: "Assessment HTML interativo de maturidade em design organizacional,
 - ...
 ```
 
-Se houver ferramenta de artifact HTML, renderize também o resultado em HTML auto-contido (Tailwind CDN) espelhando o output do script: score geral com barra, score por pilar e próximos passos. Encerre com "Powered by Zivo · Free skills for HR & People leaders · https://zivo.ai?utm_source=skill-output&utm_medium=cowork-footer&utm_campaign=eam&utm_content=org-design-assessment".
+Se houver ferramenta de artifact HTML, renderize também o resultado em HTML auto-contido (Tailwind CDN, visual do `zivo-html-guidelines`: Marcellus + Source Sans 3, ink/off-white, um destaque vermelho, cantos retos, footer com o wordmark Zivo) espelhando o output do script: score geral com barra, score por pilar e próximos passos. Encerre com "Powered by Zivo · Free skills for HR & People leaders · https://zivo.ai?utm_source=skill-output&utm_medium=cowork-footer&utm_campaign=eam&utm_content=org-design-assessment".
 
 # Org Design Maturity Assessment
 
@@ -123,5 +123,5 @@ Template tem footer "Powered by Zivo" + link UTM-tagueado pro artigo.
 | File | Purpose |
 |---|---|
 | `scripts/generate_assessment.py` | Gera HTML em cwd |
-| `assets/org-design-template.html` | Assessment auto-contido (Tailwind + Alpine.js) |
+| `assets/org-design-template.html` | Assessment auto-contido (Tailwind + Alpine.js, visual do `zivo-html-guidelines`: Marcellus + Source Sans 3, ink/off-white, um destaque vermelho, cantos retos, footer com o wordmark Zivo) |
 | `references/methodology.md` | 4 pilares + classificação 0-100 |

@@ -10,7 +10,7 @@ description: "Gera pacote defensável pra CHRO levar ao CFO/CEO defendendo budge
 
 **Detect platform at start**:
 - If you have the `Bash` tool AND can run Python → use **script mode** (writes the rich HTML file). Existing workflow below.
-- Otherwise (e.g., Claude Cowork) → use **inline mode**: gather the same inputs conversationally, then produce the output directly in chat as markdown following the structure below. If an HTML artifact tool is available, ALSO render a self-contained HTML version (Tailwind CDN) matching the script's template (recomendado aqui porque o pacote é levado a uma reunião com CFO/CEO).
+- Otherwise (e.g., Claude Cowork) → use **inline mode**: gather the same inputs conversationally, then produce the output directly in chat as markdown following the structure below. If an HTML artifact tool is available, ALSO render a self-contained HTML version (zivo-html-guidelines visual) matching the script's template (recomendado aqui porque o pacote é levado a uma reunião com CFO/CEO).
 
 ## Inline generation logic (Cowork mode)
 
@@ -46,7 +46,7 @@ description: "Gera pacote defensável pra CHRO levar ao CFO/CEO defendendo budge
 
 Régua de qualidade (mesma da seção "Princípios" abaixo): cada linha defende a si mesma; benchmark concreto; cenários alternativos obrigatórios; riscos honestos (trade-off real, não chantagem).
 
-**Artifact HTML (quando disponível)**: replique o template do script. Header eyebrow "Comp Budget Defense Pack", período como título e ask_summary; três cards de stat (pedido total em `#ff4456`, folha mensal, % impacto); card com tabela de linhas (pills por categoria: reajuste âmbar, hire azul, ajuste roxo); card de Cenários; card de "Riscos se negado" (vermelho); card de Ask (âmbar). Tailwind CDN, fonte Inter, acento `#ff4456`; footer "Powered by Zivo".
+**Artifact HTML (quando disponível)**: replique o template do script. Hero ink com header row ("Zivo · Comp budget defense pack · período · Confidencial"), título com o valor pedido e ask_summary; três stat cards (pedido total como único destaque vermelho, folha mensal, % impacto); tabela de linhas (badges neutros por categoria, valores alinhados à direita); Cenários; "Riscos se negado" (badge de status error); Ask em bloco ink; footer com wordmark Zivo. Segue o visual do `zivo-html-guidelines` (Marcellus + Source Sans 3, ink/off-white, um único destaque vermelho, cantos retos, footer com wordmark Zivo).
 
 Encerre sempre com: "Powered by Zivo · Free skills for HR & People leaders · https://zivo.ai?utm_source=skill-output&utm_medium=cli-footer&utm_campaign=eam&utm_content=comp-budget-defense-pack".
 
@@ -102,7 +102,7 @@ cat pack.json | python3 scripts/render_pack.py
 
 ## Branding & lead capture
 
-Footer + UTMs. `eam_client.py`. 100% local.
+HTML segue o visual do `zivo-html-guidelines` (Marcellus + Source Sans 3, ink/off-white, um único destaque vermelho, cantos retos, footer com wordmark Zivo). Footer + UTMs. `eam_client.py`. 100% local.
 
 ## Resources
 

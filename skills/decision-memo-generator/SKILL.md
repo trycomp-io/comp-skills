@@ -129,7 +129,7 @@ cat memo.json | python3 scripts/render_memo.py
 
 ## Branding & lead capture
 
-Footer + UTMs. `eam_client.py`. 100% local.
+HTML segue o visual do `zivo-html-guidelines` (Marcellus + Source Sans 3, ink/off-white, um único destaque vermelho, cantos retos, footer com wordmark Zivo). Footer + UTMs. `eam_client.py`. 100% local.
 
 ## Resources
 

@@ -3,57 +3,108 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>HR Data Maturity Assessment — Zivo</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <title>HR data maturity assessment · Zivo</title>
   <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+  <!-- Zivo theme (zivo-html-guidelines/assets/zivo-tailwind.html) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Source+Sans+3:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<script>
+tailwind.config = {
+  theme: {
+    borderRadius: { none: '0', sm: '0', DEFAULT: '0', md: '0', lg: '0', xl: '0', '2xl': '0', '3xl': '0', full: '9999px' },
+    boxShadow: { sm: 'none', DEFAULT: 'none', md: 'none', lg: 'none', xl: 'none', '2xl': 'none', inner: 'none', none: 'none' },
+    fontFamily: {
+      display: ['"ABC Arizona Flare"', 'Marcellus', 'Georgia', 'serif'],
+      sans: ['"ABC Arizona Sans"', '"Source Sans 3"', 'system-ui', 'sans-serif'],
+    },
+    extend: {
+      colors: {
+        zv: {
+          ink: '#1A1A1A', off: '#F1F1EA', white: '#FFFFFF',
+          red: '#F4364C', 'red-hover': '#E02A40', 'red-pressed': '#9E1528',
+          ink80: 'rgba(26,26,26,.8)', ink60: 'rgba(26,26,26,.6)', ink40: 'rgba(26,26,26,.4)',
+          ink30: 'rgba(26,26,26,.3)', ink20: 'rgba(26,26,26,.2)', line: 'rgba(26,26,26,.1)', ink05: 'rgba(26,26,26,.05)',
+          success: '#0B7A43', 'success-bg': '#DDF7EA', 'success-fill': '#12B76A',
+          warning: '#985704', 'warning-bg': '#FFF2DA', 'warning-fill': '#F69B10',
+          error: '#B3172A', 'error-bg': '#FEE7EA', 'error-fill': '#D61F35',
+          info: '#0B58BB', 'info-bg': '#E7F1FF', 'info-fill': '#1C7CE5',
+          indigo: '#4636F2', aqua: '#12C3C9', orchid: '#C24BE6', citron: '#D4E030', midnight: '#1F188C',
+        },
+      },
+    },
+  },
+};
+</script>
+<style>
+  body { font-family: "ABC Arizona Sans", "Source Sans 3", system-ui, sans-serif; background: #F1F1EA; color: #1A1A1A; }
+  h1, h2, h3, h4, .font-display { font-family: "ABC Arizona Flare", Marcellus, Georgia, serif; font-weight: 400 !important; font-style: normal; text-transform: none; }
+  h1 { letter-spacing: -0.02em; }
+  h2 { letter-spacing: -0.01em; }
+  a { text-underline-offset: 2px; }
+  .zv-dot { display: inline-block; width: 8px; height: 8px; background: currentColor; margin-right: 8px; vertical-align: 1px; }
+  .zv-dot--red { background: #F4364C; }
+  .zv-caption { font-size: 12px; line-height: 16px; text-transform: uppercase; letter-spacing: .04em; }
+  .zv-wordmark { display: inline-flex; line-height: 0; }
+  .zv-wordmark svg { height: 20px; width: auto; }
+  .tabular { font-variant-numeric: tabular-nums; }
+</style>
   <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.9/dist/cdn.min.js" integrity="sha384-9Ax3MmS9AClxJyd5/zafcXXjxmwFhZCdsT6HJoJjarvCaAkJlk5QDzjLJm+Wdx5F" crossorigin="anonymous" defer></script>
   <style>
-    body { font-family: 'Inter', sans-serif; background-color: #f8f9fa; color: #212529; }
-    .comp-red { color: #ff4456; }
-    .bg-comp-red { background-color: #ff4456; }
-    .border-comp-red { border-color: #ff4456; }
-    .main-card { background-color: white; border-radius: 1rem; box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.07), 0 4px 6px -4px rgb(0 0 0 / 0.1); margin-bottom: 2rem; }
-    .tab { transition: all 0.3s ease-in-out; border-bottom: 3px solid transparent; white-space: nowrap; }
-    .tab-active { border-bottom-color: #ff4456; color: #ff4456; font-weight: 600; }
-    .tab-inactive { color: #6c757d; }
-    .tab:hover { color: #ff4456; }
-    .question-option { border: 1px solid #dee2e6; border-radius: 0.5rem; transition: all 0.2s; cursor: pointer; padding: 14px 16px; }
-    .question-option:hover { border-color: #adb5bd; background-color: #f8f9fa; }
-    input[type="radio"]:checked + label { border-color: #ff4456; background-color: #fff0f1; box-shadow: 0 0 0 2px #ff445640; }
-    .level-bar { height: 10px; border-radius: 5px; background: linear-gradient(90deg, #fee2e2 0%, #fef3c7 25%, #fef9c3 50%, #d9f99d 75%, #86efac 100%); }
-    .level-marker { width: 16px; height: 16px; border-radius: 50%; background: #ff4456; border: 3px solid white; box-shadow: 0 0 0 2px #ff4456; }
-    .dim-card { border: 1px solid #e5e7eb; border-radius: 0.75rem; padding: 1.25rem; }
+    .main-card { background: #FFFFFF; border: 1px solid rgba(26,26,26,.1); margin-bottom: 2rem; }
+    .tab { border-bottom: 2px solid transparent; white-space: nowrap; }
+    .tab-active { border-bottom-color: #1A1A1A; color: #1A1A1A; font-weight: 700; }
+    .tab-inactive { color: rgba(26,26,26,.6); }
+    .tab:hover { color: #1A1A1A; }
+    .question-option { border: 1px solid rgba(26,26,26,.1); background: #FFFFFF; color: #1A1A1A; cursor: pointer; padding: 14px 16px; transition: background-color .15s, border-color .15s; }
+    .question-option:hover { border-color: rgba(26,26,26,.4); background: rgba(26,26,26,.05); }
+    input[type="radio"]:checked + label { border-color: #1A1A1A; background: #1A1A1A; color: #FFFFFF; }
+    .opt-letter { font-weight: 700; color: rgba(26,26,26,.6); margin-right: 8px; }
+    input[type="radio"]:checked + label .opt-letter { color: #FFFFFF; }
+    .level-track { height: 8px; background: rgba(26,26,26,.1); }
+    .level-fill { height: 8px; background: #1A1A1A; }
+    .level-marker { width: 16px; height: 16px; background: #1A1A1A; }
+    .dim-card { background: #FFFFFF; border: 1px solid rgba(26,26,26,.1); padding: 1.25rem; }
+    .next-card { background: #FFFFFF; border: 1px solid rgba(26,26,26,.1); border-top: 1px solid #1A1A1A; padding: 16px; }
+    .trap-warning { background: #FFF2DA; color: #985704; padding: 12px 16px; }
+    .btn-zv { background: #1A1A1A; color: #FFFFFF; border: 1px solid #1A1A1A; }
+    .btn-zv:hover { background: #333333; }
+    .btn-zv-primary { background: #F4364C; color: #FFFFFF; border: 1px solid #F4364C; }
+    .btn-zv-primary:hover { background: #E02A40; border-color: #E02A40; }
+    .btn-zv-primary:active { background: #9E1528; }
+    .zv-header-row { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; padding-bottom: 10px; margin-bottom: 40px; border-bottom: 1px solid rgba(255,255,255,.3); color: rgba(255,255,255,.8); font-size: 12px; line-height: 16px; text-transform: uppercase; letter-spacing: .04em; }
+    .site-footer { max-width: 1120px; margin: 0 auto; padding: 24px 32px 40px; display: flex; align-items: center; gap: 24px; flex-wrap: wrap; border-top: 1px solid rgba(26,26,26,.1); font-size: 14px; line-height: 20px; color: rgba(26,26,26,.6); }
+    @media (max-width: 560px) {
+      .zv-header-row { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 8px; }
+      .site-footer { padding-left: 20px; padding-right: 20px; }
+    }
   </style>
 </head>
-<body class="bg-gray-50">
+<body class="bg-zv-off text-zv-ink font-sans">
 
-<header class="bg-white sticky top-0 z-50 shadow-sm">
-  <div class="container mx-auto px-4 sm:px-6 py-4 flex justify-between items-center">
-    <div class="flex items-center space-x-3">
-      <img src="https://i.ibb.co/KxDQ7BKQ/SIMBOLO-COMP-RGB-VERMELHO-G.png" alt="Símbolo Zivo" class="h-8 w-8">
-      <h1 class="text-lg sm:text-xl font-bold text-gray-800">HR Data Maturity Assessment</h1>
-    </div>
-    <img src="https://i.ibb.co/CyVbh5P/MARCA-COMP-RGB-VERMELHO-G.png" alt="Logo Zivo" class="h-6">
+<header class="bg-zv-ink text-white pt-8 pb-12">
+  <div class="max-w-[1120px] mx-auto px-5 sm:px-8">
+    <div class="zv-header-row"><span><i class="zv-dot zv-dot--red"></i>Zivo</span><span>HR data maturity</span><span>5 dimensões</span><span>15 perguntas</span></div>
+    <h1 class="text-white text-[36px] leading-[36px] sm:text-[56px] sm:leading-[54px] max-w-[22ch]">Avalie a maturidade dos dados do seu RH em 5 minutos</h1>
+    <p class="font-display text-[22px] leading-[28px] mt-4 max-w-[60ch]" style="color: rgba(255,255,255,.7)">Resultado por dimensão, numa escala de 1 (ad-hoc) a 5 (AI-native), com o próximo passo de cada uma.</p>
   </div>
 </header>
 
-<main class="container mx-auto px-4 sm:px-6 py-6 md:py-12" x-data="assessment()">
+<main class="max-w-[1120px] mx-auto px-5 sm:px-8 py-8 md:py-12" x-data="assessment()">
 
   <!-- Intro -->
   <div class="main-card p-6 sm:p-8" x-show="state === 'intro'">
-    <h2 class="text-2xl sm:text-3xl font-bold text-gray-800 mb-3">Avalie a maturidade dos dados do seu RH em 5 minutos</h2>
-    <p class="text-gray-600 mb-6">15 perguntas, 5 dimensões, 5 níveis. Resultado por dimensão + roadmap pro próximo nível.</p>
+    <h2 class="text-[26px] leading-[30px] sm:text-[32px] sm:leading-[36px] mb-3">Como funciona</h2>
+    <p class="text-zv-ink60 mb-6">15 perguntas, 5 dimensões, 5 níveis. Resultado por dimensão + roadmap pro próximo nível.</p>
     <div class="grid sm:grid-cols-2 gap-4 mb-8 text-sm">
       <template x-for="d in dimensions" :key="d.id">
         <div class="dim-card">
-          <div class="font-semibold text-gray-800" x-text="d.name"></div>
-          <div class="text-gray-600 mt-1" x-text="d.description"></div>
+          <div class="font-bold" x-text="d.name"></div>
+          <div class="text-zv-ink60 mt-1" x-text="d.description"></div>
         </div>
       </template>
     </div>
-    <button @click="state = 'questions'; activeTab = 0" class="bg-comp-red text-white font-semibold px-6 py-3 rounded-lg hover:opacity-90 transition">
+    <button @click="state = 'questions'; activeTab = 0" class="btn-zv-primary px-6 py-3 transition-colors">
       Começar avaliação →
     </button>
   </div>
@@ -61,7 +112,7 @@
   <!-- Questions -->
   <div x-show="state === 'questions'">
     <!-- Tabs -->
-    <div class="border-b border-gray-200 mb-6 overflow-x-auto">
+    <div class="border-b border-zv-line mb-6 overflow-x-auto">
       <nav class="flex space-x-6 sm:space-x-8 px-1">
         <template x-for="(d, i) in dimensions" :key="d.id">
           <button class="tab pb-3 text-sm sm:text-base" :class="activeTab === i ? 'tab-active' : 'tab-inactive'" @click="activeTab = i" x-text="(i+1) + '. ' + d.name"></button>
@@ -72,31 +123,31 @@
     <!-- Active dimension -->
     <template x-for="(d, i) in dimensions" :key="d.id">
       <div class="main-card p-6 sm:p-8" x-show="activeTab === i">
-        <h3 class="text-xl font-bold text-gray-800 mb-1" x-text="d.name"></h3>
-        <p class="text-gray-600 mb-6" x-text="d.description"></p>
+        <h3 class="text-[26px] leading-[30px] sm:text-[32px] sm:leading-[36px] mb-2" x-text="d.name"></h3>
+        <p class="text-zv-ink60 mb-6" x-text="d.description"></p>
         <template x-for="(q, qi) in d.questions" :key="qi">
           <div class="mb-8">
-            <div class="font-medium text-gray-800 mb-3" x-text="(qi+1) + '. ' + q.text"></div>
+            <div class="font-display text-[20px] leading-[26px] mb-3" x-text="(qi+1) + '. ' + q.text"></div>
             <div class="space-y-2">
               <template x-for="(opt, oi) in q.options" :key="oi">
                 <div>
                   <input type="radio" :name="d.id + '-' + qi" :id="d.id + '-' + qi + '-' + oi" class="hidden peer" :value="5 - oi" @change="answers[d.id][qi] = 5 - oi">
                   <label :for="d.id + '-' + qi + '-' + oi" class="question-option block">
-                    <span class="font-semibold text-gray-700 mr-2" x-text="String.fromCharCode(65 + oi) + '.'"></span>
-                    <span class="text-gray-700" x-text="opt"></span>
+                    <span class="opt-letter" x-text="String.fromCharCode(65 + oi) + '.'"></span>
+                    <span x-text="opt"></span>
                   </label>
                 </div>
               </template>
             </div>
           </div>
         </template>
-        <div class="flex justify-between mt-6">
-          <button @click="activeTab = Math.max(0, activeTab - 1)" :disabled="activeTab === 0" class="px-4 py-2 text-gray-600 hover:text-gray-800 disabled:opacity-30">← Anterior</button>
+        <div class="flex justify-between items-center gap-4 mt-6 pt-6 border-t border-zv-line">
+          <button @click="activeTab = Math.max(0, activeTab - 1)" :disabled="activeTab === 0" class="px-4 py-2 text-zv-ink60 hover:text-zv-ink disabled:opacity-30">← Anterior</button>
           <template x-if="activeTab < dimensions.length - 1">
-            <button @click="activeTab++" class="bg-gray-800 text-white px-5 py-2 rounded-lg hover:bg-gray-700">Próxima dimensão →</button>
+            <button @click="activeTab++" class="btn-zv px-5 py-2 transition-colors">Próxima dimensão →</button>
           </template>
           <template x-if="activeTab === dimensions.length - 1">
-            <button @click="calculate()" :disabled="!allAnswered()" class="bg-comp-red text-white font-semibold px-6 py-2 rounded-lg disabled:opacity-30 hover:opacity-90">Ver resultado →</button>
+            <button @click="calculate()" :disabled="!allAnswered()" class="btn-zv-primary px-6 py-2 transition-colors disabled:opacity-30 disabled:cursor-not-allowed">Ver resultado →</button>
           </template>
         </div>
       </div>
@@ -106,56 +157,57 @@
   <!-- Result -->
   <div class="main-card p-6 sm:p-8" x-show="state === 'result'">
     <div class="text-center mb-8">
-      <div class="text-sm uppercase tracking-wider text-gray-500 font-semibold">Nível atual</div>
-      <div class="text-5xl sm:text-6xl font-extrabold mt-2" :class="levelColor(result.overall)">
+      <div class="zv-caption text-zv-ink60">Nível atual</div>
+      <div class="font-display text-[64px] leading-[64px] sm:text-[96px] sm:leading-[92px] tracking-[-0.02em] mt-2 text-zv-red tabular">
         Nível <span x-text="result.overall"></span>
       </div>
-      <div class="text-xl text-gray-700 mt-2" x-text="levelName(result.overall)"></div>
-      <p class="text-gray-600 mt-3 max-w-xl mx-auto" x-text="levelDescription(result.overall)"></p>
+      <div class="font-display text-[22px] leading-[28px] mt-2" x-text="levelName(result.overall)"></div>
+      <p class="text-zv-ink80 mt-3 max-w-xl mx-auto" x-text="levelDescription(result.overall)"></p>
     </div>
 
     <div class="mb-8">
-      <div class="level-bar relative my-4">
+      <div class="level-track relative my-4">
+        <div class="level-fill" :style="'width: ' + ((result.overall - 1) / 4 * 100) + '%'"></div>
         <div class="level-marker absolute -top-1" :style="'left: calc(' + ((result.overall - 1) / 4 * 100) + '% - 8px)'"></div>
       </div>
-      <div class="flex justify-between text-xs text-gray-500">
+      <div class="flex justify-between gap-2 text-xs text-zv-ink60">
         <span>1 Ad-hoc</span><span>2 Operacional</span><span>3 Reporting</span><span>4 Analytics</span><span>5 AI-native</span>
       </div>
     </div>
 
-    <h3 class="text-lg font-bold text-gray-800 mb-4">Resultado por dimensão</h3>
+    <h3 class="font-display text-[22px] leading-[28px] mb-4">Resultado por dimensão</h3>
     <div class="grid sm:grid-cols-2 gap-3 mb-8">
       <template x-for="d in dimensions" :key="d.id">
         <div class="dim-card flex justify-between items-center">
           <div>
-            <div class="font-semibold text-gray-800 text-sm" x-text="d.name"></div>
-            <div class="text-xs text-gray-500 mt-1" x-text="levelName(result.byDimension[d.id])"></div>
+            <div class="font-bold text-sm" x-text="d.name"></div>
+            <div class="text-xs text-zv-ink60 mt-1" x-text="levelName(result.byDimension[d.id])"></div>
           </div>
-          <div class="text-2xl font-bold" :class="levelColor(result.byDimension[d.id])" x-text="result.byDimension[d.id]"></div>
+          <div class="font-display text-[32px] leading-[36px] tabular" :class="levelColor(result.byDimension[d.id])" x-text="result.byDimension[d.id]"></div>
         </div>
       </template>
     </div>
 
-    <h3 class="text-lg font-bold text-gray-800 mb-4">Próximos passos por dimensão</h3>
+    <h3 class="font-display text-[22px] leading-[28px] mb-4">Próximos passos por dimensão</h3>
     <div class="space-y-4 mb-8">
       <template x-for="d in dimensions" :key="d.id">
-        <div class="border-l-4 border-comp-red bg-rose-50 p-4 rounded-r-lg">
-          <div class="font-semibold text-gray-800 mb-1" x-text="d.name + ' — pra chegar no Nível ' + Math.min(5, result.byDimension[d.id] + 1)"></div>
-          <div class="text-sm text-gray-700" x-text="d.nextSteps[Math.min(4, result.byDimension[d.id] - 1)]"></div>
+        <div class="next-card">
+          <div class="font-bold mb-1" x-text="d.name + ': pra chegar no nível ' + Math.min(5, result.byDimension[d.id] + 1)"></div>
+          <div class="text-sm text-zv-ink80" x-text="d.nextSteps[Math.min(4, result.byDimension[d.id] - 1)]"></div>
         </div>
       </template>
     </div>
 
     <div class="text-center">
-      <button @click="reset()" class="text-comp-red font-semibold underline hover:no-underline">Refazer a avaliação</button>
+      <button @click="reset()" class="text-zv-ink underline underline-offset-2 hover:no-underline">Refazer a avaliação</button>
     </div>
   </div>
 
 </main>
 
-<footer style="margin-top: 48px; padding: 24px 0; border-top: 1px solid #e5e7eb; text-align: center; font-family: 'Inter', system-ui, sans-serif; font-size: 13px; color: #6b7280;">
-  Powered by <a href="https://zivo.ai?utm_source=skill-output&amp;utm_medium=html-footer&amp;utm_campaign=eam&amp;utm_content=hr-data-maturity-assessment" style="color: #ff4456; text-decoration: none; font-weight: 600;">Zivo</a>
-  — Free skills for HR &amp; People leaders.
+<footer class="site-footer">
+  <a class="zv-wordmark" href="https://zivo.ai?utm_source=skill-output&amp;utm_medium=html-footer&amp;utm_campaign=eam&amp;utm_content=hr-data-maturity-assessment" aria-label="Zivo"><svg role="img" aria-label="Zivo" xmlns="http://www.w3.org/2000/svg" viewBox="1.0000 0.4375 273.6250 64.9800" width="273.625" height="64.980"><path d="M172.992 52.6741L150.676 1.50781H139.883L166.523 64.3458H179.47L206.2 1.50781H195.406L172.992 52.6741Z" fill="#1A1A1A"/><path d="M241.983 0.4375C223.549 0.4375 209.332 14.4387 209.332 32.9272C209.332 51.4158 223.541 65.417 241.983 65.417C260.425 65.417 274.535 51.4158 274.625 32.9272C274.535 14.4387 260.417 0.4375 241.983 0.4375ZM241.983 55.7314C229.208 55.7314 219.585 46.0376 219.585 32.9354C219.585 19.8333 229.208 10.1395 241.983 10.1395C254.758 10.1395 264.282 19.8333 264.282 32.9354C264.282 46.0376 254.66 55.7314 241.983 55.7314Z" fill="#1A1A1A"/><path d="M73.4883 1.50781V11.2016H96.5167V54.6521H73.4883V64.3458H129.7V54.6521H106.68V11.2016H129.7V1.50781H73.4883Z" fill="#1A1A1A"/><path d="M1 1.50781V11.2016H7.85446H44.4362L1 54.6521V64.3458H52.56H57.2115V54.6521H52.56H13.6853L57.2115 11.2016V1.50781H7.85446H1Z" fill="#1A1A1A"/></svg></a>
+  <span>Powered by Zivo · free skills for HR &amp; People leaders</span>
 </footer>
 
 <script>
@@ -387,7 +439,7 @@ function assessment() {
       }[n] || '';
     },
     levelColor(n) {
-      return ['', 'text-red-600', 'text-orange-500', 'text-yellow-600', 'text-lime-600', 'text-emerald-600'][n] || 'text-gray-500';
+      return n ? 'text-zv-ink' : 'text-zv-ink60';
     },
   };
 }

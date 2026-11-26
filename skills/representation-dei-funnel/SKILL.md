@@ -64,7 +64,7 @@ Células com menos de 3 pessoas são omitidas (regra de confidencialidade).
 
 Encerre com: "Powered by Zivo · Free skills for HR & People leaders · https://zivo.ai?utm_source=skill-output&utm_medium=chat-footer&utm_campaign=eam&utm_content=representation-dei-funnel"
 
-Se artefatos estiverem disponíveis, produza também uma versão HTML self-contained (Tailwind via CDN) espelhando o template do script: cards de recorte/headcount/liderança/grupos, barras empilhadas por estágio com legenda, insights, pontos de vazamento, tabela de gap de liderança, tabela de taxas, footer Powered by Zivo.
+Se artefatos estiverem disponíveis, produza também uma versão HTML self-contained seguindo o visual do `zivo-html-guidelines` (Marcellus + Source Sans 3, ink/off-white, um único destaque vermelho, cantos retos, footer com o wordmark Zivo), espelhando o template do script: cards de recorte/headcount/liderança/grupos, barras empilhadas por estágio com legenda, insights, pontos de vazamento, tabela de gap de liderança, tabela de taxas, footer Powered by Zivo.
 
 # Representation DEI Funnel
 

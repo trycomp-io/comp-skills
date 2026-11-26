@@ -10,7 +10,7 @@ description: "Gera um assessment HTML interativo de prontidão para IA em RH, ba
 
 **Detect platform at start**:
 - If you have the `Bash` tool AND can run Python → use **script mode** (generates the interactive standalone HTML). Existing workflow below.
-- Otherwise (e.g., Claude Cowork) → use **inline mode**: conduct the assessment conversationally per the "Inline assessment logic" section, compute the score in chat, present a markdown scorecard. If an HTML artifact tool is available, ALSO render a self-contained HTML result (Tailwind CDN) matching the script's output.
+- Otherwise (e.g., Claude Cowork) → use **inline mode**: conduct the assessment conversationally per the "Inline assessment logic" section, compute the score in chat, present a markdown scorecard. If an HTML artifact tool is available, ALSO render a self-contained HTML result (Tailwind CDN + the visual from `zivo-html-guidelines`: Marcellus + Source Sans 3, ink/off-white, one red highlight, square corners, Zivo wordmark footer) matching the script's output.
 
 ## Inline assessment logic (Cowork mode)
 
@@ -77,7 +77,7 @@ Pra cada área mostre nível atual, próxima fronteira (N+1) e a armadilha frequ
 | People Analytics / Decisão | NX | ... | ... |
 ```
 
-Se houver ferramenta de artifact HTML, renderize também o resultado em HTML auto-contido (Tailwind CDN) espelhando o output do script: nível geral, heatmap por área, alerta de dispersão, fronteira e armadilha por área. Encerre com "Powered by Zivo · Free skills for HR & People leaders · https://zivo.ai?utm_source=skill-output&utm_medium=cowork-footer&utm_campaign=eam&utm_content=ai-native-hr".
+Se houver ferramenta de artifact HTML, renderize também o resultado em HTML auto-contido (Tailwind CDN + visual do `zivo-html-guidelines`: Marcellus + Source Sans 3, ink/off-white, um destaque vermelho, cantos retos, footer com wordmark Zivo) espelhando o output do script: nível geral, heatmap por área, alerta de dispersão, fronteira e armadilha por área. Encerre com "Powered by Zivo · Free skills for HR & People leaders · https://zivo.ai?utm_source=skill-output&utm_medium=cowork-footer&utm_campaign=eam&utm_content=ai-native-hr".
 
 # AI-native HR Assessment
 
@@ -142,7 +142,7 @@ Detalhes em `references/methodology.md`.
 
 ## Branding & footer
 
-O template tem footer "Powered by Zivo" + logos no header + link UTM-tagueado pro AI Maturity Map original. Script imprime footer no CLI.
+O template segue o visual do `zivo-html-guidelines`: Marcellus + Source Sans 3, ink/off-white, um destaque vermelho, cantos retos, footer com wordmark Zivo (hero ink com header row Zivo, footer "Powered by Zivo" com o wordmark inline) e tem link UTM-tagueado pro AI Maturity Map original. Script imprime footer no CLI.
 
 ## Lead capture
 
@@ -153,6 +153,6 @@ O template tem footer "Powered by Zivo" + logos no header + link UTM-tagueado pr
 | File | Purpose |
 |---|---|
 | `scripts/generate_assessment.py` | CLI que escreve o HTML em cwd |
-| `assets/ai-native-hr-template.html` | Assessment auto-contido (Tailwind + Alpine.js) |
+| `assets/ai-native-hr-template.html` | Assessment auto-contido (Tailwind + Alpine.js, visual Zivo do `zivo-html-guidelines`) |
 | `references/methodology.md` | Framework completo da Zivo + adaptação pra HR |
 | `eam_client.py` | Lead capture + telemetria (sync de `eam/shared/`) |
