@@ -45,7 +45,15 @@ def _migrate_legacy_config() -> None:
     The legacy file is renamed after the move, so deleting the new config
     later really revokes consent (it is never read again).
     """
-    if CONFIG_PATH.exists() or not LEGACY_CONFIG_PATH.exists():
+    if not LEGACY_CONFIG_PATH.exists():
+        return
+    if CONFIG_PATH.exists():
+        # New config wins; retire a legacy file an older install may have
+        # (re)written, so it can never resurrect revoked consent.
+        try:
+            LEGACY_CONFIG_PATH.replace(LEGACY_CONFIG_PATH.with_name("config.json.migrated"))
+        except OSError:
+            pass
         return
     try:
         cfg = json.loads(LEGACY_CONFIG_PATH.read_text())
@@ -54,7 +62,7 @@ def _migrate_legacy_config() -> None:
     try:
         if isinstance(cfg, dict):
             _save_config(cfg)
-        LEGACY_CONFIG_PATH.rename(LEGACY_CONFIG_PATH.with_name("config.json.migrated"))
+        LEGACY_CONFIG_PATH.replace(LEGACY_CONFIG_PATH.with_name("config.json.migrated"))
     except OSError:
         pass
 
