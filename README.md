@@ -2,7 +2,7 @@
 
 Skills gratuitos do Claude para líderes de RH & People, criados e mantidos pela [Zivo](https://zivo.ai?utm_source=github&utm_medium=readme&utm_campaign=eam&utm_content=mirror-readme-intro).
 
-**Versão atual: v0.6.3.** 37 skills, **todos** funcionam em Claude Code e Claude Cowork. [Ver release →](https://github.com/trycomp-io/zivo-skills/releases/latest)
+**Versão atual: v0.7.0.** 37 skills, **todos** funcionam em Claude Code e Claude Cowork. [Ver release →](https://github.com/trycomp-io/zivo-skills/releases/latest)
 
 ## Instalação
 
@@ -14,6 +14,19 @@ Skills gratuitos do Claude para líderes de RH & People, criados e mantidos pela
 Instala os 37 skills de uma vez. Eles são model-invoked: basta descrever o que você quer e o Claude escolhe o skill certo (ex: "analisa o pay gap dessa planilha" aciona o `paygap-analysis-generator`).
 
 Depois de instalar, rode `/reload-plugins` pra ativar.
+
+### Vindo da Comp?
+
+A Comp agora é Zivo, e o plugin mudou de nome junto. Se você instalou antes da v0.7.0, troque pelo novo:
+
+```bash
+/plugin uninstall comp-skills@comp
+/plugin marketplace remove comp
+/plugin marketplace add trycomp-io/zivo-skills
+/plugin install zivo-skills@zivo
+```
+
+Suas preferências continuam valendo: na primeira execução, os skills leem `~/.comp-skills/config.json` e passam a gravar em `~/.zivo-skills/config.json`.
 
 ## O que tem aqui (37 skills)
 
@@ -133,6 +146,6 @@ Abra uma [issue](https://github.com/trycomp-io/zivo-skills/issues). Lemos todas.
 
 ## Sobre a Zivo
 
-A Zivo ajuda empresas em crescimento rápido a construir e operar um RH AI-native. Embarcamos executivos sêniores de RH e engenheiros de IA nos times dos nossos clientes. Esses skills são uma fatia pequena do que construímos internamente, liberada porque ferramenta de RH melhor é boa pra todo mundo.
+A Zivo constrói RH AI-native para empresas grandes, de ponta a ponta: da estratégia de pessoas ao sistema que a executa, com um squad de especialistas em RH e IA embarcado no time do cliente. Esses skills são uma fatia pequena do que construímos internamente, liberada porque ferramenta de RH melhor é boa pra todo mundo.
 
 [zivo.ai](https://zivo.ai?utm_source=github&utm_medium=readme&utm_campaign=eam&utm_content=mirror-readme-footer)

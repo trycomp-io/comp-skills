@@ -1,5 +1,5 @@
 {
-  "name": "comp",
+  "name": "zivo",
   "owner": {
     "name": "Zivo",
     "url": "https://zivo.ai?utm_source=claude-marketplace&utm_medium=plugin-manifest&utm_campaign=eam&utm_content=marketplace-owner-url"
@@ -9,7 +9,7 @@
     {
       "name": "zivo-skills",
       "source": "./",
-      "description": "Free Claude skills for HR & People leaders by Zivo — CLT/PJ calculator, level simulator, pay-gap analyzer, research digest."
+      "description": "Free Claude skills for HR & People leaders by Zivo: CLT/PJ calculator, level simulator, pay-gap analyzer, research digest and 33 more."
     }
   ]
 }
