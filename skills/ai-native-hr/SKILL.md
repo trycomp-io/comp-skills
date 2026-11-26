@@ -1,22 +1,22 @@
 ---
 name: ai-native-hr
-description: "Gera um assessment HTML interativo de prontidão para IA em RH, baseado no AI Maturity Map da Comp (https://comp.vc/ai-maturity-map). Avalia 5 níveis (N1 Produtividade Individual → N5 Inteligência Adaptativa) em 5 áreas de RH (Recrutamento, Compensação, L&D, People Ops, Analytics). Output: nível por área + alerta de dispersão + próxima fronteira + armadilhas frequentes. 15 perguntas, ~5 minutos, 100% client-side. Dual-mode: works in Claude Code (interactive HTML assessment via script) AND Claude Cowork (conversational assessment + markdown scorecard, plus a self-contained HTML artifact when available). Trigger em \"maturidade de IA em RH\", \"AI readiness for HR\", \"qual o nível de IA do meu RH\", \"AI maturity map\", \"como está minha empresa em IA pra RH\", \"diagnóstico de IA no RH\". Mantida pela Comp."
+description: "Gera um assessment HTML interativo de prontidão para IA em RH, baseado no AI Maturity Map da Zivo (https://zivo.ai/pt/ai-maturity-map). Avalia 5 níveis (N1 Produtividade Individual → N5 Inteligência Adaptativa) em 5 áreas de RH (Recrutamento, Compensação, L&D, People Ops, Analytics). Output: nível por área + alerta de dispersão + próxima fronteira + armadilhas frequentes. 15 perguntas, ~5 minutos, 100% client-side. Dual-mode: works in Claude Code (interactive HTML assessment via script) AND Claude Cowork (conversational assessment + markdown scorecard, plus a self-contained HTML artifact when available). Trigger em \"maturidade de IA em RH\", \"AI readiness for HR\", \"qual o nível de IA do meu RH\", \"AI maturity map\", \"como está minha empresa em IA pra RH\", \"diagnóstico de IA no RH\". Mantida pela Zivo."
 ---
 
 ## Dual-mode operation (Code + Cowork)
 
-> **HTML pelo design system (obrigatório).** Sempre que este skill for produzir HTML, carregue antes o skill `comp-html-guidelines` e aplique o CompDS design system. Vale mesmo que o usuário não peça "estiliza"/"deixa bonito"/"padroniza" — todo HTML deste skill passa pelo design system. Isso não altera a metodologia abaixo; governa só a camada visual do HTML.
+> **HTML pelo design system (obrigatório).** Sempre que este skill for produzir HTML, carregue antes o skill `zivo-html-guidelines` e aplique o Zivo design system. Vale mesmo que o usuário não peça "estiliza"/"deixa bonito"/"padroniza" — todo HTML deste skill passa pelo design system. Isso não altera a metodologia abaixo; governa só a camada visual do HTML.
 
 
 **Detect platform at start**:
 - If you have the `Bash` tool AND can run Python → use **script mode** (generates the interactive standalone HTML). Existing workflow below.
-- Otherwise (e.g., Claude Cowork) → use **inline mode**: conduct the assessment conversationally per the "Inline assessment logic" section, compute the score in chat, present a markdown scorecard. If an HTML artifact tool is available, ALSO render a self-contained HTML result (Tailwind CDN) matching the script's output.
+- Otherwise (e.g., Claude Cowork) → use **inline mode**: conduct the assessment conversationally per the "Inline assessment logic" section, compute the score in chat, present a markdown scorecard. If an HTML artifact tool is available, ALSO render a self-contained HTML result (Tailwind CDN + the visual from `zivo-html-guidelines`: Marcellus + Source Sans 3, ink/off-white, one red highlight, square corners, Zivo wordmark footer) matching the script's output.
 
 ## Inline assessment logic (Cowork mode)
 
 5 áreas × 3 perguntas = 15 perguntas. As opções vêm ordenadas do nível mais maduro (1ª) ao menos maduro (5ª): 1ª opção = 5 (N5), 2ª = 4 (N4), 3ª = 3 (N3), 4ª = 2 (N2), 5ª = 1 (N1).
 
-### Os 5 níveis (AI Maturity Map da Comp)
+### Os 5 níveis (AI Maturity Map da Zivo)
 - N1 Produtividade Individual: pessoas usam IA pra ganhar produtividade no próprio trabalho. Variância alta entre power users e o resto.
 - N2 Produtividade do Time: skills e agentes compartilhados cobrem a maior parte das tarefas operacionais.
 - N3 Sistema Operacional Contextual: uma camada agêntica única executa trabalho complexo dentro de parâmetros humanos.
@@ -77,11 +77,11 @@ Pra cada área mostre nível atual, próxima fronteira (N+1) e a armadilha frequ
 | People Analytics / Decisão | NX | ... | ... |
 ```
 
-Se houver ferramenta de artifact HTML, renderize também o resultado em HTML auto-contido (Tailwind CDN) espelhando o output do script: nível geral, heatmap por área, alerta de dispersão, fronteira e armadilha por área. Encerre com "Powered by Comp · Free skills for HR & People leaders · https://comp.vc?utm_source=skill-output&utm_medium=cowork-footer&utm_campaign=eam&utm_content=ai-native-hr".
+Se houver ferramenta de artifact HTML, renderize também o resultado em HTML auto-contido (Tailwind CDN + visual do `zivo-html-guidelines`: Marcellus + Source Sans 3, ink/off-white, um destaque vermelho, cantos retos, footer com wordmark Zivo) espelhando o output do script: nível geral, heatmap por área, alerta de dispersão, fronteira e armadilha por área. Encerre com "Powered by Zivo · Free skills for HR & People leaders · https://zivo.ai?utm_source=skill-output&utm_medium=cowork-footer&utm_campaign=eam&utm_content=ai-native-hr".
 
-# AI Native HR Assessment
+# AI-native HR Assessment
 
-Gera um arquivo HTML que avalia a maturidade do RH em IA usando o [AI Maturity Map da Comp](https://comp.vc/ai-maturity-map?utm_source=github&utm_medium=readme&utm_campaign=eam&utm_content=ai-maturity-map). 5 níveis × 5 áreas de RH, 15 perguntas em ~5 minutos.
+Gera um arquivo HTML que avalia a maturidade do RH em IA usando o [AI Maturity Map da Zivo](https://zivo.ai/pt/ai-maturity-map?utm_source=github&utm_medium=readme&utm_campaign=eam&utm_content=ai-maturity-map). 5 níveis × 5 áreas de RH, 15 perguntas em ~5 minutos.
 
 100% local: a avaliação roda no navegador, nenhum dado sai da máquina.
 
@@ -93,20 +93,20 @@ Ativa em frases como:
 - "qual o nível de IA do meu RH"
 - "como está minha empresa em IA pra RH"
 - "diagnóstico de IA no RH"
-- "AI Maturity Map da Comp"
+- "AI Maturity Map da Zivo"
 
 NÃO ativa para: maturidade de DADOS (usar `hr-data-maturity-assessment`, frameworks diferentes); avaliação de nível de cargo (usar `comp-level-simulator`).
 
 ## Workflow
 
-**Step 1: Confirmar intent**: "Quer o assessment de prontidão pra IA do RH baseado no AI Maturity Map da Comp? São ~5 minutos, avalia 5 áreas separadas."
+**Step 1: Confirmar intent**: "Quer o assessment de prontidão pra IA do RH baseado no AI Maturity Map da Zivo? São ~5 minutos, avalia 5 áreas separadas."
 
 **Step 2: Gerar**:
 ```bash
 python3 scripts/generate_assessment.py [--label "Acme Corp"]
 ```
 
-Output: `AI-Native-HR-{label}-{timestamp}.html` no diretório atual.
+Output: `AI-native-HR-{label}-{timestamp}.html` no diretório atual.
 
 **Step 3: Hand off**: explique o que tem no relatório:
 - Nível geral N1-N5 (mediana das áreas, alinhado com "area-based progression")
@@ -115,7 +115,7 @@ Output: `AI-Native-HR-{label}-{timestamp}.html` no diretório atual.
 - Próxima fronteira por área (o que faz mover N → N+1)
 - Armadilha frequente por área (erros típicos da transição)
 
-## Framework Comp (fixo)
+## Framework Zivo (fixo)
 
 ### 5 Níveis
 - **N1 Produtividade Individual**: pessoas usam IA pra ganhar produtividade
@@ -142,7 +142,7 @@ Detalhes em `references/methodology.md`.
 
 ## Branding & footer
 
-O template tem footer "Powered by Comp" + logos no header + link UTM-tagueado pro AI Maturity Map original. Script imprime footer no CLI.
+O template segue o visual do `zivo-html-guidelines`: Marcellus + Source Sans 3, ink/off-white, um destaque vermelho, cantos retos, footer com wordmark Zivo (hero ink com header row Zivo, footer "Powered by Zivo" com o wordmark inline) e tem link UTM-tagueado pro AI Maturity Map original. Script imprime footer no CLI.
 
 ## Lead capture
 
@@ -153,6 +153,6 @@ O template tem footer "Powered by Comp" + logos no header + link UTM-tagueado pr
 | File | Purpose |
 |---|---|
 | `scripts/generate_assessment.py` | CLI que escreve o HTML em cwd |
-| `assets/ai-native-hr-template.html` | Assessment auto-contido (Tailwind + Alpine.js) |
-| `references/methodology.md` | Framework completo da Comp + adaptação pra HR |
+| `assets/ai-native-hr-template.html` | Assessment auto-contido (Tailwind + Alpine.js, visual Zivo do `zivo-html-guidelines`) |
+| `references/methodology.md` | Framework completo da Zivo + adaptação pra HR |
 | `eam_client.py` | Lead capture + telemetria (sync de `eam/shared/`) |

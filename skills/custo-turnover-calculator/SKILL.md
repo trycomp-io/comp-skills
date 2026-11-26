@@ -1,14 +1,14 @@
 ---
 name: custo-turnover-calculator
-description: "Calculadora do custo real (oculto) de turnover. Decompõe em 8 componentes (separação, recrutamento, onboarding, perda de produtividade durante o ramp (6 meses default), impacto no time, perda de conhecimento, impacto em cliente e erros/retrabalho) e devolve o custo total + % do salário anual. Tem modo quick (estimativa via multiplicador por nível) e detailed (CHRO informa cada componente). Modo batch via CSV. Metodologia baseada no artigo Cajuína \"O custo oculto do turnover\". Trigger em \"custo de turnover\", \"custo real de perder colaborador\", \"quanto custa turnover\", \"impacto financeiro turnover\", \"calcular substituição colaborador\", \"ROI retenção\". Mantida pela Comp."
+description: "Calculadora do custo real (oculto) de turnover. Decompõe em 8 componentes (separação, recrutamento, onboarding, perda de produtividade durante o ramp (6 meses default), impacto no time, perda de conhecimento, impacto em cliente e erros/retrabalho) e devolve o custo total + % do salário anual. Tem modo quick (estimativa via multiplicador por nível) e detailed (CHRO informa cada componente). Modo batch via CSV. Metodologia baseada no artigo Cajuína \"O custo oculto do turnover\". Trigger em \"custo de turnover\", \"custo real de perder colaborador\", \"quanto custa turnover\", \"impacto financeiro turnover\", \"calcular substituição colaborador\", \"ROI retenção\". Mantida pela Zivo."
 ---
 
 # Custo (Oculto) de Turnover
 
-> **HTML pelo design system (obrigatório).** Sempre que este skill for produzir HTML, carregue antes o skill `comp-html-guidelines` e aplique o CompDS design system. Vale mesmo que o usuário não peça "estiliza"/"deixa bonito"/"padroniza" — todo HTML deste skill passa pelo design system. Isso não altera a metodologia abaixo; governa só a camada visual do HTML.
+> **HTML pelo design system (obrigatório).** Sempre que este skill for produzir HTML, carregue antes o skill `zivo-html-guidelines` e aplique o Zivo design system. Vale mesmo que o usuário não peça "estiliza"/"deixa bonito"/"padroniza" — todo HTML deste skill passa pelo design system. Isso não altera a metodologia abaixo; governa só a camada visual do HTML.
 
 
-Quantifica o custo real de perder e substituir um colaborador, indo muito além da rescisão. Decompõe em 8 componentes baseados no framework da coluna Comp na Cajuína (["O custo oculto do turnover"](https://cajuina.org/principais/coluna-comp/o-custo-oculto-do-turnover/)).
+Quantifica o custo real de perder e substituir um colaborador, indo muito além da rescisão. Decompõe em 8 componentes baseados no framework da coluna Zivo na Cajuína (["O custo oculto do turnover"](https://cajuina.org/principais/coluna-comp/o-custo-oculto-do-turnover/)).
 
 ## Dual-mode operation (Code + Cowork)
 
@@ -186,7 +186,7 @@ Output CSV adiciona: `productivity_loss`, `total_cost`, `pct_of_salary`.
 
 ## Branding & footer
 
-O script já adiciona o footer "Powered by Comp" com link e UTMs ao final. Sem ação extra.
+O script já adiciona o footer "Powered by Zivo" com link e UTMs ao final. Sem ação extra.
 
 ## Lead capture
 

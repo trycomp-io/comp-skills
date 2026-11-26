@@ -2,7 +2,7 @@
 
 Skill gratuito do Claude para líderes de RH & People. Calcula o **Total Compensation** completo, somando cash (base + variável), benefícios e equity (SOP/ILP com cenários de exit), e devolve 2 headline numbers + breakdown + visão visual.
 
-Mantido pela **Comp** ([comp.vc](https://comp.vc?utm_source=github&utm_medium=readme&utm_campaign=eam&utm_content=skill-total-comp-calculator)).
+Mantido pela **Zivo** ([zivo.ai](https://zivo.ai?utm_source=github&utm_medium=readme&utm_campaign=eam&utm_content=skill-total-comp-calculator)).
 
 ## O que faz
 
@@ -22,8 +22,8 @@ Casos de uso:
 ## Instalação
 
 ```bash
-/plugin marketplace add trycomp-io/comp-skills
-/plugin install comp-skills@comp
+/plugin marketplace add trycomp-io/zivo-skills
+/plugin install zivo-skills@zivo
 ```
 
 ## Uso
@@ -45,12 +45,12 @@ Funciona em **Claude Code** (script Python + HTML visual com composição) e **C
 - Equity: cenários de exit anualizados pelo vesting
 - Long-term headline usa o cenário target (10×), equity é potencial, não garantia
 
-## O que é compartilhado com a Comp
+## O que é compartilhado com a Zivo
 
 Email opcional + telemetria opt-in. **Nunca** envia salários, equity ou dados do pacote.
 
 ## Issues
 
-[trycomp-io/comp-skills/issues](https://github.com/trycomp-io/comp-skills/issues) com label `eam`.
+[trycomp-io/zivo-skills/issues](https://github.com/trycomp-io/zivo-skills/issues) com label `eam`.
 
-Powered by Comp · Free skills for HR & People leaders.
+Powered by Zivo · Free skills for HR & People leaders.

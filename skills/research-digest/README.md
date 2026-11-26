@@ -2,7 +2,7 @@
 
 Skill gratuito do Claude para líderes de RH & People. Cura um digest rolling de 12 semanas de papers e publicações de alto sinal sobre **Org Design**, **Workforce Planning** e **impacto da IA na força de trabalho**, traduzido pra PT-BR com sumários executivos e key takeaways. Output HTML único, auto-contido, compartilhe via Drive/email/hosting estático.
 
-Mantido pela **Comp** ([comp.vc](https://comp.vc?utm_source=github&utm_medium=readme&utm_campaign=eam&utm_content=skill-research-digest)).
+Mantido pela **Zivo** ([zivo.ai](https://zivo.ai?utm_source=github&utm_medium=readme&utm_campaign=eam&utm_content=skill-research-digest)).
 
 ## O que faz
 
@@ -16,11 +16,11 @@ Feito para líderes de RH/People que querem ficar na fronteira sem se afogar em 
 ## Instalação
 
 ```bash
-/plugin marketplace add trycomp-io/comp-skills
-/plugin install comp-skills@comp
+/plugin marketplace add trycomp-io/zivo-skills
+/plugin install zivo-skills@zivo
 ```
 
-Instala o plugin `comp-skills` inteiro (4 skills, um dos quais é este).
+Instala o plugin `zivo-skills` inteiro (4 skills, um dos quais é este).
 
 ## Uso
 
@@ -49,7 +49,7 @@ O skill é on-demand por default. Para rodar em cadência, agende via:
 
 Cadência sweet spot: **mensal** (combina com a janela rolling de 12 semanas, material novo garantido).
 
-## O que é compartilhado com a Comp
+## O que é compartilhado com a Zivo
 
 Na primeira execução você será perguntado sobre:
 1. Seu email (opcional): usado apenas para notificar atualizações do skill.
@@ -57,7 +57,7 @@ Na primeira execução você será perguntado sobre:
 
 O HTML de saída fica 100% na sua máquina. O skill busca de APIs públicas de pesquisa (OpenAlex, arXiv), sem credenciais, sem tracking.
 
-Ambos os opt-ins ficam em `~/.comp-skills/config.json` localmente. Edite ou apague o arquivo a qualquer momento para revogar.
+Ambos os opt-ins ficam em `~/.zivo-skills/config.json` localmente. Edite ou apague o arquivo a qualquer momento para revogar.
 
 ## Cobertura de fontes
 
@@ -68,6 +68,6 @@ Catálogo completo: `references/sources.md`.
 
 ## Issues
 
-Abra uma issue em [trycomp-io/comp-skills](https://github.com/trycomp-io/comp-skills/issues) com a label `eam`.
+Abra uma issue em [trycomp-io/zivo-skills](https://github.com/trycomp-io/zivo-skills/issues) com a label `eam`.
 
-Powered by Comp · Free skills for HR & People leaders.
+Powered by Zivo · Free skills for HR & People leaders.

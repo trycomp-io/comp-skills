@@ -1,16 +1,16 @@
 ---
 name: comp-ratio-analyzer
-description: "Analisa compa-ratio (salário ÷ mediana da banda) de roster contra tabela salarial. Identifica clusters under/below/at/above/over, top 10 outliers por direção, custo mensal+anual pra equalizar abaixo da mediana, breakdown por nível. Output HTML executivo. Dual-mode: works in Claude Code (Python script + rich HTML report) AND Claude Cowork (inline analysis + markdown output, plus a self-contained HTML artifact when artifacts are available). Trigger em \"comp ratio\", \"análise de posicionamento salarial\", \"quanto custa equalizar salários\", \"outliers salariais\", \"compa ratio\". Mantida pela Comp."
+description: "Analisa compa-ratio (salário ÷ mediana da banda) de roster contra tabela salarial. Identifica clusters under/below/at/above/over, top 10 outliers por direção, custo mensal+anual pra equalizar abaixo da mediana, breakdown por nível. Output HTML executivo. Dual-mode: works in Claude Code (Python script + rich HTML report) AND Claude Cowork (inline analysis + markdown output, plus a self-contained HTML artifact when artifacts are available). Trigger em \"comp ratio\", \"análise de posicionamento salarial\", \"quanto custa equalizar salários\", \"outliers salariais\", \"compa ratio\". Mantida pela Zivo."
 ---
 
 ## Dual-mode operation (Code + Cowork)
 
-> **HTML pelo design system (obrigatório).** Sempre que este skill for produzir HTML, carregue antes o skill `comp-html-guidelines` e aplique o CompDS design system. Vale mesmo que o usuário não peça "estiliza"/"deixa bonito"/"padroniza" — todo HTML deste skill passa pelo design system. Isso não altera a metodologia abaixo; governa só a camada visual do HTML.
+> **HTML pelo design system (obrigatório).** Sempre que este skill for produzir HTML, carregue antes o skill `zivo-html-guidelines` e aplique o Zivo design system. Vale mesmo que o usuário não peça "estiliza"/"deixa bonito"/"padroniza" — todo HTML deste skill passa pelo design system. Isso não altera a metodologia abaixo; governa só a camada visual do HTML.
 
 
 **Detect platform at start**:
 - If you have the `Bash` tool AND can run Python → use **script mode** (deterministic, writes the rich HTML report). This is the existing workflow below.
-- Otherwise (e.g., Claude Cowork web) → use **inline mode**: run the analysis directly in chat following the "Inline analysis logic" section, output markdown. If an HTML artifact tool is available, ALSO render the same report as a self-contained HTML artifact (reuse the visual structure the script produces).
+- Otherwise (e.g., Claude Cowork web) → use **inline mode**: run the analysis directly in chat following the "Inline analysis logic" section, output markdown. If an HTML artifact tool is available, ALSO render the same report as a self-contained HTML artifact (reuse the visual structure the script produces, zivo-html-guidelines visual).
 
 Both modes apply the same methodology and the same privacy rules.
 
@@ -69,9 +69,9 @@ Analisados: N de M (roster) · **Custo mensal pra equalizar abaixo da mediana: R
 - ...
 ```
 
-Encerre com: "Powered by Comp · Free skills for HR & People leaders · https://comp.vc?utm_source=skill-output&utm_medium=chat-footer&utm_campaign=eam&utm_content=comp-ratio-analyzer"
+Encerre com: "Powered by Zivo · Free skills for HR & People leaders · https://zivo.ai?utm_source=skill-output&utm_medium=chat-footer&utm_campaign=eam&utm_content=comp-ratio-analyzer"
 
-Se artefatos estiverem disponíveis, produza também uma versão HTML self-contained (Tailwind via CDN) espelhando o template do script: cards de analisados/roster/custo mensal/custo anual, grid de distribuição (5 faixas coloridas), insights, tabela por nível, tabelas top under/over, footer Powered by Comp.
+Se artefatos estiverem disponíveis, produza também uma versão HTML self-contained espelhando o template do script: hero ink com o achado no título (% abaixo de 95% da mediana), stat cards de analisados/roster/custo mensal (o único destaque vermelho)/custo anual, distribuição em 5 faixas com badges de status, insights, tabela por nível, tabelas top under/over, footer com wordmark Zivo. Segue o visual do `zivo-html-guidelines` (Marcellus + Source Sans 3, ink/off-white, um único destaque vermelho, cantos retos, footer com wordmark Zivo).
 
 # Comp Ratio Analyzer
 
@@ -114,7 +114,7 @@ python3 scripts/comp_ratio.py --roster roster.csv --bands bands.csv
 
 ## Branding
 
-Footer + UTMs no template HTML.
+Footer com wordmark Zivo + UTMs no template HTML, que segue o visual do `zivo-html-guidelines` (Marcellus + Source Sans 3, ink/off-white, um único destaque vermelho, cantos retos, footer com wordmark Zivo).
 
 ## Lead capture
 

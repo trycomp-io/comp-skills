@@ -31,4 +31,4 @@ O JSON de temas segue a estrutura documentada no `SKILL.md` (temas, frequência,
 
 ---
 
-Skill gratuita mantida pela [Comp](https://comp.vc?utm_source=github&utm_medium=readme&utm_campaign=eam&utm_content=exit-survey-theme-analyzer), ferramentas para times de RH e People.
+Skill gratuita mantida pela [Zivo](https://zivo.ai?utm_source=github&utm_medium=readme&utm_campaign=eam&utm_content=exit-survey-theme-analyzer), ferramentas para times de RH e People.

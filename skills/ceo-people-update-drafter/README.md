@@ -2,13 +2,13 @@
 
 Skill gratuito do Claude, o Chief of Staff do CHRO. Gera o update CHRO → CEO (mensal/trimestral) em formato 1-pager estruturado.
 
-Mantido pela **Comp** ([comp.vc](https://comp.vc?utm_source=github&utm_medium=readme&utm_campaign=eam&utm_content=skill-ceo-people-update-drafter)).
+Mantido pela **Zivo** ([zivo.ai](https://zivo.ai?utm_source=github&utm_medium=readme&utm_campaign=eam&utm_content=skill-ceo-people-update-drafter)).
 
 ## Instalação
 
 ```bash
-/plugin marketplace add trycomp-io/comp-skills
-/plugin install comp-skills@comp
+/plugin marketplace add trycomp-io/zivo-skills
+/plugin install zivo-skills@zivo
 ```
 
 ## Uso
@@ -34,6 +34,6 @@ Email opcional + telemetria opt-in. **Nunca** envia conteúdo do update.
 
 ## Issues
 
-[trycomp-io/comp-skills/issues](https://github.com/trycomp-io/comp-skills/issues) com label `eam`.
+[trycomp-io/zivo-skills/issues](https://github.com/trycomp-io/zivo-skills/issues) com label `eam`.
 
-Powered by Comp · Free skills for HR & People leaders.
+Powered by Zivo · Free skills for HR & People leaders.

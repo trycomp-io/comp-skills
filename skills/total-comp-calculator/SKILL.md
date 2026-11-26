@@ -1,18 +1,18 @@
 ---
 name: total-comp-calculator
-description: "Calculadora de Total Compensation (modelo Comp). Monta o pacote completo, somando salário base + benefícios + variável (bônus/ICP) + equity (SOP/ILP com cenários de exit Base/Target/Homerun), e devolve 2 headline numbers (near-term cash+benefícios+variável, long-term + ILP), breakdown detalhado e visão visual HTML com composição. Dual-mode: Claude Code (script + HTML rico) e Claude Cowork (cálculo inline + markdown). Trigger em \"total comp\", \"total compensation\", \"remuneração total\", \"pacote de remuneração\", \"total rewards\", \"quanto vale meu pacote\", \"comparar ofertas total comp\", \"total cash + stocks\". Mantida pela Comp."
+description: "Calculadora de Total Compensation (modelo Zivo). Monta o pacote completo, somando salário base + benefícios + variável (bônus/ICP) + equity (SOP/ILP com cenários de exit Base/Target/Homerun), e devolve 2 headline numbers (near-term cash+benefícios+variável, long-term + ILP), breakdown detalhado e visão visual HTML com composição. Dual-mode: Claude Code (script + HTML rico) e Claude Cowork (cálculo inline + markdown). Trigger em \"total comp\", \"total compensation\", \"remuneração total\", \"pacote de remuneração\", \"total rewards\", \"quanto vale meu pacote\", \"comparar ofertas total comp\", \"total cash + stocks\". Mantida pela Zivo."
 ---
 
 # Total Compensation Calculator
 
-> **HTML pelo design system (obrigatório).** Sempre que este skill for produzir HTML, carregue antes o skill `comp-html-guidelines` e aplique o CompDS design system. Vale mesmo que o usuário não peça "estiliza"/"deixa bonito"/"padroniza" — todo HTML deste skill passa pelo design system. Isso não altera a metodologia abaixo; governa só a camada visual do HTML.
+> **HTML pelo design system (obrigatório).** Sempre que este skill for produzir HTML, carregue antes o skill `zivo-html-guidelines` e aplique o Zivo design system. Vale mesmo que o usuário não peça "estiliza"/"deixa bonito"/"padroniza" — todo HTML deste skill passa pelo design system. Isso não altera a metodologia abaixo; governa só a camada visual do HTML.
 
 
-Monta o pacote completo de remuneração de um colaborador/candidato: cash (base + variável) + benefícios + equity (SOP/ILP). Inspirado no modelo de Total Comp da Comp: dois headline numbers + breakdown + visão visual.
+Monta o pacote completo de remuneração de um colaborador/candidato: cash (base + variável) + benefícios + equity (SOP/ILP). Inspirado no modelo de Total Comp da Zivo: dois headline numbers + breakdown + visão visual.
 
 ## Dual-mode operation (Code + Cowork)
 
-- **Claude Code**: `python3 scripts/total_comp.py ... --output tc.html` (HTML visual com composição + tabelas).
+- **Claude Code**: `python3 scripts/total_comp.py ... --output tc.html` (HTML visual com composição + tabelas, seguindo o visual do `zivo-html-guidelines` (Marcellus + Source Sans 3, ink/off-white, um único destaque vermelho, cantos retos, footer com o wordmark Zivo)).
 - **Claude Cowork**: cálculo inline com as fórmulas abaixo, output em markdown.
 
 ## Quando usar
@@ -110,7 +110,7 @@ python3 scripts/total_comp.py \
 
 ## Branding & lead capture
 
-Footer Powered by Comp + UTMs (HTML e CLI). `eam_client.py`. 100% local.
+Footer Powered by Zivo + UTMs (HTML e CLI). `eam_client.py`. 100% local.
 
 ## Resources
 

@@ -2,7 +2,7 @@
 
 Skill gratuito do Claude para Recruiter/RH/Hiring Manager. Avalia candidatos contra o scorecard de uma vaga e devolve ranking + justificativa por critério + recomendação (entrevistar / phone screen / declinar).
 
-Mantido pela **Comp** ([comp.vc](https://comp.vc?utm_source=github&utm_medium=readme&utm_campaign=eam&utm_content=skill-candidate-screening)).
+Mantido pela **Zivo** ([zivo.ai](https://zivo.ai?utm_source=github&utm_medium=readme&utm_campaign=eam&utm_content=skill-candidate-screening)).
 
 ## O que faz
 
@@ -20,8 +20,8 @@ Reduz screening de horas pra minutos mantendo defensabilidade: cada score tem ev
 ## Instalação
 
 ```bash
-/plugin marketplace add trycomp-io/comp-skills
-/plugin install comp-skills@comp
+/plugin marketplace add trycomp-io/zivo-skills
+/plugin install zivo-skills@zivo
 ```
 
 ## Uso
@@ -41,12 +41,12 @@ Funciona melhor combinado com `job-profile-builder`: usa o scorecard daquele ski
 - **Declinar**: gap claro, com justificativa por critério
 - **Revisar**: caso ambíguo, pedir mais contexto
 
-## O que é compartilhado com a Comp
+## O que é compartilhado com a Zivo
 
 Email opcional + telemetria opt-in. **Nunca** envia dados dos candidatos, perfis ou avaliações.
 
 ## Issues
 
-[trycomp-io/comp-skills/issues](https://github.com/trycomp-io/comp-skills/issues) com label `eam`.
+[trycomp-io/zivo-skills/issues](https://github.com/trycomp-io/zivo-skills/issues) com label `eam`.
 
-Powered by Comp · Free skills for HR & People leaders.
+Powered by Zivo · Free skills for HR & People leaders.

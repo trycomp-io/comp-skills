@@ -1,6 +1,6 @@
 # Span of Intelligence: Metodologia
 
-Baseada no artigo ["De Span of Control a Span of Intelligence"](https://cajuina.org/principais/coluna-comp/de-span-of-control-a-span-of-intelligence/) da coluna Comp na Cajuína.
+Baseada no artigo ["De Span of Control a Span of Intelligence"](https://cajuina.org/principais/coluna-comp/de-span-of-control-a-span-of-intelligence/) da coluna Zivo na Cajuína.
 
 ## Mudança de paradigma
 

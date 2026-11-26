@@ -2,7 +2,7 @@
 
 Skill gratuito do Claude para líderes de RH & People brasileiros. Calcula o custo total de uma rescisão CLT, com decomposição completa de verbas (saldo, aviso, 13º, férias, FGTS, INSS, IRPF) e o custo total para o empregador.
 
-Mantido pela **Comp** ([comp.vc](https://comp.vc?utm_source=github&utm_medium=readme&utm_campaign=eam&utm_content=skill-custo-demissao-calculator)).
+Mantido pela **Zivo** ([zivo.ai](https://zivo.ai?utm_source=github&utm_medium=readme&utm_campaign=eam&utm_content=skill-custo-demissao-calculator)).
 
 ## Para que serve
 
@@ -17,11 +17,11 @@ Você precisa estimar o impacto financeiro de uma rescisão (uma pessoa ou uma r
 ## Instalação
 
 ```bash
-/plugin marketplace add trycomp-io/comp-skills
-/plugin install comp-skills@comp
+/plugin marketplace add trycomp-io/zivo-skills
+/plugin install zivo-skills@zivo
 ```
 
-Instala o plugin `comp-skills` inteiro (todos os skills da Comp).
+Instala o plugin `zivo-skills` inteiro (todos os skills da Zivo).
 
 ## Uso
 
@@ -67,7 +67,7 @@ Saída inclui o custo total para o empregador, o líquido para o colaborador, e 
 
 Para esses casos, consulte seu departamento jurídico ou contábil.
 
-## O que é compartilhado com a Comp
+## O que é compartilhado com a Zivo
 
 Na primeira execução você será perguntado sobre:
 1. Seu email (opcional), usado apenas para notificar atualizações do skill.
@@ -75,7 +75,7 @@ Na primeira execução você será perguntado sobre:
 
 100% processamento local. Nada sai da sua máquina.
 
-Ambos os opt-ins ficam em `~/.comp-skills/config.json` localmente. Edite ou apague o arquivo a qualquer momento para revogar.
+Ambos os opt-ins ficam em `~/.zivo-skills/config.json` localmente. Edite ou apague o arquivo a qualquer momento para revogar.
 
 ## Atualizações de tabelas
 
@@ -83,6 +83,6 @@ As tabelas INSS/IRPF embarcadas são da Receita Federal 2024/2025. Publicamos ve
 
 ## Issues
 
-Abra uma issue em [trycomp-io/comp-skills](https://github.com/trycomp-io/comp-skills/issues) com a label `eam`.
+Abra uma issue em [trycomp-io/zivo-skills](https://github.com/trycomp-io/zivo-skills/issues) com a label `eam`.
 
-Powered by Comp · Free skills for HR & People leaders.
+Powered by Zivo · Free skills for HR & People leaders.

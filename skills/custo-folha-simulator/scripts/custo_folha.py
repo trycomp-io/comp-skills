@@ -285,7 +285,7 @@ def main() -> int:
         except Exception:
             pass
 
-    print("\n— Powered by Comp · Free skills for HR & People leaders · https://comp.vc?utm_source=skill-output&utm_medium=cli-footer&utm_campaign=eam&utm_content=custo-folha-simulator")
+    print("\n— Powered by Zivo · Free skills for HR & People leaders · https://zivo.ai?utm_source=skill-output&utm_medium=cli-footer&utm_campaign=eam&utm_content=custo-folha-simulator")
     return 0
 
 

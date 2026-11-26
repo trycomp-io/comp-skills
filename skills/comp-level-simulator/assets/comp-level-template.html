@@ -3,112 +3,106 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simulador de Nível de Cargo - Comp</title>
-    
-    <!-- Google Fonts: Inter -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
-    
-    <!-- Alpine.js for interactivity -->
-    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.9/dist/cdn.min.js" integrity="sha384-9Ax3MmS9AClxJyd5/zafcXXjxmwFhZCdsT6HJoJjarvCaAkJlk5QDzjLJm+Wdx5F" crossorigin="anonymous"></script>
-    
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #f8f9fa; /* Um cinza um pouco mais claro */
-            color: #212529; /* Texto principal mais escuro */
-        }
-        .comp-red { color: #ff4456; }
-        .bg-comp-red { background-color: #ff4456; }
-        .border-comp-red { border-color: #ff4456; }
-        
-        .main-card {
-            background-color: white;
-            border-radius: 1rem; /* 16px */
-            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.07), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-            margin-bottom: 2rem;
-        }
-        
-        .section-title {
-            font-weight: 700;
-            line-height: 1.2;
-            margin-bottom: 0.5rem;
-            color: #343a40;
-        }
-        
-        .section-subtitle {
-            color: #6c757d; /* gray-600 */
-            margin-bottom: 2rem;
-        }
+    <title>Simulador de nível de cargo · Zivo</title>
 
-        /* Estilos das Abas */
-        .tab {
-            transition: all 0.3s ease-in-out;
-            border-bottom: 3px solid transparent;
-            white-space: nowrap; /* Impede que o texto da aba quebre */
-        }
-        .tab-active { 
-            border-bottom-color: #ff4456; 
-            color: #ff4456; 
-            font-weight: 600; 
-        }
-        .tab-inactive { 
-            color: #6c757d; 
-        }
-        .tab:hover {
-            color: #ff4456;
-        }
-        
-        /* Estilos para as opções do questionário */
-        .question-option {
-            border: 1px solid #dee2e6;
-            border-radius: 0.5rem; /* 8px */
-            transition: all 0.2s ease-in-out;
-            cursor: pointer;
-        }
-        .question-option:hover {
-            border-color: #adb5bd;
-            background-color: #f8f9fa;
-        }
-        input[type="radio"]:checked + label {
-            border-color: #ff4456;
-            background-color: #fff0f1;
-            box-shadow: 0 0 0 2px #ff445640;
-        }
-        input[type="radio"] {
-            display: none; /* Esconde o radio button padrão */
-        }
-        .option-letter {
-            font-weight: 700;
-            color: #ff4456;
-            margin-right: 0.75rem;
-            min-width: 20px;
-            text-align: center;
-        }
+    <!-- Tailwind CSS + Zivo theme (zivo-html-guidelines) -->
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<!-- Zivo theme (zivo-html-guidelines/assets/zivo-tailwind.html) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Source+Sans+3:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<script>
+tailwind.config = {
+  theme: {
+    borderRadius: { none: '0', sm: '0', DEFAULT: '0', md: '0', lg: '0', xl: '0', '2xl': '0', '3xl': '0', full: '9999px' },
+    boxShadow: { sm: 'none', DEFAULT: 'none', md: 'none', lg: 'none', xl: 'none', '2xl': 'none', inner: 'none', none: 'none' },
+    fontFamily: {
+      display: ['"ABC Arizona Flare"', 'Marcellus', 'Georgia', 'serif'],
+      sans: ['"ABC Arizona Sans"', '"Source Sans 3"', 'system-ui', 'sans-serif'],
+    },
+    extend: {
+      colors: {
+        zv: {
+          ink: '#1A1A1A', off: '#F1F1EA', white: '#FFFFFF',
+          red: '#F4364C', 'red-hover': '#E02A40', 'red-pressed': '#9E1528',
+          ink80: 'rgba(26,26,26,.8)', ink60: 'rgba(26,26,26,.6)', ink40: 'rgba(26,26,26,.4)',
+          ink30: 'rgba(26,26,26,.3)', ink20: 'rgba(26,26,26,.2)', line: 'rgba(26,26,26,.1)', ink05: 'rgba(26,26,26,.05)',
+          success: '#0B7A43', 'success-bg': '#DDF7EA', 'success-fill': '#12B76A',
+          warning: '#985704', 'warning-bg': '#FFF2DA', 'warning-fill': '#F69B10',
+          error: '#B3172A', 'error-bg': '#FEE7EA', 'error-fill': '#D61F35',
+          info: '#0B58BB', 'info-bg': '#E7F1FF', 'info-fill': '#1C7CE5',
+          indigo: '#4636F2', aqua: '#12C3C9', orchid: '#C24BE6', citron: '#D4E030', midnight: '#1F188C',
+        },
+      },
+    },
+  },
+};
+</script>
+<style>
+  body { font-family: "ABC Arizona Sans", "Source Sans 3", system-ui, sans-serif; background: #F1F1EA; color: #1A1A1A; }
+  h1, h2, h3, h4, .font-display { font-family: "ABC Arizona Flare", Marcellus, Georgia, serif; font-weight: 400 !important; font-style: normal; text-transform: none; }
+  h1 { letter-spacing: -0.02em; }
+  h2 { letter-spacing: -0.01em; }
+  a { text-underline-offset: 2px; }
+  .zv-dot { display: inline-block; width: 8px; height: 8px; background: currentColor; margin-right: 8px; vertical-align: 1px; }
+  .zv-dot--red { background: #F4364C; }
+  .zv-caption { font-size: 12px; line-height: 16px; text-transform: uppercase; letter-spacing: .04em; }
+  .zv-wordmark { display: inline-flex; line-height: 0; }
+  .zv-wordmark svg { height: 20px; width: auto; }
+  .tabular { font-variant-numeric: tabular-nums; }
+</style>
+
+    <!-- Alpine.js for interactivity -->
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.9/dist/cdn.min.js" integrity="sha384-9Ax3MmS9AClxJyd5/zafcXXjxmwFhZCdsT6HJoJjarvCaAkJlk5QDzjLJm+Wdx5F" crossorigin="anonymous" defer></script>
+
+    <style>
+        .main-card { background: #FFFFFF; border: 1px solid rgba(26,26,26,.1); margin-bottom: 2rem; }
+        .section-subtitle { color: rgba(26,26,26,.6); margin-bottom: 2rem; }
+
+        /* Abas */
+        .tab { border-bottom: 2px solid transparent; white-space: nowrap; text-decoration: none; }
+        .tab-active { border-bottom-color: #1A1A1A; color: #1A1A1A; font-weight: 700; }
+        .tab-inactive { color: rgba(26,26,26,.6); }
+        .tab:hover { color: #1A1A1A; }
+
+        /* Opções do questionário */
+        .question-option { border: 1px solid rgba(26,26,26,.1); background: #FFFFFF; color: #1A1A1A; cursor: pointer; transition: background-color .15s, border-color .15s; }
+        .question-option:hover { border-color: rgba(26,26,26,.4); background: rgba(26,26,26,.05); }
+        input[type="radio"]:checked + label { border-color: #1A1A1A; background: #1A1A1A; color: #FFFFFF; }
+        input[type="radio"]:checked + label .option-letter { color: #FFFFFF; }
+        input[type="radio"] { display: none; }
+        .option-letter { font-weight: 700; color: rgba(26,26,26,.6); margin-right: 0.75rem; min-width: 20px; text-align: center; }
+
+        .btn-zv { background: #1A1A1A; color: #FFFFFF; border: 1px solid #1A1A1A; }
+        .btn-zv:hover { background: #333333; }
+        .btn-zv-primary { background: #F4364C; color: #FFFFFF; border: 1px solid #F4364C; }
+        .btn-zv-primary:hover { background: #E02A40; border-color: #E02A40; }
+        .btn-zv-secondary { background: transparent; color: #1A1A1A; border: 1px solid #1A1A1A; }
+        .btn-zv-secondary:hover { background: rgba(26,26,26,.05); }
+
+        /* Hero + header row */
+        .zv-header-row { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; padding-bottom: 10px; margin-bottom: 40px; border-bottom: 1px solid rgba(255,255,255,.3); color: rgba(255,255,255,.8); font-size: 12px; line-height: 16px; text-transform: uppercase; letter-spacing: .04em; }
+        @media (max-width: 560px) { .zv-header-row { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 8px; } }
+
+        /* Footer */
+        .site-footer { max-width: 1120px; margin: 0 auto; padding: 24px 32px 40px; display: flex; align-items: center; gap: 24px; flex-wrap: wrap; border-top: 1px solid rgba(26,26,26,.1); font-size: 14px; line-height: 20px; color: rgba(26,26,26,.6); }
+        @media (max-width: 560px) { .site-footer { padding-left: 20px; padding-right: 20px; } }
         [x-cloak] { display: none !important; }
     </style>
 </head>
-<body class="bg-gray-50">
+<body class="bg-zv-off text-zv-ink font-sans">
 
-    <!-- Header -->
-    <header class="bg-white sticky top-0 z-50 shadow-sm">
-        <div class="container mx-auto px-4 sm:px-6 py-4 flex justify-between items-center">
-            <div class="flex items-center space-x-3">
-                <!-- Logo Símbolo Comp -->
-                <img src="https://i.ibb.co/KxDQ7BKQ/SIMBOLO-COMP-RGB-VERMELHO-G.png" alt="Símbolo Comp" class="h-8 w-8">
-                <h1 class="text-lg sm:text-xl font-bold text-gray-800">Simulador de Nível</h1>
-            </div>
-            <!-- Logo Marca Comp -->
-            <img src="https://i.ibb.co/CyVbh5P/MARCA-COMP-RGB-VERMELHO-G.png" alt="Logo Comp" class="h-6">
+    <!-- Hero -->
+    <header class="bg-zv-ink text-white pt-8 pb-12">
+        <div class="max-w-[1120px] mx-auto px-5 sm:px-8">
+            <div class="zv-header-row"><span><i class="zv-dot zv-dot--red"></i>Zivo</span><span>Simulador de nível</span><span>4 pilares</span><span>L1 a L6</span></div>
+            <h1 class="text-white text-[36px] leading-[36px] sm:text-[56px] sm:leading-[54px] max-w-[22ch]">Simule o nível de um cargo em 8 perguntas</h1>
+            <p class="font-display text-[22px] leading-[28px] mt-4 max-w-[60ch]" style="color: rgba(255,255,255,.7)">Influência, autonomia, complexidade e responsabilidade, numa escala de A a E.</p>
         </div>
     </header>
 
     <!-- Conteúdo Principal -->
-    <main class="container mx-auto px-4 sm:px-6 py-6 md:py-12" x-data="{
+    <main class="max-w-[1120px] mx-auto px-5 sm:px-8 py-8 md:py-12" x-data="{
         activeTab: 0,
         tabs: [
             { name: 'Influência', type: 'pillar', description: 'Avalie o impacto e o alcance da posição na organização.', questions: [] },
@@ -120,7 +114,7 @@
         answers: [[null, null], [null, null], [null, null], [null, null]],
         result: {
             score: 0, level: null, title: null, percentage: 0,
-            color: 'border-gray-300', textColor: 'text-gray-800'
+            color: 'border-zv-line', textColor: 'text-zv-ink'
         },
         init() {
             // Preenche os dados das perguntas para não poluir o x-data principal
@@ -167,26 +161,26 @@
             this.result.percentage = ((this.result.score - 8) / (40 - 8)) * 100;
             if(this.result.percentage < 0) this.result.percentage = 0;
             if(this.result.percentage > 100) this.result.percentage = 100;
-            this.result.color = 'border-comp-red';
-            this.result.textColor = 'comp-red';
+            this.result.color = 'border-zv-ink';
+            this.result.textColor = 'text-zv-red';
             this.activeTab = 4;
         },
         resetSimulator() {
             this.answers = [[null, null], [null, null], [null, null], [null, null]];
-            this.result = { score: 0, level: null, title: null, percentage: 0, color: 'border-gray-300', textColor: 'text-gray-800' };
+            this.result = { score: 0, level: null, title: null, percentage: 0, color: 'border-zv-line', textColor: 'text-zv-ink' };
             this.activeTab = 0;
         }
     }">
 
-        <div class="main-card p-4 md:p-10">
+        <div class="main-card p-5 md:p-10">
             <!-- Navegação por Abas -->
             <div class="overflow-x-auto pb-4">
-                <nav class="flex border-b border-gray-200" id="tabs">
+                <nav class="flex border-b border-zv-line" id="tabs">
                     <template x-for="(tab, index) in tabs" :key="index">
                         <a href="#" 
                            @click.prevent="activeTab = index"
                            :class="{ 'tab-active': activeTab === index, 'tab-inactive': activeTab !== index }"
-                           class="tab text-sm md:text-base font-medium py-3 px-4 text-center"
+                           class="tab text-sm md:text-base py-3 px-4 text-center"
                            x-text="tab.name">
                         </a>
                     </template>
@@ -198,21 +192,22 @@
                 <template x-for="(tab, index) in tabs" :key="index">
                     <div x-show="activeTab === index" x-cloak>
                         <!-- Seção de Perguntas -->
-                        <div x-show="tab.type === 'pillar'">
-                            <h2 class="section-title text-xl md:text-2xl" x-text="tab.name"></h2>
+                        <template x-if="tab.type === 'pillar'">
+                        <div>
+                            <h2 class="text-[26px] leading-[30px] md:text-[32px] md:leading-[36px] mb-2" x-text="tab.name"></h2>
                             <p class="section-subtitle text-base" x-text="tab.description"></p>
                             
                             <div class="space-y-8">
                                 <!-- Pergunta 1 -->
                                 <div>
-                                    <h3 class="font-semibold text-gray-700 mb-4" x-text="'1. ' + tab.questions[0].text"></h3>
-                                    <div class="space-y-3">
+                                    <h3 class="text-[20px] leading-[26px] mb-4" x-text="'1. ' + tab.questions[0].text"></h3>
+                                    <div class="space-y-2">
                                         <template x-for="(option, optIndex) in tab.questions[0].options" :key="optIndex">
                                             <div>
                                                 <input type="radio" :name="'q' + index + '_0'" :id="'q' + index + '_0_opt' + optIndex" :value="option.score" x-model.number="answers[index][0]">
                                                 <label :for="'q' + index + '_0_opt' + optIndex" class="question-option flex items-start p-3 md:p-4">
                                                     <span class="option-letter" x-text="option.letter"></span>
-                                                    <span class="text-gray-800 text-sm md:text-base" x-text="option.text"></span>
+                                                    <span class="text-sm md:text-base" x-text="option.text"></span>
                                                 </label>
                                             </div>
                                         </template>
@@ -220,14 +215,14 @@
                                 </div>
                                 <!-- Pergunta 2 -->
                                 <div>
-                                    <h3 class="font-semibold text-gray-700 mb-4" x-text="'2. ' + tab.questions[1].text"></h3>
-                                    <div class="space-y-3">
+                                    <h3 class="text-[20px] leading-[26px] mb-4" x-text="'2. ' + tab.questions[1].text"></h3>
+                                    <div class="space-y-2">
                                         <template x-for="(option, optIndex) in tab.questions[1].options" :key="optIndex">
                                             <div>
                                                 <input type="radio" :name="'q' + index + '_1'" :id="'q' + index + '_1_opt' + optIndex" :value="option.score" x-model.number="answers[index][1]">
                                                 <label :for="'q' + index + '_1_opt' + optIndex" class="question-option flex items-start p-3 md:p-4">
                                                     <span class="option-letter" x-text="option.letter"></span>
-                                                    <span class="text-gray-800 text-sm md:text-base" x-text="option.text"></span>
+                                                    <span class="text-sm md:text-base" x-text="option.text"></span>
                                                 </label>
                                             </div>
                                         </template>
@@ -235,47 +230,45 @@
                                 </div>
                             </div>
                             <!-- Botão Avançar -->
-                            <div class="mt-8 pt-6 border-t border-gray-200 flex justify-end">
+                            <div class="mt-8 pt-6 border-t border-zv-line flex justify-end">
                                 <button
                                     @click="activeTab++"
                                     :disabled="!answers[index][0] || !answers[index][1]"
-                                    class="bg-comp-red text-white font-bold py-2 px-6 rounded-lg transition-colors duration-300 flex items-center disabled:opacity-50 disabled:cursor-not-allowed">
-                                    Avançar
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
-                                        <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
-                                    </svg>
+                                    class="btn-zv py-3 px-6 transition-colors duration-150 disabled:opacity-30 disabled:cursor-not-allowed">
+                                    Avançar →
                                 </button>
                             </div>
                         </div>
+                        </template>
 
                         <!-- Seção de Resultado -->
                         <div x-show="tab.type === 'result'" class="text-center">
                             <template x-if="!result.level">
                                 <div class="text-center py-12">
-                                    <h2 class="section-title text-xl md:text-2xl">Pronto para Calcular?</h2>
+                                    <h2 class="text-[26px] leading-[30px] md:text-[32px] md:leading-[36px] mb-2">Pronto para calcular?</h2>
                                     <p class="section-subtitle text-base">Responda a todas as perguntas e clique no botão abaixo.</p>
-                                    <button @click="calculateLevel()" class="bg-comp-red text-white font-bold py-3 px-8 rounded-lg shadow-lg hover:bg-red-700 transition-colors duration-300">
-                                        Calcular Nível
+                                    <button @click="calculateLevel()" class="btn-zv-primary py-3 px-8 transition-colors duration-150">
+                                        Calcular nível →
                                     </button>
                                 </div>
                             </template>
                             <template x-if="result.level">
                                 <div class="flex flex-col items-center justify-center py-8">
-                                    <h2 class="section-title text-xl md:text-2xl">Resultado da Simulação</h2>
-                                    <div class="my-8 p-6 md:p-8 bg-gray-50 rounded-full border-4" :class="result.color">
-                                        <p class="text-5xl md:text-6xl font-extrabold" :class="result.textColor" x-text="result.level"></p>
+                                    <div class="zv-caption text-zv-ink60">Resultado da simulação</div>
+                                    <div class="my-8 w-40 h-40 md:w-48 md:h-48 flex items-center justify-center bg-white border" :class="result.color">
+                                        <p class="font-display text-[64px] leading-[64px] md:text-[88px] md:leading-[88px] tabular" :class="result.textColor" x-text="result.level"></p>
                                     </div>
-                                    <p class="text-xl md:text-2xl font-bold text-gray-800" x-text="result.title"></p>
-                                    <p class="text-gray-600 mt-2" x-text="'Pontuação Total: ' + result.score"></p>
+                                    <p class="font-display text-[22px] leading-[28px] md:text-[26px] md:leading-[32px]" x-text="result.title"></p>
+                                    <p class="text-zv-ink60 mt-2 tabular" x-text="'Pontuação total: ' + result.score + ' de 40'"></p>
                                     
                                     <div class="w-full max-w-md mt-6">
-                                        <div class="h-4 bg-gray-200 rounded-full">
-                                            <div class="h-4 rounded-full bg-comp-red" :style="`width: ${result.percentage}%`"></div>
+                                        <div class="h-2 bg-zv-line">
+                                            <div class="h-2 bg-zv-ink" :style="`width: ${result.percentage}%`"></div>
                                         </div>
                                     </div>
 
-                                    <button @click="resetSimulator()" class="mt-12 border border-comp-red comp-red font-bold py-3 px-8 rounded-lg hover:bg-red-50 transition-colors duration-300">
-                                        Refazer Simulação
+                                    <button @click="resetSimulator()" class="btn-zv-secondary mt-12 py-3 px-8 transition-colors duration-150">
+                                        Refazer simulação →
                                     </button>
                                 </div>
                             </template>
@@ -286,9 +279,9 @@
         </div>
     </main>
 
-    <footer style="margin-top: 48px; padding: 24px 0; border-top: 1px solid #e5e7eb; text-align: center; font-family: 'Inter', system-ui, sans-serif; font-size: 13px; color: #6b7280;">
-      Powered by <a href="https://comp.vc?utm_source=skill-output&amp;utm_medium=html-footer&amp;utm_campaign=eam&amp;utm_content=comp-level-simulator" style="color: #ff4456; text-decoration: none; font-weight: 600;">Comp</a>
-      — Free skills for HR &amp; People leaders.
+    <footer class="site-footer">
+      <a class="zv-wordmark" href="https://zivo.ai?utm_source=skill-output&amp;utm_medium=html-footer&amp;utm_campaign=eam&amp;utm_content=comp-level-simulator" aria-label="Zivo"><svg role="img" aria-label="Zivo" xmlns="http://www.w3.org/2000/svg" viewBox="1.0000 0.4375 273.6250 64.9800" width="273.625" height="64.980"><path d="M172.992 52.6741L150.676 1.50781H139.883L166.523 64.3458H179.47L206.2 1.50781H195.406L172.992 52.6741Z" fill="#1A1A1A"/><path d="M241.983 0.4375C223.549 0.4375 209.332 14.4387 209.332 32.9272C209.332 51.4158 223.541 65.417 241.983 65.417C260.425 65.417 274.535 51.4158 274.625 32.9272C274.535 14.4387 260.417 0.4375 241.983 0.4375ZM241.983 55.7314C229.208 55.7314 219.585 46.0376 219.585 32.9354C219.585 19.8333 229.208 10.1395 241.983 10.1395C254.758 10.1395 264.282 19.8333 264.282 32.9354C264.282 46.0376 254.66 55.7314 241.983 55.7314Z" fill="#1A1A1A"/><path d="M73.4883 1.50781V11.2016H96.5167V54.6521H73.4883V64.3458H129.7V54.6521H106.68V11.2016H129.7V1.50781H73.4883Z" fill="#1A1A1A"/><path d="M1 1.50781V11.2016H7.85446H44.4362L1 54.6521V64.3458H52.56H57.2115V54.6521H52.56H13.6853L57.2115 11.2016V1.50781H7.85446H1Z" fill="#1A1A1A"/></svg></a>
+      <span>Powered by Zivo · free skills for HR &amp; People leaders</span>
     </footer>
 
 </body>

@@ -2,7 +2,7 @@
 
 Skill gratuito do Claude para líderes de RH & People. Gera um assessment HTML interativo que avalia a maturidade de dados do RH em 5 dimensões × 5 níveis.
 
-Mantido pela **Comp** ([comp.vc](https://comp.vc?utm_source=github&utm_medium=readme&utm_campaign=eam&utm_content=skill-hr-data-maturity-assessment)).
+Mantido pela **Zivo** ([zivo.ai](https://zivo.ai?utm_source=github&utm_medium=readme&utm_campaign=eam&utm_content=skill-hr-data-maturity-assessment)).
 
 ## O que faz
 
@@ -17,11 +17,11 @@ Gera um arquivo HTML em ~3 segundos. CHRO/Head of People responde 15 perguntas e
 ## Instalação
 
 ```bash
-/plugin marketplace add trycomp-io/comp-skills
-/plugin install comp-skills@comp
+/plugin marketplace add trycomp-io/zivo-skills
+/plugin install zivo-skills@zivo
 ```
 
-Instala o plugin `comp-skills` inteiro.
+Instala o plugin `zivo-skills` inteiro.
 
 ## Uso
 
@@ -50,7 +50,7 @@ Basta falar com o Claude. Exemplos:
 
 3 perguntas por dimensão = 15 perguntas no total.
 
-## O que é compartilhado com a Comp
+## O que é compartilhado com a Zivo
 
 Na primeira execução você será perguntado sobre:
 1. Seu email (opcional), usado apenas para notificar atualizações do skill.
@@ -60,6 +60,6 @@ O HTML em si **nunca** chama o servidor. É JS puro client-side. Tudo que você 
 
 ## Issues
 
-Abra uma issue em [trycomp-io/comp-skills](https://github.com/trycomp-io/comp-skills/issues) com a label `eam`.
+Abra uma issue em [trycomp-io/zivo-skills](https://github.com/trycomp-io/zivo-skills/issues) com a label `eam`.
 
-Powered by Comp · Free skills for HR & People leaders.
+Powered by Zivo · Free skills for HR & People leaders.

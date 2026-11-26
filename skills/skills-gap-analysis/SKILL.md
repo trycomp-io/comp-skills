@@ -1,11 +1,11 @@
 ---
 name: skills-gap-analysis
-description: "Analisa lacunas de capacidade da força de trabalho contra um conjunto de capacidades-alvo e recomenda build/buy/borrow por gap. Calcula cobertura por skill (pessoas no nível requerido ÷ headcount necessário), magnitude do gap, prioridade (criticidade × gap) e gera heatmap (skill × criticidade), lista priorizada de gaps e resumo de implicações de hiring/training. Output HTML executivo. Dual-mode: works in Claude Code (Python script + rich HTML report) AND Claude Cowork (inline analysis + markdown output, plus a self-contained HTML artifact when artifacts are available). Trigger em \"skills gap\", \"análise de lacunas de competências\", \"build buy borrow\", \"gap de capacidade\", \"matriz de competências\", \"workforce capability gap\", \"skills inventory\". Mantida pela Comp."
+description: "Analisa lacunas de capacidade da força de trabalho contra um conjunto de capacidades-alvo e recomenda build/buy/borrow por gap. Calcula cobertura por skill (pessoas no nível requerido ÷ headcount necessário), magnitude do gap, prioridade (criticidade × gap) e gera heatmap (skill × criticidade), lista priorizada de gaps e resumo de implicações de hiring/training. Output HTML executivo. Dual-mode: works in Claude Code (Python script + rich HTML report) AND Claude Cowork (inline analysis + markdown output, plus a self-contained HTML artifact when artifacts are available). Trigger em \"skills gap\", \"análise de lacunas de competências\", \"build buy borrow\", \"gap de capacidade\", \"matriz de competências\", \"workforce capability gap\", \"skills inventory\". Mantida pela Zivo."
 ---
 
 ## Dual-mode operation (Code + Cowork)
 
-> **HTML pelo design system (obrigatório).** Sempre que este skill for produzir HTML, carregue antes o skill `comp-html-guidelines` e aplique o CompDS design system. Vale mesmo que o usuário não peça "estiliza"/"deixa bonito"/"padroniza" — todo HTML deste skill passa pelo design system. Isso não altera a metodologia abaixo; governa só a camada visual do HTML.
+> **HTML pelo design system (obrigatório).** Sempre que este skill for produzir HTML, carregue antes o skill `zivo-html-guidelines` e aplique o Zivo design system. Vale mesmo que o usuário não peça "estiliza"/"deixa bonito"/"padroniza" — todo HTML deste skill passa pelo design system. Isso não altera a metodologia abaixo; governa só a camada visual do HTML.
 
 
 **Detect platform at start**:
@@ -70,9 +70,9 @@ Skills avaliadas: N · **Gaps abertos: X** · Posições a fechar: Y · Pessoas 
 - ...
 ```
 
-Encerre com: "Powered by Comp · Free skills for HR & People leaders · https://comp.vc?utm_source=skill-output&utm_medium=chat-footer&utm_campaign=eam&utm_content=skills-gap-analysis"
+Encerre com: "Powered by Zivo · Free skills for HR & People leaders · https://zivo.ai?utm_source=skill-output&utm_medium=chat-footer&utm_campaign=eam&utm_content=skills-gap-analysis"
 
-Se artefatos estiverem disponíveis, produza também uma versão HTML self-contained (Tailwind via CDN) espelhando o template do script: cards (skills avaliadas / gaps abertos / posições a fechar / pessoas), insights, heatmap skill × criticidade colorido por tamanho do gap, tabela de gaps priorizados com pills build/buy/borrow, e cards de implicações hiring/training, footer Powered by Comp.
+Se artefatos estiverem disponíveis, produza também uma versão HTML self-contained seguindo o visual do `zivo-html-guidelines` (Marcellus + Source Sans 3, ink/off-white, um único destaque vermelho, cantos retos, footer com o wordmark Zivo), espelhando o template do script: cards (skills avaliadas / gaps abertos / posições a fechar / pessoas), insights, heatmap skill × criticidade colorido por tamanho do gap, tabela de gaps priorizados com badges build/buy/borrow, e cards de implicações hiring/training, footer Powered by Zivo.
 
 # Skills Gap Analysis
 

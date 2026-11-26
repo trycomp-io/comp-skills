@@ -1,8 +1,8 @@
-# AI Native HR: Metodologia
+# AI-native HR: Metodologia
 
-Baseada no [AI Maturity Map](https://comp.vc/ai-maturity-map?utm_source=github&utm_medium=readme&utm_campaign=eam&utm_content=ai-maturity-map) da Comp, adaptada pro contexto específico de RH.
+Baseada no [AI Maturity Map](https://zivo.ai/pt/ai-maturity-map?utm_source=github&utm_medium=readme&utm_campaign=eam&utm_content=ai-maturity-map) da Zivo, adaptada pro contexto específico de RH.
 
-## Os 5 Níveis (do framework Comp, traduzidos)
+## Os 5 Níveis (do framework Zivo, traduzidos)
 
 | Nível | Nome | Definição | Sinal característico | Limitação | Armadilha frequente |
 |---|---|---|---|---|---|

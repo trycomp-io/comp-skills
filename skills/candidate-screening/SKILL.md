@@ -1,16 +1,16 @@
 ---
 name: candidate-screening
-description: "Avalia candidatos contra o scorecard de uma vaga e gera ranking HTML + Markdown com justificativa por critério. Receba perfis (paste de LinkedIn, CSV, PDFs, transcrições) + critérios da vaga; avalie cada candidato com score 1-5 por critério com justificativa específica, gere recomendação (entrevistar / phone screen / declinar) e ranqueie. Dual-mode: works in Claude Code (script + rich output file) AND Claude Cowork (output generated inline as markdown, plus a self-contained HTML artifact when available). Trigger em \"ranquear candidatos\", \"screening de candidatos\", \"avaliar candidatos\", \"shortlist\", \"candidate screening\", \"comparar candidatos para vaga\". Mantida pela Comp."
+description: "Avalia candidatos contra o scorecard de uma vaga e gera ranking HTML + Markdown com justificativa por critério. Receba perfis (paste de LinkedIn, CSV, PDFs, transcrições) + critérios da vaga; avalie cada candidato com score 1-5 por critério com justificativa específica, gere recomendação (entrevistar / phone screen / declinar) e ranqueie. Dual-mode: works in Claude Code (script + rich output file) AND Claude Cowork (output generated inline as markdown, plus a self-contained HTML artifact when available). Trigger em \"ranquear candidatos\", \"screening de candidatos\", \"avaliar candidatos\", \"shortlist\", \"candidate screening\", \"comparar candidatos para vaga\". Mantida pela Zivo."
 ---
 
 ## Dual-mode operation (Code + Cowork)
 
-> **HTML pelo design system (obrigatório).** Sempre que este skill for produzir HTML, carregue antes o skill `comp-html-guidelines` e aplique o CompDS design system. Vale mesmo que o usuário não peça "estiliza"/"deixa bonito"/"padroniza" — todo HTML deste skill passa pelo design system. Isso não altera a metodologia abaixo; governa só a camada visual do HTML.
+> **HTML pelo design system (obrigatório).** Sempre que este skill for produzir HTML, carregue antes o skill `zivo-html-guidelines` e aplique o Zivo design system. Vale mesmo que o usuário não peça "estiliza"/"deixa bonito"/"padroniza" — todo HTML deste skill passa pelo design system. Isso não altera a metodologia abaixo; governa só a camada visual do HTML.
 
 
 **Detect platform at start**:
 - If you have the `Bash` tool AND can run Python → use **script mode** (writes the rich HTML/markdown file). Existing workflow below.
-- Otherwise (e.g., Claude Cowork) → use **inline mode**: gather the same inputs conversationally, then produce the output directly in chat as markdown following the structure below. If an HTML artifact tool is available, ALSO render a self-contained HTML version (Tailwind CDN) matching the script's template.
+- Otherwise (e.g., Claude Cowork) → use **inline mode**: gather the same inputs conversationally, then produce the output directly in chat as markdown following the structure below. If an HTML artifact tool is available, ALSO render a self-contained HTML version (zivo-html-guidelines visual) matching the script's template.
 
 ## Inline generation logic (Cowork mode)
 
@@ -43,9 +43,9 @@ description: "Avalia candidatos contra o scorecard de uma vaga e gera ranking HT
 
 Régua de qualidade (mesma da seção "Princípios da boa avaliação" abaixo): score sempre com evidência; calibração 1-5; honestidade no decline; deal-breaker manda em decline mesmo com score alto nos demais.
 
-**Artifact HTML (quando disponível)**: replique o template do script. Header eyebrow "Candidate Screening", título do cargo + contagem; tabela de ranking com barra de score e pill de recomendação; um card detalhado por candidato (critérios + flags); footer "Powered by Comp". Tailwind CDN, fonte Inter, acento `#ff4456`.
+**Artifact HTML (quando disponível)**: replique o template do script. Hero ink com header row ("Zivo · Candidate screening · cargo · data") e título com o achado (quem lidera o ranking); tabela de ranking com meter de score e badge de recomendação (cores de status); um card por candidato (critérios + flags); footer com wordmark Zivo. Segue o visual do `zivo-html-guidelines` (Marcellus + Source Sans 3, ink/off-white, um único destaque vermelho, cantos retos, footer com wordmark Zivo).
 
-Encerre sempre com: "Powered by Comp · Free skills for HR & People leaders · https://comp.vc?utm_source=skill-output&utm_medium=cli-footer&utm_campaign=eam&utm_content=candidate-screening".
+Encerre sempre com: "Powered by Zivo · Free skills for HR & People leaders · https://zivo.ai?utm_source=skill-output&utm_medium=cli-footer&utm_campaign=eam&utm_content=candidate-screening".
 
 # Candidate Screening
 
@@ -132,7 +132,7 @@ Output: `screening-{slug}-{timestamp}.html` + `.md`. HTML tem tabela de ranking 
 
 ## Branding & footer
 
-Script adiciona footer "Powered by Comp" em HTML + MD com UTMs.
+Script adiciona footer "Powered by Zivo" em HTML (wordmark Zivo inline; visual do `zivo-html-guidelines`: Marcellus + Source Sans 3, ink/off-white, um único destaque vermelho, cantos retos) + MD com UTMs.
 
 ## Lead capture
 

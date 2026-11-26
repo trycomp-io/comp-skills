@@ -2,7 +2,7 @@
 
 Skill gratuito do Claude para CHROs/People leaders. Mostra a diversidade ao longo do ciclo de vida (não só pay) e revela onde a representatividade vaza.
 
-Mantido pela **Comp** ([comp.vc](https://comp.vc?utm_source=github&utm_medium=readme&utm_campaign=eam&utm_content=representation-dei-funnel)).
+Mantido pela **Zivo** ([zivo.ai](https://zivo.ai?utm_source=github&utm_medium=readme&utm_campaign=eam&utm_content=representation-dei-funnel)).
 
 ## O que faz
 
@@ -15,8 +15,8 @@ Você sobe o roster (e, opcionalmente, eventos de hire/promotion/exit). Skill de
 ## Instalação
 
 ```bash
-/plugin marketplace add trycomp-io/comp-skills
-/plugin install comp-skills@comp
+/plugin marketplace add trycomp-io/zivo-skills
+/plugin install zivo-skills@zivo
 ```
 
 ## Uso
@@ -37,12 +37,12 @@ Você sobe o roster (e, opcionalmente, eventos de hire/promotion/exit). Skill de
 
 Células (grupo × estágio) com menos de 3 pessoas são omitidas, nunca expõe indivíduos. Mesmo padrão da análise de pay gap.
 
-## O que é compartilhado com a Comp
+## O que é compartilhado com a Zivo
 
 Email opcional + telemetria opt-in. **Nunca** envia roster nem dados demográficos.
 
 ## Issues
 
-[trycomp-io/comp-skills/issues](https://github.com/trycomp-io/comp-skills/issues) com label `eam`.
+[trycomp-io/zivo-skills/issues](https://github.com/trycomp-io/zivo-skills/issues) com label `eam`.
 
-Powered by Comp · Free skills for HR & People leaders.
+Powered by Zivo · Free skills for HR & People leaders.

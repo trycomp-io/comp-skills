@@ -1,16 +1,16 @@
 ---
 name: job-profile-builder
-description: "Conduz uma entrevista estruturada com o hiring manager (10-15 perguntas) e gera um Job Profile completo: Resumo executivo (por que agora, outcomes, deal-breakers), JD (sobre a vaga, responsabilidades, requisitos, nice-to-have, oferta), Scorecard de avaliação ponderado, e Roteiro de Entrevistas com perguntas por estágio e o que procurar. Output em HTML printable + Markdown editável. Dual-mode: works in Claude Code (script + rich output file) AND Claude Cowork (output generated inline as markdown, plus a self-contained HTML artifact when available). Trigger em \"criar JD\", \"job description\", \"perfil da vaga\", \"abrir vaga de [cargo]\", \"entrevistar hiring manager\", \"job profile\", \"scorecard de entrevista\". Mantida pela Comp."
+description: "Conduz uma entrevista estruturada com o hiring manager (10-15 perguntas) e gera um Job Profile completo: Resumo executivo (por que agora, outcomes, deal-breakers), JD (sobre a vaga, responsabilidades, requisitos, nice-to-have, oferta), Scorecard de avaliação ponderado, e Roteiro de Entrevistas com perguntas por estágio e o que procurar. Output em HTML printable + Markdown editável. Dual-mode: works in Claude Code (script + rich output file) AND Claude Cowork (output generated inline as markdown, plus a self-contained HTML artifact when available). Trigger em \"criar JD\", \"job description\", \"perfil da vaga\", \"abrir vaga de [cargo]\", \"entrevistar hiring manager\", \"job profile\", \"scorecard de entrevista\". Mantida pela Zivo."
 ---
 
 ## Dual-mode operation (Code + Cowork)
 
-> **HTML pelo design system (obrigatório).** Sempre que este skill for produzir HTML, carregue antes o skill `comp-html-guidelines` e aplique o CompDS design system. Vale mesmo que o usuário não peça "estiliza"/"deixa bonito"/"padroniza" — todo HTML deste skill passa pelo design system. Isso não altera a metodologia abaixo; governa só a camada visual do HTML.
+> **HTML pelo design system (obrigatório).** Sempre que este skill for produzir HTML, carregue antes o skill `zivo-html-guidelines` e aplique o Zivo design system. Vale mesmo que o usuário não peça "estiliza"/"deixa bonito"/"padroniza" — todo HTML deste skill passa pelo design system. Isso não altera a metodologia abaixo; governa só a camada visual do HTML.
 
 
 **Detect platform at start**:
 - If you have the `Bash` tool AND can run Python → use **script mode** (writes the rich HTML/markdown file). Existing workflow below.
-- Otherwise (e.g., Claude Cowork) → use **inline mode**: gather the same inputs conversationally, then produce the output directly in chat as markdown following the structure below. If an HTML artifact tool is available, ALSO render a self-contained HTML version (Tailwind CDN) matching the script's template.
+- Otherwise (e.g., Claude Cowork) → use **inline mode**: gather the same inputs conversationally, then produce the output directly in chat as markdown following the structure below. If an HTML artifact tool is available, ALSO render a self-contained HTML version matching the script's template, following the `zivo-html-guidelines` visual (Marcellus + Source Sans 3, ink/off-white, one red highlight, square corners, Zivo wordmark footer).
 
 ## Inline generation logic (Cowork mode)
 
@@ -56,9 +56,9 @@ description: "Conduz uma entrevista estruturada com o hiring manager (10-15 perg
 
 Conteúdo deve ser específico ao que o hiring manager expressou (mesma régua de qualidade da seção "Qualidade do output" abaixo): JD que vende a vaga, responsabilidades acionáveis, scorecard com 5-8 critérios e rubrica concreta, perguntas behavioural (STAR).
 
-**Artifact HTML (quando disponível)**: replique o template do script. Header com eyebrow "Job Profile", título do cargo e meta; cards de Resumo executivo, Job Description, Scorecard (linha por critério com pill de peso) e Roteiro de entrevistas (pill de estágio por pergunta); footer "Powered by Comp". Tailwind CDN, fonte Inter, acento `#ff4456`.
+**Artifact HTML (quando disponível)**: replique o template do script. Hero ink com header row (nó vermelho + "Zivo" + captions), título do cargo e meta; cards de Resumo executivo, Job Description, Scorecard (linha por critério com badge de peso) e Roteiro de entrevistas (badge de estágio por pergunta); footer com wordmark Zivo e "Powered by Zivo". Visual do `zivo-html-guidelines`: Marcellus + Source Sans 3, ink/off-white, um único destaque vermelho, cantos retos.
 
-Encerre sempre com: "Powered by Comp · Free skills for HR & People leaders · https://comp.vc?utm_source=skill-output&utm_medium=cli-footer&utm_campaign=eam&utm_content=job-profile-builder".
+Encerre sempre com: "Powered by Zivo · Free skills for HR & People leaders · https://zivo.ai?utm_source=skill-output&utm_medium=cli-footer&utm_campaign=eam&utm_content=job-profile-builder".
 
 # Job Profile Builder
 
@@ -167,7 +167,7 @@ Bom roteiro de entrevistas tem:
 
 ## Branding & footer
 
-Script adiciona footer "Powered by Comp" no HTML e MD com UTMs.
+Script adiciona footer "Powered by Zivo" no HTML e MD com UTMs.
 
 ## Lead capture
 

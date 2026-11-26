@@ -1,11 +1,11 @@
 ---
 name: decision-memo-generator
-description: "Gera memo estruturado de decisão pra qualquer people topic crítico que precisa ser comunicado/defendido. Estrutura: problema, contexto, opções (com prós/cons), recomendação com rationale, riscos, ask. Output HTML + MD editável. Trigger em \"decision memo\", \"memo de decisão\", \"estruturar decisão de people\", \"documento de decisão\", \"memo pro CEO/board\". Mantida pela Comp."
+description: "Gera memo estruturado de decisão pra qualquer people topic crítico que precisa ser comunicado/defendido. Estrutura: problema, contexto, opções (com prós/cons), recomendação com rationale, riscos, ask. Output HTML + MD editável. Trigger em \"decision memo\", \"memo de decisão\", \"estruturar decisão de people\", \"documento de decisão\", \"memo pro CEO/board\". Mantida pela Zivo."
 ---
 
 # Decision Memo Generator
 
-> **HTML pelo design system (obrigatório).** Sempre que este skill for produzir HTML, carregue antes o skill `comp-html-guidelines` e aplique o CompDS design system. Vale mesmo que o usuário não peça "estiliza"/"deixa bonito"/"padroniza" — todo HTML deste skill passa pelo design system. Isso não altera a metodologia abaixo; governa só a camada visual do HTML.
+> **HTML pelo design system (obrigatório).** Sempre que este skill for produzir HTML, carregue antes o skill `zivo-html-guidelines` e aplique o Zivo design system. Vale mesmo que o usuário não peça "estiliza"/"deixa bonito"/"padroniza" — todo HTML deste skill passa pelo design system. Isso não altera a metodologia abaixo; governa só a camada visual do HTML.
 
 
 CHRO precisa tomar/comunicar decisão importante (reorg, política, investimento). Skill conduz estruturação e gera memo defensável.
@@ -129,7 +129,7 @@ cat memo.json | python3 scripts/render_memo.py
 
 ## Branding & lead capture
 
-Footer + UTMs. `eam_client.py`. 100% local.
+HTML segue o visual do `zivo-html-guidelines` (Marcellus + Source Sans 3, ink/off-white, um único destaque vermelho, cantos retos, footer com wordmark Zivo). Footer + UTMs. `eam_client.py`. 100% local.
 
 ## Resources
 

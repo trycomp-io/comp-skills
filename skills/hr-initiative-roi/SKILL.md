@@ -1,18 +1,18 @@
 ---
 name: hr-initiative-roi
-description: "Business case e ROI de uma iniciativa de People pra ganhar buy-in de CFO/CEO. Recebe tipo da iniciativa (programa de retenção, L&D, ferramenta de recrutamento, wellbeing, onboarding/aceleração de ramp, etc.), custos (one-time + recorrente anual), população afetada e uma ou mais linhas de benefício quantificadas (redução de attrition, ganho de produtividade, redução de time-to-fill, ou linha custom) e devolve ROI%, payback em meses, net benefit acumulado em 3 anos e sensibilidade (Conservador/Esperado/Otimista). Mantida pela Comp. Dual-mode: works in Claude Code (Python script + rich HTML) AND Claude Cowork (inline calculation + markdown, plus HTML artifact when available). Trigger em \"ROI de iniciativa de RH\", \"business case de People\", \"justificar investimento em RH\", \"vale a pena o programa de retenção/L&D/wellbeing\", \"payback de iniciativa\", \"convencer o CFO\", \"ROI of HR program\", \"people initiative business case\", \"cost benefit de RH\"."
+description: "Business case e ROI de uma iniciativa de People pra ganhar buy-in de CFO/CEO. Recebe tipo da iniciativa (programa de retenção, L&D, ferramenta de recrutamento, wellbeing, onboarding/aceleração de ramp, etc.), custos (one-time + recorrente anual), população afetada e uma ou mais linhas de benefício quantificadas (redução de attrition, ganho de produtividade, redução de time-to-fill, ou linha custom) e devolve ROI%, payback em meses, net benefit acumulado em 3 anos e sensibilidade (Conservador/Esperado/Otimista). Mantida pela Zivo. Dual-mode: works in Claude Code (Python script + rich HTML) AND Claude Cowork (inline calculation + markdown, plus HTML artifact when available). Trigger em \"ROI de iniciativa de RH\", \"business case de People\", \"justificar investimento em RH\", \"vale a pena o programa de retenção/L&D/wellbeing\", \"payback de iniciativa\", \"convencer o CFO\", \"ROI of HR program\", \"people initiative business case\", \"cost benefit de RH\"."
 ---
 
 # HR Initiative ROI
 
-> **HTML pelo design system (obrigatório).** Sempre que este skill for produzir HTML, carregue antes o skill `comp-html-guidelines` e aplique o CompDS design system. Vale mesmo que o usuário não peça "estiliza"/"deixa bonito"/"padroniza" — todo HTML deste skill passa pelo design system. Isso não altera a metodologia abaixo; governa só a camada visual do HTML.
+> **HTML pelo design system (obrigatório).** Sempre que este skill for produzir HTML, carregue antes o skill `zivo-html-guidelines` e aplique o Zivo design system. Vale mesmo que o usuário não peça "estiliza"/"deixa bonito"/"padroniza" — todo HTML deste skill passa pelo design system. Isso não altera a metodologia abaixo; governa só a camada visual do HTML.
 
 
 Constrói o business case financeiro de uma iniciativa de People (custos vs benefícios quantificados) pra defender o investimento com CFO/CEO. Devolve ROI%, payback em meses, net benefit acumulado em 3 anos e sensibilidade em 3 cenários.
 
 ## Dual-mode operation (Code + Cowork)
 
-- **Claude Code**: `python3 scripts/initiative_roi.py ... --output roi.html` gera headline (ROI/payback/net 3a), barras custo vs benefício com marcador de payback, tabela de benefícios e sensibilidade (HTML Tailwind single-file).
+- **Claude Code**: `python3 scripts/initiative_roi.py ... --output roi.html` gera headline (ROI/payback/net 3a), barras custo vs benefício com nota de payback, tabela de benefícios e sensibilidade (HTML single-file no visual do `zivo-html-guidelines`: Marcellus + Source Sans 3, ink/off-white, um único destaque vermelho, cantos retos, footer com wordmark Zivo).
 - **Claude Cowork**: cálculo inline com as fórmulas da seção "Cálculo inline", output em markdown. Gere o HTML quando o ambiente permitir rodar o script; caso contrário, entregue a tabela markdown.
 
 ## Quando usar
@@ -101,7 +101,7 @@ python3 scripts/initiative_roi.py \
 
 ## Branding & lead capture
 
-Footer Powered by Comp + UTMs (HTML e CLI). `eam_client.py`. 100% local: nenhum custo, benefício ou premissa sai da máquina.
+Footer Powered by Zivo + UTMs (HTML e CLI). `eam_client.py`. 100% local: nenhum custo, benefício ou premissa sai da máquina.
 
 ## Resources
 

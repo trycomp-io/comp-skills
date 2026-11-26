@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Gera o Org Design Maturity Assessment em HTML.
-Framework Comp (4 pilares × 3 perguntas) — Score 0-100.
+Framework Zivo (4 pilares × 3 perguntas) — Score 0-100.
 """
 
 from __future__ import annotations
@@ -64,7 +64,7 @@ def main() -> int:
         except Exception:
             pass
 
-    print("\n— Powered by Comp · Free skills for HR & People leaders · https://comp.vc?utm_source=skill-output&utm_medium=cli-footer&utm_campaign=eam&utm_content=org-design-assessment")
+    print("\n— Powered by Zivo · Free skills for HR & People leaders · https://zivo.ai?utm_source=skill-output&utm_medium=cli-footer&utm_campaign=eam&utm_content=org-design-assessment")
     return 0
 
 

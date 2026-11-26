@@ -9,7 +9,7 @@ script auto-detects common aliases, or you can override with flags):
 Output: a self-contained HTML report saved in the current working directory.
 
 Privacy: the report file never phones home; the only network calls are the
-optional Comp registration/telemetry endpoints (opt-in, see eam_client.py).
+optional Zivo registration/telemetry endpoints (opt-in, see eam_client.py).
 
 Usage:
     python3 paygap_analysis.py --input employees.csv
@@ -392,7 +392,7 @@ def main() -> int:
         except Exception:
             pass
 
-    print("\n— Powered by Comp · Free skills for HR & People leaders · https://comp.vc?utm_source=skill-output&utm_medium=cli-footer&utm_campaign=eam&utm_content=paygap-analysis-generator")
+    print("\n— Powered by Zivo · Free skills for HR & People leaders · https://zivo.ai?utm_source=skill-output&utm_medium=cli-footer&utm_campaign=eam&utm_content=paygap-analysis-generator")
     return 0
 
 

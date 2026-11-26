@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """
-Gera o AI Native HR Assessment em HTML.
+Gera o AI-native HR Assessment em HTML.
 
-Baseado no AI Maturity Map da Comp (https://comp.vc/ai-maturity-map), adaptado
+Baseado no AI Maturity Map da Zivo (https://zivo.ai/pt/ai-maturity-map), adaptado
 pro contexto de RH com avaliação por área (Recrutamento, Comp, L&D,
 People Ops, People Analytics).
 
@@ -44,8 +44,8 @@ def _slugify(label: str) -> str:
 
 
 def main() -> int:
-    p = argparse.ArgumentParser(description="Gera o AI Native HR Assessment em HTML.")
-    p.add_argument("--output", type=Path, help="Caminho do HTML (default: ./AI-Native-HR-{label}-{timestamp}.html)")
+    p = argparse.ArgumentParser(description="Gera o AI-native HR Assessment em HTML.")
+    p.add_argument("--output", type=Path, help="Caminho do HTML (default: ./AI-native-HR-{label}-{timestamp}.html)")
     p.add_argument("--label", default="", help="Label opcional (empresa, contexto) pra incluir no nome do arquivo.")
     args = p.parse_args()
 
@@ -65,7 +65,7 @@ def main() -> int:
     else:
         ts = datetime.now().strftime("%Y%m%d-%H%M%S")
         label = _slugify(args.label) if args.label else ""
-        name = f"AI-Native-HR-{label}-{ts}.html" if label else f"AI-Native-HR-{ts}.html"
+        name = f"AI-native-HR-{label}-{ts}.html" if label else f"AI-native-HR-{ts}.html"
         out = Path.cwd() / name
 
     out.parent.mkdir(parents=True, exist_ok=True)
@@ -79,7 +79,7 @@ def main() -> int:
         except Exception:
             pass
 
-    print("\n— Powered by Comp · Free skills for HR & People leaders · https://comp.vc?utm_source=skill-output&utm_medium=cli-footer&utm_campaign=eam&utm_content=ai-native-hr")
+    print("\n— Powered by Zivo · Free skills for HR & People leaders · https://zivo.ai?utm_source=skill-output&utm_medium=cli-footer&utm_campaign=eam&utm_content=ai-native-hr")
     return 0
 
 

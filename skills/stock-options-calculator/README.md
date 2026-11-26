@@ -2,9 +2,9 @@
 
 Skill gratuito do Claude para líderes de RH & People em startups/scale-ups. Calcula valor potencial de Stock Options em empresas de capital fechado e devolve cenários de exit + talking points pra conversa com candidato/colaborador.
 
-Mantido pela **Comp** ([comp.vc](https://comp.vc?utm_source=github&utm_medium=readme&utm_campaign=eam&utm_content=skill-stock-options-calculator)).
+Mantido pela **Zivo** ([zivo.ai](https://zivo.ai?utm_source=github&utm_medium=readme&utm_campaign=eam&utm_content=skill-stock-options-calculator)).
 
-Baseado no [artigo Comp na Cajuína sobre Stock Options](https://cajuina.org/principais/coluna-comp/stock-options/): a tese de que equity privado compete em multiplicação, não em liquidez.
+Baseado no [artigo Zivo na Cajuína sobre Stock Options](https://cajuina.org/principais/coluna-comp/stock-options/): a tese de que equity privado compete em multiplicação, não em liquidez.
 
 ## O que faz
 
@@ -19,8 +19,8 @@ Modela:
 ## Instalação
 
 ```bash
-/plugin marketplace add trycomp-io/comp-skills
-/plugin install comp-skills@comp
+/plugin marketplace add trycomp-io/zivo-skills
+/plugin install zivo-skills@zivo
 ```
 
 ## Uso
@@ -38,12 +38,12 @@ Modela:
 - Cenários binários (a vida real é Pareto)
 - Não substitui consultoria jurídica
 
-## O que é compartilhado com a Comp
+## O que é compartilhado com a Zivo
 
 Email opcional + telemetria opt-in. **Nunca** envia números do cap table.
 
 ## Issues
 
-[trycomp-io/comp-skills/issues](https://github.com/trycomp-io/comp-skills/issues) com label `eam`.
+[trycomp-io/zivo-skills/issues](https://github.com/trycomp-io/zivo-skills/issues) com label `eam`.
 
-Powered by Comp · Free skills for HR & People leaders.
+Powered by Zivo · Free skills for HR & People leaders.

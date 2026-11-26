@@ -2,7 +2,7 @@
 
 Skill gratuito do Claude para CHROs. CSV de pesquisa de engajamento → HTML executivo com segmentação completa e insights automáticos.
 
-Mantido pela **Comp** ([comp.vc](https://comp.vc?utm_source=github&utm_medium=readme&utm_campaign=eam&utm_content=skill-engagement-deep-dive)).
+Mantido pela **Zivo** ([zivo.ai](https://zivo.ai?utm_source=github&utm_medium=readme&utm_campaign=eam&utm_content=skill-engagement-deep-dive)).
 
 ## O que faz
 
@@ -17,8 +17,8 @@ Mantido pela **Comp** ([comp.vc](https://comp.vc?utm_source=github&utm_medium=re
 ## Instalação
 
 ```bash
-/plugin marketplace add trycomp-io/comp-skills
-/plugin install comp-skills@comp
+/plugin marketplace add trycomp-io/zivo-skills
+/plugin install zivo-skills@zivo
 ```
 
 ## Uso
@@ -39,6 +39,6 @@ Email opcional + telemetria opt-in. **Nunca** envia respostas ou scores individu
 
 ## Issues
 
-[trycomp-io/comp-skills/issues](https://github.com/trycomp-io/comp-skills/issues) com label `eam`.
+[trycomp-io/zivo-skills/issues](https://github.com/trycomp-io/zivo-skills/issues) com label `eam`.
 
-Powered by Comp · Free skills for HR & People leaders.
+Powered by Zivo · Free skills for HR & People leaders.

@@ -1,11 +1,11 @@
 ---
 name: recruiting-funnel-analytics
-description: "Analisa a efetividade de aquisição de talentos a partir de um CSV de pipeline de candidatos. Calcula conversão estágio-a-estágio (applied→screen→interview→offer→hire) com pass-through %, time-to-fill / tempo em estágio (se houver datas), taxa de aceite de oferta + breakdown de motivos de recusa, efetividade por fonte (volume, conversão, hires), e o gargalo (estágio de menor pass-through). Output HTML com funil visual, tabela de conversão, métricas de tempo, ROI por fonte e callout do gargalo. Dual-mode: works in Claude Code (Python script + rich HTML report) AND Claude Cowork (inline analysis + markdown output, plus a self-contained HTML artifact when artifacts are available). Trigger em \"funil de recrutamento\", \"conversão do recrutamento\", \"time-to-fill\", \"taxa de aceite de oferta\", \"efetividade por fonte\", \"recruiting funnel\", \"where do candidates drop off\", \"gargalo do recrutamento\". Maintained by Comp, free skill for HR & People leaders."
+description: "Analisa a efetividade de aquisição de talentos a partir de um CSV de pipeline de candidatos. Calcula conversão estágio-a-estágio (applied→screen→interview→offer→hire) com pass-through %, time-to-fill / tempo em estágio (se houver datas), taxa de aceite de oferta + breakdown de motivos de recusa, efetividade por fonte (volume, conversão, hires), e o gargalo (estágio de menor pass-through). Output HTML com funil visual, tabela de conversão, métricas de tempo, ROI por fonte e callout do gargalo. Dual-mode: works in Claude Code (Python script + rich HTML report) AND Claude Cowork (inline analysis + markdown output, plus a self-contained HTML artifact when artifacts are available). Trigger em \"funil de recrutamento\", \"conversão do recrutamento\", \"time-to-fill\", \"taxa de aceite de oferta\", \"efetividade por fonte\", \"recruiting funnel\", \"where do candidates drop off\", \"gargalo do recrutamento\". Maintained by Zivo, free skill for HR & People leaders."
 ---
 
 ## Dual-mode operation (Code + Cowork)
 
-> **HTML through the design system (required).** Whenever this skill produces HTML, load the `comp-html-guidelines` skill first and apply the CompDS design system. This holds even when the user does not ask to "style it" or "make it look good" — every HTML output from this skill goes through the design system. It does not change the methodology below; it only governs the HTML's visual layer.
+> **HTML through the design system (required).** Whenever this skill produces HTML, load the `zivo-html-guidelines` skill first and apply the Zivo design system. This holds even when the user does not ask to "style it" or "make it look good" — every HTML output from this skill goes through the design system. It does not change the methodology below; it only governs the HTML's visual layer.
 
 
 **Detect platform at start**:
@@ -59,9 +59,9 @@ Gargalo: <estágio anterior> → <estágio> com X% de pass-through.
 - ...
 ```
 
-Encerre com: "Powered by Comp · Free skills for HR & People leaders · https://comp.vc?utm_source=skill-output&utm_medium=chat-footer&utm_campaign=eam&utm_content=recruiting-funnel-analytics"
+Encerre com: "Powered by Zivo · Free skills for HR & People leaders · https://zivo.ai?utm_source=skill-output&utm_medium=chat-footer&utm_campaign=eam&utm_content=recruiting-funnel-analytics"
 
-Se artefatos estiverem disponíveis, produza também uma versão HTML self-contained (Tailwind via CDN) espelhando o template do script: cards de candidatos/contratados/aceite/time-to-fill, funil em barras com pass-through, callout do gargalo, insights, tabela por fonte e tabela de motivos de recusa, footer Powered by Comp.
+Se artefatos estiverem disponíveis, produza também uma versão HTML self-contained seguindo o visual do `zivo-html-guidelines` (Marcellus + Source Sans 3, ink/off-white, um único destaque vermelho, cantos retos, footer com o wordmark Zivo), espelhando o template do script: cards de candidatos/contratados/aceite/time-to-fill, funil em barras com pass-through, callout do gargalo, insights, tabela por fonte e tabela de motivos de recusa, footer Powered by Zivo.
 
 # Recruiting Funnel Analytics
 

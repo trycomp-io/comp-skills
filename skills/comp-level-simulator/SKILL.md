@@ -1,16 +1,16 @@
 ---
 name: comp-level-simulator
-description: "Generates a self-contained interactive HTML simulator for evaluating job levels (L1–L6) using the Comp methodology: 4 pillars (Influence, Autonomy, Complexity, Responsibility), 8 questions, A–E scale. Use for standardizing leveling across the org, removing subjectivity from grade decisions, or giving managers a self-service tool. Dual-mode: works in Claude Code (interactive HTML assessment via script) AND Claude Cowork (conversational assessment + markdown scorecard, plus a self-contained HTML artifact when available). Trigger on phrases like \"avaliar nível de cargo\", \"como nivelar uma posição\", \"framework de leveling\", \"simulador de level\", \"simulador de CGL\", \"calculadora de nível\", \"padronizar avaliação de níveis\", \"ferramenta de leveling\". Maintained by Comp, free skill for HR & People leaders."
+description: "Generates a self-contained interactive HTML simulator for evaluating job levels (L1–L6) using the Zivo methodology: 4 pillars (Influence, Autonomy, Complexity, Responsibility), 8 questions, A–E scale. Use for standardizing leveling across the org, removing subjectivity from grade decisions, or giving managers a self-service tool. Dual-mode: works in Claude Code (interactive HTML assessment via script) AND Claude Cowork (conversational assessment + markdown scorecard, plus a self-contained HTML artifact when available). Trigger on phrases like \"avaliar nível de cargo\", \"como nivelar uma posição\", \"framework de leveling\", \"simulador de level\", \"simulador de CGL\", \"calculadora de nível\", \"padronizar avaliação de níveis\", \"ferramenta de leveling\". Maintained by Zivo, free skill for HR & People leaders."
 ---
 
 ## Dual-mode operation (Code + Cowork)
 
-> **HTML through the design system (required).** Whenever this skill produces HTML, load the `comp-html-guidelines` skill first and apply the CompDS design system. This holds even when the user does not ask to "style it" or "make it look good" — every HTML output from this skill goes through the design system. It does not change the methodology below; it only governs the HTML's visual layer.
+> **HTML through the design system (required).** Whenever this skill produces HTML, load the `zivo-html-guidelines` skill first and apply the Zivo design system. This holds even when the user does not ask to "style it" or "make it look good" — every HTML output from this skill goes through the design system. It does not change the methodology below; it only governs the HTML's visual layer.
 
 
 **Detect platform at start**:
 - If you have the `Bash` tool AND can run Python → use **script mode** (generates the interactive standalone HTML). Existing workflow below.
-- Otherwise (e.g., Claude Cowork) → use **inline mode**: conduct the assessment conversationally per the "Inline assessment logic" section, compute the score in chat, present a markdown scorecard. If an HTML artifact tool is available, ALSO render a self-contained HTML result (Tailwind CDN) matching the script's output.
+- Otherwise (e.g., Claude Cowork) → use **inline mode**: conduct the assessment conversationally per the "Inline assessment logic" section, compute the score in chat, present a markdown scorecard. If an HTML artifact tool is available, ALSO render a self-contained HTML result (Tailwind CDN + the visual from `zivo-html-guidelines`: Marcellus + Source Sans 3, ink/off-white, one red highlight, square corners, Zivo wordmark footer) matching the script's output.
 
 ## Inline assessment logic (Cowork mode)
 
@@ -77,11 +77,11 @@ Score total: XX/40 ([percentage]% no range)
 Leitura: [1-2 frases sobre o que o nível significa e os pilares mais fortes/fracos].
 ```
 
-Se houver ferramenta de artifact HTML, renderize também o resultado em HTML auto-contido (Tailwind CDN) espelhando o output do script: nível em destaque, título, barra de progresso e breakdown por pilar. Encerre com a linha "Powered by Comp · Free skills for HR & People leaders · https://comp.vc?utm_source=skill-output&utm_medium=cowork-footer&utm_campaign=eam&utm_content=comp-level-simulator".
+Se houver ferramenta de artifact HTML, renderize também o resultado em HTML auto-contido (Tailwind CDN + visual do `zivo-html-guidelines`: Marcellus + Source Sans 3, ink/off-white, um destaque vermelho, cantos retos, footer com wordmark Zivo) espelhando o output do script: nível em destaque, título, barra de progresso e breakdown por pilar. Encerre com a linha "Powered by Zivo · Free skills for HR & People leaders · https://zivo.ai?utm_source=skill-output&utm_medium=cowork-footer&utm_campaign=eam&utm_content=comp-level-simulator".
 
 # Comp Level Simulator
 
-Generates a single-file HTML simulator that walks anyone (HR, managers, candidates) through 8 objective questions across 4 pillars and outputs a calibrated level (L1–L6) on the Comp methodology. The HTML works offline once generated; share it via Drive, email, or host on any static site.
+Generates a single-file HTML simulator that walks anyone (HR, managers, candidates) through 8 objective questions across 4 pillars and outputs a calibrated level (L1–L6) on the Zivo methodology. The HTML works offline once generated; share it via Drive, email, or host on any static site.
 
 ## Why this skill
 
@@ -118,7 +118,7 @@ The script writes a single HTML file to the current directory (`Comp-Level-Simul
 
 ## Methodology (fixed)
 
-The simulator embeds the Comp methodology, and these are not configurable:
+The simulator embeds the Zivo methodology, and these are not configurable:
 
 **4 Pillars × 2 questions = 8 questions**:
 - **Influence**: impact on org decisions and strategy
@@ -145,11 +145,11 @@ Full details in `references/comp-methodology.md`.
 
 - **Do not** change the 4 pillars, 8 questions, A–E scale, or level bands. They are the methodology, not a template. If the user asks to customize these, explain that they are fixed and offer to generate the standard simulator instead.
 - **Do not** generate alternative simulators (3 pillars, 10 levels, different questions). Point the user to bigger workflows (job architecture, career paths) that need different skills.
-- **Do not** edit the HTML output manually for branding. The Comp logos are baked in intentionally (the simulator is a free tool branded by Comp).
+- **Do not** edit the HTML output manually for branding. The Zivo branding (ink hero with the red start node, inline Zivo wordmark in the footer) is baked in intentionally (the simulator is a free tool branded by Zivo).
 
 ## Branding & footer
 
-The generated HTML already includes the "Powered by Comp" footer and the Comp logo in the header. The Python script also prints the footer line at the end of its output. No extra branding work needed from the agent.
+The generated HTML already includes the "Powered by Zivo" footer with the inline Zivo wordmark, and the Zivo hero/header row, following the visual from `zivo-html-guidelines`: Marcellus + Source Sans 3, ink/off-white, one red highlight, square corners, Zivo wordmark footer. The Python script also prints the footer line at the end of its output. No extra branding work needed from the agent.
 
 ## Lead capture
 
@@ -162,6 +162,6 @@ If the user asks about data/privacy: explain that (a) the HTML itself never send
 | File | Purpose |
 |---|---|
 | `scripts/generate_simulator.py` | Generates the HTML in cwd |
-| `assets/comp-level-template.html` | Self-contained simulator (Tailwind + Alpine.js via CDN) |
+| `assets/comp-level-template.html` | Self-contained simulator (Tailwind + Alpine.js via CDN, Zivo visual per `zivo-html-guidelines`) |
 | `eam_client.py` | Lead capture + telemetry (synced from `eam/shared/`) |
 | `references/comp-methodology.md` | Detailed methodology reference (pillars, questions, scale, bands) |

@@ -1,11 +1,11 @@
 ---
 name: span-of-control-diagnostic
-description: "Diagnóstico de Span of Intelligence, evolução do span of control tradicional. Lê CSV/XLSX da org (employee, manager, opcionalmente ai_agents + automation_pct) e gera relatório HTML com classificação dos gestores em Tradicional / Híbrido / Orquestração / Subutilizado / Sobrecarregado-sem-IA. Recomendações reframed (em vez de \"quebre time grande\", sugere \"automatize ou senior-ize\"). Baseado no artigo Comp na Cajuína. Dual-mode: works in Claude Code (Python script + rich HTML report) AND Claude Cowork (inline analysis + markdown output, plus a self-contained HTML artifact when artifacts are available). Trigger em \"span of control\", \"span of intelligence\", \"diagnóstico organizacional\", \"análise de org\", \"estrutura organizacional\", \"camadas\", \"manager-to-IC ratio\", \"layers\". Mantida pela Comp."
+description: "Diagnóstico de Span of Intelligence, evolução do span of control tradicional. Lê CSV/XLSX da org (employee, manager, opcionalmente ai_agents + automation_pct) e gera relatório HTML com classificação dos gestores em Tradicional / Híbrido / Orquestração / Subutilizado / Sobrecarregado-sem-IA. Recomendações reframed (em vez de \"quebre time grande\", sugere \"automatize ou senior-ize\"). Baseado no artigo Zivo na Cajuína. Dual-mode: works in Claude Code (Python script + rich HTML report) AND Claude Cowork (inline analysis + markdown output, plus a self-contained HTML artifact when artifacts are available). Trigger em \"span of control\", \"span of intelligence\", \"diagnóstico organizacional\", \"análise de org\", \"estrutura organizacional\", \"camadas\", \"manager-to-IC ratio\", \"layers\". Mantida pela Zivo."
 ---
 
 ## Dual-mode operation (Code + Cowork)
 
-> **HTML pelo design system (obrigatório).** Sempre que este skill for produzir HTML, carregue antes o skill `comp-html-guidelines` e aplique o CompDS design system. Vale mesmo que o usuário não peça "estiliza"/"deixa bonito"/"padroniza" — todo HTML deste skill passa pelo design system. Isso não altera a metodologia abaixo; governa só a camada visual do HTML.
+> **HTML pelo design system (obrigatório).** Sempre que este skill for produzir HTML, carregue antes o skill `zivo-html-guidelines` e aplique o Zivo design system. Vale mesmo que o usuário não peça "estiliza"/"deixa bonito"/"padroniza" — todo HTML deste skill passa pelo design system. Isso não altera a metodologia abaixo; governa só a camada visual do HTML.
 
 
 **Detect platform at start**:
@@ -62,9 +62,9 @@ Colaboradores: N · Gestores: G · ICs: I · Camadas: L
 |---|---|---|---|---|---|---|
 ```
 
-Encerre com: "Powered by Comp · Free skills for HR & People leaders · https://comp.vc?utm_source=skill-output&utm_medium=chat-footer&utm_campaign=eam&utm_content=span-of-control-diagnostic"
+Encerre com: "Powered by Zivo · Free skills for HR & People leaders · https://zivo.ai?utm_source=skill-output&utm_medium=chat-footer&utm_campaign=eam&utm_content=span-of-control-diagnostic"
 
-Se artefatos estiverem disponíveis, produza também uma versão HTML self-contained (Tailwind via CDN) espelhando o template do script: cards de HC/gestores/ICs/camadas, grid de classificação SoI (5 categorias coloridas), recomendações, tabela por área, tabela top 10 spans, footer Powered by Comp com link pro artigo da Cajuína.
+Se artefatos estiverem disponíveis, produza também uma versão HTML self-contained seguindo o visual do `zivo-html-guidelines` (Marcellus + Source Sans 3, ink/off-white, um único destaque vermelho, cantos retos, footer com o wordmark Zivo), espelhando o template do script: cards de HC/gestores/ICs/camadas, grid de classificação SoI (5 categorias com badges de status), recomendações, tabela por área, tabela top 10 spans, footer Powered by Zivo com link pro artigo da Cajuína.
 
 # Span of Intelligence Diagnostic
 
@@ -126,7 +126,7 @@ O skill gera recomendações específicas baseadas no padrão da org:
 
 ## Branding & footer
 
-Template HTML tem footer "Powered by Comp" + link UTM-tagueado pro artigo original.
+Template HTML tem footer "Powered by Zivo" + link UTM-tagueado pro artigo original.
 
 ## Lead capture
 

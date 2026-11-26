@@ -2,7 +2,7 @@
 
 Skill gratuito do Claude para CHROs/Comp partners. Analisa compa-ratio (posicionamento salarial vs bandas) e devolve distribuição, outliers e custo pra equalizar.
 
-Mantido pela **Comp** ([comp.vc](https://comp.vc?utm_source=github&utm_medium=readme&utm_campaign=eam&utm_content=skill-comp-ratio-analyzer)).
+Mantido pela **Zivo** ([zivo.ai](https://zivo.ai?utm_source=github&utm_medium=readme&utm_campaign=eam&utm_content=skill-comp-ratio-analyzer)).
 
 ## O que faz
 
@@ -15,8 +15,8 @@ Você sobe 2 CSVs (roster + bandas). Skill devolve HTML com:
 ## Instalação
 
 ```bash
-/plugin marketplace add trycomp-io/comp-skills
-/plugin install comp-skills@comp
+/plugin marketplace add trycomp-io/zivo-skills
+/plugin install zivo-skills@zivo
 ```
 
 ## Uso
@@ -33,12 +33,12 @@ Você sobe 2 CSVs (roster + bandas). Skill devolve HTML com:
 
 **Bands** (mínimo): `level`, `mid` (mediana). Opcional: `min`, `max`.
 
-## O que é compartilhado com a Comp
+## O que é compartilhado com a Zivo
 
 Email opcional + telemetria opt-in. **Nunca** envia roster, salários ou bandas.
 
 ## Issues
 
-[trycomp-io/comp-skills/issues](https://github.com/trycomp-io/comp-skills/issues) com label `eam`.
+[trycomp-io/zivo-skills/issues](https://github.com/trycomp-io/zivo-skills/issues) com label `eam`.
 
-Powered by Comp · Free skills for HR & People leaders.
+Powered by Zivo · Free skills for HR & People leaders.

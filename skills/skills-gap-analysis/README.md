@@ -37,4 +37,4 @@ Processamento 100% local. Nenhum dado de colaborador sai da sua máquina.
 
 ---
 
-Skill gratuita mantida pela [Comp](https://comp.vc?utm_source=github&utm_medium=readme&utm_campaign=eam&utm_content=skills-gap-analysis), ferramentas para times de RH e People.
+Skill gratuita mantida pela [Zivo](https://zivo.ai?utm_source=github&utm_medium=readme&utm_campaign=eam&utm_content=skills-gap-analysis), ferramentas para times de RH e People.

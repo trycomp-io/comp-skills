@@ -1,8 +1,8 @@
 # span-of-control-diagnostic
 
-Skill gratuito do Claude para líderes de RH & People. Diagnóstico de **Span of Intelligence**, evolução do span of control tradicional, baseado no artigo [De Span of Control a Span of Intelligence](https://cajuina.org/principais/coluna-comp/de-span-of-control-a-span-of-intelligence/) da coluna Comp na Cajuína.
+Skill gratuito do Claude para líderes de RH & People. Diagnóstico de **Span of Intelligence**, evolução do span of control tradicional, baseado no artigo [De Span of Control a Span of Intelligence](https://cajuina.org/principais/coluna-comp/de-span-of-control-a-span-of-intelligence/) da coluna Zivo na Cajuína.
 
-Mantido pela **Comp** ([comp.vc](https://comp.vc?utm_source=github&utm_medium=readme&utm_campaign=eam&utm_content=skill-span-of-control-diagnostic)).
+Mantido pela **Zivo** ([zivo.ai](https://zivo.ai?utm_source=github&utm_medium=readme&utm_campaign=eam&utm_content=skill-span-of-control-diagnostic)).
 
 ## O que faz
 
@@ -19,8 +19,8 @@ Diferente de diagnósticos clássicos que dizem "quebre se >15 diretos", esse sk
 ## Instalação
 
 ```bash
-/plugin marketplace add trycomp-io/comp-skills
-/plugin install comp-skills@comp
+/plugin marketplace add trycomp-io/zivo-skills
+/plugin install zivo-skills@zivo
 ```
 
 ## Uso
@@ -50,12 +50,12 @@ Pra análise completa Span of Intelligence, adicione:
 | Subutilizado | Span <4 sem IA | Senior-ize, elimine camada |
 | Sobrecarregado (sem IA) | Span >12 sem IA | Avalie agentes antes de splitting |
 
-## O que é compartilhado com a Comp
+## O que é compartilhado com a Zivo
 
 Email opcional + telemetria opt-in. **Nunca** envia dados do org chart.
 
 ## Issues
 
-[trycomp-io/comp-skills/issues](https://github.com/trycomp-io/comp-skills/issues) com label `eam`.
+[trycomp-io/zivo-skills/issues](https://github.com/trycomp-io/zivo-skills/issues) com label `eam`.
 
-Powered by Comp · Free skills for HR & People leaders.
+Powered by Zivo · Free skills for HR & People leaders.

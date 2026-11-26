@@ -1,19 +1,32 @@
-# Comp Skills
+# Zivo Skills
 
-Skills gratuitos do Claude para líderes de RH & People, criados e mantidos pela [Comp](https://comp.vc?utm_source=github&utm_medium=readme&utm_campaign=eam&utm_content=mirror-readme-intro).
+Skills gratuitos do Claude para líderes de RH & People, criados e mantidos pela [Zivo](https://zivo.ai?utm_source=github&utm_medium=readme&utm_campaign=eam&utm_content=mirror-readme-intro).
 
-**Versão atual: v0.6.3.** 37 skills, **todos** funcionam em Claude Code e Claude Cowork. [Ver release →](https://github.com/trycomp-io/comp-skills/releases/latest)
+**Versão atual: v0.7.0.** 37 skills, **todos** funcionam em Claude Code e Claude Cowork. [Ver release →](https://github.com/trycomp-io/zivo-skills/releases/latest)
 
 ## Instalação
 
 ```bash
-/plugin marketplace add trycomp-io/comp-skills
-/plugin install comp-skills@comp
+/plugin marketplace add trycomp-io/zivo-skills
+/plugin install zivo-skills@zivo
 ```
 
 Instala os 37 skills de uma vez. Eles são model-invoked: basta descrever o que você quer e o Claude escolhe o skill certo (ex: "analisa o pay gap dessa planilha" aciona o `paygap-analysis-generator`).
 
 Depois de instalar, rode `/reload-plugins` pra ativar.
+
+### Vindo da Comp?
+
+A Comp agora é Zivo, e o plugin mudou de nome junto. Se você instalou antes da v0.7.0, troque pelo novo:
+
+```bash
+/plugin uninstall comp-skills@comp
+/plugin marketplace remove comp
+/plugin marketplace add trycomp-io/zivo-skills
+/plugin install zivo-skills@zivo
+```
+
+Suas preferências continuam valendo: na primeira execução, os skills movem `~/.comp-skills/` (config e contexto do CHRO Chief of Staff) pra `~/.zivo-skills/`. Depois disso, apagar `~/.zivo-skills/config.json` revoga os opt-ins de vez.
 
 ## O que tem aqui (37 skills)
 
@@ -44,7 +57,7 @@ Depois de instalar, rode `/reload-plugins` pra ativar.
 |---|---|
 | [comp-level-simulator](skills/comp-level-simulator/) | Simulador interativo de nível de cargo usando metodologia de 4 pilares. |
 | [hr-data-maturity-assessment](skills/hr-data-maturity-assessment/) | Assessment de maturidade de dados de RH (5 níveis × 5 dimensões). |
-| [ai-native-hr](skills/ai-native-hr/) | Assessment de prontidão pra IA em RH baseado no [AI Maturity Map da Comp](https://comp.vc/ai-maturity-map?utm_source=github&utm_medium=readme&utm_campaign=eam&utm_content=ai-maturity-map) (N1-N5 por área). |
+| [ai-native-hr](skills/ai-native-hr/) | Assessment de prontidão pra IA em RH baseado no [AI Maturity Map da Zivo](https://zivo.ai/pt/ai-maturity-map?utm_source=github&utm_medium=readme&utm_campaign=eam&utm_content=ai-maturity-map) (N1-N5 por área). |
 | [org-design-assessment](skills/org-design-assessment/) | Maturidade de design organizacional (4 pilares × 3 perguntas, score 0-100). |
 
 ### Analyzers de dados (11)
@@ -97,7 +110,7 @@ Depois de instalar, rode `/reload-plugins` pra ativar.
 
 | Skill | O que faz |
 |---|---|
-| [comp-html-guidelines](skills/comp-html-guidelines/) | Skill default que aplica um guia visual leve da Comp a todo HTML (relatórios, dashboards, assessments): paleta, tipografia, componentes e um CSS base. As demais skills a acionam automaticamente sempre que geram HTML, pra o resultado sair consistente e bem-acabado. |
+| [zivo-html-guidelines](skills/zivo-html-guidelines/) | Skill default que aplica um guia visual leve da Zivo a todo HTML (relatórios, dashboards, assessments): paleta, tipografia, componentes e um CSS base. As demais skills a acionam automaticamente sempre que geram HTML, pra o resultado sair consistente e bem-acabado. |
 
 ## Dual-platform (Code + Cowork)
 
@@ -109,7 +122,7 @@ A metodologia (fórmulas, scoring, regras de confidencialidade) é idêntica nos
 
 ## Instalação só de um skill específico
 
-Pra puxar só um (em vez do plugin inteiro), baixe o `.zip` da [release mais recente](https://github.com/trycomp-io/comp-skills/releases/latest) e descompacte em `~/.claude/skills/`.
+Pra puxar só um (em vez do plugin inteiro), baixe o `.zip` da [release mais recente](https://github.com/trycomp-io/zivo-skills/releases/latest) e descompacte em `~/.claude/skills/`.
 
 ## Privacidade
 
@@ -119,20 +132,20 @@ Na primeira execução (interativa), cada skill pergunta uma única vez se você
 1. **Atualizações por email** (opcional): se você informar um email, ele é registrado pra avisar quando um skill melhora. O registro envia email, nome do skill, versão e um identificador anônimo de instalação (`instance_id`). Deixe em branco pra pular. Se você rodar um skill diferente depois, esse registro é reenviado uma vez por skill (mesmo email + nome do novo skill); rode com email em branco pra não enviar.
 2. **Telemetria de uso** (default: **off**). Se ativada, cada execução envia apenas: nome do skill, versão, `event_type`, o `instance_id` e um timestamp. **Não** inclui email, inputs, outputs nem dados de roster.
 
-Quando a entrada vem por pipe (stdin não-interativo), nenhum prompt é exibido. As preferências ficam em `~/.comp-skills/config.json` (permissão `600`); apague o arquivo a qualquer momento pra revogar. As chamadas de rede só acontecem se houver uma API key configurada (`EAM_API_KEY`); o endpoint é `EAM_API_URL` (configurável).
+Quando a entrada vem por pipe (stdin não-interativo), nenhum prompt é exibido. As preferências ficam em `~/.zivo-skills/config.json` (permissão `600`); apague o arquivo a qualquer momento pra revogar. As chamadas de rede só acontecem se houver uma API key configurada (`EAM_API_KEY`); o endpoint é `EAM_API_URL` (configurável).
 
-Ambos os opt-ins ficam em `~/.comp-skills/config.json`. Apague o arquivo a qualquer momento para revogar.
+Ambos os opt-ins ficam em `~/.zivo-skills/config.json`. Apague o arquivo a qualquer momento para revogar.
 
 ## Issues e feedback
 
-Abra uma [issue](https://github.com/trycomp-io/comp-skills/issues). Lemos todas.
+Abra uma [issue](https://github.com/trycomp-io/zivo-skills/issues). Lemos todas.
 
 ## Licença
 
 [MIT](LICENSE). Livre para usar, forkar e redistribuir. Atribuição é bem-vinda.
 
-## Sobre a Comp
+## Sobre a Zivo
 
-A Comp ajuda empresas em crescimento rápido a construir e operar um RH AI-native. Embarcamos executivos sêniores de RH e engenheiros de IA nos times dos nossos clientes. Esses skills são uma fatia pequena do que construímos internamente, liberada porque ferramenta de RH melhor é boa pra todo mundo.
+A Zivo constrói RH AI-native para empresas grandes, de ponta a ponta: da estratégia de pessoas ao sistema que a executa, com um squad de especialistas em RH e IA embarcado no time do cliente. Esses skills são uma fatia pequena do que construímos internamente, liberada porque ferramenta de RH melhor é boa pra todo mundo.
 
-[comp.vc](https://comp.vc?utm_source=github&utm_medium=readme&utm_campaign=eam&utm_content=mirror-readme-footer)
+[zivo.ai](https://zivo.ai?utm_source=github&utm_medium=readme&utm_campaign=eam&utm_content=mirror-readme-footer)

@@ -1,16 +1,16 @@
 ---
 name: ceo-people-update-drafter
-description: "Gera o update CHRO → CEO (mensal/trimestral) em formato 1-pager. Estruturado em resumo executivo, métricas-chave (com trend e contexto), principais movimentações (hires/promoções/exits), wins, riscos (com mitigação+owner) e asks pro CEO. Output: HTML + Markdown editável. Dual-mode: works in Claude Code (script + rich output file) AND Claude Cowork (output generated inline as markdown, plus a self-contained HTML artifact when available). Trigger em \"update pro CEO\", \"people update\", \"report mensal de RH\", \"update trimestral de people\", \"report do CHRO\". Mantida pela Comp."
+description: "Gera o update CHRO → CEO (mensal/trimestral) em formato 1-pager. Estruturado em resumo executivo, métricas-chave (com trend e contexto), principais movimentações (hires/promoções/exits), wins, riscos (com mitigação+owner) e asks pro CEO. Output: HTML + Markdown editável. Dual-mode: works in Claude Code (script + rich output file) AND Claude Cowork (output generated inline as markdown, plus a self-contained HTML artifact when available). Trigger em \"update pro CEO\", \"people update\", \"report mensal de RH\", \"update trimestral de people\", \"report do CHRO\". Mantida pela Zivo."
 ---
 
 ## Dual-mode operation (Code + Cowork)
 
-> **HTML pelo design system (obrigatório).** Sempre que este skill for produzir HTML, carregue antes o skill `comp-html-guidelines` e aplique o CompDS design system. Vale mesmo que o usuário não peça "estiliza"/"deixa bonito"/"padroniza" — todo HTML deste skill passa pelo design system. Isso não altera a metodologia abaixo; governa só a camada visual do HTML.
+> **HTML pelo design system (obrigatório).** Sempre que este skill for produzir HTML, carregue antes o skill `zivo-html-guidelines` e aplique o Zivo design system. Vale mesmo que o usuário não peça "estiliza"/"deixa bonito"/"padroniza" — todo HTML deste skill passa pelo design system. Isso não altera a metodologia abaixo; governa só a camada visual do HTML.
 
 
 **Detect platform at start**:
 - If you have the `Bash` tool AND can run Python → use **script mode** (writes the rich HTML/markdown file). Existing workflow below.
-- Otherwise (e.g., Claude Cowork) → use **inline mode**: gather the same inputs conversationally, then produce the output directly in chat as markdown following the structure below. If an HTML artifact tool is available, ALSO render a self-contained HTML version (Tailwind CDN) matching the script's template.
+- Otherwise (e.g., Claude Cowork) → use **inline mode**: gather the same inputs conversationally, then produce the output directly in chat as markdown following the structure below. If an HTML artifact tool is available, ALSO render a self-contained HTML version (zivo-html-guidelines visual) matching the script's template.
 
 ## Inline generation logic (Cowork mode)
 
@@ -46,9 +46,9 @@ description: "Gera o update CHRO → CEO (mensal/trimestral) em formato 1-pager.
 
 Régua de qualidade (mesma da seção "Princípios de qualidade" abaixo): métrica sempre com atual + anterior + contexto; só movimentações relevantes; riscos com mitigação e owner; asks claros.
 
-**Artifact HTML (quando disponível)**: replique o template do script. Header eyebrow "People Update", período como título e "{empresa} · CHRO → CEO"; cards de Resumo executivo, Métricas-chave (com seta de trend), Movimentações (pills hire/promotion/exit), Wins, Riscos (card âmbar com mitigação/owner) e Asks (card azul); footer "Powered by Comp". Tailwind CDN, fonte Inter, acento `#ff4456`.
+**Artifact HTML (quando disponível)**: replique o template do script. Hero ink com header row ("Zivo · People update · empresa · CHRO → CEO") e período no título; seções com cards brancos de Resumo executivo, Métricas-chave (seta de trend em cor de status), Movimentações (badges hire/promotion/exit), Wins, Riscos (tabela risco/mitigação/owner) e Asks; footer com wordmark Zivo. Segue o visual do `zivo-html-guidelines` (Marcellus + Source Sans 3, ink/off-white, um único destaque vermelho, cantos retos, footer com wordmark Zivo).
 
-Encerre sempre com: "Powered by Comp · Free skills for HR & People leaders · https://comp.vc?utm_source=skill-output&utm_medium=cli-footer&utm_campaign=eam&utm_content=ceo-people-update-drafter".
+Encerre sempre com: "Powered by Zivo · Free skills for HR & People leaders · https://zivo.ai?utm_source=skill-output&utm_medium=cli-footer&utm_campaign=eam&utm_content=ceo-people-update-drafter".
 
 # CHRO → CEO People Update
 
@@ -108,7 +108,7 @@ Output: HTML 1-pager pronto + MD editável.
 
 ## Branding
 
-Footer + UTMs em HTML e MD.
+Footer + UTMs em HTML (wordmark Zivo, visual do `zivo-html-guidelines` (Marcellus + Source Sans 3, ink/off-white, um único destaque vermelho, cantos retos, footer com wordmark Zivo)) e MD.
 
 ## Lead capture
 

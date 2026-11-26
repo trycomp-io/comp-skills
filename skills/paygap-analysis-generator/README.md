@@ -2,7 +2,7 @@
 
 Skill gratuito do Claude para líderes de RH & People. Gera um relatório HTML de pay gap de gênero a partir de qualquer roster (CSV ou Excel): medianas, razões ponderadas por área, razão global, com a regra padrão de confidencialidade (≥3 por gênero).
 
-Mantido pela **Comp** ([comp.vc](https://comp.vc?utm_source=github&utm_medium=readme&utm_campaign=eam&utm_content=skill-paygap-analysis-generator)).
+Mantido pela **Zivo** ([zivo.ai](https://zivo.ai?utm_source=github&utm_medium=readme&utm_campaign=eam&utm_content=skill-paygap-analysis-generator)).
 
 ## O que faz
 
@@ -17,11 +17,11 @@ Feito para líderes de RH/People rodando revisões de equidade salarial, prepara
 ## Instalação
 
 ```bash
-/plugin marketplace add trycomp-io/comp-skills
-/plugin install comp-skills@comp
+/plugin marketplace add trycomp-io/zivo-skills
+/plugin install zivo-skills@zivo
 ```
 
-Instala o plugin `comp-skills` inteiro (4 skills, um dos quais é este).
+Instala o plugin `zivo-skills` inteiro (4 skills, um dos quais é este).
 
 ### Suporte a Excel
 
@@ -62,7 +62,7 @@ Output: `paygap-{timestamp}.html` no diretório atual. Abre em qualquer navegado
 - **Razão ponderada global** = média ponderada das razões por área pelo headcount da área
 - **Confidencialidade**: grupos (área × nível) com menos de **3 pessoas de cada gênero** são excluídos dos cálculos ponderados. Aparecem como "—" no relatório, headcounts continuam visíveis
 
-## O que é compartilhado com a Comp
+## O que é compartilhado com a Zivo
 
 Na primeira execução você será perguntado sobre:
 1. Seu email (opcional): usado apenas para notificar atualizações do skill.
@@ -70,10 +70,10 @@ Na primeira execução você será perguntado sobre:
 
 100% processamento local. Dados salariais nunca saem da sua máquina. O HTML de saída também é local, compartilha com quem você quiser.
 
-Ambos os opt-ins ficam em `~/.comp-skills/config.json` localmente. Edite ou apague o arquivo a qualquer momento para revogar.
+Ambos os opt-ins ficam em `~/.zivo-skills/config.json` localmente. Edite ou apague o arquivo a qualquer momento para revogar.
 
 ## Issues
 
-Abra uma issue em [trycomp-io/comp-skills](https://github.com/trycomp-io/comp-skills/issues) com a label `eam`.
+Abra uma issue em [trycomp-io/zivo-skills](https://github.com/trycomp-io/zivo-skills/issues) com a label `eam`.
 
-Powered by Comp · Free skills for HR & People leaders.
+Powered by Zivo · Free skills for HR & People leaders.

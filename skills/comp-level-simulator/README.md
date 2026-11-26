@@ -1,8 +1,8 @@
 # comp-level-simulator
 
-Skill gratuito do Claude para líderes de RH & People. Gera um simulador HTML interativo e auto-contido para avaliar níveis de cargo (L1–L6) usando a metodologia Comp: 4 pilares (Influência, Autonomia, Complexidade, Responsabilidade), 8 perguntas, escala A–E.
+Skill gratuito do Claude para líderes de RH & People. Gera um simulador HTML interativo e auto-contido para avaliar níveis de cargo (L1–L6) usando a metodologia Zivo: 4 pilares (Influência, Autonomia, Complexidade, Responsabilidade), 8 perguntas, escala A–E.
 
-Mantido pela **Comp** ([comp.vc](https://comp.vc?utm_source=github&utm_medium=readme&utm_campaign=eam&utm_content=skill-comp-level-simulator)).
+Mantido pela **Zivo** ([zivo.ai](https://zivo.ai?utm_source=github&utm_medium=readme&utm_campaign=eam&utm_content=skill-comp-level-simulator)).
 
 ## O que faz
 
@@ -17,11 +17,11 @@ Use para:
 ## Instalação
 
 ```bash
-/plugin marketplace add trycomp-io/comp-skills
-/plugin install comp-skills@comp
+/plugin marketplace add trycomp-io/zivo-skills
+/plugin install zivo-skills@zivo
 ```
 
-Instala o plugin `comp-skills` inteiro (4 skills, um dos quais é este).
+Instala o plugin `zivo-skills` inteiro (4 skills, um dos quais é este).
 
 ## Uso
 
@@ -45,7 +45,7 @@ O Claude gera um `Comp-Level-Simulator-{timestamp}.html` no diretório atual. Ab
 
 Total: 8–40. Mapeia para L1 (Júnior) → L6 (Especialista Sênior / Gerente Sênior). L5–L6 ficam comprimidos no topo: chegar a níveis executivos exige scores consistentemente altos em todos os pilares.
 
-## O que é compartilhado com a Comp
+## O que é compartilhado com a Zivo
 
 Na primeira execução você será perguntado sobre:
 1. Seu email (opcional), usado apenas para notificar atualizações do skill.
@@ -53,10 +53,10 @@ Na primeira execução você será perguntado sobre:
 
 O HTML em si **nunca** chama o servidor. É JS puro client-side. Tudo que você preenche fica no navegador.
 
-Ambos os opt-ins ficam em `~/.comp-skills/config.json` localmente. Edite ou apague o arquivo a qualquer momento para revogar.
+Ambos os opt-ins ficam em `~/.zivo-skills/config.json` localmente. Edite ou apague o arquivo a qualquer momento para revogar.
 
 ## Issues
 
-Abra uma issue em [trycomp-io/comp-skills](https://github.com/trycomp-io/comp-skills/issues) com a label `eam`.
+Abra uma issue em [trycomp-io/zivo-skills](https://github.com/trycomp-io/zivo-skills/issues) com a label `eam`.
 
-Powered by Comp · Free skills for HR & People leaders.
+Powered by Zivo · Free skills for HR & People leaders.

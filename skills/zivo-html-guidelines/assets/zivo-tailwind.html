@@ -1,0 +1,46 @@
+<!-- Zivo theme for pages built with the Tailwind CDN.
+     Paste right after <script src="https://cdn.tailwindcss.com/3.4.16"></script>.
+     Square radii, no shadows, Zivo tokens and fonts. See references/style-guide.md §8. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Source+Sans+3:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<script>
+tailwind.config = {
+  theme: {
+    borderRadius: { none: '0', sm: '0', DEFAULT: '0', md: '0', lg: '0', xl: '0', '2xl': '0', '3xl': '0', full: '9999px' },
+    boxShadow: { sm: 'none', DEFAULT: 'none', md: 'none', lg: 'none', xl: 'none', '2xl': 'none', inner: 'none', none: 'none' },
+    fontFamily: {
+      display: ['"ABC Arizona Flare"', 'Marcellus', 'Georgia', 'serif'],
+      sans: ['"ABC Arizona Sans"', '"Source Sans 3"', 'system-ui', 'sans-serif'],
+    },
+    extend: {
+      colors: {
+        zv: {
+          ink: '#1A1A1A', off: '#F1F1EA', white: '#FFFFFF',
+          red: '#F4364C', 'red-hover': '#E02A40', 'red-pressed': '#9E1528',
+          ink80: 'rgba(26,26,26,.8)', ink60: 'rgba(26,26,26,.6)', ink40: 'rgba(26,26,26,.4)',
+          ink30: 'rgba(26,26,26,.3)', ink20: 'rgba(26,26,26,.2)', line: 'rgba(26,26,26,.1)', ink05: 'rgba(26,26,26,.05)',
+          success: '#0B7A43', 'success-bg': '#DDF7EA', 'success-fill': '#12B76A',
+          warning: '#985704', 'warning-bg': '#FFF2DA', 'warning-fill': '#F69B10',
+          error: '#B3172A', 'error-bg': '#FEE7EA', 'error-fill': '#D61F35',
+          info: '#0B58BB', 'info-bg': '#E7F1FF', 'info-fill': '#1C7CE5',
+          indigo: '#4636F2', aqua: '#12C3C9', orchid: '#C24BE6', citron: '#D4E030', midnight: '#1F188C',
+        },
+      },
+    },
+  },
+};
+</script>
+<style>
+  body { font-family: "ABC Arizona Sans", "Source Sans 3", system-ui, sans-serif; background: #F1F1EA; color: #1A1A1A; }
+  h1, h2, h3, h4, .font-display { font-family: "ABC Arizona Flare", Marcellus, Georgia, serif; font-weight: 400 !important; font-style: normal; text-transform: none; }
+  h1 { letter-spacing: -0.02em; }
+  h2 { letter-spacing: -0.01em; }
+  a { text-underline-offset: 2px; }
+  .zv-dot { display: inline-block; width: 8px; height: 8px; background: currentColor; margin-right: 8px; vertical-align: 1px; }
+  .zv-dot--red { background: #F4364C; }
+  .zv-caption { font-size: 12px; line-height: 16px; text-transform: uppercase; letter-spacing: .04em; }
+  .zv-wordmark { display: inline-flex; line-height: 0; }
+  .zv-wordmark svg { height: 20px; width: auto; }
+  .tabular { font-variant-numeric: tabular-nums; }
+</style>

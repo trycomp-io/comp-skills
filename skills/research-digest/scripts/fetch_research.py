@@ -36,7 +36,7 @@ except ImportError:
 SKILL_NAME = "research-digest"
 SKILL_VERSION = "1.0.0"
 
-USER_AGENT = "Comp-ResearchDigest/1.0 (mailto:research@comp.vc)"
+USER_AGENT = "Zivo-ResearchDigest/1.0 (mailto:research@comp.vc)"
 TIMEOUT = 30
 
 # ---------------------------------------------------------------------------

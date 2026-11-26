@@ -1,11 +1,11 @@
 ---
 name: exit-survey-theme-analyzer
-description: "Analisa comentários abertos de entrevistas de desligamento e pesquisas de engajamento (open-ends) extraindo temas, sentimento e sinais. A extração de temas é feita pelo agente (LLM); o script apenas renderiza um relatório HTML a partir de um JSON de temas. Produz temas rankeados por frequência, sentimento (negativo/neutro/positivo), citações anonimizadas representativas, cruzamentos por segmento e flag de temas em alta negativa. Privacidade: citações anonimizadas, células de segmento com menos de 3 comentários suprimidas. Dual-mode: works in Claude Code (agent extrai temas + Python script renderiza HTML) AND Claude Cowork (agent extrai temas + markdown output, plus a self-contained HTML artifact when artifacts are available). Trigger em \"analisar comentários de pesquisa\", \"temas de exit interview\", \"análise qualitativa de feedback\", \"open-ends de engajamento\", \"exit survey themes\", \"o que os comentários dizem\". Mantida pela Comp."
+description: "Analisa comentários abertos de entrevistas de desligamento e pesquisas de engajamento (open-ends) extraindo temas, sentimento e sinais. A extração de temas é feita pelo agente (LLM); o script apenas renderiza um relatório HTML a partir de um JSON de temas. Produz temas rankeados por frequência, sentimento (negativo/neutro/positivo), citações anonimizadas representativas, cruzamentos por segmento e flag de temas em alta negativa. Privacidade: citações anonimizadas, células de segmento com menos de 3 comentários suprimidas. Dual-mode: works in Claude Code (agent extrai temas + Python script renderiza HTML) AND Claude Cowork (agent extrai temas + markdown output, plus a self-contained HTML artifact when artifacts are available). Trigger em \"analisar comentários de pesquisa\", \"temas de exit interview\", \"análise qualitativa de feedback\", \"open-ends de engajamento\", \"exit survey themes\", \"o que os comentários dizem\". Mantida pela Zivo."
 ---
 
 ## Dual-mode operation (Code + Cowork)
 
-> **HTML pelo design system (obrigatório).** Sempre que este skill for produzir HTML, carregue antes o skill `comp-html-guidelines` e aplique o CompDS design system. Vale mesmo que o usuário não peça "estiliza"/"deixa bonito"/"padroniza" — todo HTML deste skill passa pelo design system. Isso não altera a metodologia abaixo; governa só a camada visual do HTML.
+> **HTML pelo design system (obrigatório).** Sempre que este skill for produzir HTML, carregue antes o skill `zivo-html-guidelines` e aplique o Zivo design system. Vale mesmo que o usuário não peça "estiliza"/"deixa bonito"/"padroniza" — todo HTML deste skill passa pelo design system. Isso não altera a metodologia abaixo; governa só a camada visual do HTML.
 
 
 Esta skill é primariamente **agent-driven**: VOCÊ (o agente) faz a extração de temas, sentimento e citações. O script NÃO faz NLP: ele só renderiza o HTML a partir do JSON de temas que você produz.
@@ -90,9 +90,9 @@ Por tema, liste 1-2 citações anonimizadas e ações recomendadas.
 - ...
 ```
 
-Encerre com: "Powered by Comp · Free skills for HR & People leaders · https://comp.vc?utm_source=skill-output&utm_medium=chat-footer&utm_campaign=eam&utm_content=exit-survey-theme-analyzer"
+Encerre com: "Powered by Zivo · Free skills for HR & People leaders · https://zivo.ai?utm_source=skill-output&utm_medium=chat-footer&utm_campaign=eam&utm_content=exit-survey-theme-analyzer"
 
-Se artefatos estiverem disponíveis, produza também a versão HTML self-contained (Tailwind via CDN) espelhando o template do script: cards (comentários / temas / período), flag de temas em alta negativa, ranking de temas com barras de sentimento + citações + ações, tabela de segmentos, notas metodológicas, footer Powered by Comp.
+Se artefatos estiverem disponíveis, produza também a versão HTML self-contained no visual do `zivo-html-guidelines` (Marcellus + Source Sans 3, ink/off-white, um único destaque vermelho, cantos retos, footer com o wordmark Zivo) espelhando o template do script: cards (comentários / temas / período), flag de temas em alta negativa, ranking de temas com barras de sentimento + citações + ações, tabela de segmentos, notas metodológicas, footer com wordmark e "Powered by Zivo".
 
 # Exit Survey Theme Analyzer
 

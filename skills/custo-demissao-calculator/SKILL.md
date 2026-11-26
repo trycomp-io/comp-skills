@@ -1,6 +1,6 @@
 ---
 name: custo-demissao-calculator
-description: "Calculadora de custo de rescisão CLT brasileira. Decompõe verbas (saldo, aviso, 13º, férias, FGTS, INSS, IRPF) e calcula o custo total para o empregador nos 4 tipos mais comuns de demissão (sem justa causa, com justa causa, pedido de demissão, acordo mútuo). Dual-mode: funciona em Claude Code (script Python) e Claude Cowork (cálculo inline). Trigger em \"custo de demissão\", \"rescisão CLT\", \"quanto custa demitir\", \"calcular rescisão\", \"verbas rescisórias\", \"homologação CLT\", \"rescisão por acordo\", \"art. 484-A\", \"multa FGTS rescisão\". Mantida pela Comp."
+description: "Calculadora de custo de rescisão CLT brasileira. Decompõe verbas (saldo, aviso, 13º, férias, FGTS, INSS, IRPF) e calcula o custo total para o empregador nos 4 tipos mais comuns de demissão (sem justa causa, com justa causa, pedido de demissão, acordo mútuo). Dual-mode: funciona em Claude Code (script Python) e Claude Cowork (cálculo inline). Trigger em \"custo de demissão\", \"rescisão CLT\", \"quanto custa demitir\", \"calcular rescisão\", \"verbas rescisórias\", \"homologação CLT\", \"rescisão por acordo\", \"art. 484-A\", \"multa FGTS rescisão\". Mantida pela Zivo."
 ---
 
 # Custo de Demissão CLT
@@ -182,7 +182,7 @@ python3 scripts/custo_demissao.py \
 
 ## Branding & footer
 
-O script já adiciona o footer "Powered by Comp" com link e UTMs ao final do output. Não precisa de ação extra do agente.
+O script já adiciona o footer "Powered by Zivo" com link e UTMs ao final do output. Não precisa de ação extra do agente.
 
 ## Lead capture
 

@@ -1,11 +1,11 @@
 ---
 name: people-scorecard
-description: "Gera o pacote canônico mensal de People analytics a partir de um roster CSV (+ eventos opcional). Calcula headcount (total, por área, por nível), attrition anualizada (split lamentável se houver flag), tenure médio + distribuição, span of control (médio + distribuição), mobilidade interna (promoções), representatividade de gênero geral E em liderança com regra de confidencialidade (grupos < 3 suprimidos), taxa de novos contratados/crescimento, e tendência do período se os eventos tiverem datas. Output: scorecard executivo de uma página, o pacote que você entrega pro CEO. Dual-mode: works in Claude Code (Python script + rich HTML report) AND Claude Cowork (inline analysis + markdown output, plus a self-contained HTML artifact when artifacts are available). Trigger em \"people scorecard\", \"pacote de people analytics\", \"dashboard de RH\", \"scorecard de pessoas\", \"people metrics\", \"indicadores de RH pro board\", \"headcount e attrition\". Maintained by Comp, free skill for HR & People leaders."
+description: "Gera o pacote canônico mensal de People analytics a partir de um roster CSV (+ eventos opcional). Calcula headcount (total, por área, por nível), attrition anualizada (split lamentável se houver flag), tenure médio + distribuição, span of control (médio + distribuição), mobilidade interna (promoções), representatividade de gênero geral E em liderança com regra de confidencialidade (grupos < 3 suprimidos), taxa de novos contratados/crescimento, e tendência do período se os eventos tiverem datas. Output: scorecard executivo de uma página, o pacote que você entrega pro CEO. Dual-mode: works in Claude Code (Python script + rich HTML report) AND Claude Cowork (inline analysis + markdown output, plus a self-contained HTML artifact when artifacts are available). Trigger em \"people scorecard\", \"pacote de people analytics\", \"dashboard de RH\", \"scorecard de pessoas\", \"people metrics\", \"indicadores de RH pro board\", \"headcount e attrition\". Maintained by Zivo, free skill for HR & People leaders."
 ---
 
 ## Dual-mode operation (Code + Cowork)
 
-> **HTML through the design system (required).** Whenever this skill produces HTML, load the `comp-html-guidelines` skill first and apply the CompDS design system. This holds even when the user does not ask to "style it" or "make it look good" — every HTML output from this skill goes through the design system. It does not change the methodology below; it only governs the HTML's visual layer.
+> **HTML through the design system (required).** Whenever this skill produces HTML, load the `zivo-html-guidelines` skill first and apply the Zivo design system. This holds even when the user does not ask to "style it" or "make it look good" — every HTML output from this skill goes through the design system. It does not change the methodology below; it only governs the HTML's visual layer.
 
 
 **Detect platform at start**:
@@ -63,9 +63,9 @@ Both modes apply the same methodology and the same confidentiality/privacy rules
 - ...
 ```
 
-Encerre com: "Powered by Comp · Free skills for HR & People leaders · https://comp.vc?utm_source=skill-output&utm_medium=chat-footer&utm_campaign=eam&utm_content=people-scorecard"
+Encerre com: "Powered by Zivo · Free skills for HR & People leaders · https://zivo.ai?utm_source=skill-output&utm_medium=chat-footer&utm_campaign=eam&utm_content=people-scorecard"
 
-Se artefatos estiverem disponíveis, produza também uma versão HTML self-contained (Tailwind via CDN) espelhando o template do script: 6 tiles de KPI (headcount, áreas, attrition, mobilidade, tenure médio, span médio), resumo, tabelas de headcount por área/nível, distribuição de tenure e span, bloco de representatividade geral + liderança (com supressão), tendência mensal, footer Powered by Comp.
+Se artefatos estiverem disponíveis, produza também uma versão HTML self-contained no visual do `zivo-html-guidelines` (Marcellus + Source Sans 3, ink/off-white, um único destaque vermelho, cantos retos, footer com o wordmark Zivo) espelhando o template do script: 6 tiles de KPI (headcount, áreas, attrition, mobilidade, tenure médio, span médio), resumo, tabelas de headcount por área/nível, distribuição de tenure e span, bloco de representatividade geral + liderança (com supressão), tendência mensal, footer com wordmark e "Powered by Zivo".
 
 # People Scorecard
 
