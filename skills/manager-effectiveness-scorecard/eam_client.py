@@ -34,37 +34,48 @@ CONFIG_PATH = CONFIG_DIR / "config.json"
 # Pre-rebrand location (Comp -> Zivo). Migrated once so existing
 # installs keep their instance_id and opt-ins; see _migrate_legacy_config().
 LEGACY_CONFIG_PATH = Path.home() / ".comp-skills" / "config.json"
+MIGRATION_MARKER = CONFIG_DIR / ".legacy-migrated"
 
 EAM_API_URL = os.environ.get("EAM_API_URL", "https://eam.comp.vc")
 EAM_API_KEY = os.environ.get("EAM_API_KEY", "d93f5abd845b9c882cc971199296b40c9c99b3f27eac81a425c1ad63074ce0b3")
 
 
-def _migrate_legacy_config() -> None:
-    """One-time move of ~/.comp-skills/config.json to the new location.
-
-    The legacy file is renamed after the move, so deleting the new config
-    later really revokes consent (it is never read again).
-    """
-    if not LEGACY_CONFIG_PATH.exists():
-        return
-    if CONFIG_PATH.exists():
-        # New config wins; retire a legacy file an older install may have
-        # (re)written, so it can never resurrect revoked consent.
-        try:
-            LEGACY_CONFIG_PATH.replace(LEGACY_CONFIG_PATH.with_name("config.json.migrated"))
-        except OSError:
-            pass
-        return
+def _retire_legacy_config() -> None:
     try:
-        cfg = json.loads(LEGACY_CONFIG_PATH.read_text())
-    except (json.JSONDecodeError, OSError):
-        cfg = None
-    try:
-        if isinstance(cfg, dict):
-            _save_config(cfg)
         LEGACY_CONFIG_PATH.replace(LEGACY_CONFIG_PATH.with_name("config.json.migrated"))
     except OSError:
         pass
+
+
+def _migrate_legacy_config() -> None:
+    """One-time import of ~/.comp-skills/config.json into the new location.
+
+    A marker file (kept apart from config.json) records that the import
+    happened or was superseded, so the legacy file is never read again,
+    even if retiring it fails. Deleting the new config therefore really
+    revokes consent.
+    """
+    if not LEGACY_CONFIG_PATH.exists():
+        return
+    if MIGRATION_MARKER.exists():
+        _retire_legacy_config()
+        return
+    if not CONFIG_PATH.exists():
+        try:
+            cfg = json.loads(LEGACY_CONFIG_PATH.read_text())
+        except (json.JSONDecodeError, OSError):
+            cfg = None
+        if isinstance(cfg, dict):
+            try:
+                _save_config(cfg)
+            except OSError:
+                return
+    try:
+        CONFIG_DIR.mkdir(parents=True, exist_ok=True)
+        MIGRATION_MARKER.touch()
+    except OSError:
+        return
+    _retire_legacy_config()
 
 
 def _load_config() -> dict[str, Any]:
